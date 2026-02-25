@@ -1,0 +1,116 @@
+# Self-Hosting Ditto
+
+Ditto is a static web application. Once built, it's just HTML, CSS, and JavaScript files that can be served from anywhere. This makes self-hosting straightforward.
+
+## Prerequisites
+
+- **Node.js 22+** (required for building)
+- **Bun** or **npm** (package manager)
+- A web server or static hosting service
+
+## Quick start
+
+```bash
+# Clone the repository
+git clone https://github.com/ectosquad/ditto.git
+cd ditto
+
+# Install dependencies
+bun install
+
+# Build
+bun run build
+
+# The built site is in dist/
+```
+
+The `dist/` directory now contains everything you need. Upload it to any web server.
+
+## Deployment options
+
+### GitHub Pages
+
+The repository includes a GitHub Actions workflow that automatically deploys to GitHub Pages when you push to `main`:
+
+1. Fork the Ditto repository
+2. Enable GitHub Pages in your repository settings
+3. Push to `main`
+4. Your instance is live at `https://yourusername.github.io/ditto/`
+
+### Netlify / Vercel
+
+Just connect your fork and deploy. Ditto includes a `_redirects` file for SPA routing on these platforms.
+
+### VPS / Any web server
+
+```bash
+# Build locally
+bun run build
+
+# Upload to your server
+rsync -avz dist/ user@yourserver:/var/www/ditto/
+```
+
+Make sure your web server serves `index.html` for all routes (SPA routing). For Nginx:
+
+```nginx
+server {
+    listen 80;
+    server_name your-domain.com;
+    root /var/www/ditto;
+
+    location / {
+        try_files $uri $uri/ /index.html;
+    }
+}
+```
+
+## Configuration
+
+Create a `config.json` file in the project root before building. This file lets you customize your instance:
+
+```json
+{
+  "relays": [
+    "wss://your-relay.example.com",
+    "wss://relay.damus.io"
+  ],
+  "theme": "midnight",
+  "blossomServers": [
+    "https://your-blossom.example.com"
+  ]
+}
+```
+
+See the [Configuration guide](/guides/configuration) for all available options.
+
+::: tip
+The `config.json` file is in `.gitignore` by default, so each deployment can have its own configuration without conflicts.
+:::
+
+## Android app
+
+Ditto includes a Capacitor project for building native Android apps:
+
+```bash
+# Build the web app first
+bun run build
+
+# Sync with Capacitor
+npx cap sync
+
+# Open in Android Studio
+npx cap open android
+```
+
+This lets you distribute Ditto as a branded Android app for your community.
+
+## Custom branding
+
+Beyond themes, you can customize:
+
+- **Logo** -- Replace `public/logo.svg` and `public/logo.png`
+- **App name** -- Update in `index.html` and `public/manifest.webmanifest`
+- **Default relays** -- Set in `config.json`
+- **Upload servers** -- Set your own Blossom servers
+- **OG image** -- Replace `public/og-image.jpg` for social sharing previews
