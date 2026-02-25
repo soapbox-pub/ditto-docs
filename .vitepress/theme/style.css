@@ -703,29 +703,16 @@
 }
 
 /* ==========================================================================
- * INNER PAGES: Shared styles for learn/guide pages with the same energy
+ * INNER PAGES: Shared styles for learn/guide pages with the same energy.
+ * These work inside .vp-doc (layout: doc) so headings/text get indexed
+ * by VitePress search, while HTML wrappers add visual flair.
  * ========================================================================== */
-
-/* Full-bleed page wrapper — kills VitePress doc padding */
-.ditto-page {
-  max-width: 780px;
-  margin: 0 auto;
-  padding: 0 24px 80px;
-}
-
-.VPPage:has(.ditto-page) {
-  padding: 0 !important;
-}
-
-.VPContent:has(.ditto-page) {
-  padding: 0 !important;
-}
 
 /* ---------- Page Hero ---------- */
 
 .page-hero {
   text-align: center;
-  padding: 80px 0 60px;
+  padding: 40px 0 60px;
 }
 
 .page-hero-emoji {
@@ -735,17 +722,27 @@
   animation: float-slow 7s ease-in-out infinite;
 }
 
-.page-hero h1 {
+/* Override .vp-doc h1 when inside our hero */
+.vp-doc .page-hero h1 {
   font-size: clamp(40px, 7vw, 72px);
   font-weight: 900;
   letter-spacing: -0.04em;
-  line-height: 1.1;
+  line-height: 1.2;
   margin: 0 0 20px;
   background: var(--ditto-gradient);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   padding-top: 0.05em;
+  border: none;
+}
+
+/* Hide the anchor hash links on styled headings */
+.vp-doc .page-hero h1 .header-anchor,
+.vp-doc .section-header-left h2 .header-anchor,
+.vp-doc .big-idea-text h2 .header-anchor,
+.vp-doc .page-cta h2 .header-anchor {
+  display: none;
 }
 
 .page-hero-sub {
@@ -781,13 +778,16 @@
   animation: float-fast 6s ease-in-out infinite;
 }
 
-.section-header-left h2 {
+.section-header-left h2,
+.vp-doc .section-header-left h2 {
   font-size: clamp(26px, 3.5vw, 36px);
   font-weight: 900;
   letter-spacing: -0.02em;
   margin: 0;
+  padding: 0;
   line-height: 1.2;
   color: var(--vp-c-text-1);
+  border: none;
 }
 
 .section-body {
@@ -816,22 +816,27 @@
   line-height: 1;
 }
 
-.big-idea-text h2 {
+.big-idea-text h2,
+.vp-doc .big-idea-text h2 {
   font-size: clamp(26px, 3.5vw, 36px);
   font-weight: 900;
   letter-spacing: -0.02em;
   margin: 0 0 16px;
+  padding: 0;
   color: var(--vp-c-text-1);
+  border: none;
 }
 
-.big-idea-text p {
+.big-idea-text p,
+.vp-doc .big-idea-text p {
   font-size: 18px;
   line-height: 1.7;
   color: var(--vp-c-text-2);
   margin: 0 0 16px;
 }
 
-.big-idea-text p:last-child {
+.big-idea-text p:last-child,
+.vp-doc .big-idea-text p:last-child {
   margin-bottom: 0;
 }
 
@@ -876,14 +881,18 @@
   margin-bottom: 12px;
 }
 
-.fun-card h3 {
+.fun-card h3,
+.vp-doc .fun-card h3 {
   font-size: 20px;
   font-weight: 800;
   margin: 0 0 8px;
   color: var(--vp-c-text-1);
+  border: none;
+  padding: 0;
 }
 
-.fun-card p {
+.fun-card p,
+.vp-doc .fun-card p {
   font-size: 15px;
   line-height: 1.65;
   color: var(--vp-c-text-2);
@@ -980,14 +989,18 @@
   font-size: 32px;
 }
 
-.versus-header h3 {
+.versus-header h3,
+.vp-doc .versus-header h3 {
   font-size: 18px;
   font-weight: 800;
   margin: 0;
+  padding: 0;
   color: var(--vp-c-text-1);
+  border: none;
 }
 
-.versus-col ul {
+.versus-col ul,
+.vp-doc .versus-col ul {
   list-style: none;
   padding: 0;
   margin: 0;
@@ -996,12 +1009,14 @@
   gap: 10px;
 }
 
-.versus-col li {
+.versus-col li,
+.vp-doc .versus-col li {
   font-size: 15px;
   line-height: 1.5;
   color: var(--vp-c-text-2);
   padding-left: 20px;
   position: relative;
+  margin: 0;
 }
 
 .versus-old li::before {
@@ -1055,12 +1070,15 @@
   animation: float-fast 5s ease-in-out infinite;
 }
 
-.page-cta h2 {
+.page-cta h2,
+.vp-doc .page-cta h2 {
   font-size: clamp(28px, 4vw, 40px);
   font-weight: 900;
   letter-spacing: -0.02em;
   margin: 0 0 12px;
+  padding: 0;
   color: var(--vp-c-text-1);
+  border: none;
 }
 
 .page-cta p {
