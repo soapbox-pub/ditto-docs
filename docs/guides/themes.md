@@ -51,18 +51,32 @@ Under the hood, each theme is a set of 19 CSS custom properties (tokens) that co
 
 ## Theming for self-hosters
 
-If you're running your own Ditto instance, you can set a default theme for all users in your `config.json`:
+If you're running your own Ditto instance, you can set a default theme for all users in your `ditto.json`:
 
 ```json
 {
-  "theme": "midnight"
+  "theme": "custom",
+  "customTheme": {
+    "background": "228 20% 10%",
+    "foreground": "228 10% 92%",
+    "primary": "258 70% 60%",
+    "primaryForeground": "0 0% 100%"
+  }
+}
+```
+
+Or use the default dark/light/system modes:
+
+```json
+{
+  "theme": "dark"
 }
 ```
 
 Users can still override this with their own preferences -- the precedence is:
 
 ```
-User settings (localStorage) > Build config (config.json) > Hardcoded defaults
+User settings (localStorage) > Build config (ditto.json) > Hardcoded defaults
 ```
 
 This means you can brand your community instance with a custom look while still letting individuals personalize their experience.

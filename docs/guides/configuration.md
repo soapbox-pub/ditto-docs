@@ -1,54 +1,75 @@
 # Configuration
 
-Ditto is configured through a `config.json` file at the project root. This file is read at build time and its values override the hardcoded defaults.
+Ditto is configured through a `ditto.json` file at the project root. This file is read at **build time** and validated against a strict Zod schema. Its values override the hardcoded defaults.
 
 ## How it works
 
 The configuration system has three layers, in order of priority:
 
 1. **User settings** (stored in localStorage) -- highest priority
-2. **Build config** (`config.json`) -- your instance defaults
+2. **Build config** (`ditto.json`) -- your instance defaults
 3. **Hardcoded defaults** -- Ditto's built-in fallbacks
 
-This means your `config.json` sets the defaults for your instance, but users can always override them with their own preferences.
+This means your `ditto.json` sets the defaults for your instance, but users can always override them with their own preferences.
 
 ## Creating the config file
 
-Create a file named `config.json` in the project root:
+Create a file named `ditto.json` in the project root:
 
 ```json
 {}
 ```
 
-All fields are optional. Only include what you want to override.
+All fields are optional. Only include what you want to override. The schema is validated at build time -- invalid fields will cause a build error.
 
 ## Available options
 
-### Relays
-
-Set the default relays for your instance:
-
-```json
-{
-  "relays": [
-    "wss://relay.example.com",
-    "wss://relay.damus.io",
-    "wss://nos.lol"
-  ]
-}
-```
-
 ### Theme
 
-Set the default theme preset:
+Set the default theme mode:
 
 ```json
 {
-  "theme": "midnight"
+  "theme": "dark"
 }
 ```
 
-Available presets: `"black"`, `"pink"`, `"midnight"`, `"toxic"`, `"lavender"`, `"ocean"`, `"sunset"`.
+Options: `"dark"` (default), `"light"`, `"system"`, `"custom"`.
+
+To use a theme preset, set theme to `"custom"` and provide a `customTheme` object with 19 HSL color tokens:
+
+```json
+{
+  "theme": "custom",
+  "customTheme": {
+    "background": "228 20% 10%",
+    "foreground": "228 10% 92%",
+    "primary": "258 70% 60%",
+    "primaryForeground": "0 0% 100%"
+  }
+}
+```
+
+The full set of tokens: `background`, `foreground`, `card`, `cardForeground`, `popover`, `popoverForeground`, `primary`, `primaryForeground`, `secondary`, `secondaryForeground`, `muted`, `mutedForeground`, `accent`, `accentForeground`, `destructive`, `destructiveForeground`, `border`, `input`, `ring`.
+
+### Relay metadata
+
+Configure the default relays for your instance:
+
+```json
+{
+  "relayMetadata": {
+    "relays": [
+      { "url": "wss://your-relay.example.com", "read": true, "write": true },
+      { "url": "wss://relay.damus.io", "read": true, "write": false }
+    ],
+    "updatedAt": 0
+  },
+  "useAppRelays": true
+}
+```
+
+Each relay has `url`, `read`, and `write` boolean flags. `useAppRelays` controls whether the app's default relays are used in addition to the user's personal relay list.
 
 ### Blossom upload servers
 
@@ -57,11 +78,13 @@ Configure where file uploads (images, videos) are stored:
 ```json
 {
   "blossomServers": [
-    "https://your-blossom.example.com",
-    "https://blossom.primal.net"
+    "https://blossom.ditto.pub/",
+    "https://blossom.primal.net/"
   ]
 }
 ```
+
+Defaults: `blossom.ditto.pub`, `blossom.dreamith.to`, `blossom.primal.net`.
 
 ### Content warning policy
 
@@ -77,40 +100,82 @@ Options: `"blur"` (default), `"hide"`, `"show"`.
 
 ### Feed settings
 
-Toggle feed tabs:
+Toggle which content types appear in the sidebar and feed. All fields are optional booleans:
 
 ```json
 {
-  "showGlobalFeed": true,
-  "showCommunityFeed": true
+  "feedSettings": {
+    "feedIncludePosts": true,
+    "feedIncludeReposts": true,
+    "feedIncludeArticles": false,
+    "feedIncludeVines": false,
+    "feedIncludePolls": false,
+    "feedIncludeStreams": false,
+    "feedIncludeColors": false,
+    "feedIncludePacks": false,
+    "feedIncludeDecks": false,
+    "feedIncludeTreasureGeocaches": false,
+    "feedIncludeTreasureFoundLogs": false,
+    "showArticles": false,
+    "showVines": true,
+    "showPolls": false,
+    "showStreams": true,
+    "showColors": false,
+    "showPacks": true,
+    "showDecks": false,
+    "showTreasures": false,
+    "showTreasureGeocaches": true,
+    "showTreasureFoundLogs": true
+  }
 }
 ```
 
+Fields starting with `feedInclude` control whether that content type appears in the main feed. Fields starting with `show` control whether it gets a sidebar navigation entry.
+
 ### Link previews and favicons
 
-Set custom services for link preview generation:
+Set custom services for link preview generation and favicon fetching. These use URI templates:
 
 ```json
 {
-  "linkPreviewUri": "https://your-service.example.com/link/{url}",
-  "faviconUri": "https://your-service.example.com/favicon/{hostname}"
+  "linkPreviewUrl": "https://fetch.ditto.pub/link/{url}",
+  "faviconUrl": "https://fetch.ditto.pub/favicon/{hostname}"
+}
+```
+
+### CORS proxy
+
+Set a CORS proxy for fetching external resources:
+
+```json
+{
+  "corsProxy": "https://proxy.shakespeare.diy/?url={href}"
 }
 ```
 
 ### Zap defaults
 
-Configure Lightning payment defaults:
+Configure the default Lightning zap comment:
 
 ```json
 {
-  "defaultZapComment": "Zapped with MyInstance!",
-  "defaultZapAmount": 21
+  "defaultZapComment": "Zapped with Ditto!"
+}
+```
+
+### Stats pubkey
+
+Set the NIP-85 stats pubkey (64-character hex, or empty string to disable):
+
+```json
+{
+  "nip85StatsPubkey": "5f68e85ee174102ca8978eef302129f081f03456c884185d5ec1c1224ab633ea"
 }
 ```
 
 ## Environment variables
 
-You can also point to a different config file using the `CONFIG_FILE` environment variable:
+You can point to a different config file path using the `CONFIG_FILE` environment variable:
 
 ```bash
 CONFIG_FILE=./my-config.json bun run build
@@ -122,18 +187,20 @@ Here's a full example for a community-branded instance:
 
 ```json
 {
-  "relays": [
-    "wss://relay.yourcommunity.com",
-    "wss://relay.damus.io",
-    "wss://nos.lol"
-  ],
-  "theme": "ocean",
+  "theme": "dark",
+  "relayMetadata": {
+    "relays": [
+      { "url": "wss://relay.yourcommunity.com", "read": true, "write": true },
+      { "url": "wss://relay.damus.io", "read": true, "write": false },
+      { "url": "wss://nos.lol", "read": true, "write": false }
+    ],
+    "updatedAt": 0
+  },
+  "useAppRelays": false,
   "blossomServers": [
-    "https://blossom.yourcommunity.com"
+    "https://blossom.yourcommunity.com/"
   ],
   "contentWarningPolicy": "blur",
-  "defaultZapComment": "Zapped from YourCommunity!",
-  "showGlobalFeed": true,
-  "showCommunityFeed": true
+  "defaultZapComment": "Zapped from YourCommunity!"
 }
 ```

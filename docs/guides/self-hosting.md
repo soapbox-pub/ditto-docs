@@ -37,6 +37,10 @@ The repository includes a GitHub Actions workflow that automatically deploys to 
 3. Push to `main`
 4. Your instance is live at `https://yourusername.github.io/ditto/`
 
+### GitLab Pages
+
+The repository also includes a `.gitlab-ci.yml` that builds and deploys to GitLab Pages on pushes to the default branch.
+
 ### Netlify / Vercel
 
 Just connect your fork and deploy. Ditto includes a `_redirects` file for SPA routing on these platforms.
@@ -67,17 +71,19 @@ server {
 
 ## Configuration
 
-Create a `config.json` file in the project root before building. This file lets you customize your instance:
+Create a `ditto.json` file in the project root before building. This file lets you customize your instance:
 
 ```json
 {
-  "relays": [
-    "wss://your-relay.example.com",
-    "wss://relay.damus.io"
-  ],
-  "theme": "midnight",
+  "theme": "dark",
+  "relayMetadata": {
+    "relays": [
+      { "url": "wss://your-relay.example.com", "read": true, "write": true }
+    ],
+    "updatedAt": 0
+  },
   "blossomServers": [
-    "https://your-blossom.example.com"
+    "https://your-blossom.example.com/"
   ]
 }
 ```
@@ -85,7 +91,7 @@ Create a `config.json` file in the project root before building. This file lets 
 See the [Configuration guide](/guides/configuration) for all available options.
 
 ::: tip
-The `config.json` file is in `.gitignore` by default, so each deployment can have its own configuration without conflicts.
+The `ditto.json` file is in `.gitignore` by default, so each deployment can have its own configuration without conflicts.
 :::
 
 ## Android app
@@ -111,6 +117,6 @@ Beyond themes, you can customize:
 
 - **Logo** -- Replace `public/logo.svg` and `public/logo.png`
 - **App name** -- Update in `index.html` and `public/manifest.webmanifest`
-- **Default relays** -- Set in `config.json`
-- **Upload servers** -- Set your own Blossom servers
+- **Default relays** -- Set in `ditto.json`
+- **Upload servers** -- Set your own Blossom servers in `ditto.json`
 - **OG image** -- Replace `public/og-image.jpg` for social sharing previews
