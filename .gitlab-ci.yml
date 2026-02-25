@@ -1,0 +1,26 @@
+image: node:22
+
+default:
+  interruptible: true
+
+cache:
+  key:
+    files:
+      - bun.lock
+  paths:
+    - node_modules/
+
+before_script:
+  - npm install -g bun
+  - bun install --frozen-lockfile
+
+pages:
+  stage: deploy
+  script:
+    - bun run build
+    - mv .vitepress/dist public
+  artifacts:
+    paths:
+      - public
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
