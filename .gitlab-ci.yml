@@ -1,4 +1,4 @@
-image: node:22
+image: oven/bun:1
 
 default:
   interruptible: true
@@ -11,7 +11,6 @@ cache:
     - node_modules/
 
 before_script:
-  - npm install -g bun
   - bun install --frozen-lockfile
 
 pages:
