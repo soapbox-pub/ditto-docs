@@ -71,8 +71,8 @@ export default defineConfig({
     ],
 
     footer: {
-      message: 'Released under the MIT License. Built with fun.',
-      copyright: 'Made with love by the Ditto community',
+      message: 'Released under the AGPL License.',
+      copyright: 'Made by <a href="https://soapbox.pub" target="_blank">Soapbox</a>',
     },
 
     search: {
