@@ -1204,9 +1204,9 @@
   .float-emoji {
     font-size: 32px !important;
   }
-  .e1  { font-size: 48px !important; }
+  .e1  { display: none !important; }
   .e2  { font-size: 56px !important; }
-  .e5  { font-size: 56px !important; }
+  .e5  { display: none !important; }
   .e6  { font-size: 52px !important; }
   .e8  { font-size: 44px !important; }
 
