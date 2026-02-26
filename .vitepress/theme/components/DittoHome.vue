@@ -127,14 +127,6 @@
           </div>
 
           <div class="power-item">
-            <div class="power-emoji">🔒</div>
-            <div class="power-content">
-              <h3>DMs that are actually private</h3>
-              <p>End-to-end encrypted messaging. Not "encrypted" with a corporate backdoor. Actually encrypted, with math, between you and the recipient.</p>
-            </div>
-          </div>
-
-          <div class="power-item">
             <div class="power-emoji">📰</div>
             <div class="power-content">
               <h3>Long-form articles</h3>
