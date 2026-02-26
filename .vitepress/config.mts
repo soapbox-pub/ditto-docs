@@ -40,6 +40,12 @@ export default defineConfig({
         ],
       },
       {
+        text: 'Specs',
+        items: [
+          { text: 'Event Kinds', link: '/specs/kinds' },
+        ],
+      },
+      {
         text: 'Open Ditto',
         link: 'https://ditto.pub',
       },
@@ -63,6 +69,14 @@ export default defineConfig({
             { text: 'Custom Themes', link: '/guides/themes' },
             { text: 'Self-Hosting', link: '/guides/self-hosting' },
             { text: 'Configuration', link: '/guides/configuration' },
+          ],
+        },
+      ],
+      '/specs/': [
+        {
+          text: 'Specs',
+          items: [
+            { text: 'Event Kinds', link: '/specs/kinds' },
           ],
         },
       ],
