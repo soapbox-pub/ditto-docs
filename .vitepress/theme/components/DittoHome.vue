@@ -202,7 +202,7 @@
           <div class="step">
             <div class="step-num">2</div>
             <div class="step-text">
-              Drop in your <code>config.json</code>
+              Drop in your <code>ditto.json</code>
             </div>
           </div>
           <div class="step-arrow">→</div>
