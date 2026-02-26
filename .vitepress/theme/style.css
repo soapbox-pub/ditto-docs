@@ -127,6 +127,67 @@
   display: none !important;
 }
 
+/* ---------- HOME NAV (transparent overlay) ---------- */
+
+.home-nav {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  padding: 20px 24px;
+}
+
+.home-nav-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.home-nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: var(--vp-c-text-1);
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.home-nav-logo img {
+  width: 28px;
+  height: 28px;
+}
+
+.home-nav-links {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.home-nav-links a {
+  text-decoration: none;
+  color: var(--vp-c-text-2);
+  font-size: 14px;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.home-nav-links a:hover {
+  color: var(--vp-c-text-1);
+}
+
+.home-nav-cta {
+  color: var(--vp-c-brand-1) !important;
+  font-weight: 600 !important;
+}
+
+.home-nav-cta:hover {
+  color: var(--vp-c-brand-2) !important;
+}
+
 /* ---------- HERO ---------- */
 
 .hero {

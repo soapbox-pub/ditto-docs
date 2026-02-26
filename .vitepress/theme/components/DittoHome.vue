@@ -2,6 +2,23 @@
   <div class="ditto-home">
 
     <!-- ============================================================
+         TRANSPARENT NAV: Overlays the hero
+         ============================================================ -->
+    <nav class="home-nav">
+      <div class="home-nav-inner">
+        <a href="/" class="home-nav-logo">
+          <img src="/logo.svg" alt="Ditto" />
+          <span>Ditto</span>
+        </a>
+        <div class="home-nav-links">
+          <a href="/learn/what-is-nostr">Learn</a>
+          <a href="/guides/themes">Guides</a>
+          <a href="https://ditto.pub" target="_blank" class="home-nav-cta">Open Ditto</a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- ============================================================
          HERO: Giant title, floating emojis, pure energy
          ============================================================ -->
     <section class="hero">
