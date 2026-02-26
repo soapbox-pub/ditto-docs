@@ -2,6 +2,7 @@ import { defineConfig } from 'vitepress'
 
 export default defineConfig({
   srcDir: 'docs',
+  cleanUrls: true,
 
   title: 'Ditto',
   description: 'Your social media, your way. A fun, customizable Nostr client that puts you in control.',
