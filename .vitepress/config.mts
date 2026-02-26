@@ -68,9 +68,6 @@ export default defineConfig({
       ],
     },
 
-    socialLinks: [
-      { icon: 'github', link: 'https://github.com/ectosquad/ditto' },
-    ],
 
     footer: {
       message: `♡${new Date().getFullYear()} Copying is not theft.`,
