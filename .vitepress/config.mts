@@ -71,7 +71,7 @@ export default defineConfig({
     ],
 
     footer: {
-      message: 'Released under the AGPL License.',
+      message: `♡${new Date().getFullYear()} Copying is not theft.`,
       copyright: 'Made by <a href="https://soapbox.pub" target="_blank">Soapbox</a>',
     },
 
