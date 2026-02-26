@@ -121,6 +121,11 @@
   padding: 0 !important;
 }
 
+/* Remove fixed navbar on the homepage so it scrolls with the page */
+.Layout:has(.ditto-home) .VPNav {
+  position: relative !important;
+}
+
 /* ---------- HERO ---------- */
 
 .hero {
