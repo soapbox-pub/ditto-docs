@@ -220,7 +220,7 @@ export const themes: Y2KTheme[] = [
       url: 'https://cdn.jsdelivr.net/fontsource/fonts/bungee-shade@latest/latin-400-normal.woff2',
     },
     background: {
-      url: '/retro-background.png',
+      url: '/pop-punk-background.png',
       mode: 'cover',
     },
   },
@@ -274,7 +274,7 @@ export const themes: Y2KTheme[] = [
       url: 'https://cdn.jsdelivr.net/fontsource/fonts/permanent-marker@latest/latin-400-normal.woff2',
     },
     background: {
-      url: '/pop-punk-background.png',
+      url: '/retro-background.png',
       mode: 'cover',
     },
   },
