@@ -33,6 +33,10 @@
         <div class="home-nav-links">
           <a href="/learn/what-is-nostr">Learn</a>
           <a href="/guides/themes">Guides</a>
+          <ThemeSwitcher
+            :currentThemeKey="currentThemeKey"
+            @select="applyTheme"
+          />
           <a href="https://ditto.pub" target="_blank" class="home-nav-cta">Open Ditto</a>
         </div>
       </div>
@@ -42,20 +46,6 @@
          HERO: Giant title, floating emojis, pure energy
          ============================================================ -->
     <section class="hero">
-      <div class="hero-emojis" aria-hidden="true">
-        <span class="float-emoji e1">🎨</span>
-        <span class="float-emoji e2">✨</span>
-        <span class="float-emoji e3">🦋</span>
-        <span class="float-emoji e4">🎸</span>
-        <span class="float-emoji e5">🌈</span>
-        <span class="float-emoji e6">🔮</span>
-        <span class="float-emoji e7">🎪</span>
-        <span class="float-emoji e8">💜</span>
-        <span class="float-emoji e9">⚡</span>
-        <span class="float-emoji e10">🎭</span>
-        <span class="float-emoji e11">🌸</span>
-        <span class="float-emoji e12">🚀</span>
-      </div>
       <div class="hero-content">
         <h1 class="hero-title">
           <span class="hero-name">Ditto</span>
@@ -68,7 +58,6 @@
         <div class="hero-actions">
           <a href="https://ditto.pub" target="_blank" class="btn btn-primary">
             <span>Open Ditto</span>
-            <span class="btn-emoji">🚀</span>
           </a>
           <a href="/learn/what-is-nostr" class="btn btn-ghost">
             What is Nostr?
@@ -82,7 +71,6 @@
          ============================================================ -->
     <section class="vibes">
       <div class="vibes-inner">
-        <div class="vibes-emoji">🎉</div>
         <h2>Remember when the internet was a playground?</h2>
         <p>
           When you could customize your page. Pick your own colors. Express who you actually are.
@@ -98,7 +86,6 @@
     <section class="themes-section">
       <div class="section-inner">
         <div class="section-header">
-          <span class="mega-emoji">🎨</span>
           <h2>Your vibe. Your colors. Your rules.</h2>
           <p>7 built-in Y2K themes. Wild fonts. Background art. Make it look like <em>you</em>.</p>
         </div>
@@ -125,14 +112,12 @@
     <section class="powers-section">
       <div class="section-inner">
         <div class="section-header">
-          <span class="mega-emoji">⚡</span>
           <h2>Not just another feed app.</h2>
           <p>Ditto is a playground. Here's some of what you can do.</p>
         </div>
 
         <div class="powers-list">
           <div class="power-item">
-            <div class="power-emoji">📝</div>
             <div class="power-content">
               <h3>Post what you want</h3>
               <p>Short thoughts, long rants, content warnings, emoji reactions. The basics, done right. 5,000 character limit because sometimes you have things to say.</p>
@@ -140,7 +125,6 @@
           </div>
 
           <div class="power-item">
-            <div class="power-emoji">⚡</div>
             <div class="power-content">
               <h3>Zap people with real money</h3>
               <p>Send Bitcoin Lightning tips to anyone, right from their post. No "likes" that mean nothing. Send actual value to people who make your timeline better.</p>
@@ -148,7 +132,6 @@
           </div>
 
           <div class="power-item">
-            <div class="power-emoji">📰</div>
             <div class="power-content">
               <h3>Long-form articles</h3>
               <p>Write and read full blog posts right in Ditto. Not everything fits in a tweet-sized box.</p>
@@ -156,7 +139,6 @@
           </div>
 
           <div class="power-item">
-            <div class="power-emoji">🎬</div>
             <div class="power-content">
               <h3>Videos and live streams</h3>
               <p>Short-form videos. Live streams with chat. All integrated, no separate app needed.</p>
@@ -164,7 +146,6 @@
           </div>
 
           <div class="power-item">
-            <div class="power-emoji">📊</div>
             <div class="power-content">
               <h3>Polls, follow packs, colors, games...</h3>
               <p>The Nostr ecosystem is wild. Ditto plugs into all of it -- polls, curated follow lists, color palettes, Magic: The Gathering decks, geocaching, and sandboxed mini-apps. Yes, really.</p>
@@ -179,7 +160,6 @@
          ============================================================ -->
     <section class="ownership-section">
       <div class="ownership-inner">
-        <span class="mega-emoji">🔑</span>
         <h2>You own this.</h2>
         <p>
           Your account is a cryptographic key. Not an email address some company controls.
@@ -200,7 +180,6 @@
     <section class="selfhost-section">
       <div class="section-inner">
         <div class="section-header">
-          <span class="mega-emoji">🏗️</span>
           <h2>Run your own.</h2>
           <p>Ditto builds to static files. Deploy it on a $5 VPS, GitHub Pages, Netlify, or a Raspberry Pi in your closet. One config file. Your domain. Your community.</p>
         </div>
@@ -236,31 +215,17 @@
          FINAL CTA: Let's go
          ============================================================ -->
     <section class="final-cta">
-      <div class="final-cta-emojis" aria-hidden="true">
-        <span class="float-emoji f1">🎊</span>
-        <span class="float-emoji f2">💫</span>
-        <span class="float-emoji f3">🌟</span>
-        <span class="float-emoji f4">🎆</span>
-        <span class="float-emoji f5">💜</span>
-        <span class="float-emoji f6">🪩</span>
-      </div>
       <div class="final-cta-inner">
         <h2>Ready?</h2>
         <p>No sign-up forms. No email. No phone number.<br>Just you and a Nostr key.</p>
         <div class="hero-actions">
           <a href="https://ditto.pub" target="_blank" class="btn btn-primary btn-lg">
             <span>Let's go</span>
-            <span class="btn-emoji">✨</span>
           </a>
         </div>
       </div>
     </section>
 
-    <!-- Theme Switcher FAB -->
-    <ThemeSwitcher
-      :currentThemeKey="currentThemeKey"
-      @select="applyTheme"
-    />
   </div>
 </template>
 

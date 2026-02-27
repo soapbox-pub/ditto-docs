@@ -137,8 +137,7 @@
 
 /* Ensure all homepage sections sit above the background */
 .ditto-home > nav,
-.ditto-home > section,
-.ditto-home > .theme-switcher {
+.ditto-home > section {
   position: relative;
   z-index: 1;
 }
@@ -805,46 +804,39 @@
 /* ---------- THEME SWITCHER ---------- */
 
 .theme-switcher {
-  position: fixed;
-  bottom: 24px;
-  right: 24px;
+  position: relative;
   z-index: 100;
 }
 
-.theme-fab {
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
-  border: 2px solid rgba(255, 255, 255, 0.2);
-  background: var(--theme-primary, var(--ditto-purple));
-  color: var(--theme-primary-fg, #fff);
-  font-size: 24px;
-  cursor: pointer;
+.theme-nav-btn {
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.3s ease;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-  backdrop-filter: blur(8px);
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--vp-c-text-2);
+  cursor: pointer;
+  transition: color 0.2s ease, background 0.2s ease, border-color 0.2s ease;
 }
 
-.theme-fab:hover {
-  transform: scale(1.1);
-  box-shadow: 0 6px 28px rgba(0, 0, 0, 0.4);
+.theme-nav-btn:hover {
+  color: var(--vp-c-text-1);
+  background: rgba(255, 255, 255, 0.14);
+  border-color: rgba(255, 255, 255, 0.25);
 }
 
-.theme-fab.is-open {
-  transform: rotate(90deg);
-}
-
-.theme-fab-icon {
-  line-height: 1;
-  transition: transform 0.2s ease;
+.theme-nav-btn.is-open {
+  color: var(--vp-c-brand-1);
+  background: rgba(255, 255, 255, 0.14);
+  border-color: var(--vp-c-brand-1);
 }
 
 .theme-panel {
   position: absolute;
-  bottom: 68px;
+  top: calc(100% + 8px);
   right: 0;
   width: 280px;
   background: rgba(20, 20, 25, 0.92);
@@ -939,12 +931,12 @@
 
 .theme-panel-enter-from {
   opacity: 0;
-  transform: translateY(12px) scale(0.95);
+  transform: translateY(-8px) scale(0.95);
 }
 
 .theme-panel-leave-to {
   opacity: 0;
-  transform: translateY(8px) scale(0.97);
+  transform: translateY(-4px) scale(0.97);
 }
 
 /* ==========================================================================
