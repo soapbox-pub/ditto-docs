@@ -1,6 +1,5 @@
 <template>
-  <div class="theme-switcher">
-    <!-- Navbar icon button -->
+  <div class="theme-switcher" ref="root">
     <button
       class="theme-nav-btn"
       :class="{ 'is-open': isOpen }"
@@ -17,12 +16,6 @@
       </svg>
     </button>
 
-    <!-- Click-away overlay (teleported so it doesn't interfere with panel stacking) -->
-    <Teleport to="body">
-      <div v-if="isOpen" class="theme-overlay" @click="isOpen = false" />
-    </Teleport>
-
-    <!-- Dropdown panel (opens downward) -->
     <Transition name="theme-panel">
       <div v-if="isOpen" class="theme-panel">
         <div class="theme-panel-header">Choose a vibe</div>
@@ -56,10 +49,10 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, onMounted, onUnmounted } from 'vue';
 import { themes as allThemes, hslToCSS } from '../themes';
 
-const props = defineProps<{
+defineProps<{
   currentThemeKey: string;
 }>();
 
@@ -68,6 +61,7 @@ const emit = defineEmits<{
 }>();
 
 const isOpen = ref(false);
+const root = ref<HTMLElement | null>(null);
 
 function hsl(val: string): string {
   return hslToCSS(val);
@@ -77,4 +71,13 @@ function selectTheme(key: string) {
   emit('select', key);
   isOpen.value = false;
 }
+
+function onClickOutside(e: MouseEvent) {
+  if (isOpen.value && root.value && !root.value.contains(e.target as Node)) {
+    isOpen.value = false;
+  }
+}
+
+onMounted(() => document.addEventListener('click', onClickOutside));
+onUnmounted(() => document.removeEventListener('click', onClickOutside));
 </script>
