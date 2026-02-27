@@ -166,7 +166,7 @@ export const themes: Y2KTheme[] = [
       url: 'https://cdn.jsdelivr.net/fontsource/fonts/cherry-bomb-one@latest/latin-400-normal.woff2',
     },
     background: {
-      url: 'https://blossom.ditto.pub/71290063b6b9efeb3b8b1e433c6545636aa0219065d1485e122ffb8db9f9c95d.webp',
+      url: '/kawaii-background.png',
       mode: 'cover',
     },
   },
@@ -184,7 +184,7 @@ export const themes: Y2KTheme[] = [
       url: 'https://cdn.jsdelivr.net/fontsource/fonts/creepster@latest/latin-400-normal.woff2',
     },
     background: {
-      url: 'https://blossom.ditto.pub/d3700f9c689dd46f1a812ad895e8e032e74e690f01b3ea873948508846aa317a.webp',
+      url: '/grunge-background.png',
       mode: 'cover',
     },
   },
@@ -202,7 +202,7 @@ export const themes: Y2KTheme[] = [
       url: 'https://cdn.jsdelivr.net/fontsource/fonts/silkscreen@latest/latin-400-normal.woff2',
     },
     background: {
-      url: 'https://blossom.ditto.pub/fdab1aed559419daf3a2c446a0b26685b874bca92bc7d48ee50439e3444ce061.webp',
+      url: '/ms-paint-background.png',
       mode: 'cover',
     },
   },
@@ -220,7 +220,7 @@ export const themes: Y2KTheme[] = [
       url: 'https://cdn.jsdelivr.net/fontsource/fonts/bungee-shade@latest/latin-400-normal.woff2',
     },
     background: {
-      url: 'https://blossom.ditto.pub/9202b972513e7392a4afd320890bdc0d7ddee7407973915fd8bfae6864a13dbb.webp',
+      url: '/retro-background.png',
       mode: 'cover',
     },
   },
@@ -238,7 +238,7 @@ export const themes: Y2KTheme[] = [
       url: 'https://cdn.jsdelivr.net/fontsource/fonts/luckiest-guy@latest/latin-400-normal.woff2',
     },
     background: {
-      url: 'https://blossom.ditto.pub/13f321714e1cb622f2bbe8e543923f1739e7afe6d9a2378aff28ec51af73be09.webp',
+      url: '/bubblegum-background.png',
       mode: 'cover',
     },
   },
@@ -274,7 +274,7 @@ export const themes: Y2KTheme[] = [
       url: 'https://cdn.jsdelivr.net/fontsource/fonts/permanent-marker@latest/latin-400-normal.woff2',
     },
     background: {
-      url: 'https://blossom.ditto.pub/43540c23a2a895162ee43fbf7299b209a3c13ca15e93540d80339750b18f91b8.webp',
+      url: '/pop-punk-background.png',
       mode: 'cover',
     },
   },
