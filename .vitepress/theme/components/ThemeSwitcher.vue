@@ -17,6 +17,11 @@
       </svg>
     </button>
 
+    <!-- Click-away overlay (teleported so it doesn't interfere with panel stacking) -->
+    <Teleport to="body">
+      <div v-if="isOpen" class="theme-overlay" @click="isOpen = false" />
+    </Teleport>
+
     <!-- Dropdown panel (opens downward) -->
     <Transition name="theme-panel">
       <div v-if="isOpen" class="theme-panel">
@@ -47,9 +52,6 @@
         </div>
       </div>
     </Transition>
-
-    <!-- Click-away overlay -->
-    <div v-if="isOpen" class="theme-overlay" @click="isOpen = false" />
   </div>
 </template>
 

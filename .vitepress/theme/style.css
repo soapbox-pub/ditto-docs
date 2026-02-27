@@ -104,7 +104,6 @@
 
 .ditto-home {
   width: 100%;
-  overflow-x: hidden;
   position: relative;
   font-family: 'Inter', sans-serif;
   /* Theme CSS variables are set inline by Vue; these are fallbacks */
@@ -144,10 +143,15 @@
 }
 
 /* Ensure all homepage sections sit above the background */
-.ditto-home > nav,
 .ditto-home > section {
   position: relative;
   z-index: 1;
+}
+
+/* Nav must sit above sections so sticky nav + dropdowns remain clickable */
+.ditto-home > nav {
+  position: relative;
+  z-index: 50;
 }
 
 /* Kill VitePress page layout padding when our component is shown */
