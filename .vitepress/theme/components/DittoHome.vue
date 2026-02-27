@@ -33,11 +33,11 @@
         <div class="home-nav-links">
           <a href="/learn/what-is-nostr">Learn</a>
           <a href="/guides/themes">Guides</a>
+          <a href="https://ditto.pub" target="_blank" class="home-nav-cta">Login</a>
           <ThemeSwitcher
             :currentThemeKey="currentThemeKey"
             @select="applyTheme"
           />
-          <a href="https://ditto.pub" target="_blank" class="home-nav-cta">Open Ditto</a>
         </div>
       </div>
     </nav>
@@ -290,7 +290,6 @@ const homeStyles = computed(() => {
     '--vp-c-bg-soft': hslToCSS(tokens.secondary),
     '--vp-c-divider': hslToCSS(tokens.border),
     color: hslToCSS(tokens.foreground),
-    fontFamily: font,
   } as Record<string, string>;
 });
 
