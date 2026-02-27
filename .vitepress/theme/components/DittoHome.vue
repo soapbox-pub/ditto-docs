@@ -1,5 +1,25 @@
 <template>
-  <div class="ditto-home">
+  <div
+    class="ditto-home"
+    ref="homeRef"
+    :style="homeStyles"
+  >
+    <!-- Background image layer -->
+    <div
+      v-if="activeTheme?.background"
+      class="theme-bg-image"
+      :style="{
+        backgroundImage: `url(${activeTheme.background.url})`,
+        backgroundSize: activeTheme.background.mode === 'tile' ? 'auto' : 'cover',
+        backgroundRepeat: activeTheme.background.mode === 'tile' ? 'repeat' : 'no-repeat',
+      }"
+    />
+
+    <!-- Semi-transparent overlay for readability -->
+    <div
+      class="theme-bg-overlay"
+      :style="{ background: overlayColor }"
+    />
 
     <!-- ============================================================
          TRANSPARENT NAV: Overlays the hero
@@ -73,44 +93,28 @@
     </section>
 
     <!-- ============================================================
-         THEMES: Visual showcase of customization
+         THEMES: Visual showcase of Y2K theme presets
          ============================================================ -->
     <section class="themes-section">
       <div class="section-inner">
         <div class="section-header">
           <span class="mega-emoji">🎨</span>
           <h2>Your vibe. Your colors. Your rules.</h2>
-          <p>7 built-in themes. Full custom color tokens. Dark mode, light mode, OLED black mode. Make it look like <em>you</em>.</p>
+          <p>7 built-in Y2K themes. Wild fonts. Background art. Make it look like <em>you</em>.</p>
         </div>
         <div class="theme-strips">
-          <div class="theme-strip" style="--strip-bg: linear-gradient(135deg, #0d1117, #161b22); --strip-accent: #58a6ff;">
-            <span class="strip-emoji">🌑</span>
-            <span class="strip-name">Black</span>
-          </div>
-          <div class="theme-strip" style="--strip-bg: linear-gradient(135deg, #fce4ec, #f8bbd0); --strip-accent: #e91e63; color: #880e4f;">
-            <span class="strip-emoji">🌸</span>
-            <span class="strip-name">Pink</span>
-          </div>
-          <div class="theme-strip" style="--strip-bg: linear-gradient(135deg, #0a1628, #1a2744); --strip-accent: #5c7cfa;">
-            <span class="strip-emoji">🌃</span>
-            <span class="strip-name">Midnight</span>
-          </div>
-          <div class="theme-strip" style="--strip-bg: linear-gradient(135deg, #0a0f0a, #0d1a0d); --strip-accent: #39ff14;">
-            <span class="strip-emoji">☠️</span>
-            <span class="strip-name">Toxic</span>
-          </div>
-          <div class="theme-strip" style="--strip-bg: linear-gradient(135deg, #f3e5f5, #e1bee7); --strip-accent: #9c27b0; color: #4a148c;">
-            <span class="strip-emoji">💜</span>
-            <span class="strip-name">Lavender</span>
-          </div>
-          <div class="theme-strip" style="--strip-bg: linear-gradient(135deg, #0d2137, #0a3d5c); --strip-accent: #00bcd4;">
-            <span class="strip-emoji">🌊</span>
-            <span class="strip-name">Ocean</span>
-          </div>
-          <div class="theme-strip" style="--strip-bg: linear-gradient(135deg, #fff8e1, #ffecb3); --strip-accent: #ff6f00; color: #e65100;">
-            <span class="strip-emoji">🌅</span>
-            <span class="strip-name">Sunset</span>
-          </div>
+          <button
+            v-for="theme in allThemes"
+            :key="theme.key"
+            class="theme-strip"
+            :class="{ 'theme-strip-active': theme.key === currentThemeKey }"
+            :style="stripStyle(theme)"
+            @click="applyTheme(theme.key)"
+          >
+            <span class="strip-emoji">{{ theme.emoji }}</span>
+            <span class="strip-name">{{ theme.label }}</span>
+            <span v-if="theme.key === currentThemeKey" class="strip-active-badge">active</span>
+          </button>
         </div>
       </div>
     </section>
@@ -251,8 +255,154 @@
         </div>
       </div>
     </section>
+
+    <!-- Theme Switcher FAB -->
+    <ThemeSwitcher
+      :currentThemeKey="currentThemeKey"
+      @select="applyTheme"
+    />
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
+import { ref, computed, onMounted } from 'vue';
+import { themes as allThemes, getTheme, randomThemeKey, deriveTokens, hslToCSS } from '../themes';
+import type { Y2KTheme } from '../themes';
+import ThemeSwitcher from './ThemeSwitcher.vue';
+
+// ─── Module-level state (survives SPA navigation, resets on refresh) ──
+
+// This variable persists across SPA route changes but resets on full page reload,
+// giving us the "random on refresh, stable on navigate" behavior for free.
+let _persistedThemeKey: string | null = null;
+
+// ─── Reactive state ───────────────────────────────────────────────────
+
+const currentThemeKey = ref('');
+const activeTheme = ref<Y2KTheme | null>(null);
+const homeRef = ref<HTMLElement | null>(null);
+const fontLoaded = ref(false);
+
+// ─── Computed styles ──────────────────────────────────────────────────
+
+const homeStyles = computed(() => {
+  const theme = activeTheme.value;
+  if (!theme) return {};
+
+  const tokens = deriveTokens(theme.colors);
+  const font = fontLoaded.value
+    ? `'${theme.font.family}', 'Inter', sans-serif`
+    : `'Inter', sans-serif`;
+
+  const primaryHsl = theme.colors.primary;
+
+  return {
+    '--theme-bg': hslToCSS(tokens.background),
+    '--theme-text': hslToCSS(tokens.foreground),
+    '--theme-primary': hslToCSS(tokens.primary),
+    '--theme-primary-fg': hslToCSS(tokens.primaryForeground),
+    '--theme-card': hslToCSS(tokens.card),
+    '--theme-card-fg': hslToCSS(tokens.cardForeground),
+    '--theme-secondary': hslToCSS(tokens.secondary),
+    '--theme-secondary-fg': hslToCSS(tokens.secondaryForeground),
+    '--theme-muted': hslToCSS(tokens.muted),
+    '--theme-muted-fg': hslToCSS(tokens.mutedForeground),
+    '--theme-accent': hslToCSS(tokens.accent),
+    '--theme-accent-fg': hslToCSS(tokens.accentForeground),
+    '--theme-border': hslToCSS(tokens.border),
+    '--theme-ring': hslToCSS(tokens.ring),
+    '--theme-font': font,
+    '--theme-primary-hsl': primaryHsl,
+    // Map to VitePress variables for components that use them
+    '--vp-c-text-1': hslToCSS(tokens.foreground),
+    '--vp-c-text-2': hslToCSS(tokens.mutedForeground),
+    '--vp-c-text-3': hslToCSS(tokens.mutedForeground),
+    '--vp-c-brand-1': hslToCSS(tokens.primary),
+    '--vp-c-brand-2': hslToCSS(tokens.primary),
+    '--vp-c-brand-3': hslToCSS(tokens.primary),
+    '--vp-c-brand-soft': hslToCSS(tokens.primary).replace(')', ', 0.16)').replace('hsl(', 'hsla('),
+    '--vp-c-bg': hslToCSS(tokens.background),
+    '--vp-c-bg-soft': hslToCSS(tokens.secondary),
+    '--vp-c-divider': hslToCSS(tokens.border),
+    color: hslToCSS(tokens.foreground),
+    fontFamily: font,
+  } as Record<string, string>;
+});
+
+const overlayColor = computed(() => {
+  const theme = activeTheme.value;
+  if (!theme) return 'transparent';
+  // Use the theme background color with opacity for readability over the bg image
+  const bg = theme.colors.background;
+  return `hsla(${bg}, 0.7)`;
+});
+
+// ─── Theme strip styles ──────────────────────────────────────────────
+
+function stripStyle(theme: Y2KTheme) {
+  return {
+    '--strip-bg': `linear-gradient(135deg, ${hslToCSS(theme.colors.background)}, ${hslToCSS(theme.colors.primary)})`,
+    color: hslToCSS(theme.colors.text),
+  };
+}
+
+// ─── Font loading ─────────────────────────────────────────────────────
+
+const loadedFonts = new Set<string>();
+
+async function loadFont(theme: Y2KTheme): Promise<void> {
+  if (loadedFonts.has(theme.key)) {
+    fontLoaded.value = true;
+    return;
+  }
+
+  const styleId = `theme-font-${theme.key}`;
+  if (!document.getElementById(styleId)) {
+    const style = document.createElement('style');
+    style.id = styleId;
+    style.textContent = `
+      @font-face {
+        font-family: '${theme.font.family}';
+        src: url('${theme.font.url}') format('woff2');
+        font-display: swap;
+        font-weight: 400;
+        font-style: normal;
+      }
+    `;
+    document.head.appendChild(style);
+  }
+
+  try {
+    await document.fonts.load(`400 16px "${theme.font.family}"`);
+    loadedFonts.add(theme.key);
+    fontLoaded.value = true;
+  } catch {
+    // Font failed to load, keep using Inter
+    fontLoaded.value = true;
+  }
+}
+
+// ─── Theme application ────────────────────────────────────────────────
+
+async function applyTheme(key: string) {
+  const theme = getTheme(key);
+  if (!theme) return;
+
+  currentThemeKey.value = key;
+  activeTheme.value = theme;
+  _persistedThemeKey = key;
+
+  // Reset font loaded state before loading new font
+  fontLoaded.value = false;
+  await loadFont(theme);
+}
+
+// ─── Initialization ───────────────────────────────────────────────────
+
+onMounted(() => {
+  // If we have a persisted key from SPA navigation, use it.
+  // Otherwise pick a random one. Module-level variable resets on full page reload.
+  const key = _persistedThemeKey || randomThemeKey();
+  applyTheme(key);
+});
 </script>

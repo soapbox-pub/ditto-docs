@@ -1,0 +1,291 @@
+/**
+ * Y2K Theme Definitions
+ *
+ * 7 Y2K-inspired theme presets ported from ditto-mew.
+ * Each theme defines 3 core HSL colors, a display font, and a background image.
+ * Extended CSS tokens (card, muted, border, etc.) are derived automatically.
+ */
+
+// ─── Types ────────────────────────────────────────────────────────────
+
+export interface ThemeColors {
+  /** HSL string, e.g. "351 100% 86%" */
+  background: string;
+  text: string;
+  primary: string;
+}
+
+export interface ThemeFont {
+  family: string;
+  /** Direct URL to .woff2 file */
+  url: string;
+}
+
+export interface ThemeBackground {
+  url: string;
+  mode: 'cover' | 'tile';
+}
+
+export interface Y2KTheme {
+  key: string;
+  label: string;
+  emoji: string;
+  colors: ThemeColors;
+  font: ThemeFont;
+  background: ThemeBackground;
+}
+
+// ─── HSL Utilities (simplified from ditto-mew/colorUtils) ─────────────
+
+function parseHsl(hsl: string): { h: number; s: number; l: number } {
+  const parts = hsl.trim().replace(/%/g, '').split(/\s+/).map(Number);
+  return { h: parts[0], s: parts[1], l: parts[2] };
+}
+
+function formatHsl(h: number, s: number, l: number): string {
+  return `${Math.round(h * 10) / 10} ${Math.round(s * 10) / 10}% ${Math.round(l * 10) / 10}%`;
+}
+
+function hslToRgb(h: number, s: number, l: number): [number, number, number] {
+  s /= 100;
+  l /= 100;
+  const k = (n: number) => (n + h / 30) % 12;
+  const a = s * Math.min(l, 1 - l);
+  const f = (n: number) => l - a * Math.max(-1, Math.min(k(n) - 3, Math.min(9 - k(n), 1)));
+  return [Math.round(f(0) * 255), Math.round(f(8) * 255), Math.round(f(4) * 255)];
+}
+
+function getLuminance(r: number, g: number, b: number): number {
+  const sRGB = [r, g, b].map(v => {
+    v /= 255;
+    return v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4);
+  });
+  return 0.2126 * sRGB[0] + 0.7152 * sRGB[1] + 0.0722 * sRGB[2];
+}
+
+function isDarkTheme(backgroundHsl: string): boolean {
+  const { h, s, l } = parseHsl(backgroundHsl);
+  const [r, g, b] = hslToRgb(h, s, l);
+  return getLuminance(r, g, b) < 0.2;
+}
+
+function lighten(hsl: string, amount: number): string {
+  const { h, s, l } = parseHsl(hsl);
+  return formatHsl(h, s, Math.min(100, l + amount));
+}
+
+function darken(hsl: string, amount: number): string {
+  const { h, s, l } = parseHsl(hsl);
+  return formatHsl(h, s, Math.max(0, l - amount));
+}
+
+function contrastForeground(bgHsl: string): string {
+  return isDarkTheme(bgHsl) ? '0 0% 100%' : '222.2 84% 4.9%';
+}
+
+/** Convert an HSL string like "351 100% 86%" to a CSS hsl() color */
+export function hslToCSS(hsl: string): string {
+  return `hsl(${hsl.replace(/%/g, '%')})`;
+}
+
+// ─── Token Derivation ─────────────────────────────────────────────────
+
+export interface DerivedTokens {
+  background: string;
+  foreground: string;
+  card: string;
+  cardForeground: string;
+  primary: string;
+  primaryForeground: string;
+  secondary: string;
+  secondaryForeground: string;
+  muted: string;
+  mutedForeground: string;
+  accent: string;
+  accentForeground: string;
+  border: string;
+  ring: string;
+}
+
+/**
+ * Derive extended CSS tokens from 3 core HSL colors.
+ * Simplified version of ditto-mew's deriveTokensFromCore().
+ */
+export function deriveTokens(colors: ThemeColors): DerivedTokens {
+  const { background, text, primary } = colors;
+  const dark = isDarkTheme(background);
+
+  const card = dark ? lighten(background, 2) : background;
+  const secondarySurface = dark ? lighten(background, 8) : darken(background, 4);
+  const muted = dark ? lighten(background, 8) : darken(background, 4);
+
+  const pParsed = parseHsl(primary);
+  const border = dark
+    ? formatHsl(pParsed.h, pParsed.s * 0.4, 30)
+    : formatHsl(pParsed.h, pParsed.s * 0.5, 82);
+
+  const fgParsed = parseHsl(text);
+  const mutedFg = dark
+    ? formatHsl(fgParsed.h, Math.max(fgParsed.s - 20, 0), Math.max(fgParsed.l - 30, 40))
+    : formatHsl(fgParsed.h, Math.max(fgParsed.s - 30, 0), Math.min(fgParsed.l + 35, 55));
+
+  const primaryFg = contrastForeground(primary);
+
+  return {
+    background,
+    foreground: text,
+    card,
+    cardForeground: text,
+    primary,
+    primaryForeground: primaryFg,
+    secondary: secondarySurface,
+    secondaryForeground: text,
+    muted,
+    mutedForeground: mutedFg,
+    accent: primary,
+    accentForeground: primaryFg,
+    border,
+    ring: primary,
+  };
+}
+
+// ─── The 7 Y2K Theme Presets ──────────────────────────────────────────
+
+export const themes: Y2KTheme[] = [
+  {
+    key: 'kawaii',
+    label: 'Kawaii',
+    emoji: '\u{1F338}', // 🌸
+    colors: {
+      background: '351 100% 86%',
+      text: '270 30% 20%',
+      primary: '300 26% 71%',
+    },
+    font: {
+      family: 'Cherry Bomb One',
+      url: 'https://cdn.jsdelivr.net/fontsource/fonts/cherry-bomb-one@latest/latin-400-normal.woff2',
+    },
+    background: {
+      url: 'https://blossom.ditto.pub/71290063b6b9efeb3b8b1e433c6545636aa0219065d1485e122ffb8db9f9c95d.webp',
+      mode: 'cover',
+    },
+  },
+  {
+    key: 'grunge',
+    label: 'Grunge',
+    emoji: '\u{1F5A4}', // 🖤
+    colors: {
+      background: '276 40% 8%',
+      text: '0 0% 75%',
+      primary: '328 100% 54%',
+    },
+    font: {
+      family: 'Creepster',
+      url: 'https://cdn.jsdelivr.net/fontsource/fonts/creepster@latest/latin-400-normal.woff2',
+    },
+    background: {
+      url: 'https://blossom.ditto.pub/d3700f9c689dd46f1a812ad895e8e032e74e690f01b3ea873948508846aa317a.webp',
+      mode: 'cover',
+    },
+  },
+  {
+    key: 'mspaint',
+    label: 'MS Paint',
+    emoji: '\u{1F5A5}\u{FE0F}', // 🖥️
+    colors: {
+      background: '200 20% 95%',
+      text: '0 0% 10%',
+      primary: '240 100% 50%',
+    },
+    font: {
+      family: 'Silkscreen',
+      url: 'https://cdn.jsdelivr.net/fontsource/fonts/silkscreen@latest/latin-400-normal.woff2',
+    },
+    background: {
+      url: 'https://blossom.ditto.pub/fdab1aed559419daf3a2c446a0b26685b874bca92bc7d48ee50439e3444ce061.webp',
+      mode: 'cover',
+    },
+  },
+  {
+    key: 'retropop',
+    label: 'Retro Pop',
+    emoji: '\u{1F4BF}', // 💿
+    colors: {
+      background: '260 50% 70%',
+      text: '40 30% 15%',
+      primary: '340 100% 76%',
+    },
+    font: {
+      family: 'Bungee Shade',
+      url: 'https://cdn.jsdelivr.net/fontsource/fonts/bungee-shade@latest/latin-400-normal.woff2',
+    },
+    background: {
+      url: 'https://blossom.ditto.pub/9202b972513e7392a4afd320890bdc0d7ddee7407973915fd8bfae6864a13dbb.webp',
+      mode: 'cover',
+    },
+  },
+  {
+    key: 'bubblegum',
+    label: 'Bubblegum',
+    emoji: '\u{1F36C}', // 🍬
+    colors: {
+      background: '328 100% 54%',
+      text: '0 0% 100%',
+      primary: '282 37% 53%',
+    },
+    font: {
+      family: 'Luckiest Guy',
+      url: 'https://cdn.jsdelivr.net/fontsource/fonts/luckiest-guy@latest/latin-400-normal.woff2',
+    },
+    background: {
+      url: 'https://blossom.ditto.pub/13f321714e1cb622f2bbe8e543923f1739e7afe6d9a2378aff28ec51af73be09.webp',
+      mode: 'cover',
+    },
+  },
+  {
+    key: 'gamer',
+    label: 'Gamer',
+    emoji: '\u{26A1}', // ⚡
+    colors: {
+      background: '140 60% 4%',
+      text: '120 100% 50%',
+      primary: '195 100% 50%',
+    },
+    font: {
+      family: 'Press Start 2P',
+      url: 'https://cdn.jsdelivr.net/fontsource/fonts/press-start-2p@latest/latin-400-normal.woff2',
+    },
+    background: {
+      url: 'https://blossom.ditto.pub/33dbd024d777e36181cdd526c8fbbb6d22e08ced8ac6d1a4976e3c8c687a9f49.webp',
+      mode: 'cover',
+    },
+  },
+  {
+    key: 'skater',
+    label: 'Skater',
+    emoji: '\u{1F6F9}', // 🛹
+    colors: {
+      background: '0 0% 42%',
+      text: '0 0% 100%',
+      primary: '80 100% 50%',
+    },
+    font: {
+      family: 'Permanent Marker',
+      url: 'https://cdn.jsdelivr.net/fontsource/fonts/permanent-marker@latest/latin-400-normal.woff2',
+    },
+    background: {
+      url: 'https://blossom.ditto.pub/43540c23a2a895162ee43fbf7299b209a3c13ca15e93540d80339750b18f91b8.webp',
+      mode: 'cover',
+    },
+  },
+];
+
+/** Get a theme by key */
+export function getTheme(key: string): Y2KTheme | undefined {
+  return themes.find(t => t.key === key);
+}
+
+/** Pick a random theme key */
+export function randomThemeKey(): string {
+  return themes[Math.floor(Math.random() * themes.length)].key;
+}
