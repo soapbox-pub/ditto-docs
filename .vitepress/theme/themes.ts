@@ -256,7 +256,7 @@ export const themes: Y2KTheme[] = [
       url: 'https://cdn.jsdelivr.net/fontsource/fonts/press-start-2p@latest/latin-400-normal.woff2',
     },
     background: {
-      url: 'https://blossom.ditto.pub/33dbd024d777e36181cdd526c8fbbb6d22e08ced8ac6d1a4976e3c8c687a9f49.webp',
+      url: '/gamer-background.png',
       mode: 'cover',
     },
   },
