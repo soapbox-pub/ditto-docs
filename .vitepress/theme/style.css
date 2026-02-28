@@ -382,10 +382,49 @@
     inset 0 0 20px rgba(255, 100, 180, 0.2);
 }
 
-.screen-kawaii .screen-bezel-top {
-  height: 16px;
-  background: #f4b4c8;
-  border-radius: 16px 16px 0 0;
+.screen-titlebar-kawaii {
+  background: #f9a0c8;
+  padding: 6px 12px;
+  gap: 8px;
+  border-bottom: 3px solid #e87aaf;
+}
+
+.screen-circle-kawaii {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #ff6eb4;
+  border: 2px solid #d45090;
+  color: #fff;
+  font-size: 9px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.screen-nav-btn-kawaii {
+  background: #ffb6d9;
+  border: 2px solid #e87aaf;
+  color: #a0406a;
+  border-radius: 50%;
+  width: 26px;
+  height: 26px;
+  font-size: 13px;
+}
+
+.screen-url-bar-kawaii {
+  background: #fff0f6;
+  border: 2px solid #e87aaf;
+  color: #c0508a;
+  font-family: 'Cherry Bomb One', cursive;
+  font-size: 12px;
+  border-radius: 14px;
+  letter-spacing: 0.02em;
+}
+
+.screen-kawaii-star {
+  font-size: 18px;
+  flex-shrink: 0;
 }
 
 .screen-kawaii .screen-viewport {

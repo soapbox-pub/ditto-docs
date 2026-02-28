@@ -21,7 +21,19 @@
     <!-- ── KAWAII ── Cute pink CRT monitor -->
     <template v-else-if="theme === 'kawaii'">
       <div class="screen-chrome">
-        <div class="screen-bezel-top"></div>
+        <div class="screen-titlebar screen-titlebar-kawaii">
+          <div class="screen-titlebar-circles">
+            <span class="screen-circle screen-circle-kawaii">&#x2665;</span>
+            <span class="screen-circle screen-circle-kawaii">&#x2665;</span>
+            <span class="screen-circle screen-circle-kawaii">&#x2665;</span>
+          </div>
+          <div class="screen-nav-buttons">
+            <span class="screen-nav-btn screen-nav-btn-kawaii">&#x2190;</span>
+            <span class="screen-nav-btn screen-nav-btn-kawaii">&#x2192;</span>
+          </div>
+          <div class="screen-url-bar screen-url-bar-kawaii">&#x2729; ditto.pub &#x2729;</div>
+          <span class="screen-kawaii-star">&#x2B50;</span>
+        </div>
       </div>
     </template>
 
