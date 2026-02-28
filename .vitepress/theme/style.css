@@ -2873,6 +2873,12 @@ button.screen-power-btn.power-standby {
     right: 20px;
   }
 
+  /* Center theme logo on mobile */
+  .screen-theme-logo {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
   /* Simplify title bars on mobile */
   .screen-menubar { display: none; }
   .screen-tab-bar { display: none; }
