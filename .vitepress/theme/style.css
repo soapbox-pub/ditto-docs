@@ -1038,6 +1038,7 @@ button.screen-power-btn {
 .tab-favicon {
   font-size: 13px;
   line-height: 1;
+  margin-right: 6px;
 }
 
 .tab-favicon-img {
@@ -1045,7 +1046,7 @@ button.screen-power-btn {
   height: 14px;
   object-fit: contain;
   vertical-align: middle;
-  margin-right: 2px;
+  margin-right: 6px;
 }
 
 .screen-bubblegum .screen-titlebar {
