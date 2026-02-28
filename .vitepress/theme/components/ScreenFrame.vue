@@ -19,8 +19,8 @@
 
   <!-- Minimized taskbar -->
   <div v-if="windowState === 'minimized'" class="taskbar" :class="`taskbar-${theme}`" @click="windowState = 'normal'">
-    <span class="taskbar-icon">&#x1F5D4;</span>
-    <span class="taskbar-label">{{ theme === 'mspaint' ? 'untitled - Paint' : 'Ditto' }}</span>
+    <span class="taskbar-label">{{ theme === 'mspaint' ? 'untitled - Paint' : 'Ditto - Fun Social Media' }}</span>
+    <span class="taskbar-maximize">&#x2197;</span>
   </div>
 
   <div v-show="windowState === 'normal'" class="screen-frame" :class="`screen-${theme}`">
