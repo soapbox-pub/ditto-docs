@@ -351,7 +351,7 @@ function runKawaiiCmd() {
   } else if (cmd === 'touch' || cmd.startsWith('touch ')) {
     response = '\u{2728} *boop* \u{2728}';
   } else if (cmd === 'mkdir' || cmd.startsWith('mkdir ')) {
-    response = '\u{1F3E0} Made a cozy little directory for you~ \u{1F338}';
+    response = 'MK is the best \u{1F338}';
   } else if (cmd === 'mv' || cmd.startsWith('mv ')) {
     response = '\u{1F4E6} Moved with care and love~ \u{1F49B}';
   } else if (cmd === 'cp' || cmd.startsWith('cp ')) {
@@ -408,8 +408,40 @@ function runKawaiiCmd() {
   // ── Dev tools ──
   else if (cmd.startsWith('sudo')) {
     response = "\u{1F512} Permission denied~ You're already perfect! \u{2728}";
-  } else if (cmd === 'git' || cmd.startsWith('git ')) {
+  } else if (cmd === 'git commit' || cmd.startsWith('git commit ')) {
     response = 'Already committed... to being adorable! \u{1F496}';
+  } else if (cmd === 'git push' || cmd.startsWith('git push ')) {
+    response = '\u{1F680} Pushing love to origin/main~ \u{1F496}';
+  } else if (cmd === 'git pull' || cmd.startsWith('git pull ')) {
+    response = '\u{1F4E5} Pulling in good vibes... Fast-forward \u{2728}';
+  } else if (cmd === 'git status') {
+    response = 'On branch main \u{1F338}\nnothing to commit, working tree sparkly clean \u{2728}';
+  } else if (cmd === 'git log' || cmd.startsWith('git log')) {
+    response = 'commit abc123 \u{1F338}\nAuthor: cutie <cutie@kawaii.os>\n\n    added more love to the codebase \u{1F496}';
+  } else if (cmd === 'git diff') {
+    response = '+++ sparkle.js\n+  const mood = "happy"; \u{1F338}\n-  const mood = "meh";';
+  } else if (cmd === 'git init') {
+    response = 'Initialized empty cute repository in /home/kawaii/.git \u{1F338}';
+  } else if (cmd === 'git clone' || cmd.startsWith('git clone ')) {
+    response = 'Cloning into \'happiness\'... done! \u{1F496}';
+  } else if (cmd === 'git branch' || cmd.startsWith('git branch')) {
+    response = '* main \u{1F338}\n  feature/more-sparkle\n  feature/extra-cute';
+  } else if (cmd === 'git checkout' || cmd.startsWith('git checkout ')) {
+    response = "Switched to branch 'sparkle' \u{2728}";
+  } else if (cmd === 'git merge' || cmd.startsWith('git merge ')) {
+    response = 'Merge made by the love strategy \u{1F496}\u{1F496}';
+  } else if (cmd === 'git stash') {
+    response = 'Saved working directory~ Your feelings are safe \u{1F49D}';
+  } else if (cmd === 'git rebase' || cmd.startsWith('git rebase')) {
+    response = 'Successfully rebased with extra sparkle \u{2728}';
+  } else if (cmd === 'git blame' || cmd.startsWith('git blame ')) {
+    response = "Don't blame anyone~ We're all doing our best \u{1F338}";
+  } else if (cmd === 'git add' || cmd.startsWith('git add ')) {
+    response = 'Added all the good vibes to staging \u{2728}';
+  } else if (cmd === 'git reset' || cmd.startsWith('git reset')) {
+    response = 'Reset complete~ Fresh start, fresh sparkle \u{1F31F}';
+  } else if (cmd === 'git' || cmd.startsWith('git ')) {
+    response = 'git: cute command not found~ Try git status \u{1F338}';
   } else if (cmd === 'npm install' || cmd === 'npm i') {
     response = 'Installing happiness... \u{2588}\u{2588}\u{2588}\u{2588}\u{2588}\u{2588}\u{2588}\u{2588}\u{2588}\u{2588} 100% \u{1F389}';
   } else if (cmd.startsWith('npm ')) {
@@ -531,6 +563,12 @@ function runKawaiiCmd() {
   } else if (cmd === 'banana') {
     rainBananas();
     response = '\u{1F34C} BANANA! \u{1F34C}';
+  }
+  // ── Bots / agents ──
+  else if (cmd === 'dork' || cmd === 'stacks' || cmd === 'stacks agent') {
+    response = '<[o_o]> Hey, it\'s Dork!';
+  } else if (cmd === 'goose session' || cmd === 'goose') {
+    response = '( O)> weaving dream webs....';
   }
   // ── Fallback ──
   else {
