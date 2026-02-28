@@ -653,6 +653,46 @@ button.screen-power-btn {
   background: #fdf0e8;
 }
 
+/* Retropop nav buttons: interactive (easter egg) */
+button.screen-nav-btn-retro {
+  appearance: none;
+  border: none;
+  background: transparent;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 900;
+  font-size: 14px;
+  border-radius: 4px;
+  border: 2px solid #1a0a3a;
+  color: #1a0a3a;
+  transition: background 0.15s, color 0.15s;
+}
+
+button.screen-nav-btn-retro:hover {
+  background: #1a0a3a;
+  color: #fff;
+}
+
+button.screen-nav-btn-retro:active {
+  transform: scale(0.9);
+}
+
+/* Retropop iframe: fills the viewport area */
+.retro-iframe {
+  flex: 1;
+  width: 100%;
+  border: none;
+  background: #fff;
+}
+
 /* ── Skater: CRT tube TV ── */
 .screen-skater {
   background: #c0c0c0;

@@ -91,10 +91,10 @@
       <div class="screen-chrome">
         <div class="screen-titlebar">
           <div class="screen-nav-buttons">
-            <span class="screen-nav-btn">&lt;</span>
-            <span class="screen-nav-btn">&gt;</span>
+            <button class="screen-nav-btn screen-nav-btn-retro" type="button" @click="retroNav(-1)">&lt;</button>
+            <button class="screen-nav-btn screen-nav-btn-retro" type="button" @click="retroNav(1)">&gt;</button>
           </div>
-          <div class="screen-url-bar">ditto.pub</div>
+          <div class="screen-url-bar">{{ retroPages[retroPageIndex].label }}</div>
           <div class="screen-titlebar-buttons">
             <span class="screen-btn-retro">_</span>
             <span class="screen-btn-retro">[]</span>
@@ -124,9 +124,19 @@
 
     <!-- Content viewport: scrollable area where page sections live -->
     <div class="screen-viewport-wrap" :class="{ 'screen-viewport-wrap-skater': theme === 'skater' }">
-      <div class="screen-viewport" ref="viewport">
+      <div class="screen-viewport" ref="viewport" v-show="!retroActiveUrl">
         <slot />
       </div>
+
+      <!-- Retropop easter egg: iframe browser navigation -->
+      <iframe
+        v-if="retroActiveUrl"
+        class="retro-iframe"
+        :src="retroActiveUrl"
+        frameborder="0"
+        allowfullscreen
+        referrerpolicy="no-referrer"
+      ></iframe>
 
       <!-- CRT power-off overlay (Skater theme easter egg) -->
       <div
@@ -158,13 +168,32 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted, watch } from 'vue';
+import { ref, computed, onMounted, onUnmounted, watch } from 'vue';
 
 const props = defineProps<{
   theme: string;
 }>();
 
 const viewport = ref<HTMLElement | null>(null);
+
+// ── Retropop browser navigation (easter egg) ──
+const retroPages = [
+  { url: null, label: 'ditto.pub' },
+  { url: 'https://soapbox.pub', label: 'soapbox.pub' },
+  { url: 'https://shakespeare.diy', label: 'shakespeare.diy' },
+] as const;
+
+const retroPageIndex = ref(0);
+
+const retroActiveUrl = computed(() => {
+  if (props.theme !== 'retropop') return null;
+  return retroPages[retroPageIndex.value].url;
+});
+
+function retroNav(direction: -1 | 1) {
+  const len = retroPages.length;
+  retroPageIndex.value = (retroPageIndex.value + direction + len) % len;
+}
 
 // ── CRT power toggle (Skater theme easter egg) ──
 type CrtState = 'on' | 'shutting-down' | 'off' | 'turning-on';
@@ -187,16 +216,18 @@ function onCrtAnimationEnd() {
   }
 }
 
-// Reset CRT state when switching away from Skater
+// Reset easter egg state when switching themes
 watch(() => props.theme, () => {
   crtState.value = 'on';
+  retroPageIndex.value = 0;
 });
 
 // ── Scroll forwarding ──
 function onWheel(e: WheelEvent) {
   if (!viewport.value) return;
-  // Don't forward scrolls when CRT is off
+  // Don't forward scrolls when CRT is off or iframe is active
   if (props.theme === 'skater' && crtState.value !== 'on') return;
+  if (retroActiveUrl.value) return;
   // If the scroll didn't originate inside the viewport, forward it
   if (!viewport.value.contains(e.target as Node)) {
     viewport.value.scrollTop += e.deltaY;
