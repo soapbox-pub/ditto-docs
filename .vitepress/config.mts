@@ -84,11 +84,6 @@ export default defineConfig({
     },
 
 
-    footer: {
-      message: `♡${new Date().getFullYear()} Copying is not theft.`,
-      copyright: 'Made by <a href="https://soapbox.pub" target="_blank">Soapbox</a>',
-    },
-
     search: {
       provider: 'local',
     },

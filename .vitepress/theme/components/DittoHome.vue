@@ -1,46 +1,40 @@
 <template>
-  <div class="ditto-home">
+  <div
+    class="ditto-home"
+    ref="homeRef"
+    :style="homeStyles"
+  >
+    <!-- Background wallpaper layer (behind everything) -->
+    <div
+      v-if="activeTheme?.background"
+      class="theme-bg-image"
+      :style="{
+        backgroundImage: `url(${activeTheme.background.bg})`,
+        backgroundSize: activeTheme.background.mode === 'tile' ? 'auto' : 'cover',
+        backgroundRepeat: activeTheme.background.mode === 'tile' ? 'repeat' : 'no-repeat',
+      }"
+    />
 
-    <!-- ============================================================
-         TRANSPARENT NAV: Overlays the hero
-         ============================================================ -->
-    <nav class="home-nav">
-      <div class="home-nav-inner">
-        <a href="/" class="home-nav-logo">
-          <img src="/logo.svg" alt="Ditto" />
-          <span>Ditto</span>
-        </a>
-        <div class="home-nav-links">
-          <a href="/learn/what-is-nostr">Learn</a>
-          <a href="/guides/themes">Guides</a>
-          <a href="https://ditto.pub" target="_blank" class="home-nav-cta">Open Ditto</a>
-        </div>
-      </div>
-    </nav>
+    <!-- Theme switcher (top-right, homepage only) -->
+    <div class="home-theme-switcher">
+      <ThemeSwitcher
+        :currentThemeKey="currentThemeKey"
+        @select="applyTheme"
+      />
+    </div>
+
+    <!-- CSS screen frame wraps the content -->
+    <ScreenFrame :theme="currentThemeKey">
 
     <!-- ============================================================
          HERO: Giant title, floating emojis, pure energy
          ============================================================ -->
     <section class="hero">
-      <div class="hero-emojis" aria-hidden="true">
-        <span class="float-emoji e1">🎨</span>
-        <span class="float-emoji e2">✨</span>
-        <span class="float-emoji e3">🦋</span>
-        <span class="float-emoji e4">🎸</span>
-        <span class="float-emoji e5">🌈</span>
-        <span class="float-emoji e6">🔮</span>
-        <span class="float-emoji e7">🎪</span>
-        <span class="float-emoji e8">💜</span>
-        <span class="float-emoji e9">⚡</span>
-        <span class="float-emoji e10">🎭</span>
-        <span class="float-emoji e11">🌸</span>
-        <span class="float-emoji e12">🚀</span>
-      </div>
       <div class="hero-content">
         <h1 class="hero-title">
           <span class="hero-name">Ditto</span>
         </h1>
-        <p class="hero-text">Social media that's actually fun.</p>
+        <p class="hero-text">Make social media fun again.</p>
         <p class="hero-sub">
           A Nostr client for people who want to <em>express themselves</em>,
           not feed an algorithm. Open source, decentralized, and entirely yours to customize.
@@ -48,69 +42,44 @@
         <div class="hero-actions">
           <a href="https://ditto.pub" target="_blank" class="btn btn-primary">
             <span>Open Ditto</span>
-            <span class="btn-emoji">🚀</span>
           </a>
           <a href="/learn/what-is-nostr" class="btn btn-ghost">
             What is Nostr?
           </a>
+          <a href="/guides/themes" class="btn btn-ghost">
+            Guides
+          </a>
         </div>
       </div>
     </section>
 
     <!-- ============================================================
-         VIBES: Big emotional statement
-         ============================================================ -->
-    <section class="vibes">
-      <div class="vibes-inner">
-        <div class="vibes-emoji">🎉</div>
-        <h2>Remember when the internet was a playground?</h2>
-        <p>
-          When you could customize your page. Pick your own colors. Express who you actually are.
-          Before everything became the same feed, the same font, the same vibe.
-        </p>
-        <p class="vibes-punchline">Ditto brings that energy back.</p>
-      </div>
-    </section>
-
-    <!-- ============================================================
-         THEMES: Visual showcase of customization
+         THEMES: Visual showcase of Y2K theme presets
          ============================================================ -->
     <section class="themes-section">
       <div class="section-inner">
         <div class="section-header">
-          <span class="mega-emoji">🎨</span>
           <h2>Your vibe. Your colors. Your rules.</h2>
-          <p>7 built-in themes. Full custom color tokens. Dark mode, light mode, OLED black mode. Make it look like <em>you</em>.</p>
+          <p>7 built-in Y2K themes. Wild fonts. Background art. Make it look like <em>you</em>.</p>
         </div>
-        <div class="theme-strips">
-          <div class="theme-strip" style="--strip-bg: linear-gradient(135deg, #0d1117, #161b22); --strip-accent: #58a6ff;">
-            <span class="strip-emoji">🌑</span>
-            <span class="strip-name">Black</span>
-          </div>
-          <div class="theme-strip" style="--strip-bg: linear-gradient(135deg, #fce4ec, #f8bbd0); --strip-accent: #e91e63; color: #880e4f;">
-            <span class="strip-emoji">🌸</span>
-            <span class="strip-name">Pink</span>
-          </div>
-          <div class="theme-strip" style="--strip-bg: linear-gradient(135deg, #0a1628, #1a2744); --strip-accent: #5c7cfa;">
-            <span class="strip-emoji">🌃</span>
-            <span class="strip-name">Midnight</span>
-          </div>
-          <div class="theme-strip" style="--strip-bg: linear-gradient(135deg, #0a0f0a, #0d1a0d); --strip-accent: #39ff14;">
-            <span class="strip-emoji">☠️</span>
-            <span class="strip-name">Toxic</span>
-          </div>
-          <div class="theme-strip" style="--strip-bg: linear-gradient(135deg, #f3e5f5, #e1bee7); --strip-accent: #9c27b0; color: #4a148c;">
-            <span class="strip-emoji">💜</span>
-            <span class="strip-name">Lavender</span>
-          </div>
-          <div class="theme-strip" style="--strip-bg: linear-gradient(135deg, #0d2137, #0a3d5c); --strip-accent: #00bcd4;">
-            <span class="strip-emoji">🌊</span>
-            <span class="strip-name">Ocean</span>
-          </div>
-          <div class="theme-strip" style="--strip-bg: linear-gradient(135deg, #fff8e1, #ffecb3); --strip-accent: #ff6f00; color: #e65100;">
-            <span class="strip-emoji">🌅</span>
-            <span class="strip-name">Sunset</span>
-          </div>
+        <div class="theme-grid">
+          <button
+            v-for="theme in allThemes"
+            :key="theme.key"
+            class="theme-card"
+            :class="{ 'theme-card-active': theme.key === currentThemeKey }"
+            @click="applyTheme(theme.key)"
+          >
+            <div
+              class="theme-card-bg"
+              :style="{ backgroundImage: `url(${theme.background.bg})` }"
+            />
+            <div class="theme-card-overlay" />
+            <span
+              class="theme-card-name"
+              :style="{ fontFamily: `'${theme.font.family}', sans-serif`, fontSize: `calc(18px * ${theme.headingScale / 0.9})` }"
+            >{{ theme.label }}</span>
+          </button>
         </div>
       </div>
     </section>
@@ -121,14 +90,12 @@
     <section class="powers-section">
       <div class="section-inner">
         <div class="section-header">
-          <span class="mega-emoji">⚡</span>
           <h2>Not just another feed app.</h2>
           <p>Ditto is a playground. Here's some of what you can do.</p>
         </div>
 
         <div class="powers-list">
           <div class="power-item">
-            <div class="power-emoji">📝</div>
             <div class="power-content">
               <h3>Post what you want</h3>
               <p>Short thoughts, long rants, content warnings, emoji reactions. The basics, done right. 5,000 character limit because sometimes you have things to say.</p>
@@ -136,7 +103,6 @@
           </div>
 
           <div class="power-item">
-            <div class="power-emoji">⚡</div>
             <div class="power-content">
               <h3>Zap people with real money</h3>
               <p>Send Bitcoin Lightning tips to anyone, right from their post. No "likes" that mean nothing. Send actual value to people who make your timeline better.</p>
@@ -144,7 +110,6 @@
           </div>
 
           <div class="power-item">
-            <div class="power-emoji">📰</div>
             <div class="power-content">
               <h3>Long-form articles</h3>
               <p>Write and read full blog posts right in Ditto. Not everything fits in a tweet-sized box.</p>
@@ -152,7 +117,6 @@
           </div>
 
           <div class="power-item">
-            <div class="power-emoji">🎬</div>
             <div class="power-content">
               <h3>Videos and live streams</h3>
               <p>Short-form videos. Live streams with chat. All integrated, no separate app needed.</p>
@@ -160,7 +124,6 @@
           </div>
 
           <div class="power-item">
-            <div class="power-emoji">📊</div>
             <div class="power-content">
               <h3>Polls, follow packs, colors, games...</h3>
               <p>The Nostr ecosystem is wild. Ditto plugs into all of it -- polls, curated follow lists, color palettes, Magic: The Gathering decks, geocaching, and sandboxed mini-apps. Yes, really.</p>
@@ -175,7 +138,6 @@
          ============================================================ -->
     <section class="ownership-section">
       <div class="ownership-inner">
-        <span class="mega-emoji">🔑</span>
         <h2>You own this.</h2>
         <p>
           Your account is a cryptographic key. Not an email address some company controls.
@@ -196,7 +158,6 @@
     <section class="selfhost-section">
       <div class="section-inner">
         <div class="section-header">
-          <span class="mega-emoji">🏗️</span>
           <h2>Run your own.</h2>
           <p>Ditto builds to static files. Deploy it on a $5 VPS, GitHub Pages, Netlify, or a Raspberry Pi in your closet. One config file. Your domain. Your community.</p>
         </div>
@@ -232,27 +193,175 @@
          FINAL CTA: Let's go
          ============================================================ -->
     <section class="final-cta">
-      <div class="final-cta-emojis" aria-hidden="true">
-        <span class="float-emoji f1">🎊</span>
-        <span class="float-emoji f2">💫</span>
-        <span class="float-emoji f3">🌟</span>
-        <span class="float-emoji f4">🎆</span>
-        <span class="float-emoji f5">💜</span>
-        <span class="float-emoji f6">🪩</span>
-      </div>
       <div class="final-cta-inner">
         <h2>Ready?</h2>
         <p>No sign-up forms. No email. No phone number.<br>Just you and a Nostr key.</p>
         <div class="hero-actions">
           <a href="https://ditto.pub" target="_blank" class="btn btn-primary btn-lg">
             <span>Let's go</span>
-            <span class="btn-emoji">✨</span>
           </a>
         </div>
       </div>
     </section>
+
+    <!-- Footer -->
+    <footer class="home-footer">
+      <p class="home-footer-message">&hearts;2026 Copying is not theft.</p>
+      <p class="home-footer-credit">Made by <a href="https://soapbox.pub" target="_blank">Soapbox</a></p>
+    </footer>
+
+    </ScreenFrame>
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
+import { ref, computed, onMounted } from 'vue';
+import { themes as allThemes, getTheme, randomThemeKey, deriveTokens, hslToCSS } from '../themes';
+import type { Y2KTheme } from '../themes';
+import ThemeSwitcher from './ThemeSwitcher.vue';
+import ScreenFrame from './ScreenFrame.vue';
+
+// ─── Module-level state (survives SPA navigation, resets on refresh) ──
+
+// This variable persists across SPA route changes but resets on full page reload,
+// giving us the "random on refresh, stable on navigate" behavior for free.
+let _persistedThemeKey: string | null = null;
+
+// ─── Reactive state ───────────────────────────────────────────────────
+
+const currentThemeKey = ref('');
+const activeTheme = ref<Y2KTheme | null>(null);
+const homeRef = ref<HTMLElement | null>(null);
+const fontLoaded = ref(false);
+
+// ─── Computed styles ──────────────────────────────────────────────────
+
+const homeStyles = computed(() => {
+  const theme = activeTheme.value;
+  if (!theme) return {};
+
+  const tokens = deriveTokens(theme.colors);
+  const displayFont = fontLoaded.value
+    ? `'${theme.font.family}', ${theme.bodyFont}`
+    : theme.bodyFont;
+  const bodyFont = theme.bodyFont;
+
+  const primaryHsl = theme.colors.primary;
+
+  return {
+    '--theme-bg': hslToCSS(tokens.background),
+    '--theme-text': hslToCSS(tokens.foreground),
+    '--theme-primary': hslToCSS(tokens.primary),
+    '--theme-primary-fg': hslToCSS(tokens.primaryForeground),
+    '--theme-card': hslToCSS(tokens.card),
+    '--theme-card-fg': hslToCSS(tokens.cardForeground),
+    '--theme-secondary': hslToCSS(tokens.secondary),
+    '--theme-secondary-fg': hslToCSS(tokens.secondaryForeground),
+    '--theme-muted': hslToCSS(tokens.muted),
+    '--theme-muted-fg': hslToCSS(tokens.mutedForeground),
+    '--theme-accent': hslToCSS(tokens.accent),
+    '--theme-accent-fg': hslToCSS(tokens.accentForeground),
+    '--theme-border': hslToCSS(tokens.border),
+    '--theme-ring': hslToCSS(tokens.ring),
+    '--theme-font': displayFont,
+    '--theme-body-font': bodyFont,
+    '--theme-heading-scale': String(theme.headingScale),
+    '--theme-primary-hsl': primaryHsl,
+    // Map to VitePress variables for components that use them
+    '--vp-c-text-1': hslToCSS(tokens.foreground),
+    '--vp-c-text-2': hslToCSS(tokens.mutedForeground),
+    '--vp-c-text-3': hslToCSS(tokens.mutedForeground),
+    '--vp-c-brand-1': hslToCSS(tokens.primary),
+    '--vp-c-brand-2': hslToCSS(tokens.primary),
+    '--vp-c-brand-3': hslToCSS(tokens.primary),
+    '--vp-c-brand-soft': hslToCSS(tokens.primary).replace(')', ', 0.16)').replace('hsl(', 'hsla('),
+    '--vp-c-bg': hslToCSS(tokens.background),
+    '--vp-c-bg-soft': hslToCSS(tokens.secondary),
+    '--vp-c-divider': hslToCSS(tokens.border),
+    color: hslToCSS(tokens.foreground),
+  } as Record<string, string>;
+});
+
+// ─── Font loading ─────────────────────────────────────────────────────
+
+const loadedFonts = new Set<string>();
+
+async function loadFont(theme: Y2KTheme): Promise<void> {
+  if (loadedFonts.has(theme.key)) {
+    fontLoaded.value = true;
+    return;
+  }
+
+  // Build @font-face declarations for display font + optional body font
+  const styleId = `theme-font-${theme.key}`;
+  if (!document.getElementById(styleId)) {
+    const style = document.createElement('style');
+    style.id = styleId;
+
+    let css = `
+      @font-face {
+        font-family: '${theme.font.family}';
+        src: url('${theme.font.url}') format('woff2');
+        font-display: swap;
+        font-weight: 400;
+        font-style: normal;
+      }
+    `;
+
+    // Load body font from CDN if specified
+    if (theme.bodyFontUrl) {
+      const bodyFamily = theme.bodyFont.split(',')[0].replace(/'/g, '').trim();
+      css += `
+        @font-face {
+          font-family: '${bodyFamily}';
+          src: url('${theme.bodyFontUrl}') format('woff2');
+          font-display: swap;
+          font-weight: 400;
+          font-style: normal;
+        }
+      `;
+    }
+
+    style.textContent = css;
+    document.head.appendChild(style);
+  }
+
+  try {
+    const loads = [document.fonts.load(`400 16px "${theme.font.family}"`)];
+    if (theme.bodyFontUrl) {
+      const bodyFamily = theme.bodyFont.split(',')[0].replace(/'/g, '').trim();
+      loads.push(document.fonts.load(`400 16px "${bodyFamily}"`));
+    }
+    await Promise.all(loads);
+    loadedFonts.add(theme.key);
+    fontLoaded.value = true;
+  } catch {
+    // Font failed to load, use fallbacks
+    fontLoaded.value = true;
+  }
+}
+
+// ─── Theme application ────────────────────────────────────────────────
+
+async function applyTheme(key: string) {
+  const theme = getTheme(key);
+  if (!theme) return;
+
+  currentThemeKey.value = key;
+  activeTheme.value = theme;
+  _persistedThemeKey = key;
+
+  // Reset font loaded state before loading new font
+  fontLoaded.value = false;
+  await loadFont(theme);
+}
+
+// ─── Initialization ───────────────────────────────────────────────────
+
+onMounted(() => {
+  // If we have a persisted key from SPA navigation, use it.
+  // Otherwise pick a random one. Module-level variable resets on full page reload.
+  const key = _persistedThemeKey || randomThemeKey();
+  applyTheme(key);
+});
 </script>
