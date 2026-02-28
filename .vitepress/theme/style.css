@@ -2135,6 +2135,18 @@ button.screen-power-btn.power-standby {
   margin-top: 36px;
 }
 
+.ownership-section .btn-ghost {
+  color: var(--vp-c-bg);
+  border-color: var(--vp-c-bg);
+  opacity: 0.8;
+}
+
+.ownership-section .btn-ghost:hover {
+  color: var(--vp-c-bg);
+  border-color: var(--vp-c-bg);
+  opacity: 1;
+}
+
 .ownership-kicker {
   font-size: clamp(19px, 2.2vw, 24px) !important;
   color: var(--vp-c-bg) !important;
