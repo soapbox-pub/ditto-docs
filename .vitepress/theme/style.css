@@ -823,7 +823,7 @@
 }
 
 .hero-name {
-  font-size: calc(clamp(80px, 15vw, 180px) * var(--theme-heading-scale, 1));
+  font-size: calc(clamp(120px, 20vw, 260px) * var(--theme-heading-scale, 1));
   font-weight: 900;
   letter-spacing: -0.04em;
   background: var(--theme-primary, var(--ditto-gradient));
