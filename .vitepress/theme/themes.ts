@@ -249,7 +249,7 @@ export const themes: Y2KTheme[] = [
     emoji: '\u{1F36C}', // 🍬
     colors: {
       background: '328 100% 54%',
-      text: '0 0% 100%',
+      text: '330 100% 90%',
       primary: '282 37% 53%',
     },
     font: {
