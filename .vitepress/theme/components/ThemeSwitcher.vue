@@ -17,7 +17,7 @@
     </button>
 
     <Transition name="theme-panel">
-      <div v-if="isOpen" class="theme-panel">
+      <div v-if="isOpen" class="theme-panel" style="background: #141419;">
         <div class="theme-panel-header">Choose a vibe</div>
         <div class="theme-panel-grid">
           <button
