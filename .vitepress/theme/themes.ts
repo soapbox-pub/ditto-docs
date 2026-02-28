@@ -228,7 +228,7 @@ export const themes: Y2KTheme[] = [
     emoji: '\u{1F4BF}', // 💿
     colors: {
       background: '260 50% 70%',
-      text: '40 30% 15%',
+      text: '40 40% 10%',
       primary: '45 90% 55%',
     },
     font: {
