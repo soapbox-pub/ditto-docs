@@ -32,6 +32,7 @@
     <section class="hero">
       <div class="hero-content">
         <h1 class="hero-title">
+          <img v-if="themeLogo" :src="themeLogo" :alt="`${currentThemeKey} Ditto logo`" class="hero-logo" />
           <span class="hero-name">Ditto</span>
         </h1>
         <p class="hero-sub">
@@ -232,6 +233,11 @@ const currentThemeKey = ref('');
 const activeTheme = ref<Y2KTheme | null>(null);
 const homeRef = ref<HTMLElement | null>(null);
 const fontLoaded = ref(false);
+
+const themeLogo = computed(() => {
+  const key = currentThemeKey.value;
+  return key ? `/${key}-logo.png` : '';
+});
 
 // ─── Computed styles ──────────────────────────────────────────────────
 

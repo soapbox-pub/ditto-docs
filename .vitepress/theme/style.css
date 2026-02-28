@@ -1737,6 +1737,17 @@ button.screen-power-btn.power-standby {
 .hero-title {
   margin: 0 0 24px;
   line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.15em;
+}
+
+.hero-logo {
+  height: calc(clamp(120px, 20vw, 260px) * var(--theme-heading-scale, 1));
+  width: auto;
+  object-fit: contain;
+  flex-shrink: 0;
 }
 
 .hero-name {
@@ -1747,7 +1758,6 @@ button.screen-power-btn.power-standby {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  display: block;
 }
 
 .hero-text {
