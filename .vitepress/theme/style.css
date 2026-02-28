@@ -2127,77 +2127,42 @@ button.screen-power-btn.power-standby {
   -webkit-text-fill-color: var(--theme-primary, unset);
 }
 
-/* ---------- SELF-HOST SECTION ---------- */
+/* ---------- BUILD ON DITTO SECTION ---------- */
 
 .selfhost-section {
   padding: 100px 0;
 }
 
-.selfhost-steps {
+.build-showcase {
+  max-width: 700px;
+  margin: 0 auto 40px;
+}
+
+.build-screenshot {
+  width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.15);
+  border: 1px solid var(--vp-c-divider);
+}
+
+.build-actions {
   display: flex;
-  align-items: center;
   justify-content: center;
   gap: 16px;
-  margin: 48px 0;
   flex-wrap: wrap;
 }
 
-.step {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 12px;
-  padding: 28px 24px;
-  background: var(--vp-c-bg-soft);
-  border: 1px solid var(--vp-c-divider);
-  border-radius: 20px;
-  min-width: 180px;
-  transition: transform 0.2s ease, border-color 0.2s ease;
-}
-
-.step:hover {
-  transform: translateY(-4px);
-  border-color: var(--theme-primary, var(--ditto-purple));
-}
-
-.step-num {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background: var(--theme-primary, var(--ditto-gradient));
-  color: var(--theme-primary-fg, #fff);
-  font-weight: 800;
-  font-size: 18px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.step-text {
-  font-size: 15px;
-  font-weight: 600;
-  color: var(--vp-c-text-1);
+.selfhost-blurb {
+  max-width: 640px;
+  margin: 64px auto 0;
   text-align: center;
 }
 
-.step-text code {
-  background: var(--vp-c-brand-soft);
-  color: var(--vp-c-brand-1);
-  padding: 2px 8px;
-  border-radius: 6px;
-  font-size: 14px;
-  font-weight: 700;
-}
-
-.step-arrow {
-  font-size: 28px;
-  color: var(--vp-c-text-3);
-  font-weight: 700;
-}
-
-.selfhost-cta {
-  text-align: center;
-  margin-top: 40px;
+.selfhost-blurb p {
+  font-size: clamp(16px, 1.8vw, 20px);
+  line-height: 1.65;
+  color: var(--vp-c-text-2);
+  margin: 0 0 28px;
 }
 
 /* ---------- FINAL CTA ---------- */
@@ -2958,14 +2923,6 @@ button.screen-power-btn.power-standby {
   }
 
   .power-emoji { font-size: 40px; }
-
-  .selfhost-steps {
-    flex-direction: column;
-  }
-
-  .step-arrow {
-    transform: rotate(90deg);
-  }
 
   .final-cta { padding: 60px 20px; }
 

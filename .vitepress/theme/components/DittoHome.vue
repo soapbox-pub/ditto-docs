@@ -152,38 +152,29 @@
     </section>
 
     <!-- ============================================================
-         SELF-HOST: For the builders
+         BUILD ON DITTO: Open source, easy to customize
          ============================================================ -->
     <section class="selfhost-section">
       <div class="section-inner">
         <div class="section-header">
-          <h2>Run your own.</h2>
+          <h2>Build on Ditto.</h2>
+          <p>Ditto is open source and entirely front-end. Edit the code right in your browser with Shakespeare, fork it, or just dig into the source. Make it yours.</p>
+        </div>
+
+        <div class="build-showcase">
+          <img src="/edit-ditto-in-shakespeare.png" alt="Edit Ditto with Shakespeare" class="build-screenshot" />
+        </div>
+
+        <div class="build-actions">
+          <a href="https://shakespeare.diy/new?git=https://gitlab.com/soapbox-pub/ditto-mew.git" target="_blank" class="btn btn-primary">Edit in Shakespeare</a>
+          <a href="https://gitlab.com/soapbox-pub/ditto-mew" target="_blank" class="btn btn-ghost">View Source</a>
+        </div>
+
+        <div class="selfhost-blurb">
           <p>Ditto builds to static files. Deploy it on a $5 VPS, GitHub Pages, Netlify, or a Raspberry Pi in your closet. One config file. Your domain. Your community.</p>
-        </div>
-        <div class="selfhost-steps">
-          <div class="step">
-            <div class="step-num">1</div>
-            <div class="step-text">
-              <code>git clone</code> and <code>bun install</code>
-            </div>
+          <div class="build-actions">
+            <a href="/guides/self-hosting" class="btn btn-ghost">Read the self-hosting guide →</a>
           </div>
-          <div class="step-arrow">→</div>
-          <div class="step">
-            <div class="step-num">2</div>
-            <div class="step-text">
-              Drop in your <code>ditto.json</code>
-            </div>
-          </div>
-          <div class="step-arrow">→</div>
-          <div class="step">
-            <div class="step-num">3</div>
-            <div class="step-text">
-              <code>bun run build</code> and ship it
-            </div>
-          </div>
-        </div>
-        <div class="selfhost-cta">
-          <a href="/guides/self-hosting" class="btn btn-ghost">Read the self-hosting guide →</a>
         </div>
       </div>
     </section>
