@@ -84,11 +84,14 @@
             <span class="screen-circle screen-circle-kawaii">&#x2665;</span>
             <span class="screen-circle screen-circle-kawaii">&#x2665;</span>
           </div>
-          <div class="screen-nav-buttons">
-            <span class="screen-nav-btn screen-nav-btn-kawaii">&#x2190;</span>
-            <span class="screen-nav-btn screen-nav-btn-kawaii">&#x2192;</span>
-          </div>
-          <div class="screen-url-bar screen-url-bar-kawaii">&#x2729; ditto.pub &#x2729;</div>
+          <input
+            class="screen-url-bar screen-url-bar-kawaii kawaii-terminal-input"
+            v-model="kawaiiCmd"
+            placeholder="&#x2729; ditto.pub &#x2729;"
+            @keydown.enter="runKawaiiCmd"
+            spellcheck="false"
+            autocomplete="off"
+          />
           <span class="screen-kawaii-star">&#x2B50;</span>
         </div>
       </div>
@@ -211,6 +214,11 @@
       >
         <div class="crt-scanline"></div>
       </div>
+
+      <!-- Kawaii terminal response toast -->
+      <div v-if="kawaiiResponseVisible && theme === 'kawaii'" class="kawaii-response">
+        <pre class="kawaii-response-text">{{ kawaiiResponse }}</pre>
+      </div>
     </div>
 
     <!-- ── Bottom bars for specific themes ── -->
@@ -289,6 +297,95 @@ function confirmClose() {
   } else {
     windowState.value = 'closed';
   }
+}
+
+// ── Kawaii terminal (easter egg) ──
+const kawaiiCmd = ref('');
+const kawaiiResponse = ref('');
+const kawaiiResponseVisible = ref(false);
+let kawaiiResponseTimer: ReturnType<typeof setTimeout> | null = null;
+
+const kawaiiFortunes = [
+  'A surprise is waiting for you around the corner~ \u{1F31F}',
+  'Today is your lucky day! \u{1F340}',
+  'Someone is thinking of you right now~ \u{1F4AD}',
+  'Good things come to those who sparkle \u{2728}',
+  "You're doing amazing sweetie \u{1F485}",
+];
+
+function runKawaiiCmd() {
+  const raw = kawaiiCmd.value.trim();
+  if (!raw) return;
+  const cmd = raw.toLowerCase();
+
+  let response: string;
+
+  if (cmd === 'help') {
+    response = 'Available commands: help, whoami, ls, pwd, cd, cat, echo, date, clear, sudo, rm -rf, cowsay, fortune, nyan, love, meow, ping, exit, uptime, neofetch, make, git, npm install, python';
+  } else if (cmd === 'whoami') {
+    response = 'You are \u{273F} a beautiful person \u{273F}';
+  } else if (cmd === 'ls') {
+    response = '\u{1F496} feelings.txt  \u{1F338} dreams/  \u{1F380} secrets.diary  \u{1F370} recipes/  \u{1F984} unicorn.png';
+  } else if (cmd === 'pwd') {
+    response = '/home/kawaii/~(\u02D8\u25BE\u02D8~)';
+  } else if (cmd === 'cd' || cmd.startsWith('cd ')) {
+    response = "There's no place like /home \u{1F3E0}";
+  } else if (cmd === 'cat' || cmd.startsWith('cat ')) {
+    response = '\u{1F431} meow~ (did you mean the animal?)';
+  } else if (cmd.startsWith('echo ')) {
+    response = raw.slice(5);
+  } else if (cmd === 'echo') {
+    response = '';
+  } else if (cmd === 'date') {
+    response = "It's always a good day to be cute! \u{1F308}";
+  } else if (cmd === 'clear') {
+    kawaiiCmd.value = '';
+    kawaiiResponse.value = '';
+    kawaiiResponseVisible.value = false;
+    if (kawaiiResponseTimer) clearTimeout(kawaiiResponseTimer);
+    return;
+  } else if (cmd.startsWith('sudo')) {
+    response = "\u{1F512} Permission denied~ You're already perfect! \u{2728}";
+  } else if (cmd.startsWith('rm ')) {
+    response = '\u{1F6AB} Nice try! Nothing can be deleted from your heart \u{1F495}';
+  } else if (cmd === 'cowsay' || cmd.startsWith('cowsay ')) {
+    response = '  ________\n< moo~ \u{1F404} >\n  --------\n        \\   ^__^\n         \\  (oo)\\_______\n            (__)\\       )\n                ||----w |\n                ||     ||';
+  } else if (cmd === 'fortune') {
+    response = kawaiiFortunes[Math.floor(Math.random() * kawaiiFortunes.length)];
+  } else if (cmd === 'nyan') {
+    response = '\u{1F308}\u{1F431} Nyan nyan nyan nyan nyan~';
+  } else if (cmd === 'love') {
+    response = '\u{1F495}\u{1F497}\u{1F496}\u{1F49D}\u{1F498} Love overload! \u{1F498}\u{1F49D}\u{1F496}\u{1F497}\u{1F495}';
+  } else if (cmd === 'meow') {
+    response = '\u{1F431} purrrrr~';
+  } else if (cmd === 'ping') {
+    response = '\u{1F3D3} Pong! \u{1F497}';
+  } else if (cmd === 'exit') {
+    response = 'You can never leave~ \u{1F338} (but you can switch themes!)';
+  } else if (cmd === 'uptime') {
+    response = 'System has been cute for: \u{221E} days \u{1F380}';
+  } else if (cmd === 'neofetch') {
+    response = '\u{1F338} KawaiiOS v1.0\n\u{251C} User: cutie-patootie\n\u{251C} Shell: sparkle-sh\n\u{251C} Theme: Pink Forever\n\u{251C} CPU: 100% love\n\u{2514} Uptime: forever \u{1F496}';
+  } else if (cmd === 'make' || cmd.startsWith('make ')) {
+    response = "make: *** No rule to make target 'sadness'. Stop. \u{1F308}";
+  } else if (cmd === 'git' || cmd.startsWith('git ')) {
+    response = 'Already committed... to being adorable! \u{1F496}';
+  } else if (cmd === 'npm install' || cmd === 'npm i') {
+    response = 'Installing happiness... \u{2588}\u{2588}\u{2588}\u{2588}\u{2588}\u{2588}\u{2588}\u{2588}\u{2588}\u{2588} 100% \u{1F389}';
+  } else if (cmd === 'python' || cmd === 'python3') {
+    response = '\u{1F40D} ssssuper cute!';
+  } else {
+    response = `command not found: ${raw} \u{1F4AD} try 'help'!`;
+  }
+
+  kawaiiResponse.value = response;
+  kawaiiResponseVisible.value = true;
+  kawaiiCmd.value = '';
+
+  if (kawaiiResponseTimer) clearTimeout(kawaiiResponseTimer);
+  kawaiiResponseTimer = setTimeout(() => {
+    kawaiiResponseVisible.value = false;
+  }, 4000);
 }
 
 // ── Kawaii banana rain (easter egg) ──
@@ -460,6 +557,10 @@ watch(() => props.theme, () => {
   retroPageIndex.value = 0;
   bubbleTab.value = 0;
   paintHelpOpen.value = false;
+  kawaiiCmd.value = '';
+  kawaiiResponse.value = '';
+  kawaiiResponseVisible.value = false;
+  if (kawaiiResponseTimer) clearTimeout(kawaiiResponseTimer);
   windowState.value = 'normal';
   showCloseConfirm.value = false;
   dinoState.value = 'hidden';
