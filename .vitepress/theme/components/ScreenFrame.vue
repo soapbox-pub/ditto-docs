@@ -175,7 +175,7 @@
     </template>
 
     <!-- Content viewport: scrollable area where page sections live -->
-    <div class="screen-viewport-wrap" :class="{ 'screen-viewport-wrap-skater': theme === 'skater' }">
+    <div class="screen-viewport-wrap" :class="{ 'screen-viewport-wrap-skater': theme === 'skater', 'screen-viewport-wrap-kawaii': theme === 'kawaii' }" ref="viewportWrap">
       <div class="screen-viewport" ref="viewport" v-show="!retroActiveUrl">
         <slot />
       </div>
@@ -203,7 +203,7 @@
 
     <!-- ── Bottom bars for specific themes ── -->
     <div v-if="theme === 'kawaii'" class="screen-bottom screen-bottom-kawaii">
-      <span>BANANA</span>
+      <span class="kawaii-banana-btn" @click="rainBananas">BANANA</span>
       <div class="screen-hearts">
         <span>&#x1F49C;</span><span>&#x1F499;</span><span>&#x2764;&#xFE0F;</span><span>&#x1F49B;</span>
       </div>
@@ -227,6 +227,7 @@ const props = defineProps<{
 }>();
 
 const viewport = ref<HTMLElement | null>(null);
+const viewportWrap = ref<HTMLElement | null>(null);
 
 // ── Window minimize/close ──
 type WindowState = 'normal' | 'minimized' | 'closed';
@@ -244,6 +245,24 @@ function requestClose() {
 function confirmClose() {
   showCloseConfirm.value = false;
   windowState.value = 'closed';
+}
+
+// ── Kawaii banana rain (easter egg) ──
+function rainBananas() {
+  const container = viewportWrap.value;
+  if (!container) return;
+  const count = 20 + Math.floor(Math.random() * 15);
+  for (let i = 0; i < count; i++) {
+    const banana = document.createElement('span');
+    banana.className = 'banana-drop';
+    banana.textContent = '\u{1F34C}';
+    banana.style.left = `${Math.random() * 100}%`;
+    banana.style.animationDelay = `${Math.random() * 0.8}s`;
+    banana.style.animationDuration = `${1.2 + Math.random() * 1.5}s`;
+    banana.style.fontSize = `${20 + Math.random() * 24}px`;
+    banana.addEventListener('animationend', () => banana.remove());
+    container.appendChild(banana);
+  }
 }
 
 // ── MS Paint Help menu (easter egg) ──
