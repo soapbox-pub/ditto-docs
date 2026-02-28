@@ -372,11 +372,17 @@ button.screen-power-btn {
 }
 
 /* ── Minimized taskbar ── */
-.taskbar {
+.taskbar-row {
   position: fixed;
   bottom: 0;
   left: 24px;
   z-index: 2;
+  display: flex;
+  gap: 4px;
+  align-items: flex-end;
+}
+
+.taskbar {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -990,6 +996,36 @@ button.screen-power-btn {
   color: #0000cc;
   font-family: 'Press Start 2P', monospace;
   font-size: 10px;
+}
+
+/* Dino game window (gamer easter egg) */
+.dino-screen {
+  width: min(50vw, 500px);
+  height: min(70vh, 600px);
+  top: auto;
+  bottom: 48px;
+  left: 24px;
+  transform: none;
+  z-index: 3;
+}
+
+.dino-iframe {
+  background: #000;
+}
+
+.dino-loading {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #00ff41;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 12px;
+  background: #050a05;
+}
+
+.taskbar-dino {
+  width: min(180px, 40vw);
 }
 
 .screen-gamer .screen-viewport {

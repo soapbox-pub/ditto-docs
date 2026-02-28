@@ -3,7 +3,7 @@
   <div v-if="showCloseConfirm" class="win-dialog-overlay" @click.self="showCloseConfirm = false">
     <div class="win-dialog" :class="`win-dialog-${theme}`">
       <div class="win-dialog-titlebar">
-        <span class="win-dialog-title">{{ theme === 'mspaint' ? 'Paint' : 'Ditto' }}</span>
+        <span class="win-dialog-title">{{ closeTarget === 'dino' ? 'Dino' : theme === 'mspaint' ? 'Paint' : 'Ditto' }}</span>
         <span class="win-dialog-close" @click="showCloseConfirm = false">X</span>
       </div>
       <div class="win-dialog-body">
@@ -17,12 +17,19 @@
     </div>
   </div>
 
-  <!-- Minimized taskbar -->
-  <div v-if="windowState === 'minimized'" class="taskbar" :class="`taskbar-${theme}`" @click="windowState = 'normal'">
-    <span class="taskbar-label">{{ theme === 'mspaint' ? 'untitled - Paint' : 'Ditto - Fun Social Media' }}</span>
-    <span class="taskbar-maximize">&#x2197;</span>
+  <!-- Minimized taskbars -->
+  <div v-if="windowState === 'minimized' || (theme === 'gamer' && dinoState !== 'hidden' && dinoWindowState === 'minimized')" class="taskbar-row">
+    <div v-if="windowState === 'minimized'" class="taskbar" :class="`taskbar-${theme}`" @click="windowState = 'normal'">
+      <span class="taskbar-label">{{ theme === 'mspaint' ? 'untitled - Paint' : 'Ditto - Fun Social Media' }}</span>
+      <span class="taskbar-maximize">&#x2197;</span>
+    </div>
+    <div v-if="theme === 'gamer' && dinoState !== 'hidden' && dinoWindowState === 'minimized'" class="taskbar taskbar-gamer taskbar-dino" @click="dinoWindowState = 'normal'">
+      <span class="taskbar-label">&#x1F995; Dino</span>
+      <span class="taskbar-maximize">&#x2197;</span>
+    </div>
   </div>
 
+  <!-- ── Main screen frame ── -->
   <div v-show="windowState === 'normal'" class="screen-frame" :class="`screen-${theme}`">
 
     <!-- ── MS PAINT ── Win95 application window -->
@@ -33,7 +40,7 @@
           <div class="screen-titlebar-buttons">
             <span class="screen-btn-win screen-btn-interactive" @click="minimizeWindow">_</span>
             <span class="screen-btn-win">[]</span>
-            <span class="screen-btn-win screen-btn-interactive screen-btn-close" @click="requestClose">X</span>
+            <span class="screen-btn-win screen-btn-interactive screen-btn-close" @click="requestClose('main')">X</span>
           </div>
         </div>
         <div class="screen-menubar">
@@ -92,7 +99,7 @@
       <div class="screen-chrome">
         <div class="screen-titlebar">
           <div class="screen-titlebar-buttons">
-            <span class="screen-btn-grunge screen-btn-interactive screen-btn-close" @click="requestClose">X</span>
+            <span class="screen-btn-grunge screen-btn-interactive screen-btn-close" @click="requestClose('main')">X</span>
             <span class="screen-btn-grunge">[]</span>
             <span class="screen-btn-grunge screen-btn-interactive" @click="minimizeWindow">_</span>
           </div>
@@ -105,9 +112,9 @@
       <div class="screen-chrome">
         <div class="screen-titlebar">
           <div class="screen-titlebar-buttons">
-            <span class="screen-btn-gamer screen-btn-interactive screen-btn-close" @click="requestClose">X</span>
+            <span class="screen-btn-gamer screen-btn-interactive screen-btn-close" @click="requestClose('main')">X</span>
             <span class="screen-btn-gamer">[]</span>
-            <span class="screen-btn-gamer screen-btn-interactive" @click="minimizeWindow">_</span>
+            <span class="screen-btn-gamer screen-btn-interactive" @click="gamerMinimize">_</span>
           </div>
         </div>
       </div>
@@ -125,7 +132,7 @@
           <div class="screen-titlebar-buttons">
             <span class="screen-btn-bubble screen-btn-interactive" @click="minimizeWindow">_</span>
             <span class="screen-btn-bubble">[]</span>
-            <span class="screen-btn-bubble screen-btn-interactive screen-btn-close" @click="requestClose">X</span>
+            <span class="screen-btn-bubble screen-btn-interactive screen-btn-close" @click="requestClose('main')">X</span>
           </div>
         </div>
       </div>
@@ -143,7 +150,7 @@
           <div class="screen-titlebar-buttons">
             <span class="screen-btn-retro screen-btn-interactive" @click="minimizeWindow">_</span>
             <span class="screen-btn-retro">[]</span>
-            <span class="screen-btn-retro screen-btn-interactive screen-btn-close" @click="requestClose">X</span>
+            <span class="screen-btn-retro screen-btn-interactive screen-btn-close" @click="requestClose('main')">X</span>
           </div>
         </div>
       </div>
@@ -163,7 +170,7 @@
           <div class="screen-titlebar-buttons">
             <span class="screen-btn-interactive" @click="minimizeWindow">_</span>
             <span>[]</span>
-            <span class="screen-btn-interactive screen-btn-close" @click="requestClose">X</span>
+            <span class="screen-btn-interactive screen-btn-close" @click="requestClose('main')">X</span>
           </div>
         </div>
       </div>
@@ -222,10 +229,36 @@
       </div>
     </div>
   </div>
+
+  <!-- ── Dino game window (gamer theme only) ── -->
+  <div v-if="theme === 'gamer' && dinoState !== 'hidden'" v-show="dinoWindowState === 'normal'" class="screen-frame screen-gamer dino-screen">
+    <div class="screen-chrome">
+      <div class="screen-titlebar">
+        <span class="screen-gamer-label">&#x1F995; DINO</span>
+        <div class="screen-titlebar-buttons">
+          <span class="screen-btn-gamer screen-btn-interactive screen-btn-close" @click="requestClose('dino')">X</span>
+          <span class="screen-btn-gamer">[]</span>
+          <span class="screen-btn-gamer screen-btn-interactive" @click="dinoWindowState = 'minimized'">_</span>
+        </div>
+      </div>
+    </div>
+    <div class="screen-viewport-wrap">
+      <iframe
+        v-if="dinoState === 'ready'"
+        ref="dinoIframe"
+        class="retro-iframe dino-iframe"
+        src="https://arcanecircle-dino-v1-3-0.webxdc.app/"
+        frameborder="0"
+        allowfullscreen
+        @load="onDinoIframeLoad"
+      ></iframe>
+      <div v-else class="dino-loading">Loading...</div>
+    </div>
+  </div>
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted, onUnmounted, watch } from 'vue';
+import { ref, computed, onMounted, onUnmounted, watch, nextTick } from 'vue';
 
 const props = defineProps<{
   theme: string;
@@ -238,18 +271,24 @@ const viewportWrap = ref<HTMLElement | null>(null);
 type WindowState = 'normal' | 'minimized' | 'closed';
 const windowState = ref<WindowState>('normal');
 const showCloseConfirm = ref(false);
+const closeTarget = ref<'main' | 'dino'>('main');
 
 function minimizeWindow() {
   windowState.value = 'minimized';
 }
 
-function requestClose() {
+function requestClose(target: 'main' | 'dino') {
+  closeTarget.value = target;
   showCloseConfirm.value = true;
 }
 
 function confirmClose() {
   showCloseConfirm.value = false;
-  windowState.value = 'closed';
+  if (closeTarget.value === 'dino') {
+    dinoWindowState.value = 'closed';
+  } else {
+    windowState.value = 'closed';
+  }
 }
 
 // ── Kawaii banana rain (easter egg) ──
@@ -312,7 +351,6 @@ function toggleCrt() {
   } else if (crtState.value === 'off') {
     crtState.value = 'turning-on';
   }
-  // Ignore clicks during animations
 }
 
 function onCrtAnimationEnd() {
@@ -320,6 +358,92 @@ function onCrtAnimationEnd() {
     crtState.value = 'off';
   } else if (crtState.value === 'turning-on') {
     crtState.value = 'on';
+  }
+}
+
+// ── Gamer Dino webxdc game (easter egg) ──
+type DinoState = 'hidden' | 'loading' | 'ready';
+const dinoState = ref<DinoState>('hidden');
+const dinoWindowState = ref<WindowState>('normal');
+const dinoIframe = ref<HTMLIFrameElement | null>(null);
+let dinoXdcBytes: ArrayBuffer | null = null;
+
+function gamerMinimize() {
+  windowState.value = 'minimized';
+  // Show the Dino tab when minimizing the gamer window (first time triggers fetch)
+  if (dinoState.value === 'hidden') {
+    dinoState.value = 'loading';
+    fetchDinoXdc();
+  }
+}
+
+async function fetchDinoXdc() {
+  try {
+    const resp = await fetch('https://apps.testrun.org/arcanecircle-dino-v1.3.0.xdc');
+    dinoXdcBytes = await resp.arrayBuffer();
+    dinoState.value = 'ready';
+  } catch (e) {
+    console.error('Failed to fetch Dino xdc:', e);
+    dinoState.value = 'ready'; // Still show iframe, it may work without init
+  }
+}
+
+function onDinoIframeLoad() {
+  // The iframe loaded; now wait for webxdc.ready via postMessage
+}
+
+function onWebxdcMessage(event: MessageEvent) {
+  if (!dinoIframe.value || event.source !== dinoIframe.value.contentWindow) return;
+  const msg = event.data;
+  if (!msg || msg.jsonrpc !== '2.0') return;
+
+  // Handle webxdc.ready notification
+  if (msg.method === 'webxdc.ready') {
+    if (dinoXdcBytes) {
+      const xdc = dinoXdcBytes.slice(0); // copy for transfer
+      dinoIframe.value!.contentWindow!.postMessage(
+        {
+          jsonrpc: '2.0',
+          method: 'webxdc.init',
+          params: {
+            xdc,
+            selfAddr: 'player@ditto.pub',
+            selfName: 'Player',
+            sendUpdateInterval: 1000,
+            sendUpdateMaxSize: 128000,
+          },
+        },
+        '*',
+        [xdc],
+      );
+    }
+    return;
+  }
+
+  // Handle requests (with id) — respond with simple acks
+  if (msg.id !== undefined && msg.method) {
+    const win = dinoIframe.value?.contentWindow;
+    if (!win) return;
+    switch (msg.method) {
+      case 'webxdc.sendUpdate':
+        win.postMessage({ jsonrpc: '2.0', id: msg.id, result: null }, '*');
+        break;
+      case 'webxdc.setUpdateListener':
+        win.postMessage({ jsonrpc: '2.0', id: msg.id, result: null }, '*');
+        break;
+      case 'webxdc.getAllUpdates':
+        win.postMessage({ jsonrpc: '2.0', id: msg.id, result: [] }, '*');
+        break;
+      case 'webxdc.sendToChat':
+        win.postMessage({ jsonrpc: '2.0', id: msg.id, result: null }, '*');
+        break;
+      case 'webxdc.importFiles':
+        win.postMessage({ jsonrpc: '2.0', id: msg.id, result: [] }, '*');
+        break;
+      default:
+        win.postMessage({ jsonrpc: '2.0', id: msg.id, result: null }, '*');
+        break;
+    }
   }
 }
 
@@ -331,6 +455,9 @@ watch(() => props.theme, () => {
   paintHelpOpen.value = false;
   windowState.value = 'normal';
   showCloseConfirm.value = false;
+  dinoState.value = 'hidden';
+  dinoWindowState.value = 'normal';
+  dinoXdcBytes = null;
 });
 
 // ── Scroll forwarding ──
@@ -348,9 +475,11 @@ function onWheel(e: WheelEvent) {
 onMounted(() => {
   window.addEventListener('wheel', onWheel, { passive: true });
   window.addEventListener('click', closePaintHelp);
+  window.addEventListener('message', onWebxdcMessage);
 });
 onUnmounted(() => {
   window.removeEventListener('wheel', onWheel);
   window.removeEventListener('click', closePaintHelp);
+  window.removeEventListener('message', onWebxdcMessage);
 });
 </script>
