@@ -364,7 +364,7 @@ function onCrtAnimationEnd() {
 // ── Gamer Dino webxdc game (easter egg) ──
 type DinoState = 'hidden' | 'loading' | 'ready';
 const dinoState = ref<DinoState>('hidden');
-const dinoWindowState = ref<WindowState>('normal');
+const dinoWindowState = ref<WindowState>('minimized');
 const dinoIframe = ref<HTMLIFrameElement | null>(null);
 let dinoXdcBytes: ArrayBuffer | null = null;
 
@@ -456,7 +456,7 @@ watch(() => props.theme, () => {
   windowState.value = 'normal';
   showCloseConfirm.value = false;
   dinoState.value = 'hidden';
-  dinoWindowState.value = 'normal';
+  dinoWindowState.value = 'minimized';
   dinoXdcBytes = null;
 });
 
