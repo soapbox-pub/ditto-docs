@@ -58,7 +58,7 @@
     <section class="themes-section">
       <div class="section-inner">
         <div class="section-header">
-          <h2>Your vibe. Your content. Your rules.</h2>
+          <h2>Your content. Your vibe. Your&nbsp;rules.</h2>
           <p>Customize and share themes with colors, background art, fonts, and more.</p>
         </div>
         <div class="theme-grid">
