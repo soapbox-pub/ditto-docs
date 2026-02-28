@@ -4,7 +4,7 @@
     "vitepress": "^2.0.0-alpha.16"
   },
   "scripts": {
-    "dev": "vitepress dev",
+    "dev": "rm -rf .vitepress/cache && vitepress dev",
     "build": "vitepress build",
     "preview": "vitepress preview"
   }
