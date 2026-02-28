@@ -171,17 +171,15 @@
   box-shadow: 0 8px 40px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(0, 0, 0, 0.1);
 }
 
-/* ── Theme logo (top-left of viewport, below chrome) ── */
+/* ── Theme logo (top-left of viewport, scrolls with content) ── */
 .screen-theme-logo {
-  position: absolute;
-  top: 10px;
-  left: 10px;
+  display: block;
+  margin: 10px 0 0 10px;
   width: auto;
   max-width: 80px;
   height: auto;
   max-height: 48px;
   object-fit: contain;
-  z-index: 10;
   pointer-events: none;
 }
 
@@ -2875,8 +2873,7 @@ button.screen-power-btn.power-standby {
 
   /* Center theme logo on mobile */
   .screen-theme-logo {
-    left: 50%;
-    transform: translateX(-50%);
+    margin: 10px auto 0;
   }
 
   /* Simplify title bars on mobile */

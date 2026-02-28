@@ -181,10 +181,9 @@
 
     <!-- Content viewport: scrollable area where page sections live -->
     <div class="screen-viewport-wrap" :class="{ 'screen-viewport-wrap-skater': theme === 'skater', 'screen-viewport-wrap-kawaii': theme === 'kawaii' }" ref="viewportWrap">
-      <!-- Theme logo (top-left, below chrome) -->
-      <img :src="themeLogo" :alt="`${theme} Ditto logo`" class="screen-theme-logo" />
-
       <div class="screen-viewport" ref="viewport" v-show="!retroActiveUrl && !bubbleIframeUrl">
+        <!-- Theme logo (top-left, scrolls with content) -->
+        <img :src="themeLogo" :alt="`${theme} Ditto logo`" class="screen-theme-logo" />
         <slot />
       </div>
 
