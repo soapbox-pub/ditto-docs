@@ -250,7 +250,7 @@ export const themes: Y2KTheme[] = [
     colors: {
       background: '328 100% 54%',
       text: '285 25% 31%',
-      primary: '282 37% 53%',
+      primary: '279 100% 50%',
     },
     font: {
       family: 'Barriecito',
