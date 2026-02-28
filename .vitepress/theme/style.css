@@ -903,19 +903,35 @@ input.kawaii-terminal-input:focus {
 /* Kawaii terminal response toast */
 .kawaii-response {
   position: absolute;
-  top: 50%;
+  top: 8px;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translateX(-50%);
   z-index: 20;
   background: #fff0f6;
   border: 3px solid #e87aaf;
   border-radius: 16px;
-  padding: 20px 28px;
+  padding: 16px 36px 16px 20px;
   max-width: 80%;
   max-height: 60%;
   overflow-y: auto;
   box-shadow: 0 4px 24px rgba(200, 80, 140, 0.25);
   animation: kawaii-toast-in 0.3s ease-out;
+}
+
+.kawaii-response-close {
+  position: absolute;
+  top: 6px;
+  right: 10px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #e87aaf;
+  line-height: 1;
+  padding: 2px;
+  transition: color 0.15s;
+}
+
+.kawaii-response-close:hover {
+  color: #c0508a;
 }
 
 .kawaii-response-text {
@@ -932,11 +948,11 @@ input.kawaii-terminal-input:focus {
 @keyframes kawaii-toast-in {
   0% {
     opacity: 0;
-    transform: translate(-50%, -40%) scale(0.9);
+    transform: translateX(-50%) translateY(-10px);
   }
   100% {
     opacity: 1;
-    transform: translate(-50%, -50%) scale(1);
+    transform: translateX(-50%) translateY(0);
   }
 }
 

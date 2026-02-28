@@ -217,6 +217,7 @@
 
       <!-- Kawaii terminal response toast -->
       <div v-if="kawaiiResponseVisible && theme === 'kawaii'" class="kawaii-response">
+        <span class="kawaii-response-close" @click="kawaiiResponseVisible = false">&#x2715;</span>
         <pre class="kawaii-response-text">{{ kawaiiResponse }}</pre>
       </div>
     </div>
@@ -311,6 +312,9 @@ const kawaiiFortunes = [
   'Someone is thinking of you right now~ \u{1F4AD}',
   'Good things come to those who sparkle \u{2728}',
   "You're doing amazing sweetie \u{1F485}",
+  'The stars are aligned in your favor tonight \u{1F320}',
+  'A new friendship is about to blossom \u{1F33A}',
+  'Trust your heart, it knows the way \u{1F49E}',
 ];
 
 function runKawaiiCmd() {
@@ -320,35 +324,127 @@ function runKawaiiCmd() {
 
   let response: string;
 
-  if (cmd === 'help') {
-    response = 'Available commands: help, whoami, ls, pwd, cd, cat, echo, date, clear, sudo, rm -rf, cowsay, fortune, nyan, love, meow, ping, exit, uptime, neofetch, make, git, npm install, python';
-  } else if (cmd === 'whoami') {
-    response = 'You are \u{273F} a beautiful person \u{273F}';
-  } else if (cmd === 'ls') {
-    response = '\u{1F496} feelings.txt  \u{1F338} dreams/  \u{1F380} secrets.diary  \u{1F370} recipes/  \u{1F984} unicorn.png';
-  } else if (cmd === 'pwd') {
-    response = '/home/kawaii/~(\u02D8\u25BE\u02D8~)';
-  } else if (cmd === 'cd' || cmd.startsWith('cd ')) {
-    response = "There's no place like /home \u{1F3E0}";
-  } else if (cmd === 'cat' || cmd.startsWith('cat ')) {
-    response = '\u{1F431} meow~ (did you mean the animal?)';
-  } else if (cmd.startsWith('echo ')) {
-    response = raw.slice(5);
-  } else if (cmd === 'echo') {
-    response = '';
-  } else if (cmd === 'date') {
-    response = "It's always a good day to be cute! \u{1F308}";
-  } else if (cmd === 'clear') {
+  // ── Clear (special: no toast) ──
+  if (cmd === 'clear') {
     kawaiiCmd.value = '';
     kawaiiResponse.value = '';
     kawaiiResponseVisible.value = false;
     if (kawaiiResponseTimer) clearTimeout(kawaiiResponseTimer);
     return;
-  } else if (cmd.startsWith('sudo')) {
-    response = "\u{1F512} Permission denied~ You're already perfect! \u{2728}";
+  }
+
+  // ── Help ──
+  if (cmd === 'help' || cmd === '?') {
+    response = 'Available commands: help, whoami, ls, pwd, cd, cat, echo, date, sudo, rm, cowsay, fortune, nyan, love, meow, ping, exit, uptime, neofetch, make, git, npm, python, curl, touch, mkdir, mv, cp, top, kill, man, history, alias, which, yes, clear';
+  }
+  // ── System / filesystem ──
+  else if (cmd === 'whoami') {
+    response = 'You are \u{273F} a beautiful person \u{273F}';
+  } else if (cmd === 'ls' || cmd.startsWith('ls ')) {
+    response = '\u{1F496} feelings.txt  \u{1F338} dreams/  \u{1F380} secrets.diary\n\u{1F370} recipes/  \u{1F984} unicorn.png  \u{1F31F} wishes.log';
+  } else if (cmd === 'pwd') {
+    response = '/home/kawaii/\u{1F338}';
+  } else if (cmd === 'cd' || cmd.startsWith('cd ')) {
+    response = "There's no place like /home \u{1F3E0}";
+  } else if (cmd === 'cat' || cmd.startsWith('cat ')) {
+    response = '\u{1F431} meow~';
+  } else if (cmd === 'touch' || cmd.startsWith('touch ')) {
+    response = '\u{2728} *boop* \u{2728}';
+  } else if (cmd === 'mkdir' || cmd.startsWith('mkdir ')) {
+    response = '\u{1F3E0} Made a cozy little directory for you~ \u{1F338}';
+  } else if (cmd === 'mv' || cmd.startsWith('mv ')) {
+    response = '\u{1F4E6} Moved with care and love~ \u{1F49B}';
+  } else if (cmd === 'cp' || cmd.startsWith('cp ')) {
+    response = '\u{1F4CB} Copied! Sharing is caring~ \u{1F495}';
   } else if (cmd.startsWith('rm ')) {
     response = '\u{1F6AB} Nice try! Nothing can be deleted from your heart \u{1F495}';
-  } else if (cmd === 'cowsay' || cmd.startsWith('cowsay ')) {
+  } else if (cmd === 'rm') {
+    response = '\u{1F6AB} Delete what? Your worries? Done! \u{2728}';
+  } else if (cmd === 'chmod' || cmd.startsWith('chmod ')) {
+    response = '\u{1F512} Permissions set to: \u{2728}cute\u{2728} \u{1F513}';
+  }
+  // ── Echo ──
+  else if (cmd.startsWith('echo ')) {
+    response = raw.slice(5);
+  } else if (cmd === 'echo') {
+    response = '...';
+  }
+  // ── Info commands ──
+  else if (cmd === 'date') {
+    response = "It's always a good day to be cute! \u{1F308}";
+  } else if (cmd === 'time') {
+    response = "\u{23F0} It's sparkle o'clock! \u{2728}";
+  } else if (cmd === 'uptime') {
+    response = 'System has been cute for: \u{221E} days \u{1F380}';
+  } else if (cmd === 'top' || cmd === 'htop') {
+    response = 'PID 1: cuteness    CPU: 100%\nPID 2: sparkle     CPU: 99%\nPID 3: love        CPU: 98%\nAll systems running at maximum adorable \u{1F496}';
+  } else if (cmd === 'uname' || cmd === 'uname -a') {
+    response = 'KawaiiOS 1.0 sparkle-kernel \u{1F338} aarch-cute \u{1F496}';
+  } else if (cmd === 'free' || cmd === 'free -h') {
+    response = 'Memory: \u{221E}GB free (love is limitless) \u{1F49D}';
+  } else if (cmd === 'df' || cmd === 'df -h') {
+    response = '/dev/heart: \u{221E}TB available \u{1F496}';
+  } else if (cmd === 'neofetch') {
+    response = '\u{1F338} KawaiiOS v1.0\n\u{251C} User: cutie-patootie\n\u{251C} Shell: sparkle-sh\n\u{251C} Theme: Pink Forever\n\u{251C} CPU: 100% love\n\u{251C} Memory: \u{221E}GB hugs\n\u{2514} Uptime: forever \u{1F496}';
+  } else if (cmd === 'history') {
+    response = '1  loved someone\n2  ate cake\n3  petted a cat\n4  smiled at a stranger\n5  typed cute commands \u{1F338}';
+  } else if (cmd === 'which' || cmd.startsWith('which ')) {
+    response = '/usr/bin/\u{2728}sparkle\u{2728}';
+  } else if (cmd === 'alias' || cmd.startsWith('alias ')) {
+    response = "alias love='echo \u{1F496}'\nalias hug='echo \u{1F917}'";
+  } else if (cmd === 'man' || cmd.startsWith('man ')) {
+    response = 'MANUAL: Be kind. Be cute. Be you. \u{1F338}\n\nSee also: love(1), sparkle(1), hug(1)';
+  }
+  // ── Network ──
+  else if (cmd === 'ping' || cmd.startsWith('ping ')) {
+    response = '\u{1F3D3} Pong! \u{1F497}';
+  } else if (cmd === 'curl' || cmd.startsWith('curl ')) {
+    response = '\u{1F310} Fetching good vibes... 200 OK \u{2728}';
+  } else if (cmd === 'wget' || cmd.startsWith('wget ')) {
+    response = '\u{1F4E5} Downloaded: happiness.zip \u{1F381}';
+  } else if (cmd === 'ssh' || cmd.startsWith('ssh ')) {
+    response = '\u{1F511} Connected to: your heart \u{1F496}';
+  }
+  // ── Dev tools ──
+  else if (cmd.startsWith('sudo')) {
+    response = "\u{1F512} Permission denied~ You're already perfect! \u{2728}";
+  } else if (cmd === 'git' || cmd.startsWith('git ')) {
+    response = 'Already committed... to being adorable! \u{1F496}';
+  } else if (cmd === 'npm install' || cmd === 'npm i') {
+    response = 'Installing happiness... \u{2588}\u{2588}\u{2588}\u{2588}\u{2588}\u{2588}\u{2588}\u{2588}\u{2588}\u{2588} 100% \u{1F389}';
+  } else if (cmd.startsWith('npm ')) {
+    response = '\u{1F4E6} npm: no problems, mate! \u{1F389}';
+  } else if (cmd === 'python' || cmd === 'python3') {
+    response = '\u{1F40D} ssssuper cute!';
+  } else if (cmd === 'node' || cmd === 'node -v') {
+    response = '\u{1F49A} node v\u{221E}.0.0 (powered by love)';
+  } else if (cmd === 'rust' || cmd === 'cargo' || cmd.startsWith('cargo ')) {
+    response = '\u{1F980} Fearlessly cute! Memory-safe hugs \u{1F917}';
+  } else if (cmd === 'make' || cmd.startsWith('make ')) {
+    response = "make: *** No rule to make target 'sadness'. Stop. \u{1F308}";
+  } else if (cmd === 'gcc' || cmd === 'g++' || cmd.startsWith('gcc ') || cmd.startsWith('g++ ')) {
+    response = '\u{2699}\u{FE0F} Compiling cuteness... done! 0 errors, 0 warnings, \u{221E} sparkles \u{2728}';
+  } else if (cmd === 'docker' || cmd.startsWith('docker ')) {
+    response = '\u{1F433} Containerized joy, shipping worldwide~ \u{1F30D}';
+  } else if (cmd === 'vim' || cmd === 'vi') {
+    response = '\u{1F4DD} How do you exit vim? With love~ \u{1F496} (just kidding, :q!)';
+  } else if (cmd === 'emacs') {
+    response = '\u{1F4DD} M-x butterfly \u{1F98B}';
+  } else if (cmd === 'nano') {
+    response = '\u{1F4DD} Tiny editor, big heart \u{1F49C}';
+  }
+  // ── Process control ──
+  else if (cmd === 'kill' || cmd.startsWith('kill ')) {
+    response = '\u{1F494} Violence is never the answer! Sending hugs instead \u{1F917}';
+  } else if (cmd === 'exit' || cmd === 'quit' || cmd === 'logout') {
+    response = 'You can never leave~ \u{1F338} (but you can switch themes!)';
+  } else if (cmd === 'reboot' || cmd === 'restart') {
+    response = '\u{1F504} Rebooting with extra sparkle... \u{2728}\u{2728}\u{2728}';
+  } else if (cmd === 'shutdown' || cmd === 'poweroff') {
+    response = '\u{1F4A4} Goodnight sweet prince/princess~ \u{1F319}';
+  }
+  // ── Fun commands ──
+  else if (cmd === 'cowsay' || cmd.startsWith('cowsay ')) {
     response = '  ________\n< moo~ \u{1F404} >\n  --------\n        \\   ^__^\n         \\  (oo)\\_______\n            (__)\\       )\n                ||----w |\n                ||     ||';
   } else if (cmd === 'fortune') {
     response = kawaiiFortunes[Math.floor(Math.random() * kawaiiFortunes.length)];
@@ -358,23 +454,86 @@ function runKawaiiCmd() {
     response = '\u{1F495}\u{1F497}\u{1F496}\u{1F49D}\u{1F498} Love overload! \u{1F498}\u{1F49D}\u{1F496}\u{1F497}\u{1F495}';
   } else if (cmd === 'meow') {
     response = '\u{1F431} purrrrr~';
-  } else if (cmd === 'ping') {
-    response = '\u{1F3D3} Pong! \u{1F497}';
-  } else if (cmd === 'exit') {
-    response = 'You can never leave~ \u{1F338} (but you can switch themes!)';
-  } else if (cmd === 'uptime') {
-    response = 'System has been cute for: \u{221E} days \u{1F380}';
-  } else if (cmd === 'neofetch') {
-    response = '\u{1F338} KawaiiOS v1.0\n\u{251C} User: cutie-patootie\n\u{251C} Shell: sparkle-sh\n\u{251C} Theme: Pink Forever\n\u{251C} CPU: 100% love\n\u{2514} Uptime: forever \u{1F496}';
-  } else if (cmd === 'make' || cmd.startsWith('make ')) {
-    response = "make: *** No rule to make target 'sadness'. Stop. \u{1F308}";
-  } else if (cmd === 'git' || cmd.startsWith('git ')) {
-    response = 'Already committed... to being adorable! \u{1F496}';
-  } else if (cmd === 'npm install' || cmd === 'npm i') {
-    response = 'Installing happiness... \u{2588}\u{2588}\u{2588}\u{2588}\u{2588}\u{2588}\u{2588}\u{2588}\u{2588}\u{2588} 100% \u{1F389}';
-  } else if (cmd === 'python' || cmd === 'python3') {
-    response = '\u{1F40D} ssssuper cute!';
-  } else {
+  } else if (cmd === 'woof' || cmd === 'bark') {
+    response = '\u{1F436} woof woof! *tail wagging intensifies*';
+  } else if (cmd === 'moo') {
+    response = '\u{1F42E} mooooo~';
+  } else if (cmd === 'quack') {
+    response = '\u{1F986} quack quack quack!';
+  } else if (cmd === 'yes' || cmd.startsWith('yes ')) {
+    response = 'yes! yes! yes! yes! yes! \u{2728}\n(you are loved infinitely)';
+  } else if (cmd === 'no') {
+    response = "no? that's okay too \u{1F49C} boundaries are beautiful~";
+  } else if (cmd === 'lol' || cmd === 'haha' || cmd === 'lmao') {
+    response = '\u{1F602} hehehehe~ laughter is the best medicine \u{1F338}';
+  } else if (cmd === 'please' || cmd === 'pls') {
+    response = 'Since you asked so nicely... \u{2728}\u{1F496}\u{2728}';
+  } else if (cmd === 'thanks' || cmd === 'thank you' || cmd === 'ty') {
+    response = "You're welcome~ \u{1F338} It's my pleasure!";
+  } else if (cmd === 'sorry') {
+    response = "It's okay! \u{1F917} Everyone makes mistakes \u{1F308}";
+  } else if (cmd === 'why') {
+    response = 'Because you deserve nice things \u{1F496}';
+  } else if (cmd === 'when') {
+    response = 'Right meow! \u{1F431}';
+  } else if (cmd === 'where') {
+    response = 'Right here, in your heart \u{1F49D}';
+  } else if (cmd === 'how') {
+    response = 'With love and determination \u{2728}';
+  } else if (cmd === 'what') {
+    response = 'Whatever makes you happy! \u{1F308}';
+  } else if (cmd === 'who') {
+    response = 'You! You wonderful person \u{1F31F}';
+  }
+  // ── Greetings ──
+  else if (cmd === 'hello' || cmd === 'hi' || cmd === 'hey' || cmd === 'hola' || cmd === 'yo') {
+    response = 'Hello friend! \u{1F44B}\u{1F338} Welcome to KawaiiOS~';
+  } else if (cmd === 'hello world' || cmd === 'hello, world' || cmd === 'hello, world!') {
+    response = 'Hello, beautiful world! \u{1F30D}\u{1F496} Your first program is always special~';
+  } else if (cmd === 'goodbye' || cmd === 'bye' || cmd === 'bye bye') {
+    response = 'See you later, cutie! \u{1F44B}\u{1F338} Come back soon~';
+  } else if (cmd === 'good morning' || cmd === 'gm') {
+    response = 'Good morning sunshine! \u{2600}\u{FE0F}\u{1F338} Today is going to be amazing~';
+  } else if (cmd === 'good night' || cmd === 'gn') {
+    response = 'Sweet dreams~ \u{1F319}\u{2728} Sleep tight, don\'t let the bugs bite!';
+  } else if (cmd === 'i love you' || cmd === 'ily') {
+    response = 'I love you too! \u{1F49D}\u{1F49D}\u{1F49D}';
+  }
+  // ── Ditto / Nostr related ──
+  else if (cmd === 'ditto' || cmd === 'nostr') {
+    response = '\u{1FA90} Ditto: Fun social media, powered by Nostr \u{1F338}';
+  } else if (cmd === 'bitcoin' || cmd === 'btc') {
+    response = '\u{20BF} To the moon~ \u{1F680}\u{1F319}';
+  } else if (cmd === 'zap') {
+    response = '\u{26A1} Zapped with love! \u{1F49B}\u{26A1}';
+  }
+  // ── Random / misc ──
+  else if (cmd === 'matrix' || cmd === 'hack' || cmd === 'hacker') {
+    response = '\u{1F469}\u{200D}\u{1F4BB} Access granted~ Welcome, elite cutie \u{1F338}';
+  } else if (cmd === 'party') {
+    response = '\u{1F389}\u{1F388}\u{1F973}\u{1F38A}\u{1F389} Party time! \u{1F389}\u{1F38A}\u{1F973}\u{1F388}\u{1F389}';
+  } else if (cmd === 'dance') {
+    response = '\u{1F483}\u{1F57A}\u{2728} *dances cutely* \u{2728}\u{1F57A}\u{1F483}';
+  } else if (cmd === 'sing') {
+    response = '\u{1F3B5} la la la~ \u{1F3B6} do re mi~ \u{1F3B5} you are beautiful to me~ \u{1F3B6}';
+  } else if (cmd === 'sleep') {
+    response = '\u{1F634} zzz... \u{1F4A4} *dreaming of cute things*';
+  } else if (cmd === 'eat' || cmd === 'food' || cmd === 'hungry') {
+    response = '\u{1F370}\u{1F369}\u{1F36D}\u{1F366}\u{1F382} Dessert time! \u{1F382}\u{1F366}\u{1F36D}\u{1F369}\u{1F370}';
+  } else if (cmd === 'coffee' || cmd === 'tea') {
+    response = '\u{2615} Here you go~ Stay cozy! \u{1F338}';
+  } else if (cmd === 'rain' || cmd === 'weather') {
+    response = '\u{2602}\u{FE0F} Partly cloudy with a chance of sparkles \u{2728}';
+  } else if (cmd === 'music') {
+    response = '\u{1F3B5}\u{1F3B6}\u{1F3B5} *plays lo-fi kawaii beats* \u{1F3B6}\u{1F3B5}\u{1F3B6}';
+  } else if (cmd === '42') {
+    response = 'The answer to life, the universe, and everything \u{1F30C}\u{2728}';
+  } else if (cmd === 'banana') {
+    rainBananas();
+    response = '\u{1F34C} BANANA! \u{1F34C}';
+  }
+  // ── Fallback ──
+  else {
     response = `command not found: ${raw} \u{1F4AD} try 'help'!`;
   }
 
