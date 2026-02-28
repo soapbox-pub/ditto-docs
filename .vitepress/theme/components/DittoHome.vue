@@ -21,12 +21,8 @@
       :style="{ background: overlayColor }"
     />
 
-    <!-- Content wrapper: clipped so content is hidden in the top/bottom
-         margins of the viewport, while the background image stays visible -->
-    <div class="ditto-home-content">
-
     <!-- ============================================================
-         TRANSPARENT NAV: Overlays the hero
+         TRANSPARENT NAV: Overlays the hero (outside clipped content)
          ============================================================ -->
     <nav class="home-nav">
       <div class="home-nav-inner">
@@ -45,6 +41,10 @@
         </div>
       </div>
     </nav>
+
+    <!-- Content wrapper: clipped so content is hidden in the top/bottom
+         margins of the viewport, while the background image stays visible -->
+    <div class="ditto-home-content">
 
     <!-- ============================================================
          HERO: Giant title, floating emojis, pure energy
