@@ -13,7 +13,33 @@
           </div>
         </div>
         <div class="screen-menubar">
-          <span>File</span><span>Edit</span><span>View</span><span>Image</span><span>Options</span><span>Help</span>
+          <span class="win-menu-item">File</span>
+          <span class="win-menu-item">Edit</span>
+          <span class="win-menu-item">View</span>
+          <span class="win-menu-item">Image</span>
+          <span class="win-menu-item">Options</span>
+          <span class="win-menu-item win-menu-help" @click.stop="paintHelpOpen = !paintHelpOpen">
+            Help
+            <!-- Win95 Help dropdown menu -->
+            <div v-if="paintHelpOpen" class="win-help-dropdown" @click.stop>
+              <div class="win-help-heading">Help Topics</div>
+              <div class="win-help-separator"></div>
+              <div class="win-help-group-label">Learn</div>
+              <a href="/learn/what-is-nostr" class="win-help-link">What is Nostr?</a>
+              <a href="/learn/getting-started" class="win-help-link">Getting Started</a>
+              <a href="/learn/why-ditto" class="win-help-link">Why Ditto?</a>
+              <div class="win-help-separator"></div>
+              <div class="win-help-group-label">Guides</div>
+              <a href="/guides/themes" class="win-help-link">Custom Themes</a>
+              <a href="/guides/self-hosting" class="win-help-link">Self-Hosting</a>
+              <a href="/guides/configuration" class="win-help-link">Configuration</a>
+              <div class="win-help-separator"></div>
+              <div class="win-help-group-label">Specs</div>
+              <a href="/specs/kinds" class="win-help-link">Event Kinds</a>
+              <div class="win-help-separator"></div>
+              <a href="https://ditto.pub" class="win-help-link" target="_blank">About Ditto...</a>
+            </div>
+          </span>
         </div>
       </div>
     </template>
@@ -176,6 +202,16 @@ const props = defineProps<{
 
 const viewport = ref<HTMLElement | null>(null);
 
+// ── MS Paint Help menu (easter egg) ──
+const paintHelpOpen = ref(false);
+
+function closePaintHelp(e: MouseEvent) {
+  // Close the help menu when clicking anywhere outside it
+  if (paintHelpOpen.value) {
+    paintHelpOpen.value = false;
+  }
+}
+
 // ── Retropop browser navigation (easter egg) ──
 const retroPages = [
   { url: null, label: 'ditto.pub' },
@@ -220,6 +256,7 @@ function onCrtAnimationEnd() {
 watch(() => props.theme, () => {
   crtState.value = 'on';
   retroPageIndex.value = 0;
+  paintHelpOpen.value = false;
 });
 
 // ── Scroll forwarding ──
@@ -234,6 +271,12 @@ function onWheel(e: WheelEvent) {
   }
 }
 
-onMounted(() => window.addEventListener('wheel', onWheel, { passive: true }));
-onUnmounted(() => window.removeEventListener('wheel', onWheel));
+onMounted(() => {
+  window.addEventListener('wheel', onWheel, { passive: true });
+  window.addEventListener('click', closePaintHelp);
+});
+onUnmounted(() => {
+  window.removeEventListener('wheel', onWheel);
+  window.removeEventListener('click', closePaintHelp);
+});
 </script>
