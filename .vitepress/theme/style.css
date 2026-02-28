@@ -126,16 +126,17 @@
 }
 
 .ditto-home p,
-.ditto-home span,
 .ditto-home a,
 .ditto-home li,
-.ditto-home code,
-.ditto-home .hero-sub,
-.ditto-home .power-content,
-.ditto-home .ownership-inner p,
-.ditto-home .vibes p,
-.ditto-home .section-header p {
+.ditto-home code {
   font-family: var(--theme-body-font, 'Inter', sans-serif);
+}
+
+/* Spans inside headings inherit the display font, not body font */
+.ditto-home h1 span,
+.ditto-home h2 span,
+.ditto-home h3 span {
+  font-family: inherit;
 }
 
 /* Wallpaper layer (fixed, behind everything) */
