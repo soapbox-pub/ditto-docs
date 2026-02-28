@@ -123,8 +123,20 @@
     </template>
 
     <!-- Content viewport: scrollable area where page sections live -->
-    <div class="screen-viewport" ref="viewport">
-      <slot />
+    <div class="screen-viewport-wrap" :class="{ 'screen-viewport-wrap-skater': theme === 'skater' }">
+      <div class="screen-viewport" ref="viewport">
+        <slot />
+      </div>
+
+      <!-- CRT power-off overlay (Skater theme easter egg) -->
+      <div
+        v-if="theme === 'skater'"
+        class="crt-overlay"
+        :class="{ 'crt-shutting-down': crtState === 'shutting-down', 'crt-off': crtState === 'off', 'crt-turning-on': crtState === 'turning-on' }"
+        @animationend="onCrtAnimationEnd"
+      >
+        <div class="crt-scanline"></div>
+      </div>
     </div>
 
     <!-- ── Bottom bars for specific themes ── -->
@@ -135,7 +147,7 @@
       </div>
     </div>
     <div v-else-if="theme === 'skater'" class="screen-bottom screen-bottom-skater">
-      <span class="screen-power-btn">&#x23FB;</span>
+      <span class="screen-power-btn" :class="{ 'power-standby': crtState === 'off' }" @click="toggleCrt">&#x23FB;</span>
     </div>
     <div v-else-if="theme === 'mspaint'" class="screen-bottom screen-bottom-mspaint">
       <div class="screen-statusbar">
@@ -146,16 +158,45 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from 'vue';
+import { ref, onMounted, onUnmounted, watch } from 'vue';
 
-defineProps<{
+const props = defineProps<{
   theme: string;
 }>();
 
 const viewport = ref<HTMLElement | null>(null);
 
+// ── CRT power toggle (Skater theme easter egg) ──
+type CrtState = 'on' | 'shutting-down' | 'off' | 'turning-on';
+const crtState = ref<CrtState>('on');
+
+function toggleCrt() {
+  if (crtState.value === 'on') {
+    crtState.value = 'shutting-down';
+  } else if (crtState.value === 'off') {
+    crtState.value = 'turning-on';
+  }
+  // Ignore clicks during animations
+}
+
+function onCrtAnimationEnd() {
+  if (crtState.value === 'shutting-down') {
+    crtState.value = 'off';
+  } else if (crtState.value === 'turning-on') {
+    crtState.value = 'on';
+  }
+}
+
+// Reset CRT state when switching away from Skater
+watch(() => props.theme, () => {
+  crtState.value = 'on';
+});
+
+// ── Scroll forwarding ──
 function onWheel(e: WheelEvent) {
   if (!viewport.value) return;
+  // Don't forward scrolls when CRT is off
+  if (props.theme === 'skater' && crtState.value !== 'on') return;
   // If the scroll didn't originate inside the viewport, forward it
   if (!viewport.value.contains(e.target as Node)) {
     viewport.value.scrollTop += e.deltaY;

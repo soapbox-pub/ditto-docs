@@ -177,6 +177,18 @@
   user-select: none;
 }
 
+/* ── Viewport wrapper (needed for CRT overlay positioning) ── */
+.screen-viewport-wrap {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.screen-viewport-wrap-skater {
+  position: relative;
+}
+
 /* ── Viewport (scrollable content) ── */
 .screen-viewport {
   flex: 1;
@@ -663,6 +675,171 @@
 .screen-skater .screen-bottom-skater {
   background: #c8c8c8;
   color: #666;
+}
+
+/* ── Skater: CRT power-off easter egg ── */
+
+/* Power button interactivity */
+.screen-power-btn {
+  cursor: pointer;
+  transition: opacity 0.2s, text-shadow 0.3s, color 0.3s;
+  user-select: none;
+}
+
+.screen-power-btn:hover {
+  opacity: 1 !important;
+  text-shadow: 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+.screen-power-btn:active {
+  transform: scale(0.92);
+}
+
+/* Standby state: green LED glow */
+.screen-power-btn.power-standby {
+  color: #b0ff00;
+  opacity: 1 !important;
+  text-shadow: 0 0 8px #b0ff00, 0 0 16px rgba(176, 255, 0, 0.4);
+}
+
+/* CRT overlay — covers the viewport area */
+.crt-overlay {
+  position: absolute;
+  /* Match the viewport inset from the screen-skater styles */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 10;
+  overflow: hidden;
+}
+
+/* The scanline element: the collapsing white line */
+.crt-scanline {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+}
+
+/* ── Shutdown animation ── */
+.crt-overlay.crt-shutting-down {
+  animation: crt-shutdown 0.6s ease-in forwards;
+}
+
+.crt-overlay.crt-shutting-down .crt-scanline {
+  animation: crt-scanline-shutdown 0.6s ease-in forwards;
+}
+
+@keyframes crt-shutdown {
+  0% {
+    background: transparent;
+  }
+  20% {
+    background: rgba(0, 0, 0, 0.3);
+  }
+  45% {
+    background: rgba(0, 0, 0, 0.95);
+  }
+  100% {
+    background: #000;
+  }
+}
+
+@keyframes crt-scanline-shutdown {
+  0% {
+    background: transparent;
+    clip-path: inset(0 0 0 0);
+  }
+  /* Collapse vertically to a thin line */
+  20% {
+    background: transparent;
+    clip-path: inset(0 0 0 0);
+  }
+  50% {
+    background: rgba(255, 255, 255, 0.95);
+    clip-path: inset(49% 0 49% 0);
+    box-shadow: 0 0 30px 10px rgba(255, 255, 255, 0.5);
+  }
+  55% {
+    background: rgba(255, 255, 255, 0.9);
+    clip-path: inset(49.5% 0 49.5% 0);
+  }
+  /* Line shrinks horizontally to a dot */
+  80% {
+    background: rgba(255, 255, 255, 0.8);
+    clip-path: inset(49.5% 45% 49.5% 45%);
+  }
+  90% {
+    background: rgba(255, 255, 255, 0.4);
+    clip-path: inset(49.8% 49% 49.8% 49%);
+  }
+  100% {
+    background: transparent;
+    clip-path: inset(50% 50% 50% 50%);
+  }
+}
+
+/* ── Off state: solid black screen ── */
+.crt-overlay.crt-off {
+  background: #000;
+}
+
+/* ── Power-on animation ── */
+.crt-overlay.crt-turning-on {
+  animation: crt-poweron 0.5s ease-out forwards;
+}
+
+.crt-overlay.crt-turning-on .crt-scanline {
+  animation: crt-scanline-poweron 0.5s ease-out forwards;
+}
+
+@keyframes crt-poweron {
+  0% {
+    background: #000;
+  }
+  40% {
+    background: rgba(0, 0, 0, 0.95);
+  }
+  80% {
+    background: rgba(0, 0, 0, 0.3);
+  }
+  100% {
+    background: transparent;
+  }
+}
+
+@keyframes crt-scanline-poweron {
+  0% {
+    background: transparent;
+    clip-path: inset(50% 50% 50% 50%);
+  }
+  /* Dot appears */
+  15% {
+    background: rgba(255, 255, 255, 0.6);
+    clip-path: inset(49.8% 49% 49.8% 49%);
+  }
+  /* Dot expands to horizontal line */
+  40% {
+    background: rgba(255, 255, 255, 0.9);
+    clip-path: inset(49.5% 5% 49.5% 5%);
+  }
+  50% {
+    background: rgba(255, 255, 255, 0.95);
+    clip-path: inset(49% 0 49% 0);
+  }
+  /* Line expands vertically to full screen flash */
+  75% {
+    background: rgba(255, 255, 255, 0.4);
+    clip-path: inset(10% 0 10% 0);
+  }
+  100% {
+    background: transparent;
+    clip-path: inset(0 0 0 0);
+  }
 }
 
 /* ==========================================================================
