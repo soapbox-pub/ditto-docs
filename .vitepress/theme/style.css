@@ -162,7 +162,7 @@
   bottom: 24px;
   left: 50%;
   transform: translateX(-50%);
-  width: min(55vw, calc(100vw - 48px));
+  width: min(62vw, calc(100vw - 48px));
   z-index: 2;
   display: flex;
   flex-direction: column;
@@ -1840,7 +1840,7 @@
 /* ── Tablet ── */
 @media (max-width: 1024px) {
   .screen-frame {
-    width: min(80vw, calc(100vw - 32px));
+    width: min(85vw, calc(100vw - 32px));
     top: 12px;
     bottom: 16px;
   }
@@ -1934,7 +1934,7 @@
 
   .theme-switcher { bottom: 16px; right: 16px; }
   .theme-fab { width: 48px; height: 48px; font-size: 20px; }
-  .theme-panel { width: 260px; bottom: 60px; }
+  .theme-panel { width: 260px; bottom: 60px; background: #141419 !important; }
 }
 
 @media (max-width: 480px) {
