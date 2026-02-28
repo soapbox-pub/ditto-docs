@@ -117,11 +117,11 @@
     <template v-else-if="theme === 'bubblegum'">
       <div class="screen-chrome">
         <div class="screen-tab-bar">
-          <span class="screen-tab active"></span>
-          <span class="screen-tab"></span>
+          <span class="screen-tab" :class="{ active: bubbleTab === 0 }" @click="bubbleTab = 0">Ditto</span>
+          <span class="screen-tab" :class="{ active: bubbleTab === 1 }" @click="bubbleTab = 1">Blobbi</span>
         </div>
         <div class="screen-titlebar">
-          <div class="screen-url-bar">ditto.pub</div>
+          <div class="screen-url-bar">{{ bubbleTab === 0 ? 'ditto.pub' : 'blobbi.pet' }}</div>
           <div class="screen-titlebar-buttons">
             <span class="screen-btn-bubble screen-btn-interactive" @click="minimizeWindow">_</span>
             <span class="screen-btn-bubble">[]</span>
@@ -171,7 +171,7 @@
 
     <!-- Content viewport: scrollable area where page sections live -->
     <div class="screen-viewport-wrap" :class="{ 'screen-viewport-wrap-skater': theme === 'skater', 'screen-viewport-wrap-kawaii': theme === 'kawaii' }" ref="viewportWrap">
-      <div class="screen-viewport" ref="viewport" v-show="!retroActiveUrl">
+      <div class="screen-viewport" ref="viewport" v-show="!retroActiveUrl && !bubbleIframeUrl">
         <slot />
       </div>
 
@@ -180,6 +180,16 @@
         v-if="retroActiveUrl"
         class="retro-iframe"
         :src="retroActiveUrl"
+        frameborder="0"
+        allowfullscreen
+        referrerpolicy="no-referrer"
+      ></iframe>
+
+      <!-- Bubblegum Blobbi tab iframe -->
+      <iframe
+        v-if="bubbleIframeUrl"
+        class="retro-iframe"
+        :src="bubbleIframeUrl"
         frameborder="0"
         allowfullscreen
         referrerpolicy="no-referrer"
@@ -265,6 +275,14 @@ function closePaintHelp(e: MouseEvent) {
   }
 }
 
+// ── Bubblegum tab switching (easter egg) ──
+const bubbleTab = ref(0);
+
+const bubbleIframeUrl = computed(() => {
+  if (props.theme !== 'bubblegum' || bubbleTab.value === 0) return null;
+  return 'https://www.blobbi.pet/';
+});
+
 // ── Retropop browser navigation (easter egg) ──
 const retroPages = [
   { url: null, label: 'ditto.pub' },
@@ -309,6 +327,7 @@ function onCrtAnimationEnd() {
 watch(() => props.theme, () => {
   crtState.value = 'on';
   retroPageIndex.value = 0;
+  bubbleTab.value = 0;
   paintHelpOpen.value = false;
   windowState.value = 'normal';
   showCloseConfirm.value = false;
@@ -319,7 +338,7 @@ function onWheel(e: WheelEvent) {
   if (!viewport.value) return;
   // Don't forward scrolls when CRT is off or iframe is active
   if (props.theme === 'skater' && crtState.value !== 'on') return;
-  if (retroActiveUrl.value) return;
+  if (retroActiveUrl.value || bubbleIframeUrl.value) return;
   // If the scroll didn't originate inside the viewport, forward it
   if (!viewport.value.contains(e.target as Node)) {
     viewport.value.scrollTop += e.deltaY;
