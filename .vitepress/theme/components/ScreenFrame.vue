@@ -32,6 +32,9 @@
   <!-- ── Main screen frame ── -->
   <div v-show="windowState === 'normal'" class="screen-frame" :class="`screen-${theme}`">
 
+    <!-- Theme logo (top-left corner) -->
+    <img :src="themeLogo" :alt="`${theme} Ditto logo`" class="screen-theme-logo" />
+
     <!-- ── MS PAINT ── Win95 application window -->
     <template v-if="theme === 'mspaint'">
       <div class="screen-chrome">
@@ -276,6 +279,8 @@ const props = defineProps<{
 
 const viewport = ref<HTMLElement | null>(null);
 const viewportWrap = ref<HTMLElement | null>(null);
+
+const themeLogo = computed(() => `/${props.theme}-logo.png`);
 
 // ── Window minimize/close ──
 type WindowState = 'normal' | 'minimized' | 'closed';
