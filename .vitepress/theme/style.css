@@ -2854,6 +2854,17 @@ button.screen-power-btn.power-standby {
   .screen-gamer-hud { display: none; }
   .screen-titlebar-text { font-size: 11px; }
 
+  /* Taskbars: stack vertically on mobile */
+  .taskbar-row {
+    flex-direction: column;
+    align-items: flex-start;
+    left: 8px;
+  }
+
+  .taskbar {
+    width: min(280px, calc(100vw - 32px));
+  }
+
   /* MS Paint: soften the square edges */
   .screen-mspaint { border-radius: 24px !important; }
   .screen-mspaint .screen-viewport { border-radius: 0; margin: 0; }
