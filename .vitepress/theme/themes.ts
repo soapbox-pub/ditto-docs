@@ -165,8 +165,8 @@ export const themes: Y2KTheme[] = [
     label: 'Kawaii',
     emoji: '\u{1F338}', // 🌸
     colors: {
-      background: '351 100% 86%',
-      text: '270 30% 20%',
+      background: '340 60% 95%',
+      text: '345 30% 35%',
       primary: '340 100% 96%',
     },
     font: {
