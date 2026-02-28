@@ -1134,9 +1134,9 @@ input.kawaii-terminal-input:focus {
 /* ── Bubblegum: Y2K browser ── */
 .screen-bubblegum {
   background: #f9c0d8;
-  border: 4px solid #2d1050;
+  border: 4px solid #1a0a3a;
   border-radius: 16px;
-  box-shadow: 0 8px 40px rgba(100, 20, 80, 0.3);
+  box-shadow: 0 8px 40px rgba(30, 10, 60, 0.35);
 }
 
 .screen-bubblegum .screen-tab-bar {
@@ -1146,7 +1146,7 @@ input.kawaii-terminal-input:focus {
 
 .screen-bubblegum .screen-tab {
   background: #f0c860;
-  border: 2px solid #2d1050;
+  border: 2px solid #1a0a3a;
   width: 160px;
   cursor: pointer;
   display: flex;
@@ -1154,7 +1154,7 @@ input.kawaii-terminal-input:focus {
   justify-content: center;
   font-size: 11px;
   font-weight: 700;
-  color: #2d1050;
+  color: #1a0a3a;
   transition: background 0.15s;
 }
 
@@ -1183,27 +1183,79 @@ input.kawaii-terminal-input:focus {
 }
 
 .screen-bubblegum .screen-titlebar {
-  background: #f4c8d8;
-  border-bottom: 2px solid #2d1050;
+  background: #ff3399;
+  border-bottom: 3px solid #1a0a3a;
   padding: 6px 10px;
 }
 
 .screen-bubblegum .screen-nav-btn {
   background: transparent;
-  color: #2d1050;
-  border: 2px solid #2d1050;
+  color: #1a0a3a;
+  border: 2px solid #1a0a3a;
   font-size: 12px;
   border-radius: 4px;
 }
 
 .screen-bubblegum .screen-url-bar {
   background: #fff;
-  border: 2px solid #2d1050;
-  color: #2d1050;
+  border: 2px solid #1a0a3a;
+  color: #1a0a3a;
   font-family: 'Luckiest Guy', cursive;
 }
 
 .screen-bubblegum .screen-btn-bubble {
+  width: 24px;
+  height: 22px;
+  background: transparent;
+  border: 2px solid #1a0a3a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 900;
+  color: #1a0a3a;
+  cursor: default;
+  border-radius: 2px;
+}
+
+.screen-bubblegum .screen-viewport {
+  background: #fdf0e8;
+}
+
+/* ── Retro Pop: Stylized browser ── */
+.screen-retropop {
+  background: #f9c0d8;
+  border: 4px solid #2d1050;
+  border-radius: 16px;
+  box-shadow: 0 8px 40px rgba(100, 20, 80, 0.3);
+}
+
+.screen-retropop .screen-titlebar {
+  background: #f4c8d8;
+  border-bottom: 2px solid #2d1050;
+  padding: 8px 12px;
+}
+
+.screen-retropop .screen-circle {
+  background: #fff;
+  border: 2px solid #2d1050;
+}
+
+.screen-retropop .screen-nav-btn {
+  background: transparent;
+  border: 2px solid #2d1050;
+  color: #2d1050;
+  font-weight: 900;
+  border-radius: 4px;
+}
+
+.screen-retropop .screen-url-bar {
+  background: #fff;
+  border: 2px solid #2d1050;
+  color: #2d1050;
+}
+
+.screen-retropop .screen-btn-retro {
   width: 24px;
   height: 22px;
   background: #f4c8d8;
@@ -1218,60 +1270,8 @@ input.kawaii-terminal-input:focus {
   border-radius: 2px;
 }
 
-.screen-bubblegum .screen-viewport {
-  background: #fff5f8;
-}
-
-/* ── Retro Pop: Stylized browser ── */
-.screen-retropop {
-  background: #f9c0d8;
-  border: 4px solid #1a0a3a;
-  border-radius: 16px;
-  box-shadow: 0 8px 40px rgba(30, 10, 60, 0.35);
-}
-
-.screen-retropop .screen-titlebar {
-  background: #ff3399;
-  border-bottom: 3px solid #1a0a3a;
-  padding: 8px 12px;
-}
-
-.screen-retropop .screen-circle {
-  background: #fff;
-  border: 2px solid #1a0a3a;
-}
-
-.screen-retropop .screen-nav-btn {
-  background: transparent;
-  border: 2px solid #1a0a3a;
-  color: #1a0a3a;
-  font-weight: 900;
-  border-radius: 4px;
-}
-
-.screen-retropop .screen-url-bar {
-  background: #fff;
-  border: 2px solid #1a0a3a;
-  color: #1a0a3a;
-}
-
-.screen-retropop .screen-btn-retro {
-  width: 24px;
-  height: 22px;
-  background: transparent;
-  border: 2px solid #1a0a3a;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 11px;
-  font-weight: 900;
-  color: #1a0a3a;
-  cursor: default;
-  border-radius: 2px;
-}
-
 .screen-retropop .screen-viewport {
-  background: #fdf0e8;
+  background: #fff5f8;
 }
 
 /* Retropop nav buttons: interactive (easter egg) */
@@ -1603,28 +1603,28 @@ button.screen-power-btn.power-standby {
 
 /* Bubblegum: purple on pink */
 .screen-bubblegum .screen-viewport {
-  scrollbar-color: #9040a0 #fff5f8;
-}
-.screen-bubblegum .screen-viewport::-webkit-scrollbar-track {
-  background: #fce4f0;
-}
-.screen-bubblegum .screen-viewport::-webkit-scrollbar-thumb {
-  background: #9040a0;
-  border-radius: 10px;
-  border: 2px solid #fce4f0;
-}
-
-/* Retro Pop: navy on cream */
-.screen-retropop .screen-viewport {
   scrollbar-color: #ff3399 #fdf0e8;
 }
-.screen-retropop .screen-viewport::-webkit-scrollbar-track {
+.screen-bubblegum .screen-viewport::-webkit-scrollbar-track {
   background: #fdf0e8;
 }
-.screen-retropop .screen-viewport::-webkit-scrollbar-thumb {
+.screen-bubblegum .screen-viewport::-webkit-scrollbar-thumb {
   background: #ff3399;
   border-radius: 10px;
   border: 2px solid #fdf0e8;
+}
+
+/* Retro Pop: purple on pink */
+.screen-retropop .screen-viewport {
+  scrollbar-color: #9040a0 #fff5f8;
+}
+.screen-retropop .screen-viewport::-webkit-scrollbar-track {
+  background: #fce4f0;
+}
+.screen-retropop .screen-viewport::-webkit-scrollbar-thumb {
+  background: #9040a0;
+  border-radius: 10px;
+  border: 2px solid #fce4f0;
 }
 
 /* Skater: chartreuse on gray */
