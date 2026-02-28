@@ -35,18 +35,18 @@
           <span class="hero-name">Ditto</span>
         </h1>
         <p class="hero-sub">
-          A social platform for people who want to <em>express themselves</em>,
-          not feed an algorithm. Open source, decentralized, and entirely yours to customize.
+           A social platform for people who want to <em>have fun</em>,
+          not feed an algorithm. Open source, decentralized, and entirely yours to customize and build upon.
         </p>
         <div class="hero-actions">
-          <a href="https://ditto.pub" target="_blank" class="btn btn-primary">
-            <span>Open Ditto</span>
-          </a>
           <a href="/learn/what-is-nostr" class="btn btn-ghost">
             What is Nostr?
           </a>
           <a href="/guides/themes" class="btn btn-ghost">
             Guides
+          </a>
+          <a href="https://ditto.pub" target="_blank" class="btn btn-primary">
+            <span>Launch Ditto &#8599;</span>
           </a>
         </div>
       </div>
@@ -58,8 +58,8 @@
     <section class="themes-section">
       <div class="section-inner">
         <div class="section-header">
-          <h2>Your vibe. Your colors. Your rules.</h2>
-          <p>7 built-in Y2K themes. Wild fonts. Background art. Make it look like <em>you</em>.</p>
+          <h2>Your vibe. Your content. Your rules.</h2>
+          <p>Customize and share themes with colors, background art, fonts, and more.</p>
         </div>
         <div class="theme-grid">
           <button

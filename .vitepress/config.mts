@@ -47,7 +47,7 @@ export default defineConfig({
         ],
       },
       {
-        text: 'Open Ditto',
+        text: 'Launch Ditto ↗',
         link: 'https://ditto.pub',
       },
     ],
