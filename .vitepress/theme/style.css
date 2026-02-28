@@ -1094,6 +1094,7 @@ input.kawaii-terminal-input:focus {
 
 .dino-iframe {
   background: #000;
+  touch-action: manipulation;
 }
 
 .dino-loading {

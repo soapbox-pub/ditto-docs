@@ -259,6 +259,7 @@
         src="https://space-invaders.webxdc.app/"
         frameborder="0"
         allowfullscreen
+        allow="autoplay; fullscreen"
         @load="onDinoIframeLoad"
       ></iframe>
       <div v-else class="dino-loading">Loading...</div>
@@ -690,7 +691,8 @@ async function fetchDinoXdc() {
 }
 
 function onDinoIframeLoad() {
-  // The iframe loaded; now wait for webxdc.ready via postMessage
+  // Focus the iframe so touch/keyboard events work immediately
+  dinoIframe.value?.focus();
 }
 
 function onWebxdcMessage(event: MessageEvent) {
