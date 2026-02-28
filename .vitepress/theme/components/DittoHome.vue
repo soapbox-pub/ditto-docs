@@ -194,7 +194,7 @@
     <section class="final-cta">
       <div class="final-cta-inner">
         <h2>Ready?</h2>
-        <p>No sign-up forms. No email. No phone number.<br>Just you and a Nostr key.</p>
+        <p>No email. No phone number.<br>Just you and a Nostr key.</p>
         <div class="hero-actions">
           <a href="https://ditto.pub" target="_blank" class="btn btn-primary btn-lg">
             <span>Let's go</span>

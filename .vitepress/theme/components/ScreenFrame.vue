@@ -59,9 +59,6 @@
             <span class="screen-btn-gamer">[]</span>
             <span class="screen-btn-gamer">_</span>
           </div>
-          <div class="screen-gamer-hud">
-            <span class="screen-gamer-label">PLAYER 1</span>
-          </div>
         </div>
       </div>
     </template>
@@ -93,10 +90,6 @@
     <template v-else-if="theme === 'retropop'">
       <div class="screen-chrome">
         <div class="screen-titlebar">
-          <div class="screen-titlebar-circles">
-            <span class="screen-circle"></span>
-            <span class="screen-circle"></span>
-          </div>
           <div class="screen-nav-buttons">
             <span class="screen-nav-btn">&lt;</span>
             <span class="screen-nav-btn">&gt;</span>
@@ -130,7 +123,7 @@
     </template>
 
     <!-- Content viewport: scrollable area where page sections live -->
-    <div class="screen-viewport">
+    <div class="screen-viewport" ref="viewport">
       <slot />
     </div>
 
@@ -153,7 +146,22 @@
 </template>
 
 <script setup lang="ts">
+import { ref, onMounted, onUnmounted } from 'vue';
+
 defineProps<{
   theme: string;
 }>();
+
+const viewport = ref<HTMLElement | null>(null);
+
+function onWheel(e: WheelEvent) {
+  if (!viewport.value) return;
+  // If the scroll didn't originate inside the viewport, forward it
+  if (!viewport.value.contains(e.target as Node)) {
+    viewport.value.scrollTop += e.deltaY;
+  }
+}
+
+onMounted(() => window.addEventListener('wheel', onWheel, { passive: true }));
+onUnmounted(() => window.removeEventListener('wheel', onWheel));
 </script>

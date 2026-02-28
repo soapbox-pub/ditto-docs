@@ -665,6 +665,117 @@
   color: #666;
 }
 
+/* ==========================================================================
+ * THEMED SCROLLBARS
+ * ========================================================================== */
+
+/* Base: thin scrollbar */
+.screen-viewport {
+  scrollbar-width: thin;
+}
+
+.screen-viewport::-webkit-scrollbar {
+  width: 10px;
+}
+
+.screen-viewport::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.screen-viewport::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+}
+
+/* MS Paint: classic Win95 gray scrollbar */
+.screen-mspaint .screen-viewport {
+  scrollbar-color: #808080 #c0c0c0;
+}
+.screen-mspaint .screen-viewport::-webkit-scrollbar-track {
+  background: #c0c0c0;
+  border-left: 1px solid #808080;
+}
+.screen-mspaint .screen-viewport::-webkit-scrollbar-thumb {
+  background: #a0a0a0;
+  border: 2px outset #dfdfdf;
+  border-radius: 0;
+}
+
+/* Kawaii: pink scrollbar with rounded thumb */
+.screen-kawaii .screen-viewport {
+  scrollbar-color: #ff6eb4 #fdf0f4;
+}
+.screen-kawaii .screen-viewport::-webkit-scrollbar-track {
+  background: #fce4ec;
+}
+.screen-kawaii .screen-viewport::-webkit-scrollbar-thumb {
+  background: #ff6eb4;
+  border-radius: 10px;
+  border: 2px solid #fce4ec;
+}
+
+/* Grunge: dark with magenta thumb */
+.screen-grunge .screen-viewport {
+  scrollbar-color: #ff00ff #0a0a0a;
+}
+.screen-grunge .screen-viewport::-webkit-scrollbar-track {
+  background: #111;
+}
+.screen-grunge .screen-viewport::-webkit-scrollbar-thumb {
+  background: #ff00ff;
+  border-radius: 0;
+}
+
+/* Gamer: neon green on black */
+.screen-gamer .screen-viewport {
+  scrollbar-color: #44ff44 #050a05;
+}
+.screen-gamer .screen-viewport::-webkit-scrollbar-track {
+  background: #0a0f0a;
+}
+.screen-gamer .screen-viewport::-webkit-scrollbar-thumb {
+  background: #44ff44;
+  border-radius: 0;
+  border: 1px solid #22aa22;
+}
+
+/* Bubblegum: purple on pink */
+.screen-bubblegum .screen-viewport {
+  scrollbar-color: #9040a0 #fff5f8;
+}
+.screen-bubblegum .screen-viewport::-webkit-scrollbar-track {
+  background: #fce4f0;
+}
+.screen-bubblegum .screen-viewport::-webkit-scrollbar-thumb {
+  background: #9040a0;
+  border-radius: 10px;
+  border: 2px solid #fce4f0;
+}
+
+/* Retro Pop: navy on cream */
+.screen-retropop .screen-viewport {
+  scrollbar-color: #ff3399 #fdf0e8;
+}
+.screen-retropop .screen-viewport::-webkit-scrollbar-track {
+  background: #fdf0e8;
+}
+.screen-retropop .screen-viewport::-webkit-scrollbar-thumb {
+  background: #ff3399;
+  border-radius: 10px;
+  border: 2px solid #fdf0e8;
+}
+
+/* Skater: chartreuse on gray */
+.screen-skater .screen-viewport {
+  scrollbar-color: #b0ff00 #2a1a4a;
+}
+.screen-skater .screen-viewport::-webkit-scrollbar-track {
+  background: #2a1a4a;
+}
+.screen-skater .screen-viewport::-webkit-scrollbar-thumb {
+  background: #b0ff00;
+  border-radius: 0;
+}
+
 /* Kill VitePress page layout padding when our component is shown */
 .VPPage .ditto-home {
   margin: 0;
@@ -1888,6 +1999,13 @@
     top: 8px;
     bottom: 8px;
     border-radius: 24px !important;
+  }
+
+  /* Move palette icon to bottom-right on mobile */
+  .home-theme-switcher {
+    top: auto;
+    bottom: 20px;
+    right: 20px;
   }
 
   /* Simplify title bars on mobile */
