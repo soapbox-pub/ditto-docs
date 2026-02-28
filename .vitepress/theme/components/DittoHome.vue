@@ -138,16 +138,18 @@
     <section class="ownership-section">
       <div class="ownership-inner">
         <h2>You own this.</h2>
+        <p class="ownership-subtitle">No Corporate Control. No Big Tech. No Lock-in.</p>
         <p>
-          Your account is a cryptographic key. Not an email address some company controls.
-          Your posts live on relays you choose, not servers you rent.
-          Your social graph follows you between apps. Switch clients whenever you want.
-          Nothing is locked in. Nothing is locked down.
+          Ditto is built on the free and open <a href="/learn/what-is-nostr">Nostr protocol</a>.
+          We don't control your Ditto account — you are entirely responsible for yourself.
         </p>
         <p class="ownership-kicker">
-          Decentralization isn't the point. <strong>Freedom</strong> is the point.<br>
-          Decentralization is just how we get there.
+          Because we think <strong>Fun</strong> requires <strong>Freedom</strong>.
         </p>
+        <div class="build-actions">
+          <a href="https://soapbox.pub/blog/what-is-nostr-divine" target="_blank" class="btn btn-primary">What is Nostr?</a>
+          <a href="https://soapbox.pub/blog/free-software-free-societies" target="_blank" class="btn btn-ghost">What is Free Software?</a>
+        </div>
       </div>
     </section>
 
