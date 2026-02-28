@@ -23,7 +23,7 @@
       <span class="taskbar-label">{{ theme === 'mspaint' ? 'untitled - Paint' : 'Ditto - Fun Social Media' }}</span>
       <span class="taskbar-maximize">&#x2197;</span>
     </div>
-    <div v-if="theme === 'gamer' && dinoState !== 'hidden' && dinoWindowState === 'minimized'" class="taskbar taskbar-gamer taskbar-dino" @click="dinoWindowState = 'normal'">
+    <div v-if="theme === 'gamer' && dinoState !== 'hidden' && dinoWindowState === 'minimized'" class="taskbar taskbar-gamer taskbar-dino" @click="restoreDino">
       <span class="taskbar-label">&#x1F995; Dino</span>
       <span class="taskbar-maximize">&#x2197;</span>
     </div>
@@ -367,6 +367,13 @@ const dinoState = ref<DinoState>('hidden');
 const dinoWindowState = ref<WindowState>('minimized');
 const dinoIframe = ref<HTMLIFrameElement | null>(null);
 let dinoXdcBytes: ArrayBuffer | null = null;
+
+function restoreDino() {
+  dinoWindowState.value = 'normal';
+  nextTick(() => {
+    dinoIframe.value?.focus();
+  });
+}
 
 function gamerMinimize() {
   windowState.value = 'minimized';
