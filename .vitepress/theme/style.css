@@ -1219,7 +1219,7 @@ input.kawaii-terminal-input:focus {
 }
 
 .screen-bubblegum .screen-viewport {
-  background: #fdf0e8;
+  background: #fff;
 }
 
 /* ── Retro Pop: Stylized browser ── */
@@ -1601,17 +1601,17 @@ button.screen-power-btn.power-standby {
   border: 1px solid #22aa22;
 }
 
-/* Bubblegum: purple on pink */
+/* Bubblegum: purple on white */
 .screen-bubblegum .screen-viewport {
-  scrollbar-color: #ff3399 #fdf0e8;
+  scrollbar-color: #ff3399 #fff;
 }
 .screen-bubblegum .screen-viewport::-webkit-scrollbar-track {
-  background: #fdf0e8;
+  background: #fff;
 }
 .screen-bubblegum .screen-viewport::-webkit-scrollbar-thumb {
   background: #ff3399;
   border-radius: 10px;
-  border: 2px solid #fdf0e8;
+  border: 2px solid #fff;
 }
 
 /* Retro Pop: purple on pink */
