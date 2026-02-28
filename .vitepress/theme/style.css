@@ -124,7 +124,7 @@
   font-family: var(--theme-font);
 }
 
-/* Background image layer (fixed, behind everything) */
+/* Wallpaper layer (fixed, behind everything) */
 .theme-bg-image {
   position: fixed;
   inset: 0;
@@ -134,13 +134,12 @@
   pointer-events: none;
 }
 
-/* Screen frame overlay (transparent center, opaque edges) —
-   sits on top of content so the frame visually masks content
-   that extends beyond the screen area */
+/* Screen frame — sits between the wallpaper and content so
+   content scrolls on top of the screen area */
 .theme-screen-overlay {
   position: fixed;
   inset: 0;
-  z-index: 2;
+  z-index: 1;
   background-position: center;
   pointer-events: none;
 }
@@ -153,7 +152,7 @@
 .ditto-home-content {
   position: fixed;
   inset: 200px 0 80px 0;
-  z-index: 1;
+  z-index: 2;
   overflow-y: auto;
   overflow-x: hidden;
 }
