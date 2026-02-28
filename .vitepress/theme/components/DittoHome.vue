@@ -62,18 +62,23 @@
           <h2>Your vibe. Your colors. Your rules.</h2>
           <p>7 built-in Y2K themes. Wild fonts. Background art. Make it look like <em>you</em>.</p>
         </div>
-        <div class="theme-strips">
+        <div class="theme-grid">
           <button
             v-for="theme in allThemes"
             :key="theme.key"
-            class="theme-strip"
-            :class="{ 'theme-strip-active': theme.key === currentThemeKey }"
-            :style="stripStyle(theme)"
+            class="theme-card"
+            :class="{ 'theme-card-active': theme.key === currentThemeKey }"
             @click="applyTheme(theme.key)"
           >
-            <span class="strip-emoji">{{ theme.emoji }}</span>
-            <span class="strip-name">{{ theme.label }}</span>
-            <span v-if="theme.key === currentThemeKey" class="strip-active-badge">active</span>
+            <div
+              class="theme-card-bg"
+              :style="{ backgroundImage: `url(${theme.background.bg})` }"
+            />
+            <div class="theme-card-overlay" />
+            <span
+              class="theme-card-name"
+              :style="{ fontFamily: `'${theme.font.family}', sans-serif`, fontSize: `calc(18px * ${theme.headingScale / 0.9})` }"
+            >{{ theme.label }}</span>
           </button>
         </div>
       </div>
@@ -276,15 +281,6 @@ const homeStyles = computed(() => {
     color: hslToCSS(tokens.foreground),
   } as Record<string, string>;
 });
-
-// ─── Theme strip styles ──────────────────────────────────────────────
-
-function stripStyle(theme: Y2KTheme) {
-  return {
-    '--strip-bg': `linear-gradient(135deg, ${hslToCSS(theme.colors.background)}, ${hslToCSS(theme.colors.primary)})`,
-    color: hslToCSS(theme.colors.text),
-  };
-}
 
 // ─── Font loading ─────────────────────────────────────────────────────
 
