@@ -921,16 +921,10 @@ button.screen-power-btn {
   0% {
     top: -30%;
     transform: translateX(-50%) rotate(-5deg);
-    opacity: 1;
-  }
-  85% {
-    transform: translateX(-50%) rotate(30deg);
-    opacity: 1;
   }
   100% {
     top: 90%;
     transform: translateX(-50%) rotate(35deg);
-    opacity: 0;
   }
 }
 
