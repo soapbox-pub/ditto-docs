@@ -253,8 +253,8 @@ export const themes: Y2KTheme[] = [
       primary: '282 37% 53%',
     },
     font: {
-      family: 'Luckiest Guy',
-      url: 'https://cdn.jsdelivr.net/fontsource/fonts/luckiest-guy@latest/latin-400-normal.woff2',
+      family: 'Barriecito',
+      url: 'https://cdn.jsdelivr.net/fontsource/fonts/barriecito@latest/latin-400-normal.woff2',
     },
     bodyFont: "'Nunito', 'Arial', sans-serif",
     bodyFontUrl: 'https://cdn.jsdelivr.net/fontsource/fonts/nunito@latest/latin-400-normal.woff2',
