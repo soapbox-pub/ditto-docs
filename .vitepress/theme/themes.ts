@@ -274,7 +274,7 @@ export const themes: Y2KTheme[] = [
       url: 'https://cdn.jsdelivr.net/fontsource/fonts/permanent-marker@latest/latin-400-normal.woff2',
     },
     background: {
-      url: '/retro-background.png',
+      url: '/skater.png',
       mode: 'cover',
     },
   },
