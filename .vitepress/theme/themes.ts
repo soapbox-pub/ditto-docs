@@ -24,8 +24,6 @@ export interface ThemeFont {
 export interface ThemeBackground {
   /** Wallpaper/desktop background image */
   bg: string;
-  /** Screen frame overlay (transparent center, opaque edges) */
-  screen: string;
   mode: 'cover' | 'tile';
 }
 
@@ -170,7 +168,6 @@ export const themes: Y2KTheme[] = [
     },
     background: {
       bg: '/kawaii-bg.png',
-      screen: '/kawaii-screen.png',
       mode: 'cover',
     },
   },
@@ -189,7 +186,6 @@ export const themes: Y2KTheme[] = [
     },
     background: {
       bg: '/grunge-bg.png',
-      screen: '/grunge-screen.png',
       mode: 'cover',
     },
   },
@@ -208,7 +204,6 @@ export const themes: Y2KTheme[] = [
     },
     background: {
       bg: '/mspaint-bg.png',
-      screen: '/mspaint-screen.png',
       mode: 'cover',
     },
   },
@@ -227,7 +222,6 @@ export const themes: Y2KTheme[] = [
     },
     background: {
       bg: '/retropop-bg.png',
-      screen: '/retropop-screen.png',
       mode: 'cover',
     },
   },
@@ -246,7 +240,6 @@ export const themes: Y2KTheme[] = [
     },
     background: {
       bg: '/bubblegum-bg.png',
-      screen: '/bubblegum-screen.png',
       mode: 'cover',
     },
   },
@@ -265,7 +258,6 @@ export const themes: Y2KTheme[] = [
     },
     background: {
       bg: '/gamer-bg.png',
-      screen: '/gamer-screen.png',
       mode: 'cover',
     },
   },
@@ -284,7 +276,6 @@ export const themes: Y2KTheme[] = [
     },
     background: {
       bg: '/skater-bg.png',
-      screen: '/skater-screen.png',
       mode: 'cover',
     },
   },

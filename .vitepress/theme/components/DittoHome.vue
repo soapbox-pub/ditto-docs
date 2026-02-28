@@ -36,9 +36,8 @@
       </div>
     </nav>
 
-    <!-- Content wrapper: clipped so content is hidden in the top/bottom
-         margins of the viewport, while the background image stays visible -->
-    <div class="ditto-home-content">
+    <!-- CSS screen frame wraps the content -->
+    <ScreenFrame :theme="currentThemeKey">
 
     <!-- ============================================================
          HERO: Giant title, floating emojis, pure energy
@@ -224,18 +223,7 @@
       </div>
     </section>
 
-    </div><!-- /.ditto-home-content -->
-
-    <!-- Screen frame overlay (transparent center, opaque edges) -->
-    <div
-      v-if="activeTheme?.background"
-      class="theme-screen-overlay"
-      :style="{
-        backgroundImage: `url(${activeTheme.background.screen})`,
-        backgroundSize: activeTheme.background.mode === 'tile' ? 'auto' : 'cover',
-        backgroundRepeat: activeTheme.background.mode === 'tile' ? 'repeat' : 'no-repeat',
-      }"
-    />
+    </ScreenFrame>
   </div>
 </template>
 
@@ -244,6 +232,7 @@ import { ref, computed, onMounted } from 'vue';
 import { themes as allThemes, getTheme, randomThemeKey, deriveTokens, hslToCSS } from '../themes';
 import type { Y2KTheme } from '../themes';
 import ThemeSwitcher from './ThemeSwitcher.vue';
+import ScreenFrame from './ScreenFrame.vue';
 
 // ─── Module-level state (survives SPA navigation, resets on refresh) ──
 

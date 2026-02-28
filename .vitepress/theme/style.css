@@ -134,33 +134,481 @@
   pointer-events: none;
 }
 
-/* Screen frame — sits between the wallpaper and content so
-   content scrolls on top of the screen area */
-.theme-screen-overlay {
+/* ==========================================================================
+ * SCREEN FRAME: CSS-built computer screen that wraps page content
+ * Each theme gets a unique screen style (colors, title bar, shape).
+ * Content scrolls inside .screen-viewport.
+ * ========================================================================== */
+
+/* ── Base frame ── */
+.screen-frame {
   position: fixed;
-  inset: 0;
-  z-index: 1;
-  background-position: center;
-  pointer-events: none;
+  top: 24px;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(52vw, calc(100vw - 48px));
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(0, 0, 0, 0.1);
 }
 
-/* Content wrapper: clips scrolling content so it's hidden in the top
-   200px and bottom 80px of the viewport, letting the background image
-   show through like a picture frame.
-   We use a fixed container with overflow clipping so the clip region
-   is always relative to the viewport, not the document. */
-.ditto-home-content {
-  position: fixed;
-  inset: 200px 0 80px 0;
-  z-index: 2;
+/* ── Chrome (title bar area) ── */
+.screen-chrome {
+  flex-shrink: 0;
+  user-select: none;
+}
+
+/* ── Viewport (scrollable content) ── */
+.screen-viewport {
+  flex: 1;
   overflow-y: auto;
   overflow-x: hidden;
+  position: relative;
 }
 
-/* Ensure all homepage sections sit above the background */
-.ditto-home-content > section {
-  position: relative;
-  z-index: 1;
+/* ── Bottom bar ── */
+.screen-bottom {
+  flex-shrink: 0;
+  user-select: none;
+}
+
+/* ── Shared title bar layout ── */
+.screen-titlebar {
+  display: flex;
+  align-items: center;
+  padding: 8px 12px;
+  gap: 12px;
+}
+
+.screen-titlebar-text {
+  flex: 1;
+  font-weight: 700;
+  font-size: 13px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.screen-titlebar-buttons {
+  display: flex;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.screen-titlebar-circles {
+  display: flex;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.screen-circle {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+}
+
+.screen-nav-buttons {
+  display: flex;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.screen-nav-btn {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 14px;
+  border-radius: 4px;
+}
+
+.screen-url-bar {
+  flex: 1;
+  height: 28px;
+  border-radius: 14px;
+  padding: 0 14px;
+  font-size: 12px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  min-width: 0;
+}
+
+.screen-menubar {
+  display: flex;
+  gap: 16px;
+  padding: 4px 12px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+/* ── Status bar (mspaint) ── */
+.screen-statusbar {
+  padding: 4px 12px;
+  font-size: 11px;
+}
+
+/* ── Tab bar (bubblegum) ── */
+.screen-tab-bar {
+  display: flex;
+  gap: 2px;
+  padding: 6px 12px 0;
+}
+
+.screen-tab {
+  width: 80px;
+  height: 24px;
+  border-radius: 6px 6px 0 0;
+}
+
+/* ── Gamer HUD ── */
+.screen-gamer-hud {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.screen-gamer-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+/* ── Bottom: Kawaii hearts ── */
+.screen-bottom-kawaii {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 16px;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.screen-hearts {
+  display: flex;
+  gap: 4px;
+  font-size: 16px;
+}
+
+/* ── Bottom: Skater power button ── */
+.screen-bottom-skater {
+  display: flex;
+  justify-content: center;
+  padding: 12px;
+}
+
+.screen-power-btn {
+  font-size: 20px;
+  opacity: 0.6;
+}
+
+/* ── Bottom: MS Paint status ── */
+.screen-bottom-mspaint {
+  border-top: 1px solid #808080;
+}
+
+/* ==========================================================================
+ * PER-THEME SCREEN STYLES
+ * ========================================================================== */
+
+/* ── MS Paint: Windows 95 ── */
+.screen-mspaint {
+  background: #c0c0c0;
+  border: 3px outset #dfdfdf;
+  border-radius: 0;
+  box-shadow: 2px 2px 0 #000, 0 8px 40px rgba(0, 0, 0, 0.4);
+}
+
+.screen-mspaint .screen-titlebar {
+  background: linear-gradient(90deg, #000080, #1084d0);
+  color: #fff;
+  padding: 4px 6px;
+  font-family: 'Silkscreen', 'MS Sans Serif', system-ui;
+}
+
+.screen-mspaint .screen-titlebar-text {
+  font-size: 12px;
+}
+
+.screen-mspaint .screen-btn-win {
+  width: 18px;
+  height: 16px;
+  background: #c0c0c0;
+  border: 2px outset #dfdfdf;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: 900;
+  color: #000;
+  line-height: 1;
+  cursor: default;
+}
+
+.screen-mspaint .screen-menubar {
+  background: #c0c0c0;
+  border-bottom: 1px solid #808080;
+  color: #000;
+  font-family: 'Silkscreen', 'MS Sans Serif', system-ui;
+  font-size: 11px;
+}
+
+.screen-mspaint .screen-viewport {
+  background: #fff;
+  border: 2px inset #808080;
+  margin: 0 2px;
+}
+
+.screen-mspaint .screen-statusbar {
+  background: #c0c0c0;
+  color: #000;
+  font-family: 'Silkscreen', 'MS Sans Serif', system-ui;
+  border-top: 1px solid #808080;
+}
+
+/* ── Kawaii: Cute pink CRT ── */
+.screen-kawaii {
+  background: #f4b4c8;
+  border: 8px solid #f4b4c8;
+  border-radius: 24px 24px 16px 16px;
+  box-shadow: 0 8px 40px rgba(200, 80, 140, 0.4),
+    inset 0 0 20px rgba(255, 100, 180, 0.2);
+}
+
+.screen-kawaii .screen-bezel-top {
+  height: 16px;
+  background: #f4b4c8;
+  border-radius: 16px 16px 0 0;
+}
+
+.screen-kawaii .screen-viewport {
+  background: #ff4dd2;
+  border: 4px solid #e83aab;
+  border-radius: 4px;
+  margin: 0 4px;
+}
+
+.screen-kawaii .screen-bottom-kawaii {
+  background: #f4b4c8;
+  color: #a0406a;
+  font-family: 'Cherry Bomb One', cursive;
+}
+
+/* ── Grunge: Dark punk ── */
+.screen-grunge {
+  background: #0d0d0d;
+  border: 4px solid #222;
+  border-radius: 4px;
+  box-shadow: 0 0 60px rgba(180, 0, 120, 0.15), 0 8px 40px rgba(0, 0, 0, 0.6);
+}
+
+.screen-grunge .screen-titlebar {
+  background: #111;
+  border-bottom: 2px solid #333;
+  padding: 6px 10px;
+}
+
+.screen-grunge .screen-btn-grunge {
+  width: 28px;
+  height: 24px;
+  background: #ff00ff;
+  color: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 900;
+  font-size: 13px;
+  cursor: default;
+}
+
+.screen-grunge .screen-viewport {
+  background: #0a0a0a;
+}
+
+/* ── Gamer: Retro game UI ── */
+.screen-gamer {
+  background: #1a1a1a;
+  border: 5px solid #44ff44;
+  border-radius: 4px;
+  box-shadow: 0 0 30px rgba(68, 255, 68, 0.2), 0 8px 40px rgba(0, 0, 0, 0.5);
+}
+
+.screen-gamer .screen-titlebar {
+  background: #44ff44;
+  padding: 6px 10px;
+}
+
+.screen-gamer .screen-btn-gamer {
+  width: 28px;
+  height: 24px;
+  background: #6666ff;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 900;
+  font-size: 13px;
+  font-family: 'Press Start 2P', monospace;
+  cursor: default;
+}
+
+.screen-gamer .screen-gamer-label {
+  color: #0000cc;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 10px;
+}
+
+.screen-gamer .screen-viewport {
+  background: #050a05;
+  border: 3px solid #44ff44;
+  margin: 2px;
+}
+
+/* ── Bubblegum: Y2K browser ── */
+.screen-bubblegum {
+  background: #f9c0d8;
+  border: 4px solid #2d1050;
+  border-radius: 16px;
+  box-shadow: 0 8px 40px rgba(100, 20, 80, 0.3);
+}
+
+.screen-bubblegum .screen-tab-bar {
+  background: #e8a0c0;
+  padding-top: 8px;
+}
+
+.screen-bubblegum .screen-tab {
+  background: #f0c860;
+  border: 2px solid #2d1050;
+}
+
+.screen-bubblegum .screen-tab.active {
+  background: #f4c8d8;
+}
+
+.screen-bubblegum .screen-titlebar {
+  background: #f4c8d8;
+  border-bottom: 2px solid #2d1050;
+  padding: 6px 10px;
+}
+
+.screen-bubblegum .screen-nav-btn {
+  background: transparent;
+  color: #2d1050;
+  border: 2px solid #2d1050;
+  font-size: 12px;
+  border-radius: 4px;
+}
+
+.screen-bubblegum .screen-url-bar {
+  background: #fff;
+  border: 2px solid #2d1050;
+  color: #2d1050;
+  font-family: 'Luckiest Guy', cursive;
+}
+
+.screen-bubblegum .screen-btn-bubble {
+  width: 24px;
+  height: 22px;
+  background: #f4c8d8;
+  border: 2px solid #2d1050;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 900;
+  color: #2d1050;
+  cursor: default;
+  border-radius: 2px;
+}
+
+.screen-bubblegum .screen-viewport {
+  background: #fff5f8;
+}
+
+/* ── Retro Pop: Stylized browser ── */
+.screen-retropop {
+  background: #f9c0d8;
+  border: 4px solid #1a0a3a;
+  border-radius: 16px;
+  box-shadow: 0 8px 40px rgba(30, 10, 60, 0.35);
+}
+
+.screen-retropop .screen-titlebar {
+  background: #ff3399;
+  border-bottom: 3px solid #1a0a3a;
+  padding: 8px 12px;
+}
+
+.screen-retropop .screen-circle {
+  background: #fff;
+  border: 2px solid #1a0a3a;
+}
+
+.screen-retropop .screen-nav-btn {
+  background: transparent;
+  border: 2px solid #1a0a3a;
+  color: #1a0a3a;
+  font-weight: 900;
+  border-radius: 4px;
+}
+
+.screen-retropop .screen-url-bar {
+  background: #fff;
+  border: 2px solid #1a0a3a;
+  color: #1a0a3a;
+}
+
+.screen-retropop .screen-btn-retro {
+  width: 24px;
+  height: 22px;
+  background: transparent;
+  border: 2px solid #1a0a3a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 900;
+  color: #1a0a3a;
+  cursor: default;
+  border-radius: 2px;
+}
+
+.screen-retropop .screen-viewport {
+  background: #fdf0e8;
+}
+
+/* ── Skater: CRT tube TV ── */
+.screen-skater {
+  background: #c0c0c0;
+  border: 12px solid #c8c8c8;
+  border-radius: 32px 32px 8px 8px;
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.4),
+    inset 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.screen-skater .screen-bezel-top {
+  height: 20px;
+  background: #c8c8c8;
+}
+
+.screen-skater .screen-viewport {
+  background: #2a1a4a;
+  border: 4px solid #555;
+  margin: 0 4px;
+  border-radius: 2px;
+}
+
+.screen-skater .screen-bottom-skater {
+  background: #c8c8c8;
+  color: #666;
 }
 
 /* Nav sits outside the clipped content, above everything */
@@ -1371,9 +1819,80 @@
   }
 }
 
-/* ---------- RESPONSIVE ---------- */
+/* ==========================================================================
+ * RESPONSIVE: Screen frame + content
+ * ========================================================================== */
 
+/* ── Tablet ── */
+@media (max-width: 1024px) {
+  .screen-frame {
+    width: min(80vw, calc(100vw - 32px));
+    top: 16px;
+    bottom: 16px;
+  }
+}
+
+/* ── Mobile ── */
 @media (max-width: 768px) {
+  .screen-frame {
+    width: calc(100vw - 16px);
+    top: 8px;
+    bottom: 8px;
+    border-radius: 24px !important;
+    background: transparent !important;
+    border-color: transparent !important;
+    box-shadow: none !important;
+  }
+
+  /* Make chrome semi-transparent so background shows through */
+  .screen-chrome {
+    opacity: 0.3;
+  }
+
+  .screen-bottom {
+    opacity: 0.3;
+  }
+
+  /* Viewport gets a subtle tinted background instead of opaque */
+  .screen-viewport {
+    background: rgba(0, 0, 0, 0.15) !important;
+    border-color: transparent !important;
+    border-radius: 16px;
+  }
+
+  /* Simplify title bars on mobile */
+  .screen-menubar { display: none; }
+  .screen-tab-bar { display: none; }
+  .screen-gamer-hud { display: none; }
+  .screen-titlebar-text { font-size: 11px; }
+
+  /* MS Paint: soften the square edges */
+  .screen-mspaint { border-radius: 24px !important; }
+  .screen-mspaint .screen-viewport { border-radius: 0; margin: 0; }
+
+  /* Kawaii */
+  .screen-kawaii { border-width: 6px; }
+  .screen-kawaii .screen-viewport { border-width: 3px; margin: 0 2px; }
+
+  /* Grunge */
+  .screen-grunge { border-width: 3px; }
+
+  /* Gamer */
+  .screen-gamer { border-width: 4px; }
+  .screen-gamer .screen-viewport { border-width: 2px; }
+
+  /* Bubblegum */
+  .screen-bubblegum { border-width: 3px; }
+
+  /* Retro Pop */
+  .screen-retropop { border-width: 3px; }
+
+  /* Skater: thin the bezel */
+  .screen-skater { border-width: 8px; }
+  .screen-skater .screen-viewport { border-width: 3px; margin: 0 2px; }
+  .screen-skater .screen-bezel-top { height: 12px; }
+
+  /* Content adjustments */
   .float-emoji {
     font-size: 32px !important;
   }
@@ -1384,18 +1903,18 @@
   .e8  { font-size: 44px !important; }
 
   .hero {
-    padding: 100px 20px 60px;
+    padding: 60px 20px 40px;
     min-height: auto;
   }
 
-  .vibes { padding: 80px 20px; }
-  .vibes-emoji { font-size: 72px; }
+  .vibes { padding: 60px 20px; }
+  .vibes-emoji { font-size: 56px; }
 
   .themes-section,
   .powers-section,
-  .selfhost-section { padding: 80px 0; }
+  .selfhost-section { padding: 60px 0; }
 
-  .mega-emoji { font-size: 56px; }
+  .mega-emoji { font-size: 48px; }
 
   .power-item {
     flex-direction: column;
@@ -1404,7 +1923,7 @@
     align-items: center;
   }
 
-  .power-emoji { font-size: 48px; }
+  .power-emoji { font-size: 40px; }
 
   .selfhost-steps {
     flex-direction: column;
@@ -1414,9 +1933,9 @@
     transform: rotate(90deg);
   }
 
-  .final-cta { padding: 100px 20px; }
+  .final-cta { padding: 60px 20px; }
 
-  .ownership-inner .mega-emoji { font-size: 72px; }
+  .ownership-inner .mega-emoji { font-size: 56px; }
 
   .theme-switcher { bottom: 16px; right: 16px; }
   .theme-fab { width: 48px; height: 48px; font-size: 20px; }
