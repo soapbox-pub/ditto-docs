@@ -142,13 +142,17 @@
   pointer-events: none;
 }
 
-/* Content wrapper: clips scrolling content so it's hidden behind the
-   top and bottom margins of the viewport, letting the background image
-   show through in those regions like a picture frame. */
+/* Content wrapper: clips scrolling content so it's hidden in the top
+   200px and bottom 80px of the viewport, letting the background image
+   show through like a picture frame.
+   We use a fixed container with overflow clipping so the clip region
+   is always relative to the viewport, not the document. */
 .ditto-home-content {
-  position: relative;
+  position: fixed;
+  inset: 200px 0 80px 0;
   z-index: 1;
-  clip-path: inset(200px 0 80px 0);
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 /* Ensure all homepage sections sit above the background */
