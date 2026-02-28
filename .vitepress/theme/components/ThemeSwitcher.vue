@@ -18,7 +18,10 @@
 
     <Transition name="theme-panel">
       <div v-if="isOpen" class="theme-panel" style="background: #141419;">
-        <div class="theme-panel-header">Choose a vibe</div>
+        <div class="theme-panel-top">
+          <div class="theme-panel-header">Choose a vibe</div>
+          <button class="theme-panel-close" @click="isOpen = false">&times;</button>
+        </div>
         <div class="theme-panel-grid">
           <button
             v-for="theme in allThemes"

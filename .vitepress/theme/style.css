@@ -1325,14 +1325,40 @@
   z-index: 200;
 }
 
+.theme-panel-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
 .theme-panel-header {
   font-size: 13px;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   color: rgba(255, 255, 255, 0.5);
-  margin-bottom: 16px;
   padding: 0 4px;
+}
+
+.theme-panel-close {
+  display: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 22px;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  transition: background 0.15s ease;
+}
+
+.theme-panel-close:hover {
+  background: rgba(255, 255, 255, 0.2);
 }
 
 .theme-panel-grid {
@@ -1955,6 +1981,10 @@
     justify-content: center !important;
     padding: 40px 24px !important;
     z-index: 9999 !important;
+  }
+
+  .theme-panel-close {
+    display: flex;
   }
 }
 
