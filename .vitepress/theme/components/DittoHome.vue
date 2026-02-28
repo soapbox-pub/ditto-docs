@@ -15,26 +15,13 @@
       }"
     />
 
-    <!-- ============================================================
-         TRANSPARENT NAV: Overlays the hero (outside clipped content)
-         ============================================================ -->
-    <nav class="home-nav">
-      <div class="home-nav-inner">
-        <a href="/" class="home-nav-logo">
-          <img src="/logo.svg" alt="Ditto" />
-          <span>Ditto</span>
-        </a>
-        <div class="home-nav-links">
-          <a href="/learn/what-is-nostr">Learn</a>
-          <a href="/guides/themes">Guides</a>
-          <a href="https://ditto.pub" target="_blank" class="home-nav-cta">Login</a>
-          <ThemeSwitcher
-            :currentThemeKey="currentThemeKey"
-            @select="applyTheme"
-          />
-        </div>
-      </div>
-    </nav>
+    <!-- Theme switcher (top-right, homepage only) -->
+    <div class="home-theme-switcher">
+      <ThemeSwitcher
+        :currentThemeKey="currentThemeKey"
+        @select="applyTheme"
+      />
+    </div>
 
     <!-- CSS screen frame wraps the content -->
     <ScreenFrame :theme="currentThemeKey">
@@ -58,6 +45,9 @@
           </a>
           <a href="/learn/what-is-nostr" class="btn btn-ghost">
             What is Nostr?
+          </a>
+          <a href="/guides/themes" class="btn btn-ghost">
+            Guides
           </a>
         </div>
       </div>
@@ -222,6 +212,12 @@
         </div>
       </div>
     </section>
+
+    <!-- Footer -->
+    <footer class="home-footer">
+      <p class="home-footer-message">&hearts;2026 Copying is not theft.</p>
+      <p class="home-footer-credit">Made by <a href="https://soapbox.pub" target="_blank">Soapbox</a></p>
+    </footer>
 
     </ScreenFrame>
   </div>
