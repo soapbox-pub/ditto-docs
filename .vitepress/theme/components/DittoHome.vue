@@ -35,7 +35,7 @@
           <span class="hero-name">Ditto</span>
         </h1>
         <p class="hero-sub">
-           A social platform for people who want to <em>have fun</em>,
+           A social platform for people who want to <em>have&nbsp;fun</em>,
           not feed an algorithm. Open source, decentralized, and entirely yours to customize and build upon.
         </p>
         <div class="hero-actions">
