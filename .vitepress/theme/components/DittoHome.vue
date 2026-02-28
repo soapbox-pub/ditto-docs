@@ -34,9 +34,8 @@
         <h1 class="hero-title">
           <span class="hero-name">Ditto</span>
         </h1>
-        <p class="hero-text">Make social media fun again.</p>
         <p class="hero-sub">
-          A Nostr client for people who want to <em>express themselves</em>,
+          A social platform for people who want to <em>express themselves</em>,
           not feed an algorithm. Open source, decentralized, and entirely yours to customize.
         </p>
         <div class="hero-actions">
