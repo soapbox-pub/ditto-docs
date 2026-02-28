@@ -893,6 +893,9 @@ button.screen-power-btn {
 .kawaii-banana-btn {
   cursor: pointer;
   transition: transform 0.15s;
+  -webkit-text-stroke: 3px #fff;
+  paint-order: stroke fill;
+  text-shadow: 0 0 4px #fff, 0 0 4px #fff;
 }
 
 .kawaii-banana-btn:hover {
