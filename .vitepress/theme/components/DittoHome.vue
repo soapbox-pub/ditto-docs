@@ -1,7 +1,6 @@
 <template>
   <div
     class="ditto-home"
-    :class="currentThemeKey ? `theme-${currentThemeKey}` : ''"
     ref="homeRef"
     :style="homeStyles"
   >
