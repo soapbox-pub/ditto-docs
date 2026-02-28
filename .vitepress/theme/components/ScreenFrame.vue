@@ -3,7 +3,7 @@
   <div v-if="showCloseConfirm" class="win-dialog-overlay" @click.self="showCloseConfirm = false">
     <div class="win-dialog" :class="`win-dialog-${theme}`">
       <div class="win-dialog-titlebar">
-        <span class="win-dialog-title">{{ closeTarget === 'dino' ? 'Dino' : theme === 'mspaint' ? 'Paint' : 'Ditto' }}</span>
+        <span class="win-dialog-title">{{ closeTarget === 'dino' ? 'Space Invaders' : theme === 'mspaint' ? 'Paint' : 'Ditto' }}</span>
         <span class="win-dialog-close" @click="showCloseConfirm = false">X</span>
       </div>
       <div class="win-dialog-body">
@@ -24,7 +24,7 @@
       <span class="taskbar-maximize">&#x2197;</span>
     </div>
     <div v-if="theme === 'gamer' && dinoState !== 'hidden' && dinoWindowState === 'minimized'" class="taskbar taskbar-gamer taskbar-dino" @click="restoreDino">
-      <span class="taskbar-label">&#x1F995; Dino</span>
+      <span class="taskbar-label">&#x1F47E; Space Invaders</span>
       <span class="taskbar-maximize">&#x2197;</span>
     </div>
   </div>
@@ -230,11 +230,11 @@
     </div>
   </div>
 
-  <!-- ── Dino game window (gamer theme only) ── -->
+  <!-- ── Space Invaders game window (gamer theme only) ── -->
   <div v-if="theme === 'gamer' && dinoState !== 'hidden'" v-show="dinoWindowState === 'normal'" class="screen-frame screen-gamer dino-screen">
     <div class="screen-chrome">
       <div class="screen-titlebar">
-        <span class="screen-gamer-label">&#x1F995; DINO</span>
+        <span class="screen-gamer-label">&#x1F47E; SPACE INVADERS</span>
         <div class="screen-titlebar-buttons">
           <span class="screen-btn-gamer screen-btn-interactive screen-btn-close" @click="requestClose('dino')">X</span>
           <span class="screen-btn-gamer">[]</span>
@@ -247,7 +247,7 @@
         v-if="dinoState === 'ready'"
         ref="dinoIframe"
         class="retro-iframe dino-iframe"
-        src="https://arcanecircle-dino-v1-3-0.webxdc.app/"
+        src="https://space-invaders.webxdc.app/"
         frameborder="0"
         allowfullscreen
         @load="onDinoIframeLoad"
@@ -361,7 +361,7 @@ function onCrtAnimationEnd() {
   }
 }
 
-// ── Gamer Dino webxdc game (easter egg) ──
+// ── Gamer Space Invaders webxdc game (easter egg) ──
 type DinoState = 'hidden' | 'loading' | 'ready';
 const dinoState = ref<DinoState>('hidden');
 const dinoWindowState = ref<WindowState>('minimized');
@@ -377,7 +377,7 @@ function restoreDino() {
 
 function gamerMinimize() {
   windowState.value = 'minimized';
-  // Show the Dino tab when minimizing the gamer window (first time triggers fetch)
+  // Show the game tab when minimizing the gamer window (first time triggers fetch)
   if (dinoState.value === 'hidden') {
     dinoState.value = 'loading';
     fetchDinoXdc();
@@ -386,11 +386,11 @@ function gamerMinimize() {
 
 async function fetchDinoXdc() {
   try {
-    const resp = await fetch('https://apps.testrun.org/arcanecircle-dino-v1.3.0.xdc');
+    const resp = await fetch('https://blossom.ditto.pub/6825197c3210e5bac6d26f938a4651bb355e1be07ba7e91f169e54f64f7d83a1.xdc');
     dinoXdcBytes = await resp.arrayBuffer();
     dinoState.value = 'ready';
   } catch (e) {
-    console.error('Failed to fetch Dino xdc:', e);
+    console.error('Failed to fetch Space Invaders xdc:', e);
     dinoState.value = 'ready'; // Still show iframe, it may work without init
   }
 }
