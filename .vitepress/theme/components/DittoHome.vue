@@ -158,7 +158,7 @@
       <div class="section-inner">
         <div class="section-header">
           <h2>Made for hacking on.</h2>
-          <p>Ditto is open source and entirely front-end. Edit the code right in your browser with Shakespeare, fork it, or just dig into the source. Make it yours.</p>
+          <p>Ditto is open source and designed to work with tools like <a href="https://soapbox.pub/tools/shakespeare" target="_blank">Shakespeare</a> so you can fully control and customize your platform beyond themes. Add new features, change your feed, or even completely redesign the UI to fit your wants and dreams.</p>
         </div>
 
         <div class="build-showcase">
