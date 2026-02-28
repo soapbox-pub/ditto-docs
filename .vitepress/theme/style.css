@@ -2024,6 +2024,17 @@ button.screen-power-btn.power-standby {
 
 .powers-section {
   padding: 100px 0;
+  background: var(--vp-c-text-1);
+  color: var(--vp-c-bg);
+}
+
+.powers-section .section-header h2 {
+  color: var(--vp-c-bg);
+}
+
+.powers-section .section-header p {
+  color: var(--vp-c-bg);
+  opacity: 0.7;
 }
 
 .powers-list {
@@ -2039,7 +2050,7 @@ button.screen-power-btn.power-standby {
   gap: 24px;
   align-items: flex-start;
   padding: 32px 0;
-  border-bottom: 1px solid var(--vp-c-divider);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
 }
 
 .power-item:last-child {
@@ -2063,14 +2074,15 @@ button.screen-power-btn.power-standby {
   font-size: calc(26px * var(--theme-heading-scale, 1));
   font-weight: 800;
   margin: 0 0 8px;
-  color: var(--vp-c-text-1);
+  color: var(--vp-c-bg);
   letter-spacing: -0.01em;
 }
 
 .power-content p {
   font-size: 18px;
   line-height: 1.65;
-  color: var(--vp-c-text-2);
+  color: var(--vp-c-bg);
+  opacity: 0.7;
   margin: 0;
 }
 
