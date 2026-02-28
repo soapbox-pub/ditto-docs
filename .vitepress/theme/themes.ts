@@ -167,7 +167,7 @@ export const themes: Y2KTheme[] = [
     colors: {
       background: '340 60% 95%',
       text: '345 30% 35%',
-      primary: '340 100% 96%',
+      primary: '45 90% 55%',
     },
     font: {
       family: 'Cherry Bomb One',
