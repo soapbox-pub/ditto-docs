@@ -191,8 +191,8 @@ export const themes: Y2KTheme[] = [
       primary: '328 100% 54%',
     },
     font: {
-      family: 'Big Shoulders Stencil Display',
-      url: 'https://cdn.jsdelivr.net/fontsource/fonts/big-shoulders-stencil-display@latest/latin-400-normal.woff2',
+      family: 'Lacquer',
+      url: 'https://cdn.jsdelivr.net/fontsource/fonts/lacquer@latest/latin-400-normal.woff2',
     },
     bodyFont: "'Outfit', 'Verdana', sans-serif",
     bodyFontUrl: 'https://cdn.jsdelivr.net/fontsource/fonts/outfit@latest/latin-400-normal.woff2',
@@ -295,8 +295,8 @@ export const themes: Y2KTheme[] = [
       primary: '80 100% 50%',
     },
     font: {
-      family: 'Permanent Marker',
-      url: 'https://cdn.jsdelivr.net/fontsource/fonts/permanent-marker@latest/latin-400-normal.woff2',
+      family: 'Rubik Maps',
+      url: 'https://cdn.jsdelivr.net/fontsource/fonts/rubik-maps@latest/latin-400-normal.woff2',
     },
     bodyFont: "'Archivo Black', 'Arial Black', sans-serif",
     bodyFontUrl: 'https://cdn.jsdelivr.net/fontsource/fonts/archivo-black@latest/latin-400-normal.woff2',
