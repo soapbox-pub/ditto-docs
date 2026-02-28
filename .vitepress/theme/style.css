@@ -1014,6 +1014,7 @@ button.screen-power-btn {
 .screen-bubblegum .screen-tab {
   background: #f0c860;
   border: 2px solid #2d1050;
+  width: 160px;
 }
 
 .screen-bubblegum .screen-tab.active {

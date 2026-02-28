@@ -121,11 +121,6 @@
           <span class="screen-tab"></span>
         </div>
         <div class="screen-titlebar">
-          <div class="screen-nav-buttons">
-            <span class="screen-nav-btn">&lt;</span>
-            <span class="screen-nav-btn">&gt;</span>
-            <span class="screen-nav-btn">&#8635;</span>
-          </div>
           <div class="screen-url-bar">ditto.pub</div>
           <div class="screen-titlebar-buttons">
             <span class="screen-btn-bubble screen-btn-interactive" @click="minimizeWindow">_</span>
