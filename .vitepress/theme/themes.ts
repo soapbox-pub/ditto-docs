@@ -34,8 +34,10 @@ export interface Y2KTheme {
   colors: ThemeColors;
   /** Display/heading font (loaded from CDN) */
   font: ThemeFont;
-  /** Body text font (system font, no loading needed) */
+  /** Body text font family stack */
   bodyFont: string;
+  /** Optional CDN URL for body font (if not a system font) */
+  bodyFontUrl?: string;
   /** Scale factor for heading font sizes (1 = normal, <1 = smaller for oversized fonts) */
   headingScale: number;
   background: ThemeBackground;
@@ -165,13 +167,14 @@ export const themes: Y2KTheme[] = [
     colors: {
       background: '351 100% 86%',
       text: '270 30% 20%',
-      primary: '300 26% 71%',
+      primary: '340 100% 96%',
     },
     font: {
       family: 'Cherry Bomb One',
       url: 'https://cdn.jsdelivr.net/fontsource/fonts/cherry-bomb-one@latest/latin-400-normal.woff2',
     },
-    bodyFont: "'Trebuchet MS', sans-serif",
+    bodyFont: "'Quicksand', 'Trebuchet MS', sans-serif",
+    bodyFontUrl: 'https://cdn.jsdelivr.net/fontsource/fonts/quicksand@latest/latin-400-normal.woff2',
     headingScale: 0.9,
     background: {
       bg: '/kawaii-bg.png',
@@ -191,7 +194,8 @@ export const themes: Y2KTheme[] = [
       family: 'Creepster',
       url: 'https://cdn.jsdelivr.net/fontsource/fonts/creepster@latest/latin-400-normal.woff2',
     },
-    bodyFont: "'Verdana', sans-serif",
+    bodyFont: "'Outfit', 'Verdana', sans-serif",
+    bodyFontUrl: 'https://cdn.jsdelivr.net/fontsource/fonts/outfit@latest/latin-400-normal.woff2',
     headingScale: 0.85,
     background: {
       bg: '/grunge-bg.png',
@@ -231,7 +235,8 @@ export const themes: Y2KTheme[] = [
       family: 'Bungee Shade',
       url: 'https://cdn.jsdelivr.net/fontsource/fonts/bungee-shade@latest/latin-400-normal.woff2',
     },
-    bodyFont: "'Gill Sans', 'Gill Sans MT', sans-serif",
+    bodyFont: "'Space Grotesk', 'Gill Sans', sans-serif",
+    bodyFontUrl: 'https://cdn.jsdelivr.net/fontsource/fonts/space-grotesk@latest/latin-400-normal.woff2',
     headingScale: 0.55,
     background: {
       bg: '/retropop-bg.png',
@@ -251,7 +256,8 @@ export const themes: Y2KTheme[] = [
       family: 'Luckiest Guy',
       url: 'https://cdn.jsdelivr.net/fontsource/fonts/luckiest-guy@latest/latin-400-normal.woff2',
     },
-    bodyFont: "'Arial', sans-serif",
+    bodyFont: "'Nunito', 'Arial', sans-serif",
+    bodyFontUrl: 'https://cdn.jsdelivr.net/fontsource/fonts/nunito@latest/latin-400-normal.woff2',
     headingScale: 0.8,
     background: {
       bg: '/bubblegum-bg.png',
@@ -271,7 +277,8 @@ export const themes: Y2KTheme[] = [
       family: 'Press Start 2P',
       url: 'https://cdn.jsdelivr.net/fontsource/fonts/press-start-2p@latest/latin-400-normal.woff2',
     },
-    bodyFont: "'Lucida Console', monospace",
+    bodyFont: "'Share Tech Mono', 'Lucida Console', monospace",
+    bodyFontUrl: 'https://cdn.jsdelivr.net/fontsource/fonts/share-tech-mono@latest/latin-400-normal.woff2',
     headingScale: 0.45,
     background: {
       bg: '/gamer-bg.png',
@@ -291,7 +298,8 @@ export const themes: Y2KTheme[] = [
       family: 'Permanent Marker',
       url: 'https://cdn.jsdelivr.net/fontsource/fonts/permanent-marker@latest/latin-400-normal.woff2',
     },
-    bodyFont: "'Arial Black', 'Arial Bold', sans-serif",
+    bodyFont: "'Archivo Black', 'Arial Black', sans-serif",
+    bodyFontUrl: 'https://cdn.jsdelivr.net/fontsource/fonts/archivo-black@latest/latin-400-normal.woff2',
     headingScale: 0.9,
     background: {
       bg: '/skater-bg.png',

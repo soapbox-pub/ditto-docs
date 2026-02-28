@@ -34,7 +34,7 @@
         <h1 class="hero-title">
           <span class="hero-name">Ditto</span>
         </h1>
-        <p class="hero-text">Social media that's actually fun.</p>
+        <p class="hero-text">Make social media fun again.</p>
         <p class="hero-sub">
           A Nostr client for people who want to <em>express themselves</em>,
           not feed an algorithm. Open source, decentralized, and entirely yours to customize.
@@ -50,20 +50,6 @@
             Guides
           </a>
         </div>
-      </div>
-    </section>
-
-    <!-- ============================================================
-         VIBES: Big emotional statement
-         ============================================================ -->
-    <section class="vibes">
-      <div class="vibes-inner">
-        <h2>Remember when the internet was a playground?</h2>
-        <p>
-          When you could customize your page. Pick your own colors. Express who you actually are.
-          Before everything became the same feed, the same font, the same vibe.
-        </p>
-        <p class="vibes-punchline">Ditto brings that energy back.</p>
       </div>
     </section>
 
@@ -310,11 +296,13 @@ async function loadFont(theme: Y2KTheme): Promise<void> {
     return;
   }
 
+  // Build @font-face declarations for display font + optional body font
   const styleId = `theme-font-${theme.key}`;
   if (!document.getElementById(styleId)) {
     const style = document.createElement('style');
     style.id = styleId;
-    style.textContent = `
+
+    let css = `
       @font-face {
         font-family: '${theme.font.family}';
         src: url('${theme.font.url}') format('woff2');
@@ -323,15 +311,36 @@ async function loadFont(theme: Y2KTheme): Promise<void> {
         font-style: normal;
       }
     `;
+
+    // Load body font from CDN if specified
+    if (theme.bodyFontUrl) {
+      const bodyFamily = theme.bodyFont.split(',')[0].replace(/'/g, '').trim();
+      css += `
+        @font-face {
+          font-family: '${bodyFamily}';
+          src: url('${theme.bodyFontUrl}') format('woff2');
+          font-display: swap;
+          font-weight: 400;
+          font-style: normal;
+        }
+      `;
+    }
+
+    style.textContent = css;
     document.head.appendChild(style);
   }
 
   try {
-    await document.fonts.load(`400 16px "${theme.font.family}"`);
+    const loads = [document.fonts.load(`400 16px "${theme.font.family}"`)];
+    if (theme.bodyFontUrl) {
+      const bodyFamily = theme.bodyFont.split(',')[0].replace(/'/g, '').trim();
+      loads.push(document.fonts.load(`400 16px "${bodyFamily}"`));
+    }
+    await Promise.all(loads);
     loadedFonts.add(theme.key);
     fontLoaded.value = true;
   } catch {
-    // Font failed to load, keep using Inter
+    // Font failed to load, use fallbacks
     fontLoaded.value = true;
   }
 }
