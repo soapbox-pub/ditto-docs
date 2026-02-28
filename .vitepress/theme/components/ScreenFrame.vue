@@ -251,18 +251,13 @@ function confirmClose() {
 function rainBananas() {
   const container = viewportWrap.value;
   if (!container) return;
-  const count = 20 + Math.floor(Math.random() * 15);
-  for (let i = 0; i < count; i++) {
-    const banana = document.createElement('span');
-    banana.className = 'banana-drop';
-    banana.textContent = '\u{1F34C}';
-    banana.style.left = `${Math.random() * 100}%`;
-    banana.style.animationDelay = `${Math.random() * 0.8}s`;
-    banana.style.animationDuration = `${1.2 + Math.random() * 1.5}s`;
-    banana.style.fontSize = `${20 + Math.random() * 24}px`;
-    banana.addEventListener('animationend', () => banana.remove());
-    container.appendChild(banana);
-  }
+  // Remove any existing banana first
+  container.querySelector('.banana-drop')?.remove();
+  const banana = document.createElement('span');
+  banana.className = 'banana-drop';
+  banana.textContent = '\u{1F34C}';
+  banana.addEventListener('animationend', () => banana.remove());
+  container.appendChild(banana);
 }
 
 // ── MS Paint Help menu (easter egg) ──
