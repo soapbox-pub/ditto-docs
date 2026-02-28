@@ -1827,13 +1827,13 @@ button.screen-power-btn.power-standby {
 
 .btn-ghost {
   background: transparent;
-  color: var(--vp-c-text-1);
-  border-color: var(--vp-c-divider);
+  color: var(--theme-primary, var(--ditto-purple));
+  border-color: var(--theme-primary, var(--ditto-purple));
 }
 
 .btn-ghost:hover {
-  border-color: var(--theme-primary, var(--ditto-purple));
-  color: var(--theme-primary, var(--ditto-purple));
+  border-color: var(--vp-c-divider);
+  color: var(--vp-c-text-1);
   transform: translateY(-2px);
 }
 
