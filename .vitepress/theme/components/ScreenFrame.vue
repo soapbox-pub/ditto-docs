@@ -32,9 +32,6 @@
   <!-- ── Main screen frame ── -->
   <div v-show="windowState === 'normal'" class="screen-frame" :class="`screen-${theme}`">
 
-    <!-- Theme logo (top-left corner) -->
-    <img :src="themeLogo" :alt="`${theme} Ditto logo`" class="screen-theme-logo" />
-
     <!-- ── MS PAINT ── Win95 application window -->
     <template v-if="theme === 'mspaint'">
       <div class="screen-chrome">
@@ -184,6 +181,9 @@
 
     <!-- Content viewport: scrollable area where page sections live -->
     <div class="screen-viewport-wrap" :class="{ 'screen-viewport-wrap-skater': theme === 'skater', 'screen-viewport-wrap-kawaii': theme === 'kawaii' }" ref="viewportWrap">
+      <!-- Theme logo (top-left, below chrome) -->
+      <img :src="themeLogo" :alt="`${theme} Ditto logo`" class="screen-theme-logo" />
+
       <div class="screen-viewport" ref="viewport" v-show="!retroActiveUrl && !bubbleIframeUrl">
         <slot />
       </div>
