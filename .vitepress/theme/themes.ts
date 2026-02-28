@@ -32,7 +32,12 @@ export interface Y2KTheme {
   label: string;
   emoji: string;
   colors: ThemeColors;
+  /** Display/heading font (loaded from CDN) */
   font: ThemeFont;
+  /** Body text font (system font, no loading needed) */
+  bodyFont: string;
+  /** Scale factor for heading font sizes (1 = normal, <1 = smaller for oversized fonts) */
+  headingScale: number;
   background: ThemeBackground;
 }
 
@@ -166,6 +171,8 @@ export const themes: Y2KTheme[] = [
       family: 'Cherry Bomb One',
       url: 'https://cdn.jsdelivr.net/fontsource/fonts/cherry-bomb-one@latest/latin-400-normal.woff2',
     },
+    bodyFont: "'Trebuchet MS', sans-serif",
+    headingScale: 0.9,
     background: {
       bg: '/kawaii-bg.png',
       mode: 'cover',
@@ -184,6 +191,8 @@ export const themes: Y2KTheme[] = [
       family: 'Creepster',
       url: 'https://cdn.jsdelivr.net/fontsource/fonts/creepster@latest/latin-400-normal.woff2',
     },
+    bodyFont: "'Verdana', sans-serif",
+    headingScale: 0.85,
     background: {
       bg: '/grunge-bg.png',
       mode: 'cover',
@@ -202,6 +211,8 @@ export const themes: Y2KTheme[] = [
       family: 'Silkscreen',
       url: 'https://cdn.jsdelivr.net/fontsource/fonts/silkscreen@latest/latin-400-normal.woff2',
     },
+    bodyFont: "'Tahoma', sans-serif",
+    headingScale: 0.9,
     background: {
       bg: '/mspaint-bg.png',
       mode: 'cover',
@@ -220,6 +231,8 @@ export const themes: Y2KTheme[] = [
       family: 'Bungee Shade',
       url: 'https://cdn.jsdelivr.net/fontsource/fonts/bungee-shade@latest/latin-400-normal.woff2',
     },
+    bodyFont: "'Gill Sans', 'Gill Sans MT', sans-serif",
+    headingScale: 0.55,
     background: {
       bg: '/retropop-bg.png',
       mode: 'cover',
@@ -238,6 +251,8 @@ export const themes: Y2KTheme[] = [
       family: 'Luckiest Guy',
       url: 'https://cdn.jsdelivr.net/fontsource/fonts/luckiest-guy@latest/latin-400-normal.woff2',
     },
+    bodyFont: "'Arial', sans-serif",
+    headingScale: 0.8,
     background: {
       bg: '/bubblegum-bg.png',
       mode: 'cover',
@@ -256,6 +271,8 @@ export const themes: Y2KTheme[] = [
       family: 'Press Start 2P',
       url: 'https://cdn.jsdelivr.net/fontsource/fonts/press-start-2p@latest/latin-400-normal.woff2',
     },
+    bodyFont: "'Lucida Console', monospace",
+    headingScale: 0.45,
     background: {
       bg: '/gamer-bg.png',
       mode: 'cover',
@@ -274,6 +291,8 @@ export const themes: Y2KTheme[] = [
       family: 'Permanent Marker',
       url: 'https://cdn.jsdelivr.net/fontsource/fonts/permanent-marker@latest/latin-400-normal.woff2',
     },
+    bodyFont: "'Arial Black', 'Arial Bold', sans-serif",
+    headingScale: 0.9,
     background: {
       bg: '/skater-bg.png',
       mode: 'cover',

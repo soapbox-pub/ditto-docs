@@ -254,9 +254,10 @@ const homeStyles = computed(() => {
   if (!theme) return {};
 
   const tokens = deriveTokens(theme.colors);
-  const font = fontLoaded.value
-    ? `'${theme.font.family}', 'Inter', sans-serif`
-    : `'Inter', sans-serif`;
+  const displayFont = fontLoaded.value
+    ? `'${theme.font.family}', ${theme.bodyFont}`
+    : theme.bodyFont;
+  const bodyFont = theme.bodyFont;
 
   const primaryHsl = theme.colors.primary;
 
@@ -275,7 +276,9 @@ const homeStyles = computed(() => {
     '--theme-accent-fg': hslToCSS(tokens.accentForeground),
     '--theme-border': hslToCSS(tokens.border),
     '--theme-ring': hslToCSS(tokens.ring),
-    '--theme-font': font,
+    '--theme-font': displayFont,
+    '--theme-body-font': bodyFont,
+    '--theme-heading-scale': String(theme.headingScale),
     '--theme-primary-hsl': primaryHsl,
     // Map to VitePress variables for components that use them
     '--vp-c-text-1': hslToCSS(tokens.foreground),
