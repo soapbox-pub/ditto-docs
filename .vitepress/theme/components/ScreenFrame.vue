@@ -133,7 +133,7 @@
         v-if="theme === 'skater'"
         class="crt-overlay"
         :class="{ 'crt-shutting-down': crtState === 'shutting-down', 'crt-off': crtState === 'off', 'crt-turning-on': crtState === 'turning-on' }"
-        @animationend="onCrtAnimationEnd"
+        @animationend.self="onCrtAnimationEnd"
       >
         <div class="crt-scanline"></div>
       </div>
@@ -147,7 +147,7 @@
       </div>
     </div>
     <div v-else-if="theme === 'skater'" class="screen-bottom screen-bottom-skater">
-      <span class="screen-power-btn" :class="{ 'power-standby': crtState === 'off' }" @click="toggleCrt">&#x23FB;</span>
+      <button class="screen-power-btn" :class="{ 'power-standby': crtState === 'off' }" @click.stop="toggleCrt" type="button">&#x23FB;</button>
     </div>
     <div v-else-if="theme === 'mspaint'" class="screen-bottom screen-bottom-mspaint">
       <div class="screen-statusbar">

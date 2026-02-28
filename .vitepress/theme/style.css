@@ -333,7 +333,7 @@
   padding: 12px;
 }
 
-.screen-power-btn {
+button.screen-power-btn {
   font-size: 20px;
   opacity: 0.6;
 }
@@ -682,7 +682,16 @@
 /* ── Skater: CRT power-off easter egg ── */
 
 /* Power button interactivity */
-.screen-power-btn {
+button.screen-power-btn {
+  /* Reset native button styles */
+  appearance: none;
+  border: none;
+  background: transparent;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  color: inherit;
+  /* Interactive styles */
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -696,18 +705,23 @@
   z-index: 20;
 }
 
-.screen-power-btn:hover {
+button.screen-power-btn:hover {
   opacity: 1 !important;
   text-shadow: 0 0 6px rgba(0, 0, 0, 0.3);
   background: rgba(0, 0, 0, 0.08);
 }
 
-.screen-power-btn:active {
+button.screen-power-btn:active {
   transform: scale(0.92);
 }
 
+button.screen-power-btn:focus-visible {
+  outline: 2px solid #b0ff00;
+  outline-offset: 2px;
+}
+
 /* Standby state: green LED glow */
-.screen-power-btn.power-standby {
+button.screen-power-btn.power-standby {
   color: #b0ff00;
   opacity: 1 !important;
   text-shadow: 0 0 8px #b0ff00, 0 0 16px rgba(176, 255, 0, 0.4);
