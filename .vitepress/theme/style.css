@@ -660,11 +660,7 @@
 }
 
 .ownership-section::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: var(--vp-c-bg-soft);
-  pointer-events: none;
+  display: none;
 }
 
 .ownership-inner {
