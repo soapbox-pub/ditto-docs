@@ -1076,11 +1076,20 @@ input.kawaii-terminal-input:focus {
 .dino-screen {
   width: min(50vw, 500px);
   height: min(70vh, 600px);
-  top: 50%;
-  bottom: auto;
+  top: 8px;
+  bottom: 48px;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translateX(-50%);
   z-index: 3;
+}
+
+@media (max-width: 768px) {
+  .dino-screen {
+    width: calc(100vw - 16px);
+    height: auto;
+    top: 8px;
+    bottom: 56px;
+  }
 }
 
 .dino-iframe {
