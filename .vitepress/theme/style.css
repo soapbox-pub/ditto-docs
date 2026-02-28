@@ -905,30 +905,35 @@ button.screen-power-btn {
 
 .banana-drop {
   position: absolute;
-  top: -20%;
+  top: -30%;
   left: 50%;
   transform: translateX(-50%);
   z-index: 15;
   pointer-events: none;
   font-size: min(40vw, 280px);
   line-height: 1;
-  animation: banana-fall 2.5s ease-in forwards;
+  animation: banana-fall 0.9s cubic-bezier(0.33, 0, 1, 0.6) forwards;
 }
 
 @keyframes banana-fall {
   0% {
-    transform: translateX(-50%) translateY(0) rotate(-20deg);
+    transform: translateX(-50%) translateY(0) rotate(-5deg);
     opacity: 1;
   }
-  60% {
+  70% {
+    transform: translateX(-40%) translateY(110%) rotate(35deg);
     opacity: 1;
   }
-  85% {
-    transform: translateX(-50%) translateY(90%) rotate(15deg);
-    opacity: 0.8;
+  82% {
+    transform: translateX(-55%) translateY(105%) rotate(-12deg);
+    opacity: 1;
+  }
+  90% {
+    transform: translateX(-48%) translateY(115%) rotate(8deg);
+    opacity: 0.9;
   }
   100% {
-    transform: translateX(-50%) translateY(110%) rotate(25deg);
+    transform: translateX(-50%) translateY(120%) rotate(0deg);
     opacity: 0;
   }
 }
