@@ -4,21 +4,15 @@
     ref="homeRef"
     :style="homeStyles"
   >
-    <!-- Background image layer -->
+    <!-- Background wallpaper layer (behind everything) -->
     <div
       v-if="activeTheme?.background"
       class="theme-bg-image"
       :style="{
-        backgroundImage: `url(${activeTheme.background.url})`,
+        backgroundImage: `url(${activeTheme.background.bg})`,
         backgroundSize: activeTheme.background.mode === 'tile' ? 'auto' : 'cover',
         backgroundRepeat: activeTheme.background.mode === 'tile' ? 'repeat' : 'no-repeat',
       }"
-    />
-
-    <!-- Semi-transparent overlay for readability -->
-    <div
-      class="theme-bg-overlay"
-      :style="{ background: overlayColor }"
     />
 
     <!-- ============================================================
@@ -231,6 +225,17 @@
     </section>
 
     </div><!-- /.ditto-home-content -->
+
+    <!-- Screen frame overlay (transparent center, opaque edges) -->
+    <div
+      v-if="activeTheme?.background"
+      class="theme-screen-overlay"
+      :style="{
+        backgroundImage: `url(${activeTheme.background.screen})`,
+        backgroundSize: activeTheme.background.mode === 'tile' ? 'auto' : 'cover',
+        backgroundRepeat: activeTheme.background.mode === 'tile' ? 'repeat' : 'no-repeat',
+      }"
+    />
   </div>
 </template>
 
@@ -296,14 +301,6 @@ const homeStyles = computed(() => {
     '--vp-c-divider': hslToCSS(tokens.border),
     color: hslToCSS(tokens.foreground),
   } as Record<string, string>;
-});
-
-const overlayColor = computed(() => {
-  const theme = activeTheme.value;
-  if (!theme) return 'transparent';
-  // Use the theme background color with opacity for readability over the bg image
-  const bg = theme.colors.background;
-  return `hsla(${bg}, 0.7)`;
 });
 
 // ─── Theme strip styles ──────────────────────────────────────────────

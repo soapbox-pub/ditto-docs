@@ -22,7 +22,10 @@ export interface ThemeFont {
 }
 
 export interface ThemeBackground {
-  url: string;
+  /** Wallpaper/desktop background image */
+  bg: string;
+  /** Screen frame overlay (transparent center, opaque edges) */
+  screen: string;
   mode: 'cover' | 'tile';
 }
 
@@ -166,7 +169,8 @@ export const themes: Y2KTheme[] = [
       url: 'https://cdn.jsdelivr.net/fontsource/fonts/cherry-bomb-one@latest/latin-400-normal.woff2',
     },
     background: {
-      url: '/kawaii-background.png',
+      bg: '/kawaii-bg.png',
+      screen: '/kawaii-screen.png',
       mode: 'cover',
     },
   },
@@ -184,7 +188,8 @@ export const themes: Y2KTheme[] = [
       url: 'https://cdn.jsdelivr.net/fontsource/fonts/creepster@latest/latin-400-normal.woff2',
     },
     background: {
-      url: '/grunge-background.png',
+      bg: '/grunge-bg.png',
+      screen: '/grunge-screen.png',
       mode: 'cover',
     },
   },
@@ -202,7 +207,8 @@ export const themes: Y2KTheme[] = [
       url: 'https://cdn.jsdelivr.net/fontsource/fonts/silkscreen@latest/latin-400-normal.woff2',
     },
     background: {
-      url: '/ms-paint-background.png',
+      bg: '/mspaint-bg.png',
+      screen: '/mspaint-screen.png',
       mode: 'cover',
     },
   },
@@ -220,7 +226,8 @@ export const themes: Y2KTheme[] = [
       url: 'https://cdn.jsdelivr.net/fontsource/fonts/bungee-shade@latest/latin-400-normal.woff2',
     },
     background: {
-      url: '/pop-punk-background.png',
+      bg: '/retropop-bg.png',
+      screen: '/retropop-screen.png',
       mode: 'cover',
     },
   },
@@ -238,7 +245,8 @@ export const themes: Y2KTheme[] = [
       url: 'https://cdn.jsdelivr.net/fontsource/fonts/luckiest-guy@latest/latin-400-normal.woff2',
     },
     background: {
-      url: '/bubblegum-background.png',
+      bg: '/bubblegum-bg.png',
+      screen: '/bubblegum-screen.png',
       mode: 'cover',
     },
   },
@@ -256,7 +264,8 @@ export const themes: Y2KTheme[] = [
       url: 'https://cdn.jsdelivr.net/fontsource/fonts/press-start-2p@latest/latin-400-normal.woff2',
     },
     background: {
-      url: '/gamer-background.png',
+      bg: '/gamer-bg.png',
+      screen: '/gamer-screen.png',
       mode: 'cover',
     },
   },
@@ -274,7 +283,8 @@ export const themes: Y2KTheme[] = [
       url: 'https://cdn.jsdelivr.net/fontsource/fonts/permanent-marker@latest/latin-400-normal.woff2',
     },
     background: {
-      url: '/skater.png',
+      bg: '/skater-bg.png',
+      screen: '/skater-screen.png',
       mode: 'cover',
     },
   },

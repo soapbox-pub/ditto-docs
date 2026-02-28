@@ -134,11 +134,14 @@
   pointer-events: none;
 }
 
-/* Semi-transparent overlay for readability */
-.theme-bg-overlay {
+/* Screen frame overlay (transparent center, opaque edges) —
+   sits on top of content so the frame visually masks content
+   that extends beyond the screen area */
+.theme-screen-overlay {
   position: fixed;
   inset: 0;
-  z-index: 0;
+  z-index: 2;
+  background-position: center;
   pointer-events: none;
 }
 
