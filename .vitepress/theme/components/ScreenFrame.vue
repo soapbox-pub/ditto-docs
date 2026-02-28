@@ -1,5 +1,29 @@
 <template>
-  <div class="screen-frame" :class="`screen-${theme}`">
+  <!-- Close confirmation dialog -->
+  <div v-if="showCloseConfirm" class="win-dialog-overlay" @click.self="showCloseConfirm = false">
+    <div class="win-dialog" :class="`win-dialog-${theme}`">
+      <div class="win-dialog-titlebar">
+        <span class="win-dialog-title">{{ theme === 'mspaint' ? 'Paint' : 'Ditto' }}</span>
+        <span class="win-dialog-close" @click="showCloseConfirm = false">X</span>
+      </div>
+      <div class="win-dialog-body">
+        <div class="win-dialog-icon">&#x26A0;</div>
+        <p class="win-dialog-text">Are you sure you want to close this window?</p>
+      </div>
+      <div class="win-dialog-buttons">
+        <button class="win-dialog-btn" @click="confirmClose">Yes</button>
+        <button class="win-dialog-btn" @click="showCloseConfirm = false">No</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Minimized taskbar -->
+  <div v-if="windowState === 'minimized'" class="taskbar" :class="`taskbar-${theme}`" @click="windowState = 'normal'">
+    <span class="taskbar-icon">&#x1F5D4;</span>
+    <span class="taskbar-label">{{ theme === 'mspaint' ? 'untitled - Paint' : 'Ditto' }}</span>
+  </div>
+
+  <div v-show="windowState === 'normal'" class="screen-frame" :class="`screen-${theme}`">
 
     <!-- ── MS PAINT ── Win95 application window -->
     <template v-if="theme === 'mspaint'">
@@ -7,9 +31,9 @@
         <div class="screen-titlebar">
           <span class="screen-titlebar-text">untitled - Paint</span>
           <div class="screen-titlebar-buttons">
-            <span class="screen-btn-win">_</span>
+            <span class="screen-btn-win screen-btn-interactive" @click="minimizeWindow">_</span>
             <span class="screen-btn-win">[]</span>
-            <span class="screen-btn-win">X</span>
+            <span class="screen-btn-win screen-btn-interactive screen-btn-close" @click="requestClose">X</span>
           </div>
         </div>
         <div class="screen-menubar">
@@ -68,9 +92,9 @@
       <div class="screen-chrome">
         <div class="screen-titlebar">
           <div class="screen-titlebar-buttons">
-            <span class="screen-btn-grunge">X</span>
+            <span class="screen-btn-grunge screen-btn-interactive screen-btn-close" @click="requestClose">X</span>
             <span class="screen-btn-grunge">[]</span>
-            <span class="screen-btn-grunge">_</span>
+            <span class="screen-btn-grunge screen-btn-interactive" @click="minimizeWindow">_</span>
           </div>
         </div>
       </div>
@@ -81,9 +105,9 @@
       <div class="screen-chrome">
         <div class="screen-titlebar">
           <div class="screen-titlebar-buttons">
-            <span class="screen-btn-gamer">X</span>
+            <span class="screen-btn-gamer screen-btn-interactive screen-btn-close" @click="requestClose">X</span>
             <span class="screen-btn-gamer">[]</span>
-            <span class="screen-btn-gamer">_</span>
+            <span class="screen-btn-gamer screen-btn-interactive" @click="minimizeWindow">_</span>
           </div>
         </div>
       </div>
@@ -104,9 +128,9 @@
           </div>
           <div class="screen-url-bar">ditto.pub</div>
           <div class="screen-titlebar-buttons">
-            <span class="screen-btn-bubble">_</span>
+            <span class="screen-btn-bubble screen-btn-interactive" @click="minimizeWindow">_</span>
             <span class="screen-btn-bubble">[]</span>
-            <span class="screen-btn-bubble">X</span>
+            <span class="screen-btn-bubble screen-btn-interactive screen-btn-close" @click="requestClose">X</span>
           </div>
         </div>
       </div>
@@ -122,9 +146,9 @@
           </div>
           <div class="screen-url-bar">{{ retroPages[retroPageIndex].label }}</div>
           <div class="screen-titlebar-buttons">
-            <span class="screen-btn-retro">_</span>
+            <span class="screen-btn-retro screen-btn-interactive" @click="minimizeWindow">_</span>
             <span class="screen-btn-retro">[]</span>
-            <span class="screen-btn-retro">X</span>
+            <span class="screen-btn-retro screen-btn-interactive screen-btn-close" @click="requestClose">X</span>
           </div>
         </div>
       </div>
@@ -142,7 +166,9 @@
       <div class="screen-chrome">
         <div class="screen-titlebar">
           <div class="screen-titlebar-buttons">
-            <span>_</span><span>[]</span><span>X</span>
+            <span class="screen-btn-interactive" @click="minimizeWindow">_</span>
+            <span>[]</span>
+            <span class="screen-btn-interactive screen-btn-close" @click="requestClose">X</span>
           </div>
         </div>
       </div>
@@ -202,6 +228,24 @@ const props = defineProps<{
 
 const viewport = ref<HTMLElement | null>(null);
 
+// ── Window minimize/close ──
+type WindowState = 'normal' | 'minimized' | 'closed';
+const windowState = ref<WindowState>('normal');
+const showCloseConfirm = ref(false);
+
+function minimizeWindow() {
+  windowState.value = 'minimized';
+}
+
+function requestClose() {
+  showCloseConfirm.value = true;
+}
+
+function confirmClose() {
+  showCloseConfirm.value = false;
+  windowState.value = 'closed';
+}
+
 // ── MS Paint Help menu (easter egg) ──
 const paintHelpOpen = ref(false);
 
@@ -252,11 +296,13 @@ function onCrtAnimationEnd() {
   }
 }
 
-// Reset easter egg state when switching themes
+// Reset all easter egg state when switching themes
 watch(() => props.theme, () => {
   crtState.value = 'on';
   retroPageIndex.value = 0;
   paintHelpOpen.value = false;
+  windowState.value = 'normal';
+  showCloseConfirm.value = false;
 });
 
 // ── Scroll forwarding ──

@@ -344,6 +344,345 @@ button.screen-power-btn {
 }
 
 /* ==========================================================================
+ * WINDOW CONTROLS: Minimize / Close buttons + Taskbar + Dialog
+ * ========================================================================== */
+
+/* ── Interactive window buttons ── */
+.screen-btn-interactive {
+  cursor: pointer !important;
+  transition: filter 0.15s, opacity 0.15s;
+}
+
+.screen-btn-interactive:hover {
+  filter: brightness(1.3);
+  opacity: 0.9;
+}
+
+.screen-btn-interactive:active {
+  transform: scale(0.85);
+}
+
+/* Close button: red tint on hover */
+.screen-btn-close:hover {
+  filter: none;
+  background: #c42b1c !important;
+  color: #fff !important;
+}
+
+/* ── Minimized taskbar ── */
+.taskbar {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 16px;
+  height: 36px;
+  cursor: pointer;
+  user-select: none;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  font-size: 12px;
+  font-weight: 700;
+  box-shadow: 0 -2px 12px rgba(0, 0, 0, 0.2);
+  transition: filter 0.15s;
+}
+
+.taskbar:hover {
+  filter: brightness(1.1);
+}
+
+.taskbar:active {
+  filter: brightness(0.95);
+}
+
+.taskbar-icon {
+  font-size: 16px;
+}
+
+.taskbar-label {
+  white-space: nowrap;
+}
+
+/* Taskbar per-theme variants */
+.taskbar-mspaint {
+  background: #c0c0c0;
+  border: 2px outset #dfdfdf;
+  color: #000;
+  font-family: 'Silkscreen', 'MS Sans Serif', system-ui;
+  border-radius: 0;
+}
+
+.taskbar-grunge {
+  background: #1a1a1a;
+  border: 2px solid #ff00ff;
+  color: #ff00ff;
+  font-family: 'Special Elite', monospace;
+}
+
+.taskbar-gamer {
+  background: #0a0a2e;
+  border: 2px solid #00ff41;
+  color: #00ff41;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 10px;
+}
+
+.taskbar-bubblegum {
+  background: #f4c8d8;
+  border: 2px solid #2d1050;
+  color: #2d1050;
+}
+
+.taskbar-retropop {
+  background: #ff3399;
+  border: 2px solid #1a0a3a;
+  color: #fff;
+}
+
+/* Fallback taskbar for any unknown theme */
+.taskbar:not([class*="taskbar-"]):not(.taskbar) {
+  background: #333;
+  color: #fff;
+}
+
+/* ── Close confirmation dialog ── */
+.win-dialog-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.win-dialog {
+  background: #c0c0c0;
+  border: 2px outset #dfdfdf;
+  box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.5);
+  min-width: 320px;
+  max-width: 90vw;
+  font-family: 'Silkscreen', 'MS Sans Serif', system-ui;
+  font-size: 12px;
+  user-select: none;
+}
+
+.win-dialog-titlebar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 3px 4px 3px 6px;
+  background: linear-gradient(90deg, #000080, #1084d0);
+  color: #fff;
+  font-weight: 700;
+  font-size: 12px;
+}
+
+.win-dialog-title {
+  flex: 1;
+}
+
+.win-dialog-close {
+  width: 18px;
+  height: 16px;
+  background: #c0c0c0;
+  border: 2px outset #dfdfdf;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: 900;
+  color: #000;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.win-dialog-close:hover {
+  background: #c42b1c;
+  color: #fff;
+}
+
+.win-dialog-body {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px 24px;
+}
+
+.win-dialog-icon {
+  font-size: 32px;
+  flex-shrink: 0;
+}
+
+.win-dialog-text {
+  margin: 0;
+  color: #000;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.win-dialog-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  padding: 0 24px 16px;
+}
+
+.win-dialog-btn {
+  appearance: none;
+  background: #c0c0c0;
+  border: 2px outset #dfdfdf;
+  padding: 4px 24px;
+  font-family: 'Silkscreen', 'MS Sans Serif', system-ui;
+  font-size: 12px;
+  color: #000;
+  cursor: pointer;
+  min-width: 75px;
+}
+
+.win-dialog-btn:hover {
+  background: #d4d4d4;
+}
+
+.win-dialog-btn:active {
+  border-style: inset;
+  background: #b0b0b0;
+}
+
+/* Dialog per-theme variants */
+.win-dialog-grunge {
+  background: #1a1a1a;
+  border: 2px solid #ff00ff;
+}
+
+.win-dialog-grunge .win-dialog-titlebar {
+  background: #ff00ff;
+  color: #000;
+}
+
+.win-dialog-grunge .win-dialog-text {
+  color: #ff00ff;
+}
+
+.win-dialog-grunge .win-dialog-btn {
+  background: #333;
+  border: 2px solid #ff00ff;
+  color: #ff00ff;
+}
+
+.win-dialog-grunge .win-dialog-btn:hover {
+  background: #ff00ff;
+  color: #000;
+}
+
+.win-dialog-grunge .win-dialog-close {
+  background: #333;
+  border-color: #ff00ff;
+  color: #ff00ff;
+}
+
+.win-dialog-gamer {
+  background: #0a0a2e;
+  border: 2px solid #00ff41;
+}
+
+.win-dialog-gamer .win-dialog-titlebar {
+  background: linear-gradient(90deg, #0a0a2e, #1a1a5e);
+  color: #00ff41;
+}
+
+.win-dialog-gamer .win-dialog-text {
+  color: #00ff41;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 10px;
+}
+
+.win-dialog-gamer .win-dialog-btn {
+  background: #0a0a2e;
+  border: 2px solid #00ff41;
+  color: #00ff41;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 10px;
+}
+
+.win-dialog-gamer .win-dialog-btn:hover {
+  background: #00ff41;
+  color: #0a0a2e;
+}
+
+.win-dialog-gamer .win-dialog-close {
+  background: #0a0a2e;
+  border-color: #00ff41;
+  color: #00ff41;
+}
+
+.win-dialog-bubblegum {
+  background: #f4c8d8;
+  border: 2px solid #2d1050;
+}
+
+.win-dialog-bubblegum .win-dialog-titlebar {
+  background: linear-gradient(90deg, #c850c0, #ff6ec7);
+  color: #fff;
+}
+
+.win-dialog-bubblegum .win-dialog-text {
+  color: #2d1050;
+}
+
+.win-dialog-bubblegum .win-dialog-btn {
+  background: #fff;
+  border: 2px solid #2d1050;
+  color: #2d1050;
+}
+
+.win-dialog-bubblegum .win-dialog-btn:hover {
+  background: #2d1050;
+  color: #fff;
+}
+
+.win-dialog-bubblegum .win-dialog-close {
+  background: #fff;
+  border-color: #2d1050;
+  color: #2d1050;
+}
+
+.win-dialog-retropop {
+  background: #f9c0d8;
+  border: 2px solid #1a0a3a;
+}
+
+.win-dialog-retropop .win-dialog-titlebar {
+  background: #ff3399;
+  color: #fff;
+}
+
+.win-dialog-retropop .win-dialog-text {
+  color: #1a0a3a;
+}
+
+.win-dialog-retropop .win-dialog-btn {
+  background: #fff;
+  border: 2px solid #1a0a3a;
+  color: #1a0a3a;
+}
+
+.win-dialog-retropop .win-dialog-btn:hover {
+  background: #1a0a3a;
+  color: #fff;
+}
+
+.win-dialog-retropop .win-dialog-close {
+  background: transparent;
+  border: 2px solid #1a0a3a;
+  color: #1a0a3a;
+}
+
+/* ==========================================================================
  * PER-THEME SCREEN STYLES
  * ========================================================================== */
 
