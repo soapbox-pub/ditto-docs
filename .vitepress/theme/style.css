@@ -917,32 +917,16 @@ button.screen-power-btn {
 @keyframes banana-fall {
   0% {
     top: -30%;
-    left: 50%;
     transform: translateX(-50%) rotate(-5deg);
     opacity: 1;
   }
-  70% {
-    top: 85%;
-    left: 52%;
-    transform: translateX(-50%) rotate(35deg);
+  85% {
+    transform: translateX(-50%) rotate(30deg);
     opacity: 1;
-  }
-  82% {
-    top: 80%;
-    left: 46%;
-    transform: translateX(-50%) rotate(-12deg);
-    opacity: 1;
-  }
-  90% {
-    top: 88%;
-    left: 50%;
-    transform: translateX(-50%) rotate(8deg);
-    opacity: 0.9;
   }
   100% {
     top: 90%;
-    left: 50%;
-    transform: translateX(-50%) rotate(0deg);
+    transform: translateX(-50%) rotate(35deg);
     opacity: 0;
   }
 }
