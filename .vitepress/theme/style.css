@@ -201,6 +201,8 @@
 .screen-bottom {
   flex-shrink: 0;
   user-select: none;
+  position: relative;
+  z-index: 20;
 }
 
 /* ── Shared title bar layout ── */
@@ -681,14 +683,23 @@
 
 /* Power button interactivity */
 .screen-power-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
   cursor: pointer;
-  transition: opacity 0.2s, text-shadow 0.3s, color 0.3s;
+  transition: opacity 0.2s, text-shadow 0.3s, color 0.3s, background 0.2s;
   user-select: none;
+  position: relative;
+  z-index: 20;
 }
 
 .screen-power-btn:hover {
   opacity: 1 !important;
   text-shadow: 0 0 6px rgba(0, 0, 0, 0.3);
+  background: rgba(0, 0, 0, 0.08);
 }
 
 .screen-power-btn:active {
