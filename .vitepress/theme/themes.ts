@@ -191,8 +191,8 @@ export const themes: Y2KTheme[] = [
       primary: '328 100% 54%',
     },
     font: {
-      family: 'Creepster',
-      url: 'https://cdn.jsdelivr.net/fontsource/fonts/creepster@latest/latin-400-normal.woff2',
+      family: 'Big Shoulders Stencil Display',
+      url: 'https://cdn.jsdelivr.net/fontsource/fonts/big-shoulders-stencil-display@latest/latin-400-normal.woff2',
     },
     bodyFont: "'Outfit', 'Verdana', sans-serif",
     bodyFontUrl: 'https://cdn.jsdelivr.net/fontsource/fonts/outfit@latest/latin-400-normal.woff2',
