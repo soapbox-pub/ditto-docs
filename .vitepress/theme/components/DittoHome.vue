@@ -157,7 +157,7 @@
     <section class="selfhost-section">
       <div class="section-inner">
         <div class="section-header">
-          <h2>Build on Ditto.</h2>
+          <h2>Hack Ditto.</h2>
           <p>Ditto is open source and entirely front-end. Edit the code right in your browser with Shakespeare, fork it, or just dig into the source. Make it yours.</p>
         </div>
 
