@@ -39,9 +39,6 @@
           not feed an algorithm. Open source, decentralized, and entirely yours to customize and build upon.
         </p>
         <div class="hero-actions">
-          <a href="/learn/what-is-nostr" class="btn btn-ghost">
-            What is Nostr?
-          </a>
           <a href="/guides/themes" class="btn btn-ghost">
             Guides
           </a>
