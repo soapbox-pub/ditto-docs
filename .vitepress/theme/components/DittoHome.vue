@@ -21,6 +21,10 @@
       :style="{ background: overlayColor }"
     />
 
+    <!-- Content wrapper: clipped so content is hidden in the top/bottom
+         margins of the viewport, while the background image stays visible -->
+    <div class="ditto-home-content">
+
     <!-- ============================================================
          TRANSPARENT NAV: Overlays the hero
          ============================================================ -->
@@ -226,6 +230,7 @@
       </div>
     </section>
 
+    </div><!-- /.ditto-home-content -->
   </div>
 </template>
 

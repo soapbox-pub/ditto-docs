@@ -142,14 +142,23 @@
   pointer-events: none;
 }
 
+/* Content wrapper: clips scrolling content so it's hidden behind the
+   top and bottom margins of the viewport, letting the background image
+   show through in those regions like a picture frame. */
+.ditto-home-content {
+  position: relative;
+  z-index: 1;
+  clip-path: inset(200px 0 80px 0);
+}
+
 /* Ensure all homepage sections sit above the background */
-.ditto-home > section {
+.ditto-home-content > section {
   position: relative;
   z-index: 1;
 }
 
 /* Nav must sit above sections so sticky nav + dropdowns remain clickable */
-.ditto-home > nav {
+.ditto-home-content > nav {
   position: relative;
   z-index: 50;
 }
