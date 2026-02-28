@@ -2047,7 +2047,7 @@ button.screen-power-btn.power-standby {
 }
 
 .power-emoji {
-  font-size: 56px;
+  font-size: 64px;
   flex-shrink: 0;
   line-height: 1;
   animation: float-fast 6s ease-in-out infinite;
@@ -2060,7 +2060,7 @@ button.screen-power-btn.power-standby {
 .power-item:nth-child(6) .power-emoji { animation-delay: -5s; }
 
 .power-content h3 {
-  font-size: calc(22px * var(--theme-heading-scale, 1));
+  font-size: calc(26px * var(--theme-heading-scale, 1));
   font-weight: 800;
   margin: 0 0 8px;
   color: var(--vp-c-text-1);
@@ -2068,7 +2068,7 @@ button.screen-power-btn.power-standby {
 }
 
 .power-content p {
-  font-size: 16px;
+  font-size: 18px;
   line-height: 1.65;
   color: var(--vp-c-text-2);
   margin: 0;
