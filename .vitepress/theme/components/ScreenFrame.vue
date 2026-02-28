@@ -117,8 +117,8 @@
     <template v-else-if="theme === 'bubblegum'">
       <div class="screen-chrome">
         <div class="screen-tab-bar">
-          <span class="screen-tab" :class="{ active: bubbleTab === 0 }" @click="bubbleTab = 0">Ditto</span>
-          <span class="screen-tab" :class="{ active: bubbleTab === 1 }" @click="bubbleTab = 1">Blobbi</span>
+          <span class="screen-tab" :class="{ active: bubbleTab === 0 }" @click="bubbleTab = 0"><span class="tab-favicon">&#x1FA90;</span> Ditto</span>
+          <span class="screen-tab" :class="{ active: bubbleTab === 1 }" @click="bubbleTab = 1"><img class="tab-favicon-img" src="https://www.blobbi.pet/blob.png" alt="" /> Blobbi</span>
         </div>
         <div class="screen-titlebar">
           <div class="screen-url-bar">{{ bubbleTab === 0 ? 'ditto.pub' : 'blobbi.pet' }}</div>

@@ -1035,6 +1035,19 @@ button.screen-power-btn {
   filter: none;
 }
 
+.tab-favicon {
+  font-size: 13px;
+  line-height: 1;
+}
+
+.tab-favicon-img {
+  width: 14px;
+  height: 14px;
+  object-fit: contain;
+  vertical-align: middle;
+  margin-right: 2px;
+}
+
 .screen-bubblegum .screen-titlebar {
   background: #f4c8d8;
   border-bottom: 2px solid #2d1050;
