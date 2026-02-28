@@ -248,7 +248,7 @@ export const themes: Y2KTheme[] = [
     label: 'Bubblegum',
     emoji: '\u{1F36C}', // 🍬
     colors: {
-      background: '328 100% 62%',
+      background: '0 0% 100%',
       text: '285 25% 31%',
       primary: '77 98% 49%',
     },
