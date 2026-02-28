@@ -138,7 +138,7 @@
         <p class="ownership-subtitle">No Corporate Control. No Big Tech. No Lock-in.</p>
         <p>
           Ditto is built on the free and open <a href="/learn/what-is-nostr">Nostr protocol</a>.
-          We don't control your Ditto account — you are entirely responsible for yourself.
+          We don't control your Ditto account — you are entirely responsible for&nbsp;yourself.
         </p>
         <p class="ownership-kicker">
           Because we think <strong>Fun</strong> requires <strong>Freedom</strong>.
