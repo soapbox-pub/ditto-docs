@@ -291,7 +291,7 @@
           We don't control your Ditto account — you are entirely responsible for&nbsp;yourself.
         </p>
         <p class="ownership-kicker">
-          Because we think <strong>Fun</strong> requires <strong>Freedom</strong>.
+          Because we think <strong>Fun</strong> requires&nbsp;<strong>Freedom</strong>.
         </p>
         <div class="build-actions">
           <a href="https://soapbox.pub/blog/what-is-nostr-divine" target="_blank" class="btn btn-primary">What is Nostr?</a>
