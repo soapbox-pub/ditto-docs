@@ -171,6 +171,28 @@
   box-shadow: 0 8px 40px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(0, 0, 0, 0.1);
 }
 
+/* ── Screen window minimize/close/restore transitions ── */
+
+.screen-window-enter-active {
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+              opacity 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.screen-window-leave-active {
+  transition: transform 0.3s cubic-bezier(0.55, 0, 1, 0.45),
+              opacity 0.3s cubic-bezier(0.55, 0, 1, 0.45);
+}
+
+.screen-window-enter-from {
+  transform: translateX(-50%) scale(0.85);
+  opacity: 0;
+}
+
+.screen-window-leave-to {
+  transform: translateX(-50%) scale(0.85);
+  opacity: 0;
+}
+
 /* ── Theme logo (top-left of viewport, scrolls with content) ── */
 .screen-theme-logo {
   display: block;

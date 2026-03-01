@@ -30,7 +30,8 @@
   </div>
 
   <!-- ── Main screen frame ── -->
-  <div v-show="windowState === 'normal'" class="screen-frame" :class="`screen-${theme}`">
+  <Transition name="screen-window">
+  <div v-if="windowState === 'normal'" class="screen-frame" :class="`screen-${theme}`">
 
     <!-- ── MS PAINT ── Win95 application window -->
     <template v-if="theme === 'mspaint'">
@@ -240,9 +241,11 @@
       </div>
     </div>
   </div>
+  </Transition>
 
   <!-- ── Space Invaders game window (gamer theme only) ── -->
-  <div v-if="theme === 'gamer' && dinoState !== 'hidden'" v-show="dinoWindowState === 'normal'" class="screen-frame screen-gamer dino-screen">
+  <Transition name="screen-window">
+  <div v-if="theme === 'gamer' && dinoState !== 'hidden' && dinoWindowState === 'normal'" class="screen-frame screen-gamer dino-screen">
     <div class="screen-chrome">
       <div class="screen-titlebar">
         <span class="screen-gamer-label">&#x1F47E; SPACE INVADERS</span>
@@ -267,6 +270,7 @@
       <div v-else class="dino-loading">Loading...</div>
     </div>
   </div>
+  </Transition>
 </template>
 
 <script setup lang="ts">
