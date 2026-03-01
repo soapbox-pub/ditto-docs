@@ -111,10 +111,10 @@
           </div>
           <!-- Follows / Global tabs -->
           <div class="fd-tab-bar">
-            <span class="fd-tab fd-tab--active">Follows</span>
-            <span class="fd-tab">Global</span>
+            <span class="fd-tab" :class="{ 'fd-tab--active': feedTab === 'follows' }" @click="feedTab = 'follows'">Follows</span>
+            <span class="fd-tab" :class="{ 'fd-tab--active': feedTab === 'global' }" @click="feedTab = 'global'">Global</span>
           </div>
-           <div class="fd-post" v-for="(post, i) in feedData.feed" :key="i">
+           <div class="fd-post" v-for="(post, i) in (feedTab === 'follows' ? feedData.feed : feedData.globalFeed)" :key="feedTab + '-' + i">
             <div class="fd-post-header">
               <img v-if="post.avatar" :src="post.avatar" class="fd-avatar fd-avatar--post fd-avatar--img" />
               <div v-else class="fd-avatar fd-avatar--post" :style="{ background: post.color }">{{ post.initials }}</div>
@@ -570,6 +570,7 @@ const activeId = ref('feed');
 const moreOpen = ref(false);
 const editMode = ref(false);
 const mobileView = ref<'sidebar' | 'feed'>('sidebar');
+const feedTab = ref<'follows' | 'global'>('follows');
 const dragId = ref<string | null>(null);
 const dragOverId = ref<string | null>(null);
 
@@ -648,32 +649,77 @@ function onDragEnd() {
 const feedData = {
   feed: [
     {
-      name: 'Nostr News', handle: '@nostrnews', time: '1m', initials: 'NN', color: '#6366f1',
-      avatar: 'https://i.pravatar.cc/150?u=nostrnews',
-      body: 'Breaking: Ditto just dropped a massive update with custom themes, sidebars, and more. The Nostr ecosystem keeps growing!',
-      image: true, imageSrc: 'https://picsum.photos/seed/ditto-update/600/300',
-      replies: 12, reposts: 34, likes: 89, zaps: '2.1k',
+      name: 'Marcus', handle: '@marcusg', time: '1m', initials: 'MG', color: '#6366f1',
+      avatar: 'https://i.pravatar.cc/150?u=marcusg-gamer',
+      body: 'Just beat the final boss of the Elden Ring DLC after 47 attempts. My hands are literally shaking. Messmer can rot in hell.',
+      image: true, imageSrc: 'https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600&h=300&fit=crop',
+      replies: 34, reposts: 12, likes: 287, zaps: '1.4k',
     },
     {
-      name: 'Connie', handle: '@Connie@primal.net', time: '3m', initials: 'C', color: '#ec4899',
-      avatar: 'https://i.pravatar.cc/150?u=connie',
-      body: 'The ability to zap people real sats for good posts changes the whole dynamic. Suddenly your timeline is full of quality instead of rage bait.',
+      name: 'Sophie', handle: '@sophieml', time: '4m', initials: 'S', color: '#ec4899',
+      avatar: 'https://i.pravatar.cc/150?u=sophie-dev',
+      body: 'My code: works perfectly.\nMe: changes one variable name.\nMy code: civilization has collapsed, the sun has gone out, there is no hope.',
       image: false,
-      replies: 3, reposts: 8, likes: 42, zaps: '500',
+      replies: 89, reposts: 342, likes: 1247, zaps: '3.2k',
     },
     {
-      name: 'Gustavo', handle: '@limachaves@iris.to', time: '5m', initials: 'G', color: '#22c55e',
-      avatar: 'https://i.pravatar.cc/150?u=gustavo',
-      body: 'The ability to customize your sidebar and choose exactly what feeds you want to see is a game changer. No algorithm deciding for you.',
+      name: 'Tyler', handle: '@tylerstreams', time: '8m', initials: 'T', color: '#22c55e',
+      avatar: 'https://i.pravatar.cc/150?u=tyler-pop',
+      body: 'The One Piece live action Season 2 trailer just dropped and Chopper looks INCREDIBLE. They actually nailed it. We are so back.',
+      image: true, imageSrc: 'https://images.unsplash.com/photo-1616530940355-351fabd9524b?w=600&h=300&fit=crop',
+      replies: 56, reposts: 203, likes: 892, zaps: '5.1k',
+    },
+    {
+      name: 'Jade', handle: '@jadecat', time: '15m', initials: 'J', color: '#f59e0b',
+      avatar: 'https://i.pravatar.cc/150?u=jade-cats',
+      body: 'My cat just knocked my entire coffee off the desk, made eye contact with me, and then slowly pushed a pen off too. Asserting dominance.',
+      image: true, imageSrc: 'https://images.unsplash.com/photo-1574158622682-e40e69881006?w=600&h=300&fit=crop',
+      replies: 23, reposts: 67, likes: 541, zaps: '900',
+    },
+  ],
+
+  globalFeed: [
+    {
+      name: '\uBBFC\uC900', handle: '@minjun_bts', time: '2m', initials: 'MJ', color: '#a855f7',
+      avatar: 'https://i.pravatar.cc/150?u=minjun-kr',
+      body: '\uBC29\uD0C4\uC18C\uB144\uB2E8 \uCEF4\uBC31 \uD655\uC815!! \uB4DC\uB514\uC5B4 \uB4DC\uB514\uC5B4 \uB4DC\uB514\uC5B4 \uD574\uC678 \uD22C\uC5B4 \uB0A0\uC9DC \uB098\uC654\uC5B4\uC694 \uC11C\uC6B8 \uACF5\uC5F0 \uD2F0\uCF13\uD305 \uC5B8\uC81C\uC8E0?! \uD83D\uDC9C\uD83D\uDC9C\uD83D\uDC9C BTS COMEBACK CONFIRMED',
+      image: true, imageSrc: 'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=600&h=300&fit=crop',
+      replies: 892, reposts: 4521, likes: 12400, zaps: '45k',
+    },
+    {
+      name: '\u3086\u304D / Yuki', handle: '@yuki_manga', time: '6m', initials: 'Y', color: '#ef4444',
+      avatar: 'https://i.pravatar.cc/150?u=yuki-manga-jp',
+      body: '\u30EF\u30F3\u30D4\u30FC\u30B9\u6700\u65B0\u8A71\u3084\u3070\u3059\u304E\u308B\u2026\u5C3E\u7530\u5148\u751F\u5929\u624D\u3059\u304E\u307E\u305B\u3093\u304B\uFF1F\u30EB\u30D5\u30A3\u304C\u3064\u3044\u306B\u2026\u6CE3\u3044\u3066\u308B\u3002\u30CD\u30BF\u30D0\u30EC\u3057\u306A\u3044\u3051\u3069\u307F\u3093\u306A\u8AAD\u3093\u3067\uFF01\uD83D\uDE2D\uD83C\uDF4E One Piece ch. 1142 is peak fiction',
+      image: true, imageSrc: 'https://images.unsplash.com/photo-1613376023733-0a73315d9b06?w=600&h=300&fit=crop',
+      replies: 234, reposts: 891, likes: 3420, zaps: '8.7k',
+    },
+    {
+      name: '\u0645\u0631\u06CC\u0645', handle: '@maryam_thr', time: '12m', initials: '\u0645', color: '#0ea5e9',
+      avatar: 'https://i.pravatar.cc/150?u=maryam-thr-ir',
+      body: '\u0627\u0645\u0631\u0648\u0632 \u062A\u0648 \u062A\u0647\u0631\u0627\u0646 \u0647\u0648\u0627 \u0639\u0627\u0644\u06CC \u0628\u0648\u062F\u060C \u0628\u0639\u062F \u0627\u0632 \u0645\u062F\u062A\u200C\u0647\u0627 \u0631\u0641\u062A\u06CC\u0645 \u067E\u0627\u0631\u06A9 \u062C\u0645\u0634\u06CC\u062F\u06CC\u0647 \u0648 \u06A9\u0644\u06CC \u0634\u0644\u0648\u063A \u0628\u0648\u062F. \u0627\u06CC\u0646 \u0634\u0647\u0631 \u0647\u0645\u06CC\u0634\u0647 \u063A\u0627\u0641\u0644\u06AF\u06CC\u0631 \u0645\u06CC\u200C\u06A9\u0646\u0647 \uD83C\uDF3F',
       image: false,
-      replies: 7, reposts: 15, likes: 63, zaps: '1.5k',
+      replies: 18, reposts: 42, likes: 167, zaps: '320',
     },
     {
-      name: 'Alice', handle: '@alice@nostr.social', time: '12m', initials: 'A', color: '#f59e0b',
-      avatar: 'https://i.pravatar.cc/150?u=alice',
-      body: 'Posted my first long-form article on Ditto today. So nice to have a real writing experience built into a social app.',
-      image: true, imageSrc: 'https://picsum.photos/seed/blog-preview/600/300',
-      replies: 5, reposts: 11, likes: 28, zaps: '800',
+      name: 'Carlos', handle: '@carlos_cdmx', time: '20m', initials: 'C', color: '#22c55e',
+      avatar: 'https://i.pravatar.cc/150?u=carlos-cdmx-mx',
+      body: 'GOOOL DE M\u00C9XICO \u26BD\uFE0F\uD83C\uDDF2\uD83C\uDDFD No puedo creerlo, en el \u00FAltimo minuto!! Qu\u00E9 partido tan incre\u00EDble, estoy gritando solo en mi departamento jajaja \uD83D\uDE02\uD83D\uDE02',
+      image: true, imageSrc: 'https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=600&h=300&fit=crop',
+      replies: 145, reposts: 523, likes: 2100, zaps: '6.3k',
+    },
+    {
+      name: 'Aisha', handle: '@aisha_ng', time: '25m', initials: 'A', color: '#f97316',
+      avatar: 'https://i.pravatar.cc/150?u=aisha-lagos-ng',
+      body: 'Burna Boy just dropped a surprise album at midnight and I haven\'t slept since. Track 5 is on another level entirely. Afrobeats keep winning \uD83D\uDD25\uD83C\uDFB6',
+      image: true, imageSrc: 'https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=600&h=300&fit=crop',
+      replies: 67, reposts: 289, likes: 1340, zaps: '4.1k',
+    },
+    {
+      name: 'L\u00E9a', handle: '@lea_paris', time: '32m', initials: 'L', color: '#64748b',
+      avatar: 'https://i.pravatar.cc/150?u=lea-paris-fr',
+      body: 'Le nouveau film de Jacques Audiard \u00E0 Cannes \u00E9tait absolument magistral. 10 minutes de standing ovation. Le cin\u00E9ma fran\u00E7ais n\'est pas mort, il est plus vivant que jamais \uD83C\uDFA5\u2728',
+      image: false,
+      replies: 34, reposts: 98, likes: 412, zaps: '1.8k',
     },
   ],
 
