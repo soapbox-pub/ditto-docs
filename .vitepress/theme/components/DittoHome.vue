@@ -357,7 +357,7 @@
 
 <script setup lang="ts">
 import { ref, computed, onMounted } from 'vue';
-import { themes as allThemes, desktopThemes, getTheme, systemThemeKey, deriveTokens, hslToCSS } from '../themes';
+import { themes as allThemes, desktopThemes, getTheme, randomThemeKey, deriveTokens, hslToCSS } from '../themes';
 import type { Y2KTheme } from '../themes';
 import ThemeSwitcher from './ThemeSwitcher.vue';
 import ScreenFrame from './ScreenFrame.vue';
@@ -507,8 +507,8 @@ async function applyTheme(key: string) {
 
 onMounted(() => {
   // If we have a persisted key from SPA navigation, use it.
-  // Otherwise pick a random one. Module-level variable resets on full page reload.
-  const key = _persistedThemeKey || systemThemeKey();
+  // Otherwise pick a random fun theme. Module-level variable resets on full page reload.
+  const key = _persistedThemeKey || randomThemeKey();
   applyTheme(key);
 
   // Intersection Observer for comments section animation
