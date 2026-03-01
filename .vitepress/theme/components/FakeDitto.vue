@@ -776,10 +776,10 @@ const feedData = {
   ],
 
   vines: [
-    { creator: 'Nico', avatar: 'https://i.pravatar.cc/150?u=nico', duration: '0:32', title: 'Lightning payment in action', thumbSrc: 'https://picsum.photos/seed/vine1/300/500' },
-    { creator: 'Luna', avatar: 'https://i.pravatar.cc/150?u=luna', duration: '1:05', title: 'My Nostr setup tour', thumbSrc: 'https://picsum.photos/seed/vine2/300/500' },
-    { creator: 'Zack', avatar: 'https://i.pravatar.cc/150?u=zack-vine', duration: '0:15', title: 'Bitcoin meme compilation', thumbSrc: 'https://picsum.photos/seed/vine3/300/500' },
-    { creator: 'Priya', avatar: 'https://i.pravatar.cc/150?u=priya', duration: '0:47', title: 'Relay setup speedrun', thumbSrc: 'https://picsum.photos/seed/vine4/300/500' },
+    { creator: 'Nico', avatar: 'https://i.pravatar.cc/150?u=nico', duration: '0:32', title: 'Wait for it... 😂', thumbSrc: 'https://images.unsplash.com/photo-1517457373958-b7bdd4587205?w=300&h=500&fit=crop&crop=faces' },
+    { creator: 'Luna', avatar: 'https://i.pravatar.cc/150?u=luna', duration: '1:05', title: 'Storytime: how I found Nostr', thumbSrc: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=300&h=500&fit=crop&crop=faces' },
+    { creator: 'Zack', avatar: 'https://i.pravatar.cc/150?u=zack-vine', duration: '0:15', title: 'POV: you explain Nostr to normies', thumbSrc: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=500&fit=crop&crop=faces' },
+    { creator: 'Priya', avatar: 'https://i.pravatar.cc/150?u=priya', duration: '0:47', title: 'This cat just zapped me 🐱⚡', thumbSrc: 'https://images.unsplash.com/photo-1596854407944-bf87f6fdd49e?w=300&h=500&fit=crop&crop=faces' },
   ],
 
   streams: [
