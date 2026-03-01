@@ -83,8 +83,6 @@
     <!-- ============================================================
          WHAT YOU CAN DO: Not a grid of icons. A story.
          ============================================================ -->
-    <hr class="section-divider" />
-
     <section class="powers-section">
       <div class="section-inner">
         <div class="section-header">

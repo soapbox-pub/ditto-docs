@@ -6,10 +6,10 @@
     <aside class="fd-sidebar" :class="{ 'fd-sidebar--visible': mobileView === 'sidebar' }">
       <!-- User header -->
       <div class="fd-user">
-        <img src="https://i.pravatar.cc/150?u=mk@ditto.pub" class="fd-avatar fd-avatar--sm fd-avatar--img" />
+        <img src="https://i.pravatar.cc/150?u=you@ditto.pub" class="fd-avatar fd-avatar--sm fd-avatar--img" />
         <div class="fd-user-info">
-          <span class="fd-user-name">MK Fain</span>
-          <span class="fd-user-handle">@mk@ditto.pub</span>
+          <span class="fd-user-name">You</span>
+          <span class="fd-user-handle">@you@ditto.pub</span>
         </div>
       </div>
 
@@ -100,7 +100,7 @@
         <template v-if="activeId === 'feed'">
           <!-- Compose box -->
           <div class="fd-compose">
-            <img src="https://i.pravatar.cc/150?u=mk@ditto.pub" class="fd-avatar fd-avatar--post fd-avatar--img" />
+            <img src="https://i.pravatar.cc/150?u=you@ditto.pub" class="fd-avatar fd-avatar--post fd-avatar--img" />
             <span class="fd-compose-placeholder">What's on your mind?</span>
           </div>
           <!-- Follows / Global tabs -->
@@ -197,16 +197,47 @@
         <!-- Profile -->
         <template v-else-if="activeId === 'profile'">
           <div class="fd-profile">
-            <div class="fd-profile-banner"></div>
+            <img src="https://picsum.photos/seed/profile-banner/600/200" class="fd-profile-banner fd-profile-banner--img" />
             <div class="fd-profile-info">
-              <img src="https://i.pravatar.cc/150?u=mk@ditto.pub" class="fd-avatar fd-avatar--lg fd-avatar--img" />
-              <h3 class="fd-profile-name">MK Fain</h3>
-              <p class="fd-profile-handle">@mk@ditto.pub</p>
-              <p class="fd-profile-bio">Building the fun social internet. Nostr enthusiast, open source advocate.</p>
+              <img src="https://i.pravatar.cc/150?u=you@ditto.pub" class="fd-avatar fd-avatar--lg fd-avatar--img" />
+              <div class="fd-profile-actions">
+                <span class="fd-profile-btn">Edit Profile</span>
+                <span class="fd-profile-btn fd-profile-btn--zap">&#x26A1; Zap</span>
+              </div>
+              <h3 class="fd-profile-name">You</h3>
+              <p class="fd-profile-handle">@you@ditto.pub</p>
+              <p class="fd-profile-bio">Living on the open internet. Posting what I want, zapping what I like. This is my Ditto.</p>
               <div class="fd-profile-stats">
                 <span><strong>842</strong> following</span>
                 <span><strong>1.2k</strong> followers</span>
                 <span><strong>3.4k</strong> posts</span>
+                <span class="fd-profile-streak">&#x1F525; 14 day streak</span>
+              </div>
+              <!-- Profile tabs -->
+              <div class="fd-tab-bar" style="margin: 12px -20px 0; border-top: 1px solid var(--vp-c-divider);">
+                <span class="fd-tab fd-tab--active">Posts</span>
+                <span class="fd-tab">Replies</span>
+                <span class="fd-tab">Media</span>
+                <span class="fd-tab">Likes</span>
+              </div>
+              <!-- Sample posts on profile -->
+              <div class="fd-post" style="border-bottom: 1px solid var(--vp-c-divider); padding: 12px 0;">
+                <p class="fd-post-body">Just set up my own Ditto instance on a Raspberry Pi. The future of social is self-hosted.</p>
+                <div class="fd-post-actions">
+                  <span class="fd-action fd-action--reply">&#x1F4AC; 8</span>
+                  <span class="fd-action fd-action--repost">&#x1F501; 23</span>
+                  <span class="fd-action fd-action--heart">&#x2661; 67</span>
+                  <span class="fd-action fd-action--zap">&#x26A1; 1.2k</span>
+                </div>
+              </div>
+              <div class="fd-post" style="padding: 12px 0;">
+                <p class="fd-post-body">The Nostr ecosystem is growing fast. Polls, games, live streams, color palettes, geocaching... all in one protocol. Wild times.</p>
+                <div class="fd-post-actions">
+                  <span class="fd-action fd-action--reply">&#x1F4AC; 3</span>
+                  <span class="fd-action fd-action--repost">&#x1F501; 11</span>
+                  <span class="fd-action fd-action--heart">&#x2661; 42</span>
+                  <span class="fd-action fd-action--zap">&#x26A1; 500</span>
+                </div>
               </div>
             </div>
           </div>
@@ -537,20 +568,20 @@ const sidebarItems = reactive<SidebarItem[]>([
   { id: 'feed',          icon: '\u{1F525}', label: 'Feed',          pinned: true,  visible: true, fixed: true, order: 1 },
   { id: 'vibe',          icon: '\u{1F30A}', label: 'Vibe',          pinned: true,  visible: true, order: 2 },
   { id: 'trends',        icon: '\u{1F4C8}', label: 'Trends',        pinned: true,  visible: true, order: 3 },
-  { id: 'vines',         icon: '\u{1F3AC}', label: 'Vines',         pinned: true,  visible: true, order: 4 },
-  { id: 'streams',       icon: '\u{1F4E1}', label: 'Streams',       pinned: true,  visible: true, order: 5 },
-  { id: 'webxdc',        icon: '\u{1F3AE}', label: 'Webxdc',        pinned: true,  visible: true, order: 6 },
-  { id: 'treasures',     icon: '\u{1F4E6}', label: 'Treasures',     pinned: true,  visible: true, order: 7 },
-  { id: 'notifications', icon: '\u{1F514}', label: 'Notifications', pinned: false, visible: true, order: 8 },
-  { id: 'search',        icon: '\u{1F50D}', label: 'Search',        pinned: false, visible: true, order: 9 },
-  { id: 'bookmarks',     icon: '\u{1F516}', label: 'Bookmarks',     pinned: false, visible: true, order: 10 },
-  { id: 'settings',      icon: '\u{2699}\u{FE0F}', label: 'Settings', pinned: false, visible: true, order: 11 },
-  { id: 'articles',      icon: '\u{1F4DD}', label: 'Articles',      pinned: false, visible: true, order: 12 },
-  { id: 'themes',        icon: '\u{1F3A8}', label: 'Themes',        pinned: false, visible: true, order: 13 },
-  { id: 'polls',         icon: '\u{1F4CA}', label: 'Polls',         pinned: false, visible: true, order: 14 },
-  { id: 'followpacks',   icon: '\u{1F465}', label: 'Follow Packs',  pinned: false, visible: true, order: 15 },
-  { id: 'colors',        icon: '\u{1F308}', label: 'Color Moments', pinned: false, visible: true, order: 16 },
-  { id: 'magic',         icon: '\u{1F0CF}', label: 'Magic Decks',   pinned: false, visible: true, order: 17 },
+  { id: 'articles',      icon: '\u{1F4DD}', label: 'Articles',      pinned: true,  visible: true, order: 4 },
+  { id: 'vines',         icon: '\u{1F3AC}', label: 'Vines',         pinned: true,  visible: true, order: 5 },
+  { id: 'streams',       icon: '\u{1F4E1}', label: 'Streams',       pinned: true,  visible: true, order: 6 },
+  { id: 'webxdc',        icon: '\u{1F3AE}', label: 'Webxdc',        pinned: true,  visible: true, order: 7 },
+  { id: 'magic',         icon: '\u{1F0CF}', label: 'Magic Decks',   pinned: true,  visible: true, order: 8 },
+  { id: 'treasures',     icon: '\u{1F4E6}', label: 'Treasures',     pinned: true,  visible: true, order: 9 },
+  { id: 'notifications', icon: '\u{1F514}', label: 'Notifications', pinned: false, visible: true, order: 10 },
+  { id: 'search',        icon: '\u{1F50D}', label: 'Search',        pinned: false, visible: true, order: 11 },
+  { id: 'bookmarks',     icon: '\u{1F516}', label: 'Bookmarks',     pinned: false, visible: true, order: 12 },
+  { id: 'settings',      icon: '\u{2699}\u{FE0F}', label: 'Settings', pinned: false, visible: true, order: 13 },
+  { id: 'themes',        icon: '\u{1F3A8}', label: 'Themes',        pinned: false, visible: true, order: 14 },
+  { id: 'polls',         icon: '\u{1F4CA}', label: 'Polls',         pinned: false, visible: true, order: 15 },
+  { id: 'followpacks',   icon: '\u{1F465}', label: 'Follow Packs',  pinned: false, visible: true, order: 16 },
+  { id: 'colors',        icon: '\u{1F308}', label: 'Color Moments', pinned: false, visible: true, order: 17 },
 ]);
 
 const pinnedItems = computed(() =>
@@ -722,7 +753,7 @@ const feedData = {
     },
     {
       title: 'Self-Hosting Your Social Media in 2026',
-      author: 'MK Fain', readTime: '5 min',
+      author: 'You', readTime: '5 min',
       coverSrc: 'https://picsum.photos/seed/article2/600/250',
       excerpt: 'You don\'t need a data center to run your own social platform. With Ditto, a $5 VPS is all it takes. Here\'s how to get started...',
     },
