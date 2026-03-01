@@ -98,6 +98,16 @@
       <div class="fd-feed-content">
         <!-- Post feed -->
         <template v-if="activeId === 'feed'">
+          <!-- Compose box -->
+          <div class="fd-compose">
+            <div class="fd-avatar fd-avatar--post" style="background: var(--theme-primary, #7c52e0)">MK</div>
+            <span class="fd-compose-placeholder">What's on your mind?</span>
+          </div>
+          <!-- Follows / Global tabs -->
+          <div class="fd-tab-bar">
+            <span class="fd-tab fd-tab--active">Follows</span>
+            <span class="fd-tab">Global</span>
+          </div>
           <div class="fd-post" v-for="(post, i) in feedData.feed" :key="i">
             <div class="fd-post-header">
               <div class="fd-avatar fd-avatar--post" :style="{ background: post.color }">{{ post.initials }}</div>
@@ -108,21 +118,26 @@
             </div>
             <p class="fd-post-body">{{ post.body }}</p>
             <div v-if="post.image" class="fd-post-image">
-              <div class="fd-image-placeholder">{{ post.imageLabel || 'Image' }}</div>
+              <div class="fd-image-placeholder" :style="{ background: post.imageBg || '' }">{{ post.imageLabel || '' }}</div>
             </div>
             <div class="fd-post-actions">
-              <span>&#x1F4AC; {{ post.replies }}</span>
-              <span>&#x1F501; {{ post.reposts }}</span>
-              <span>&#x2764;&#xFE0F; {{ post.likes }}</span>
-              <span>&#x26A1; {{ post.zaps }}</span>
+              <span class="fd-action fd-action--reply" title="Reply">&#x1F4AC; {{ post.replies }}</span>
+              <span class="fd-action fd-action--repost" title="Repost">&#x1F501; {{ post.reposts }}</span>
+              <span class="fd-action fd-action--heart" title="React">&#x2661; {{ post.likes }}</span>
+              <span class="fd-action fd-action--zap" title="Zap">&#x26A1; {{ post.zaps }}</span>
+              <span class="fd-action fd-action--more" title="More">&#x22EF;</span>
             </div>
           </div>
         </template>
 
         <!-- Notifications -->
         <template v-else-if="activeId === 'notifications'">
-          <div class="fd-notif" v-for="(n, i) in feedData.notifications" :key="i">
-            <span class="fd-notif-icon">{{ n.icon }}</span>
+          <div class="fd-tab-bar">
+            <span class="fd-tab fd-tab--active">All</span>
+            <span class="fd-tab">Mentions</span>
+          </div>
+          <div class="fd-notif" v-for="(n, i) in feedData.notifications" :key="i" :class="{ 'fd-notif--unread': n.unread }">
+            <span class="fd-notif-icon" :class="'fd-notif-icon--' + n.type">{{ n.icon }}</span>
             <div class="fd-notif-body">
               <span class="fd-notif-actor">{{ n.actor }}</span> {{ n.action }}
               <span class="fd-notif-time">{{ n.time }}</span>
@@ -135,6 +150,10 @@
           <div class="fd-search-bar">
             <span class="fd-search-icon">&#x1F50D;</span>
             <span class="fd-search-placeholder">Search Ditto...</span>
+          </div>
+          <div class="fd-tab-bar">
+            <span class="fd-tab fd-tab--active">Posts</span>
+            <span class="fd-tab">Accounts</span>
           </div>
           <div class="fd-search-section">
             <h4 class="fd-section-title">Trending</h4>
@@ -164,10 +183,10 @@
             </div>
             <p class="fd-post-body">{{ post.body }}</p>
             <div class="fd-post-actions">
-              <span>&#x1F4AC; {{ post.replies }}</span>
-              <span>&#x1F501; {{ post.reposts }}</span>
-              <span>&#x2764;&#xFE0F; {{ post.likes }}</span>
-              <span>&#x26A1; {{ post.zaps }}</span>
+              <span class="fd-action fd-action--reply">&#x1F4AC; {{ post.replies }}</span>
+              <span class="fd-action fd-action--repost">&#x1F501; {{ post.reposts }}</span>
+              <span class="fd-action fd-action--heart">&#x2661; {{ post.likes }}</span>
+              <span class="fd-action fd-action--zap">&#x26A1; {{ post.zaps }}</span>
             </div>
           </div>
         </template>
@@ -190,13 +209,53 @@
           </div>
         </template>
 
-        <!-- Vibe -->
+        <!-- Vibe (Theme Settings) -->
         <template v-else-if="activeId === 'vibe'">
-          <div class="fd-vibe-header">
-            <span class="fd-vibe-emoji">&#x1F30A;</span>
-            <span>Your vibe today</span>
+          <div class="fd-vibe-page">
+            <p class="fd-vibe-subtitle">Choose a theme for the interface</p>
+            <div class="fd-vibe-mode">
+              <span class="fd-vibe-mode-btn">&#x2600;&#xFE0F; Light</span>
+              <span class="fd-vibe-mode-btn fd-vibe-mode-btn--active">&#x1F319; Dark</span>
+              <span class="fd-vibe-mode-btn">&#x1F4BB; System</span>
+            </div>
+            <h4 class="fd-section-title">Presets</h4>
+            <div class="fd-vibe-grid">
+              <div class="fd-vibe-card" v-for="(t, i) in feedData.vibe" :key="i" :class="{ 'fd-vibe-card--active': i === 0 }">
+                <div class="fd-vibe-swatch" :style="{ background: t.bg }">
+                  <span class="fd-vibe-dot" :style="{ background: t.primary }"></span>
+                </div>
+                <span class="fd-vibe-card-name">{{ t.name }}</span>
+              </div>
+            </div>
           </div>
-          <div class="fd-post" v-for="(post, i) in feedData.vibe" :key="i">
+        </template>
+
+        <!-- Settings -->
+        <template v-else-if="activeId === 'settings'">
+          <div class="fd-settings-page">
+            <p class="fd-settings-intro">Shape your identity, tune your feed, and manage how you connect.</p>
+            <div class="fd-settings-menu-item" v-for="(item, i) in feedData.settings" :key="i">
+              <span class="fd-settings-menu-icon">{{ item.icon }}</span>
+              <div class="fd-settings-menu-text">
+                <span class="fd-post-name">{{ item.label }}</span>
+                <span class="fd-post-handle">{{ item.desc }}</span>
+              </div>
+              <span class="fd-settings-chevron">&#x203A;</span>
+            </div>
+          </div>
+        </template>
+
+        <!-- Trends -->
+        <template v-else-if="activeId === 'trends'">
+          <div class="fd-trends-pills">
+            <span class="fd-tag" v-for="(t, i) in feedData.trends.tags" :key="i">#{{ t.tag }} <small>{{ t.posts }}</small></span>
+          </div>
+          <div class="fd-tab-bar">
+            <span class="fd-tab fd-tab--active">&#x1F525; Hot</span>
+            <span class="fd-tab">&#x1F4C8; Rising</span>
+            <span class="fd-tab">&#x2694;&#xFE0F; Controversial</span>
+          </div>
+          <div class="fd-post" v-for="(post, i) in feedData.trends.posts" :key="i">
             <div class="fd-post-header">
               <div class="fd-avatar fd-avatar--post" :style="{ background: post.color }">{{ post.initials }}</div>
               <div>
@@ -206,30 +265,10 @@
             </div>
             <p class="fd-post-body">{{ post.body }}</p>
             <div class="fd-post-actions">
-              <span>&#x2764;&#xFE0F; {{ post.likes }}</span>
-              <span>&#x26A1; {{ post.zaps }}</span>
-            </div>
-          </div>
-        </template>
-
-        <!-- Settings -->
-        <template v-else-if="activeId === 'settings'">
-          <div class="fd-settings-group" v-for="(group, i) in feedData.settings" :key="i">
-            <h4 class="fd-section-title">{{ group.title }}</h4>
-            <div class="fd-settings-item" v-for="(item, j) in group.items" :key="j">
-              <span>{{ item.label }}</span>
-              <span class="fd-settings-value">{{ item.value }}</span>
-            </div>
-          </div>
-        </template>
-
-        <!-- Trends -->
-        <template v-else-if="activeId === 'trends'">
-          <div class="fd-trend" v-for="(t, i) in feedData.trends" :key="i">
-            <div class="fd-trend-rank">#{{ i + 1 }}</div>
-            <div>
-              <div class="fd-trend-tag">#{{ t.tag }}</div>
-              <div class="fd-trend-count">{{ t.posts }} posts</div>
+              <span class="fd-action fd-action--reply">&#x1F4AC; {{ post.replies }}</span>
+              <span class="fd-action fd-action--repost">&#x1F501; {{ post.reposts }}</span>
+              <span class="fd-action fd-action--heart">&#x2661; {{ post.likes }}</span>
+              <span class="fd-action fd-action--zap">&#x26A1; {{ post.zaps }}</span>
             </div>
           </div>
         </template>
@@ -242,7 +281,9 @@
               <span class="fd-post-name">{{ a.author }}</span>
               <span class="fd-post-handle">&middot; {{ a.readTime }} read</span>
             </div>
+            <div v-if="a.coverBg" class="fd-article-cover" :style="{ background: a.coverBg }"></div>
             <p class="fd-article-excerpt">{{ a.excerpt }}</p>
+            <span class="fd-article-read">Read article &#x2192;</span>
           </div>
         </template>
 
@@ -265,37 +306,61 @@
         <!-- Streams -->
         <template v-else-if="activeId === 'streams'">
           <div class="fd-stream" v-for="(s, i) in feedData.streams" :key="i">
-            <div class="fd-stream-thumb">
-              <span class="fd-live-badge">LIVE</span>
+            <div class="fd-stream-thumb" :style="{ background: s.thumbBg }">
+              <span class="fd-stream-badge" :class="'fd-stream-badge--' + s.status">{{ s.statusLabel }}</span>
               <span class="fd-stream-viewers">&#x1F441; {{ s.viewers }}</span>
             </div>
             <div class="fd-stream-info">
-              <span class="fd-post-name">{{ s.streamer }}</span>
-              <span class="fd-post-handle">{{ s.title }}</span>
+              <div class="fd-stream-meta">
+                <div class="fd-avatar fd-avatar--sm" :style="{ background: s.color }">{{ s.initials }}</div>
+                <span class="fd-post-name">{{ s.streamer }}</span>
+              </div>
+              <span class="fd-post-body" style="margin: 4px 0 0; font-size: 12px;">{{ s.title }}</span>
+              <span class="fd-post-handle">{{ s.summary }}</span>
             </div>
           </div>
         </template>
 
         <!-- Webxdc -->
         <template v-else-if="activeId === 'webxdc'">
-          <div class="fd-app-grid">
-            <div class="fd-app-card" v-for="(app, i) in feedData.webxdc" :key="i">
-              <div class="fd-app-icon">{{ app.icon }}</div>
-              <span class="fd-app-name">{{ app.name }}</span>
-              <span class="fd-post-handle">{{ app.desc }}</span>
+          <div class="fd-webxdc-list">
+            <div class="fd-webxdc-card" v-for="(app, i) in feedData.webxdc" :key="i">
+              <div class="fd-webxdc-left">
+                <div class="fd-app-icon">{{ app.icon }}</div>
+                <div>
+                  <span class="fd-app-name">{{ app.name }}</span>
+                  <span class="fd-post-handle">{{ app.desc }}</span>
+                </div>
+              </div>
+              <span class="fd-webxdc-launch">&#x25B6; Launch</span>
             </div>
           </div>
         </template>
 
         <!-- Themes -->
         <template v-else-if="activeId === 'themes'">
-          <div class="fd-theme-grid">
-            <div class="fd-theme-card" v-for="(t, i) in feedData.themes" :key="i">
-              <div class="fd-theme-preview" :style="{ background: t.bg }">
-                <span class="fd-theme-accent" :style="{ background: t.accent }"></span>
+          <div class="fd-themes-list">
+            <div class="fd-theme-item" v-for="(t, i) in feedData.themes" :key="i">
+              <div class="fd-post-header">
+                <div class="fd-avatar fd-avatar--post" :style="{ background: t.color }">{{ t.initials }}</div>
+                <div>
+                  <span class="fd-post-name">{{ t.author }}</span>
+                  <span class="fd-post-handle">shared a theme &middot; {{ t.time }}</span>
+                </div>
               </div>
-              <span class="fd-app-name">{{ t.name }}</span>
-              <span class="fd-post-handle">by {{ t.author }}</span>
+              <!-- Mini UI mockup -->
+              <div class="fd-theme-mockup" :style="{ background: t.bg, color: t.fg, borderColor: t.border }">
+                <div class="fd-theme-mockup-header" :style="{ background: t.primary }"></div>
+                <div class="fd-theme-mockup-body">
+                  <div class="fd-theme-mockup-line" :style="{ background: t.fg, opacity: 0.7 }"></div>
+                  <div class="fd-theme-mockup-line fd-theme-mockup-line--short" :style="{ background: t.fg, opacity: 0.4 }"></div>
+                  <div class="fd-theme-mockup-btn" :style="{ background: t.primary }"></div>
+                </div>
+              </div>
+              <div class="fd-theme-item-footer">
+                <span class="fd-post-name">{{ t.name }}</span>
+                <span class="fd-theme-copy">Copy Theme</span>
+              </div>
             </div>
           </div>
         </template>
@@ -311,6 +376,10 @@
               </div>
             </div>
             <p class="fd-post-body">{{ poll.question }}</p>
+            <div class="fd-poll-badges">
+              <span class="fd-badge">&#x1F4CA; {{ poll.type }}</span>
+              <span v-if="poll.ended" class="fd-badge fd-badge--muted">Ended</span>
+            </div>
             <div class="fd-poll-options">
               <div class="fd-poll-option" v-for="(opt, j) in poll.options" :key="j">
                 <div class="fd-poll-bar" :style="{ width: opt.pct + '%' }"></div>
@@ -318,31 +387,50 @@
                 <span class="fd-poll-pct">{{ opt.pct }}%</span>
               </div>
             </div>
-            <span class="fd-poll-total">{{ poll.totalVotes }} votes</span>
+            <div class="fd-poll-footer">
+              <span class="fd-poll-total">{{ poll.totalVotes }} votes</span>
+              <span v-if="!poll.ended" class="fd-poll-vote-btn">Vote</span>
+            </div>
           </div>
         </template>
 
         <!-- Follow Packs -->
         <template v-else-if="activeId === 'followpacks'">
           <div class="fd-followpack" v-for="(pack, i) in feedData.followpacks" :key="i">
-            <h4 class="fd-followpack-title">{{ pack.name }}</h4>
+            <h4 class="fd-followpack-title">&#x1F389; {{ pack.name }}</h4>
             <p class="fd-post-handle">{{ pack.desc }}</p>
-            <div class="fd-followpack-avatars">
-              <div class="fd-avatar fd-avatar--sm" v-for="(m, j) in pack.members" :key="j" :style="{ background: m.color }">{{ m.initials }}</div>
-              <span class="fd-followpack-count">+{{ pack.more }}</span>
+            <div v-if="pack.coverBg" class="fd-followpack-cover" :style="{ background: pack.coverBg }"></div>
+            <div class="fd-followpack-row">
+              <div class="fd-followpack-avatars">
+                <div class="fd-avatar fd-avatar--sm" v-for="(m, j) in pack.members" :key="j" :style="{ background: m.color }">{{ m.initials }}</div>
+              </div>
+              <span class="fd-followpack-count">&#x1F465; {{ pack.total }} members</span>
             </div>
           </div>
         </template>
 
         <!-- Color Moments -->
         <template v-else-if="activeId === 'colors'">
-          <div class="fd-color-grid">
-            <div class="fd-color-card" v-for="(c, i) in feedData.colors" :key="i">
-              <div class="fd-color-palette">
-                <span v-for="(swatch, j) in c.swatches" :key="j" class="fd-color-swatch" :style="{ background: swatch }"></span>
+          <div class="fd-colors-list">
+            <div class="fd-color-item" v-for="(c, i) in feedData.colors" :key="i">
+              <div class="fd-post-header">
+                <div class="fd-avatar fd-avatar--post" :style="{ background: c.color }">{{ c.initials }}</div>
+                <div>
+                  <span class="fd-post-name">{{ c.author }}</span>
+                  <span class="fd-post-handle">&middot; {{ c.time }}</span>
+                </div>
               </div>
-              <span class="fd-app-name">{{ c.name }}</span>
-              <span class="fd-post-handle">by {{ c.author }}</span>
+              <div v-if="c.name" class="fd-post-body" style="margin-bottom: 6px;">{{ c.name }}</div>
+              <div class="fd-color-palette" :class="'fd-color-palette--' + c.layout">
+                <span v-for="(swatch, j) in c.swatches" :key="j" class="fd-color-swatch" :style="{ background: swatch }"></span>
+                <span v-if="c.emoji" class="fd-color-emoji">{{ c.emoji }}</span>
+              </div>
+              <div class="fd-color-hexes">
+                <span v-for="(swatch, j) in c.swatches" :key="j" class="fd-color-hex">
+                  <span class="fd-color-dot" :style="{ background: swatch }"></span>
+                  {{ swatch }}
+                </span>
+              </div>
             </div>
           </div>
         </template>
@@ -350,15 +438,26 @@
         <!-- Magic Decks -->
         <template v-else-if="activeId === 'magic'">
           <div class="fd-deck" v-for="(deck, i) in feedData.magic" :key="i">
+            <div class="fd-post-header">
+              <div class="fd-avatar fd-avatar--post" :style="{ background: deck.color }">{{ deck.initials }}</div>
+              <div>
+                <span class="fd-post-name">{{ deck.author }}</span>
+                <span class="fd-post-handle">shared a deck &middot; {{ deck.time }}</span>
+              </div>
+            </div>
+            <div class="fd-deck-banner" :style="{ background: deck.bannerBg }"></div>
+            <h4 class="fd-deck-title">&#x1F0CF; {{ deck.name }}</h4>
+            <div v-if="deck.commander" class="fd-post-handle" style="margin-bottom: 4px;">&#x1F6E1;&#xFE0F; Commander: {{ deck.commander }}</div>
+            <div class="fd-deck-badges">
+              <span class="fd-badge">{{ deck.format }}</span>
+              <span class="fd-badge">{{ deck.archetype }}</span>
+              <span class="fd-badge">{{ deck.cardCount }} cards</span>
+            </div>
             <div class="fd-deck-cards">
               <div class="fd-magic-card" v-for="(card, j) in deck.cards" :key="j" :style="{ background: card.color }">
                 <span class="fd-magic-cost">{{ card.cost }}</span>
                 <span class="fd-magic-name">{{ card.name }}</span>
               </div>
-            </div>
-            <div class="fd-deck-info">
-              <span class="fd-post-name">{{ deck.name }}</span>
-              <span class="fd-post-handle">by {{ deck.author }} &middot; {{ deck.cardCount }} cards</span>
             </div>
           </div>
         </template>
@@ -366,12 +465,23 @@
         <!-- Treasures -->
         <template v-else-if="activeId === 'treasures'">
           <div class="fd-treasure" v-for="(t, i) in feedData.treasures" :key="i">
-            <div class="fd-treasure-icon">{{ t.icon }}</div>
-            <div class="fd-treasure-info">
-              <span class="fd-post-name">{{ t.name }}</span>
-              <span class="fd-post-handle">{{ t.location }}</span>
-              <span class="fd-treasure-status" :class="'fd-treasure--' + t.status">{{ t.statusLabel }}</span>
+            <div class="fd-post-header">
+              <div class="fd-avatar fd-avatar--post" :style="{ background: t.color }">{{ t.initials }}</div>
+              <div>
+                <span class="fd-post-name">{{ t.user }}</span>
+                <span class="fd-post-handle">{{ t.action }} &middot; {{ t.time }}</span>
+              </div>
             </div>
+            <div class="fd-treasure-body">
+              <span class="fd-treasure-icon">&#x1F4CD;</span>
+              <span class="fd-post-name">{{ t.name }}</span>
+            </div>
+            <div class="fd-treasure-badges">
+              <span class="fd-badge">{{ t.type }}</span>
+              <span class="fd-badge">{{ t.size }}</span>
+              <span class="fd-treasure-rating">D{{ t.difficulty }}/T{{ t.terrain }}</span>
+            </div>
+            <p v-if="t.desc" class="fd-post-body" style="margin-top: 6px;">{{ t.desc }}</p>
           </div>
         </template>
       </div>
@@ -492,7 +602,7 @@ const feedData = {
     {
       name: 'Nostr News', handle: '@nostrnews', time: '1m', initials: 'NN', color: '#6366f1',
       body: 'Breaking: Ditto just dropped a massive update with custom themes, sidebars, and more. The Nostr ecosystem keeps growing!',
-      image: true, imageLabel: 'Screenshot',
+      image: true, imageLabel: '', imageBg: 'linear-gradient(135deg, #667eea, #764ba2)',
       replies: 12, reposts: 34, likes: 89, zaps: '2.1k',
     },
     {
@@ -510,19 +620,19 @@ const feedData = {
     {
       name: 'Alice', handle: '@alice@nostr.social', time: '12m', initials: 'A', color: '#f59e0b',
       body: 'Posted my first long-form article on Ditto today. So nice to have a real writing experience built into a social app.',
-      image: true, imageLabel: 'Blog post preview',
+      image: true, imageLabel: '', imageBg: 'linear-gradient(135deg, #f093fb, #f5576c)',
       replies: 5, reposts: 11, likes: 28, zaps: '800',
     },
   ],
 
   notifications: [
-    { icon: '\u{26A1}', actor: 'Fiatjaf', action: 'zapped your post 1,000 sats', time: '2m ago' },
-    { icon: '\u{2764}\u{FE0F}', actor: 'Connie', action: 'liked your post', time: '5m ago' },
-    { icon: '\u{1F501}', actor: 'ODELL', action: 'reposted your article', time: '8m ago' },
-    { icon: '\u{1F464}', actor: 'Vitor Pamplona', action: 'started following you', time: '15m ago' },
-    { icon: '\u{1F4AC}', actor: 'Alice', action: 'replied to your post', time: '20m ago' },
-    { icon: '\u{26A1}', actor: 'Ben Arc', action: 'zapped your post 2,100 sats', time: '1h ago' },
-    { icon: '\u{1F3F7}\u{FE0F}', actor: 'Derek Ross', action: 'mentioned you in a post', time: '2h ago' },
+    { icon: '\u{26A1}', type: 'zap', actor: 'Fiatjaf', action: 'zapped your post 1,000 sats', time: '2m ago', unread: true },
+    { icon: '\u{2764}\u{FE0F}', type: 'react', actor: 'Connie', action: 'reacted to your post', time: '5m ago', unread: true },
+    { icon: '\u{1F501}', type: 'repost', actor: 'ODELL', action: 'reposted your article', time: '8m ago', unread: true },
+    { icon: '@', type: 'mention', actor: 'Alice', action: 'mentioned you', time: '20m ago', unread: false },
+    { icon: '\u{26A1}', type: 'zap', actor: 'Ben Arc', action: 'zapped your post 2,100 sats', time: '1h ago', unread: false },
+    { icon: '\u{2764}\u{FE0F}', type: 'react', actor: 'Derek Ross', action: 'reacted to your post', time: '2h ago', unread: false },
+    { icon: '\u{1F501}', type: 'repost', actor: 'Vitor Pamplona', action: 'reposted your note', time: '3h ago', unread: false },
   ],
 
   search: {
@@ -548,91 +658,78 @@ const feedData = {
   ],
 
   vibe: [
-    {
-      name: 'Mia', handle: '@mia@snort.social', time: '10m', initials: 'M', color: '#f472b6',
-      body: 'Morning coffee and scrolling through Ditto. The vibes are immaculate today.',
-      likes: 23, zaps: '200',
-    },
-    {
-      name: 'River', handle: '@river@nostr.band', time: '25m', initials: 'R', color: '#06b6d4',
-      body: 'Just discovered the color moments feed. People are sharing the most beautiful palettes.',
-      likes: 45, zaps: '600',
-    },
-    {
-      name: 'Sam', handle: '@sam@ditto.pub', time: '1h', initials: 'S', color: '#a78bfa',
-      body: 'The fact that I can play games, read articles, watch streams, AND shitpost all in one app is wild.',
-      likes: 67, zaps: '1.2k',
-    },
+    { name: 'Kawaii', bg: '#fce4ec', primary: '#ff69b4' },
+    { name: 'Grunge', bg: '#1a1a1a', primary: '#ff4444' },
+    { name: 'Gamer', bg: '#0a0a2e', primary: '#00ff88' },
+    { name: 'Bubblegum', bg: '#fff', primary: '#a600ff' },
+    { name: 'Retro Pop', bg: '#ffe066', primary: '#9040a0' },
+    { name: 'Skater', bg: '#f5f0e8', primary: '#e85d04' },
   ],
 
   settings: [
-    {
-      title: 'Account',
-      items: [
-        { label: 'Display name', value: 'MK Fain' },
-        { label: 'NIP-05', value: 'mk@ditto.pub' },
-        { label: 'Lightning address', value: 'mk@getalby.com' },
-      ],
-    },
-    {
-      title: 'Appearance',
-      items: [
-        { label: 'Theme', value: 'Bubblegum' },
-        { label: 'Language', value: 'English' },
-        { label: 'Font size', value: 'Medium' },
-      ],
-    },
-    {
-      title: 'Privacy',
-      items: [
-        { label: 'Default post visibility', value: 'Public' },
-        { label: 'Show reactions', value: 'On' },
-      ],
-    },
+    { icon: '\u{1F464}', label: 'Profile', desc: 'Edit your display name, bio, and avatar' },
+    { icon: '\u{1F3A8}', label: 'Vibe', desc: 'Choose a theme for the interface' },
+    { icon: '\u{1F4F0}', label: 'Content', desc: 'Manage your feed and content preferences' },
+    { icon: '\u{1F310}', label: 'Network', desc: 'Relays and file upload servers' },
+    { icon: '\u{1F514}', label: 'Notifications', desc: 'Configure push notification preferences' },
+    { icon: '\u{2699}\u{FE0F}', label: 'Advanced', desc: 'Wallet, system, and power user settings' },
   ],
 
-  trends: [
-    { tag: 'nostr', posts: '2.4k' },
-    { tag: 'bitcoin', posts: '1.8k' },
-    { tag: 'ditto', posts: '956' },
-    { tag: 'zaps', posts: '743' },
-    { tag: 'freedom', posts: '612' },
-    { tag: 'selfhosting', posts: '489' },
-    { tag: 'opensource', posts: '401' },
-    { tag: 'decentralize', posts: '387' },
-  ],
+  trends: {
+    tags: [
+      { tag: 'nostr', posts: '2.4k' },
+      { tag: 'bitcoin', posts: '1.8k' },
+      { tag: 'ditto', posts: '956' },
+      { tag: 'zaps', posts: '743' },
+      { tag: 'freedom', posts: '612' },
+      { tag: 'opensource', posts: '401' },
+    ],
+    posts: [
+      {
+        name: 'Fiatjaf', handle: '@fiatjaf', time: '2h', initials: 'F', color: '#8b5cf6',
+        body: 'The next wave of Nostr adoption will come from apps that make it fun, not apps that lecture you about decentralization.',
+        replies: 45, reposts: 120, likes: 380, zaps: '8.5k',
+      },
+      {
+        name: 'ODELL', handle: '@ODELL', time: '4h', initials: 'O', color: '#ef4444',
+        body: 'Self-hosting your social media is not about paranoia. It\'s about sovereignty.',
+        replies: 23, reposts: 67, likes: 210, zaps: '4.2k',
+      },
+    ],
+  },
 
   articles: [
     {
       title: 'Why Nostr Will Win',
       author: 'Fiatjaf', readTime: '8 min',
+      coverBg: 'linear-gradient(135deg, #667eea, #764ba2)',
       excerpt: 'The internet is broken. Social media is controlled by a handful of companies who profit from outrage. Nostr fixes this by giving users control over their own data and identity...',
     },
     {
       title: 'Self-Hosting Your Social Media in 2026',
       author: 'MK Fain', readTime: '5 min',
+      coverBg: 'linear-gradient(135deg, #f093fb, #f5576c)',
       excerpt: 'You don\'t need a data center to run your own social platform. With Ditto, a $5 VPS is all it takes. Here\'s how to get started...',
     },
     {
       title: 'The Case for Digital Freedom',
       author: 'Alice', readTime: '12 min',
+      coverBg: '',
       excerpt: 'We spend more time online than ever before, yet we have less control over our digital lives than ever. It\'s time to change that...',
     },
   ],
 
   vines: [
-    { creator: 'Nico', duration: '0:32', views: '12k' },
-    { creator: 'Luna', duration: '1:05', views: '8.4k' },
-    { creator: 'Zack', duration: '0:15', views: '24k' },
-    { creator: 'Priya', duration: '0:47', views: '6.2k' },
-    { creator: 'Max', duration: '2:10', views: '3.1k' },
-    { creator: 'Sophia', duration: '0:22', views: '18k' },
+    { creator: 'Nico', initials: 'N', color: '#8b5cf6', duration: '0:32', title: 'Lightning payment in action', thumbBg: 'linear-gradient(180deg, #1a1a2e, #4a1942)' },
+    { creator: 'Luna', initials: 'L', color: '#ec4899', duration: '1:05', title: 'My Nostr setup tour', thumbBg: 'linear-gradient(180deg, #0f3460, #16213e)' },
+    { creator: 'Zack', initials: 'Z', color: '#22c55e', duration: '0:15', title: 'Bitcoin meme compilation', thumbBg: 'linear-gradient(180deg, #2d1b69, #11998e)' },
+    { creator: 'Priya', initials: 'P', color: '#f59e0b', duration: '0:47', title: 'Relay setup speedrun', thumbBg: 'linear-gradient(180deg, #1a1a1a, #434343)' },
   ],
 
   streams: [
-    { streamer: 'ODELL', title: 'Citadel Dispatch #142', viewers: '1.2k' },
-    { streamer: 'Ben Arc', title: 'Building on Nostr - Live Coding', viewers: '340' },
-    { streamer: 'Marce', title: 'Music & Vibes', viewers: '89' },
+    { streamer: 'ODELL', initials: 'O', color: '#ef4444', title: 'Citadel Dispatch #142', summary: 'Bitcoin sovereignty and privacy', viewers: '1.2k', status: 'live', statusLabel: 'LIVE', thumbBg: 'linear-gradient(135deg, #1a1a2e, #e94560)' },
+    { streamer: 'Ben Arc', initials: 'BA', color: '#3b82f6', title: 'Building on Nostr - Live Coding', summary: 'Hacking on LNbits plugins', viewers: '340', status: 'live', statusLabel: 'LIVE', thumbBg: 'linear-gradient(135deg, #16213e, #0f3460)' },
+    { streamer: 'Marce', initials: 'M', color: '#a78bfa', title: 'Lo-fi Beats & Chill', summary: 'Music stream, come hang out', viewers: '89', status: 'ended', statusLabel: 'ENDED', thumbBg: 'linear-gradient(135deg, #2d1b69, #11998e)' },
   ],
 
   webxdc: [
@@ -645,18 +742,17 @@ const feedData = {
   ],
 
   themes: [
-    { name: 'Kawaii', author: 'Ditto', bg: '#fce4ec', accent: '#ff69b4' },
-    { name: 'Grunge', author: 'Ditto', bg: '#1a1a1a', accent: '#ff4444' },
-    { name: 'Gamer', author: 'Ditto', bg: '#0a0a2e', accent: '#00ff88' },
-    { name: 'Bubblegum', author: 'Ditto', bg: '#fff', accent: '#a600ff' },
-    { name: 'Retro Pop', author: 'Ditto', bg: '#ffe066', accent: '#9040a0' },
-    { name: 'Midnight', author: 'Community', bg: '#0f172a', accent: '#818cf8' },
+    { name: 'Kawaii', author: 'Soapbox', initials: 'S', color: '#ff69b4', time: '2d', bg: '#fce4ec', fg: '#5c2d3e', primary: '#ff69b4', border: '#f8bbd0' },
+    { name: 'Grunge', author: 'Soapbox', initials: 'S', color: '#ff4444', time: '3d', bg: '#1a1a1a', fg: '#e0e0e0', primary: '#ff4444', border: '#333' },
+    { name: 'Midnight Ocean', author: 'nostrdev', initials: 'N', color: '#818cf8', time: '1w', bg: '#0f172a', fg: '#cbd5e1', primary: '#818cf8', border: '#1e293b' },
+    { name: 'Sunset Warmth', author: 'Alice', initials: 'A', color: '#f59e0b', time: '2w', bg: '#fffbeb', fg: '#451a03', primary: '#f59e0b', border: '#fde68a' },
   ],
 
   polls: [
     {
       author: 'Derek Ross', handle: '@derek', time: '4h', initials: 'DR', color: '#f97316',
       question: 'What\'s your favorite Ditto feature?',
+      type: 'Single choice', ended: false,
       options: [
         { label: 'Custom themes', pct: 38 },
         { label: 'Zaps', pct: 29 },
@@ -666,8 +762,9 @@ const feedData = {
       totalVotes: 847,
     },
     {
-      author: 'Mia', handle: '@mia', time: '1d', initials: 'M', color: '#f472b6',
+      author: 'Mia', handle: '@mia', time: '3d', initials: 'M', color: '#f472b6',
       question: 'Best Nostr client for beginners?',
+      type: 'Single choice', ended: true,
       options: [
         { label: 'Ditto', pct: 45 },
         { label: 'Primal', pct: 28 },
@@ -682,65 +779,67 @@ const feedData = {
     {
       name: 'Nostr Developers',
       desc: 'The people building the protocol',
+      coverBg: 'linear-gradient(135deg, #667eea, #764ba2)',
       members: [
         { initials: 'F', color: '#8b5cf6' },
         { initials: 'JB', color: '#3b82f6' },
         { initials: 'VP', color: '#22c55e' },
         { initials: 'W', color: '#f59e0b' },
       ],
-      more: 42,
+      total: 46,
     },
     {
       name: 'Bitcoin Plebs',
       desc: 'Orange pill your timeline',
+      coverBg: '',
       members: [
         { initials: 'O', color: '#ef4444' },
         { initials: 'M', color: '#f97316' },
         { initials: 'G', color: '#eab308' },
       ],
-      more: 156,
+      total: 159,
     },
     {
       name: 'Artists & Creators',
       desc: 'Visual artists, musicians, and makers',
+      coverBg: 'linear-gradient(135deg, #f093fb, #f5576c)',
       members: [
         { initials: 'L', color: '#ec4899' },
         { initials: 'R', color: '#06b6d4' },
         { initials: 'A', color: '#a78bfa' },
         { initials: 'S', color: '#84cc16' },
       ],
-      more: 78,
+      total: 82,
     },
   ],
 
   colors: [
     {
-      name: 'Sunset Bliss',
-      author: 'Luna',
+      name: 'Sunset Bliss', emoji: '\u{1F305}',
+      author: 'Luna', initials: 'L', color: '#ec4899', time: '1h',
+      layout: 'horizontal',
       swatches: ['#ff6b6b', '#ffa36b', '#ffd93d', '#ff8e8e', '#ffb347'],
     },
     {
-      name: 'Ocean Depths',
-      author: 'River',
+      name: 'Ocean Depths', emoji: '',
+      author: 'River', initials: 'R', color: '#06b6d4', time: '3h',
+      layout: 'vertical',
       swatches: ['#0a2463', '#3e92cc', '#2ec4b6', '#cbf3f0', '#1b4965'],
     },
     {
-      name: 'Forest Walk',
-      author: 'Sam',
+      name: '', emoji: '\u{1F332}',
+      author: 'Sam', initials: 'S', color: '#22c55e', time: '6h',
+      layout: 'horizontal',
       swatches: ['#2d5016', '#5a7d2f', '#8fbc55', '#c5e063', '#f0f7da'],
-    },
-    {
-      name: 'Neon Dreams',
-      author: 'Priya',
-      swatches: ['#ff00ff', '#00ffff', '#ff0080', '#8000ff', '#00ff80'],
     },
   ],
 
   magic: [
     {
       name: 'Mono Red Aggro',
-      author: 'Zack',
-      cardCount: 60,
+      author: 'Zack', initials: 'Z', color: '#dc2626', time: '5h',
+      format: 'Modern', archetype: 'Aggro', cardCount: 60, commander: '',
+      bannerBg: 'linear-gradient(135deg, #7f1d1d, #dc2626)',
       cards: [
         { name: 'Lightning Bolt', cost: 'R', color: '#dc2626' },
         { name: 'Goblin Guide', cost: 'R', color: '#ef4444' },
@@ -748,23 +847,22 @@ const feedData = {
       ],
     },
     {
-      name: 'Blue Control',
-      author: 'Alice',
-      cardCount: 60,
+      name: 'Azorius Control',
+      author: 'Alice', initials: 'A', color: '#2563eb', time: '1d',
+      format: 'Commander', archetype: 'Control', cardCount: 100, commander: 'Grand Arbiter Augustin IV',
+      bannerBg: 'linear-gradient(135deg, #1e3a5f, #2563eb)',
       cards: [
         { name: 'Counterspell', cost: 'UU', color: '#2563eb' },
-        { name: 'Snapcaster Mage', cost: '1U', color: '#3b82f6' },
+        { name: 'Swords to Plowshares', cost: 'W', color: '#fbbf24' },
         { name: 'Cryptic Command', cost: '1UUU', color: '#1d4ed8' },
       ],
     },
   ],
 
   treasures: [
-    { icon: '\u{1F4E6}', name: 'Satoshi\'s Cache', location: 'Tokyo, Japan', status: 'found', statusLabel: 'Found' },
-    { icon: '\u{1F5FA}\u{FE0F}', name: 'Lightning Ridge', location: 'Austin, TX', status: 'active', statusLabel: 'Active' },
-    { icon: '\u{1F3F4}\u{200D}\u{2620}\u{FE0F}', name: 'Pirate\'s Bounty', location: 'Lisbon, Portugal', status: 'active', statusLabel: 'Active' },
-    { icon: '\u{26F0}\u{FE0F}', name: 'Mountain Stash', location: 'Madeira', status: 'found', statusLabel: 'Found' },
-    { icon: '\u{1F332}', name: 'Forest Node', location: 'Black Forest, Germany', status: 'active', statusLabel: 'Active' },
+    { user: 'BitcoinHiker', initials: 'BH', color: '#f59e0b', action: 'hid a treasure', time: '2h', name: 'Satoshi\'s Cache', type: 'Traditional', size: 'Small', difficulty: 3, terrain: 2, desc: 'Near the old cherry blossom tree in the park. Bring a pen!' },
+    { user: 'NostrExplorer', initials: 'NE', color: '#22c55e', action: 'found a treasure', time: '5h', name: 'Lightning Ridge', type: 'Multi-cache', size: 'Micro', difficulty: 4, terrain: 3, desc: '' },
+    { user: 'CachePirate', initials: 'CP', color: '#ef4444', action: 'hid a treasure', time: '1d', name: 'Pirate\'s Bounty', type: 'Mystery', size: 'Regular', difficulty: 5, terrain: 4, desc: 'Solve the puzzle to find the coordinates. X marks the spot!' },
   ],
 };
 </script>
