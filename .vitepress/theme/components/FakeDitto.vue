@@ -369,16 +369,15 @@
 
         <!-- Webxdc -->
         <template v-else-if="activeId === 'webxdc'">
-          <div class="fd-webxdc-list">
+          <div class="fd-webxdc-grid">
             <div class="fd-webxdc-card" v-for="(app, i) in feedData.webxdc" :key="i">
-              <div class="fd-webxdc-left">
-                <div class="fd-app-icon">{{ app.icon }}</div>
-                <div>
-                  <span class="fd-app-name">{{ app.name }}</span>
-                  <span class="fd-post-handle">{{ app.desc }}</span>
-                </div>
+              <div class="fd-webxdc-preview">
+                <img :src="app.preview" :alt="app.name" class="fd-webxdc-preview-img" />
               </div>
-              <span class="fd-webxdc-launch">&#x25B6; Launch</span>
+              <div class="fd-webxdc-info">
+                <span class="fd-app-icon">{{ app.icon }}</span>
+                <span class="fd-app-name">{{ app.name }}</span>
+              </div>
             </div>
           </div>
         </template>
@@ -835,12 +834,12 @@ const feedData = {
   ],
 
   webxdc: [
-    { icon: '\u{1F47E}', name: 'Space Invaders', desc: 'Classic arcade game' },
-    { icon: '\u{265F}\u{FE0F}', name: 'Chess', desc: 'Play with friends' },
-    { icon: '\u{1F4DD}', name: 'Collaborative Notepad', desc: 'Write together' },
-    { icon: '\u{1F3B2}', name: 'Dice Roller', desc: 'Tabletop companion' },
-    { icon: '\u{2705}', name: 'Todo List', desc: 'Shared tasks' },
-    { icon: '\u{1F30D}', name: 'GeoChat', desc: 'Location-based chat' },
+    { icon: '\u{1F47E}', name: 'Space Invaders', desc: 'Classic arcade game', preview: '/space-invaders.png' },
+    { icon: '\u{265F}\u{FE0F}', name: 'Chess', desc: 'Play with friends', preview: '/chess-app.png' },
+    { icon: '\u{1F4DD}', name: 'Collaborative Notepad', desc: 'Write together', preview: '/notes-app.jpeg' },
+    { icon: '\u{1F3B2}', name: 'Dice Roller', desc: 'Tabletop companion', preview: '/dice-roll.jpeg' },
+    { icon: '\u{2705}', name: 'Todo List', desc: 'Shared tasks', preview: '/todo.jpeg' },
+    { icon: '\u{1F30D}', name: 'GeoChat', desc: 'Location-based chat', preview: '/geochat.png' },
   ],
 
   themes: [
