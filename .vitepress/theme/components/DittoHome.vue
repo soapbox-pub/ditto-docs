@@ -258,6 +258,21 @@
               </div>
             </div>
           </div>
+
+          <!-- 11: Reaction -->
+          <div class="comment-card" :class="{ 'comment-card--visible': commentsVisible }" style="--delay: 10; --rotate: 1.2deg;">
+            <div class="comment-target">
+              <span class="comment-target-icon">&#x1F602;</span>
+              <span class="comment-target-label">@Greg laughed at "I lost my job today"</span>
+            </div>
+            <div class="comment-bubble">
+              <img src="https://i.pravatar.cc/80?u=connie-react" class="comment-avatar" />
+              <div>
+                <span class="comment-author">Connie</span>
+                <p>You laugh reacted at someone losing their job? Really, Greg?</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
