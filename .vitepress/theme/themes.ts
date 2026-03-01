@@ -312,8 +312,8 @@ export const themes: Y2KTheme[] = [
     emoji: '\u{2600}\u{FE0F}', // ☀️
     colors: {
       background: '270 50% 97%',
-      text: '270 25% 12%',
-      primary: '270 65% 55%',
+      text: '258 70% 60%',
+      primary: '258 70% 60%',
     },
     font: {
       family: 'Inter',
