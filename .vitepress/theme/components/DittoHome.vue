@@ -83,6 +83,8 @@
     <!-- ============================================================
          WHAT YOU CAN DO: Not a grid of icons. A story.
          ============================================================ -->
+    <hr class="section-divider" />
+
     <section class="powers-section">
       <div class="section-inner">
         <div class="section-header">
@@ -90,42 +92,7 @@
           <p>Ditto is a playground. Here's some of what you can do.</p>
         </div>
 
-        <div class="powers-list">
-          <div class="power-item">
-            <div class="power-content">
-              <h3>Post what you want</h3>
-              <p>Short thoughts, long rants, content warnings, emoji reactions. The basics, done right. 5,000 character limit because sometimes you have things to say.</p>
-            </div>
-          </div>
-
-          <div class="power-item">
-            <div class="power-content">
-              <h3>Zap people with real money</h3>
-              <p>Send Bitcoin Lightning tips to anyone, right from their post. No "likes" that mean nothing. Send actual value to people who make your timeline better.</p>
-            </div>
-          </div>
-
-          <div class="power-item">
-            <div class="power-content">
-              <h3>Long-form articles</h3>
-              <p>Write and read full blog posts right in Ditto. Not everything fits in a tweet-sized box.</p>
-            </div>
-          </div>
-
-          <div class="power-item">
-            <div class="power-content">
-              <h3>Videos and live streams</h3>
-              <p>Short-form videos. Live streams with chat. All integrated, no separate app needed.</p>
-            </div>
-          </div>
-
-          <div class="power-item">
-            <div class="power-content">
-              <h3>Polls, follow packs, colors, games...</h3>
-              <p>The Nostr ecosystem is wild. Ditto plugs into all of it -- polls, curated follow lists, color palettes, Magic: The Gathering decks, geocaching, and sandboxed mini-apps. Yes, really.</p>
-            </div>
-          </div>
-        </div>
+        <FakeDitto />
       </div>
     </section>
 
@@ -209,6 +176,7 @@ import { themes as allThemes, getTheme, randomThemeKey, deriveTokens, hslToCSS }
 import type { Y2KTheme } from '../themes';
 import ThemeSwitcher from './ThemeSwitcher.vue';
 import ScreenFrame from './ScreenFrame.vue';
+import FakeDitto from './FakeDitto.vue';
 
 // ─── Module-level state (survives SPA navigation, resets on refresh) ──
 
