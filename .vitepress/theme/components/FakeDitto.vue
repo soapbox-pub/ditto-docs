@@ -822,10 +822,10 @@ const feedData = {
   ],
 
   vines: [
-    { creator: 'Nico', avatar: 'https://i.pravatar.cc/150?u=nico', duration: '0:32', title: 'Wait for it... 😂', thumbSrc: 'https://images.unsplash.com/photo-1517457373958-b7bdd4587205?w=300&h=500&fit=crop&crop=faces' },
-    { creator: 'Luna', avatar: 'https://i.pravatar.cc/150?u=luna', duration: '1:05', title: 'Storytime: how I found Nostr', thumbSrc: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=300&h=500&fit=crop&crop=faces' },
-    { creator: 'Zack', avatar: 'https://i.pravatar.cc/150?u=zack-vine', duration: '0:15', title: 'POV: you explain Nostr to normies', thumbSrc: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=500&fit=crop&crop=faces' },
-    { creator: 'Priya', avatar: 'https://i.pravatar.cc/150?u=priya', duration: '0:47', title: 'This cat just zapped me 🐱⚡', thumbSrc: 'https://images.unsplash.com/photo-1596854407944-bf87f6fdd49e?w=300&h=500&fit=crop&crop=faces' },
+    { creator: 'Nico', avatar: 'https://i.pravatar.cc/150?u=nico', duration: '0:32', title: 'Wait for it... \uD83D\uDE02', thumbSrc: 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%2Fid%2FOIP.WN6jVCn_1mnxl3OEgnO9lAHaHa%3Fpid%3DApi&f=1&ipt=4e3a567c89afeaab40583bb5248b6f3486af0aba7a7d83bf607642d34e83684f&ipo=images' },
+    { creator: 'Luna', avatar: 'https://i.pravatar.cc/150?u=luna', duration: '1:05', title: 'Storytime: how I found Nostr', thumbSrc: 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%2Fid%2FOIP.Q8zNjmYOgO0YKL3Uj47nnwHaE8%3Fpid%3DApi&f=1&ipt=8e49b6682c03f559930508e3ac97c0d1cc1281a9fc342181446d0fbe8d7338cc&ipo=images' },
+    { creator: 'Zack', avatar: 'https://i.pravatar.cc/150?u=zack-vine', duration: '0:15', title: 'POV: you explain Nostr to normies', thumbSrc: 'https://www.lifewire.com/thmb/FyM1L6HZz69bMZE6HcdW98_9bhE=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/yeet-56a9ff683df78cf772abf7e8.png' },
+    { creator: 'Priya', avatar: 'https://i.pravatar.cc/150?u=priya', duration: '0:47', title: 'This cat just zapped me \uD83D\uDC31\u26A1', thumbSrc: 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%2Fid%2FOIP.VCO4ywPY5T6feuaQfElThwHaHa%3Fpid%3DApi&f=1&ipt=2258092a546e30fad4f120a73364a3c8f076d018b04ce18a9abce0b143598731&ipo=images' },
   ],
 
   streams: [
