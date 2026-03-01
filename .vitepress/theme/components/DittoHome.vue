@@ -311,7 +311,7 @@
         </div>
 
         <div class="build-showcase scroll-reveal" ref="shakespeareRef">
-          <img src="/edit-ditto-in-shakespeare.png" alt="Edit Ditto with Shakespeare" class="build-screenshot" />
+          <a href="https://shakespeare.diy/clone?url=https%3A%2F%2Fgitlab.com%2Fsoapbox-pub%2Fditto-mew.git" target="_blank"><img src="/edit-ditto-in-shakespeare.png" alt="Edit Ditto with Shakespeare" class="build-screenshot" /></a>
         </div>
 
         <div class="build-actions">
