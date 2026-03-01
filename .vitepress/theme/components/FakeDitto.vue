@@ -6,7 +6,7 @@
     <aside class="fd-sidebar" :class="{ 'fd-sidebar--visible': mobileView === 'sidebar' }">
       <!-- User header -->
       <div class="fd-user">
-        <div class="fd-avatar fd-avatar--sm">MK</div>
+        <img src="https://i.pravatar.cc/150?u=mk@ditto.pub" class="fd-avatar fd-avatar--sm fd-avatar--img" />
         <div class="fd-user-info">
           <span class="fd-user-name">MK Fain</span>
           <span class="fd-user-handle">@mk@ditto.pub</span>
@@ -100,7 +100,7 @@
         <template v-if="activeId === 'feed'">
           <!-- Compose box -->
           <div class="fd-compose">
-            <div class="fd-avatar fd-avatar--post" style="background: var(--theme-primary, #7c52e0)">MK</div>
+            <img src="https://i.pravatar.cc/150?u=mk@ditto.pub" class="fd-avatar fd-avatar--post fd-avatar--img" />
             <span class="fd-compose-placeholder">What's on your mind?</span>
           </div>
           <!-- Follows / Global tabs -->
@@ -108,9 +108,10 @@
             <span class="fd-tab fd-tab--active">Follows</span>
             <span class="fd-tab">Global</span>
           </div>
-          <div class="fd-post" v-for="(post, i) in feedData.feed" :key="i">
+           <div class="fd-post" v-for="(post, i) in feedData.feed" :key="i">
             <div class="fd-post-header">
-              <div class="fd-avatar fd-avatar--post" :style="{ background: post.color }">{{ post.initials }}</div>
+              <img v-if="post.avatar" :src="post.avatar" class="fd-avatar fd-avatar--post fd-avatar--img" />
+              <div v-else class="fd-avatar fd-avatar--post" :style="{ background: post.color }">{{ post.initials }}</div>
               <div>
                 <span class="fd-post-name">{{ post.name }}</span>
                 <span class="fd-post-handle">{{ post.handle }} &middot; {{ post.time }}</span>
@@ -118,7 +119,8 @@
             </div>
             <p class="fd-post-body">{{ post.body }}</p>
             <div v-if="post.image" class="fd-post-image">
-              <div class="fd-image-placeholder" :style="{ background: post.imageBg || '' }">{{ post.imageLabel || '' }}</div>
+              <img v-if="post.imageSrc" :src="post.imageSrc" class="fd-post-img" />
+              <div v-else class="fd-image-placeholder" :style="{ background: post.imageBg || '' }"></div>
             </div>
             <div class="fd-post-actions">
               <span class="fd-action fd-action--reply" title="Reply">&#x1F4AC; {{ post.replies }}</span>
@@ -175,7 +177,8 @@
         <template v-else-if="activeId === 'bookmarks'">
           <div class="fd-post" v-for="(post, i) in feedData.bookmarks" :key="i">
             <div class="fd-post-header">
-              <div class="fd-avatar fd-avatar--post" :style="{ background: post.color }">{{ post.initials }}</div>
+              <img v-if="post.avatar" :src="post.avatar" class="fd-avatar fd-avatar--post fd-avatar--img" />
+              <div v-else class="fd-avatar fd-avatar--post" :style="{ background: post.color }">{{ post.initials }}</div>
               <div>
                 <span class="fd-post-name">{{ post.name }}</span>
                 <span class="fd-post-handle">{{ post.handle }} &middot; {{ post.time }}</span>
@@ -196,7 +199,7 @@
           <div class="fd-profile">
             <div class="fd-profile-banner"></div>
             <div class="fd-profile-info">
-              <div class="fd-avatar fd-avatar--lg">MK</div>
+              <img src="https://i.pravatar.cc/150?u=mk@ditto.pub" class="fd-avatar fd-avatar--lg fd-avatar--img" />
               <h3 class="fd-profile-name">MK Fain</h3>
               <p class="fd-profile-handle">@mk@ditto.pub</p>
               <p class="fd-profile-bio">Building the fun social internet. Nostr enthusiast, open source advocate.</p>
@@ -257,7 +260,8 @@
           </div>
           <div class="fd-post" v-for="(post, i) in feedData.trends.posts" :key="i">
             <div class="fd-post-header">
-              <div class="fd-avatar fd-avatar--post" :style="{ background: post.color }">{{ post.initials }}</div>
+              <img v-if="post.avatar" :src="post.avatar" class="fd-avatar fd-avatar--post fd-avatar--img" />
+              <div v-else class="fd-avatar fd-avatar--post" :style="{ background: post.color }">{{ post.initials }}</div>
               <div>
                 <span class="fd-post-name">{{ post.name }}</span>
                 <span class="fd-post-handle">{{ post.handle }} &middot; {{ post.time }}</span>
@@ -281,7 +285,7 @@
               <span class="fd-post-name">{{ a.author }}</span>
               <span class="fd-post-handle">&middot; {{ a.readTime }} read</span>
             </div>
-            <div v-if="a.coverBg" class="fd-article-cover" :style="{ background: a.coverBg }"></div>
+            <img v-if="a.coverSrc" :src="a.coverSrc" class="fd-article-cover" />
             <p class="fd-article-excerpt">{{ a.excerpt }}</p>
             <span class="fd-article-read">Read article &#x2192;</span>
           </div>
@@ -291,13 +295,17 @@
         <template v-else-if="activeId === 'vines'">
           <div class="fd-video-grid">
             <div class="fd-video-card" v-for="(v, i) in feedData.vines" :key="i">
-              <div class="fd-video-thumb">
+              <div class="fd-video-thumb fd-video-thumb--vertical">
+                <img :src="v.thumbSrc" class="fd-video-thumb-img" />
                 <span class="fd-play-btn">&#x25B6;</span>
                 <span class="fd-video-duration">{{ v.duration }}</span>
               </div>
               <div class="fd-video-info">
-                <span class="fd-post-name">{{ v.creator }}</span>
-                <span class="fd-post-handle">{{ v.views }} views</span>
+                <img :src="v.avatar" class="fd-avatar fd-avatar--xs fd-avatar--img" />
+                <div>
+                  <span class="fd-post-name">{{ v.creator }}</span>
+                  <div class="fd-post-handle">{{ v.title }}</div>
+                </div>
               </div>
             </div>
           </div>
@@ -306,13 +314,14 @@
         <!-- Streams -->
         <template v-else-if="activeId === 'streams'">
           <div class="fd-stream" v-for="(s, i) in feedData.streams" :key="i">
-            <div class="fd-stream-thumb" :style="{ background: s.thumbBg }">
+            <div class="fd-stream-thumb">
+              <img :src="s.thumbSrc" class="fd-stream-thumb-img" />
               <span class="fd-stream-badge" :class="'fd-stream-badge--' + s.status">{{ s.statusLabel }}</span>
               <span class="fd-stream-viewers">&#x1F441; {{ s.viewers }}</span>
             </div>
             <div class="fd-stream-info">
               <div class="fd-stream-meta">
-                <div class="fd-avatar fd-avatar--sm" :style="{ background: s.color }">{{ s.initials }}</div>
+                <img :src="s.avatar" class="fd-avatar fd-avatar--sm fd-avatar--img" />
                 <span class="fd-post-name">{{ s.streamer }}</span>
               </div>
               <span class="fd-post-body" style="margin: 4px 0 0; font-size: 12px;">{{ s.title }}</span>
@@ -399,7 +408,7 @@
           <div class="fd-followpack" v-for="(pack, i) in feedData.followpacks" :key="i">
             <h4 class="fd-followpack-title">&#x1F389; {{ pack.name }}</h4>
             <p class="fd-post-handle">{{ pack.desc }}</p>
-            <div v-if="pack.coverBg" class="fd-followpack-cover" :style="{ background: pack.coverBg }"></div>
+            <img v-if="pack.coverSrc" :src="pack.coverSrc" class="fd-followpack-cover" />
             <div class="fd-followpack-row">
               <div class="fd-followpack-avatars">
                 <div class="fd-avatar fd-avatar--sm" v-for="(m, j) in pack.members" :key="j" :style="{ background: m.color }">{{ m.initials }}</div>
@@ -439,13 +448,13 @@
         <template v-else-if="activeId === 'magic'">
           <div class="fd-deck" v-for="(deck, i) in feedData.magic" :key="i">
             <div class="fd-post-header">
-              <div class="fd-avatar fd-avatar--post" :style="{ background: deck.color }">{{ deck.initials }}</div>
+              <img :src="deck.avatar" class="fd-avatar fd-avatar--post fd-avatar--img" />
               <div>
                 <span class="fd-post-name">{{ deck.author }}</span>
                 <span class="fd-post-handle">shared a deck &middot; {{ deck.time }}</span>
               </div>
             </div>
-            <div class="fd-deck-banner" :style="{ background: deck.bannerBg }"></div>
+            <img :src="deck.bannerSrc" class="fd-deck-banner" />
             <h4 class="fd-deck-title">&#x1F0CF; {{ deck.name }}</h4>
             <div v-if="deck.commander" class="fd-post-handle" style="margin-bottom: 4px;">&#x1F6E1;&#xFE0F; Commander: {{ deck.commander }}</div>
             <div class="fd-deck-badges">
@@ -454,10 +463,7 @@
               <span class="fd-badge">{{ deck.cardCount }} cards</span>
             </div>
             <div class="fd-deck-cards">
-              <div class="fd-magic-card" v-for="(card, j) in deck.cards" :key="j" :style="{ background: card.color }">
-                <span class="fd-magic-cost">{{ card.cost }}</span>
-                <span class="fd-magic-name">{{ card.name }}</span>
-              </div>
+              <img v-for="(card, j) in deck.cards" :key="j" :src="card.imgSrc" :alt="card.name" class="fd-magic-card-img" />
             </div>
           </div>
         </template>
@@ -466,7 +472,7 @@
         <template v-else-if="activeId === 'treasures'">
           <div class="fd-treasure" v-for="(t, i) in feedData.treasures" :key="i">
             <div class="fd-post-header">
-              <div class="fd-avatar fd-avatar--post" :style="{ background: t.color }">{{ t.initials }}</div>
+              <img :src="t.avatar" class="fd-avatar fd-avatar--post fd-avatar--img" />
               <div>
                 <span class="fd-post-name">{{ t.user }}</span>
                 <span class="fd-post-handle">{{ t.action }} &middot; {{ t.time }}</span>
@@ -481,6 +487,7 @@
               <span class="fd-badge">{{ t.size }}</span>
               <span class="fd-treasure-rating">D{{ t.difficulty }}/T{{ t.terrain }}</span>
             </div>
+            <img v-if="t.photo" :src="t.photo" class="fd-treasure-photo" />
             <p v-if="t.desc" class="fd-post-body" style="margin-top: 6px;">{{ t.desc }}</p>
           </div>
         </template>
@@ -601,26 +608,30 @@ const feedData = {
   feed: [
     {
       name: 'Nostr News', handle: '@nostrnews', time: '1m', initials: 'NN', color: '#6366f1',
+      avatar: 'https://i.pravatar.cc/150?u=nostrnews',
       body: 'Breaking: Ditto just dropped a massive update with custom themes, sidebars, and more. The Nostr ecosystem keeps growing!',
-      image: true, imageLabel: '', imageBg: 'linear-gradient(135deg, #667eea, #764ba2)',
+      image: true, imageSrc: 'https://picsum.photos/seed/ditto-update/600/300',
       replies: 12, reposts: 34, likes: 89, zaps: '2.1k',
     },
     {
       name: 'Connie', handle: '@Connie@primal.net', time: '3m', initials: 'C', color: '#ec4899',
-      body: 'Just tried the new vibe feed in Ditto and it\'s actually really good at surfacing interesting content.',
-      image: false, imageLabel: '',
+      avatar: 'https://i.pravatar.cc/150?u=connie',
+      body: 'The ability to zap people real sats for good posts changes the whole dynamic. Suddenly your timeline is full of quality instead of rage bait.',
+      image: false,
       replies: 3, reposts: 8, likes: 42, zaps: '500',
     },
     {
       name: 'Gustavo', handle: '@limachaves@iris.to', time: '5m', initials: 'G', color: '#22c55e',
+      avatar: 'https://i.pravatar.cc/150?u=gustavo',
       body: 'The ability to customize your sidebar and choose exactly what feeds you want to see is a game changer. No algorithm deciding for you.',
-      image: false, imageLabel: '',
+      image: false,
       replies: 7, reposts: 15, likes: 63, zaps: '1.5k',
     },
     {
       name: 'Alice', handle: '@alice@nostr.social', time: '12m', initials: 'A', color: '#f59e0b',
+      avatar: 'https://i.pravatar.cc/150?u=alice',
       body: 'Posted my first long-form article on Ditto today. So nice to have a real writing experience built into a social app.',
-      image: true, imageLabel: '', imageBg: 'linear-gradient(135deg, #f093fb, #f5576c)',
+      image: true, imageSrc: 'https://picsum.photos/seed/blog-preview/600/300',
       replies: 5, reposts: 11, likes: 28, zaps: '800',
     },
   ],
@@ -647,11 +658,13 @@ const feedData = {
   bookmarks: [
     {
       name: 'Edward Snowden', handle: '@snowden', time: '2d', initials: 'ES', color: '#64748b',
+      avatar: 'https://i.pravatar.cc/150?u=snowden',
       body: 'The tools we build today determine the freedoms we have tomorrow. Choose wisely.',
       replies: 142, reposts: 891, likes: 4200, zaps: '50k',
     },
     {
       name: 'Fiatjaf', handle: '@fiatjaf', time: '1w', initials: 'F', color: '#8b5cf6',
+      avatar: 'https://i.pravatar.cc/150?u=fiatjaf',
       body: 'Nostr is not a social network. Nostr is a protocol. The social network is what you build on top of it.',
       replies: 67, reposts: 234, likes: 1100, zaps: '12k',
     },
@@ -687,11 +700,13 @@ const feedData = {
     posts: [
       {
         name: 'Fiatjaf', handle: '@fiatjaf', time: '2h', initials: 'F', color: '#8b5cf6',
+        avatar: 'https://i.pravatar.cc/150?u=fiatjaf',
         body: 'The next wave of Nostr adoption will come from apps that make it fun, not apps that lecture you about decentralization.',
         replies: 45, reposts: 120, likes: 380, zaps: '8.5k',
       },
       {
         name: 'ODELL', handle: '@ODELL', time: '4h', initials: 'O', color: '#ef4444',
+        avatar: 'https://i.pravatar.cc/150?u=odell',
         body: 'Self-hosting your social media is not about paranoia. It\'s about sovereignty.',
         replies: 23, reposts: 67, likes: 210, zaps: '4.2k',
       },
@@ -702,34 +717,34 @@ const feedData = {
     {
       title: 'Why Nostr Will Win',
       author: 'Fiatjaf', readTime: '8 min',
-      coverBg: 'linear-gradient(135deg, #667eea, #764ba2)',
+      coverSrc: 'https://picsum.photos/seed/article1/600/250',
       excerpt: 'The internet is broken. Social media is controlled by a handful of companies who profit from outrage. Nostr fixes this by giving users control over their own data and identity...',
     },
     {
       title: 'Self-Hosting Your Social Media in 2026',
       author: 'MK Fain', readTime: '5 min',
-      coverBg: 'linear-gradient(135deg, #f093fb, #f5576c)',
+      coverSrc: 'https://picsum.photos/seed/article2/600/250',
       excerpt: 'You don\'t need a data center to run your own social platform. With Ditto, a $5 VPS is all it takes. Here\'s how to get started...',
     },
     {
       title: 'The Case for Digital Freedom',
       author: 'Alice', readTime: '12 min',
-      coverBg: '',
+      coverSrc: '',
       excerpt: 'We spend more time online than ever before, yet we have less control over our digital lives than ever. It\'s time to change that...',
     },
   ],
 
   vines: [
-    { creator: 'Nico', initials: 'N', color: '#8b5cf6', duration: '0:32', title: 'Lightning payment in action', thumbBg: 'linear-gradient(180deg, #1a1a2e, #4a1942)' },
-    { creator: 'Luna', initials: 'L', color: '#ec4899', duration: '1:05', title: 'My Nostr setup tour', thumbBg: 'linear-gradient(180deg, #0f3460, #16213e)' },
-    { creator: 'Zack', initials: 'Z', color: '#22c55e', duration: '0:15', title: 'Bitcoin meme compilation', thumbBg: 'linear-gradient(180deg, #2d1b69, #11998e)' },
-    { creator: 'Priya', initials: 'P', color: '#f59e0b', duration: '0:47', title: 'Relay setup speedrun', thumbBg: 'linear-gradient(180deg, #1a1a1a, #434343)' },
+    { creator: 'Nico', avatar: 'https://i.pravatar.cc/150?u=nico', duration: '0:32', title: 'Lightning payment in action', thumbSrc: 'https://picsum.photos/seed/vine1/300/500' },
+    { creator: 'Luna', avatar: 'https://i.pravatar.cc/150?u=luna', duration: '1:05', title: 'My Nostr setup tour', thumbSrc: 'https://picsum.photos/seed/vine2/300/500' },
+    { creator: 'Zack', avatar: 'https://i.pravatar.cc/150?u=zack-vine', duration: '0:15', title: 'Bitcoin meme compilation', thumbSrc: 'https://picsum.photos/seed/vine3/300/500' },
+    { creator: 'Priya', avatar: 'https://i.pravatar.cc/150?u=priya', duration: '0:47', title: 'Relay setup speedrun', thumbSrc: 'https://picsum.photos/seed/vine4/300/500' },
   ],
 
   streams: [
-    { streamer: 'ODELL', initials: 'O', color: '#ef4444', title: 'Citadel Dispatch #142', summary: 'Bitcoin sovereignty and privacy', viewers: '1.2k', status: 'live', statusLabel: 'LIVE', thumbBg: 'linear-gradient(135deg, #1a1a2e, #e94560)' },
-    { streamer: 'Ben Arc', initials: 'BA', color: '#3b82f6', title: 'Building on Nostr - Live Coding', summary: 'Hacking on LNbits plugins', viewers: '340', status: 'live', statusLabel: 'LIVE', thumbBg: 'linear-gradient(135deg, #16213e, #0f3460)' },
-    { streamer: 'Marce', initials: 'M', color: '#a78bfa', title: 'Lo-fi Beats & Chill', summary: 'Music stream, come hang out', viewers: '89', status: 'ended', statusLabel: 'ENDED', thumbBg: 'linear-gradient(135deg, #2d1b69, #11998e)' },
+    { streamer: 'ODELL', avatar: 'https://i.pravatar.cc/150?u=odell', title: 'Citadel Dispatch #142', summary: 'Bitcoin sovereignty and privacy', viewers: '1.2k', status: 'live', statusLabel: 'LIVE', thumbSrc: 'https://picsum.photos/seed/stream1/600/340' },
+    { streamer: 'Ben Arc', avatar: 'https://i.pravatar.cc/150?u=benarc', title: 'Building on Nostr - Live Coding', summary: 'Hacking on LNbits plugins', viewers: '340', status: 'live', statusLabel: 'LIVE', thumbSrc: 'https://picsum.photos/seed/stream2/600/340' },
+    { streamer: 'Marce', avatar: 'https://i.pravatar.cc/150?u=marce', title: 'Lo-fi Beats & Chill', summary: 'Music stream, come hang out', viewers: '89', status: 'ended', statusLabel: 'ENDED', thumbSrc: 'https://picsum.photos/seed/stream3/600/340' },
   ],
 
   webxdc: [
@@ -779,7 +794,7 @@ const feedData = {
     {
       name: 'Nostr Developers',
       desc: 'The people building the protocol',
-      coverBg: 'linear-gradient(135deg, #667eea, #764ba2)',
+      coverSrc: 'https://picsum.photos/seed/pack-devs/600/200',
       members: [
         { initials: 'F', color: '#8b5cf6' },
         { initials: 'JB', color: '#3b82f6' },
@@ -791,7 +806,7 @@ const feedData = {
     {
       name: 'Bitcoin Plebs',
       desc: 'Orange pill your timeline',
-      coverBg: '',
+      coverSrc: '',
       members: [
         { initials: 'O', color: '#ef4444' },
         { initials: 'M', color: '#f97316' },
@@ -802,7 +817,7 @@ const feedData = {
     {
       name: 'Artists & Creators',
       desc: 'Visual artists, musicians, and makers',
-      coverBg: 'linear-gradient(135deg, #f093fb, #f5576c)',
+      coverSrc: 'https://picsum.photos/seed/pack-artists/600/200',
       members: [
         { initials: 'L', color: '#ec4899' },
         { initials: 'R', color: '#06b6d4' },
@@ -837,32 +852,32 @@ const feedData = {
   magic: [
     {
       name: 'Mono Red Aggro',
-      author: 'Zack', initials: 'Z', color: '#dc2626', time: '5h',
+      author: 'Zack', avatar: 'https://i.pravatar.cc/150?u=zack-mtg', time: '5h',
       format: 'Modern', archetype: 'Aggro', cardCount: 60, commander: '',
-      bannerBg: 'linear-gradient(135deg, #7f1d1d, #dc2626)',
+      bannerSrc: 'https://picsum.photos/seed/mtg-red/600/200',
       cards: [
-        { name: 'Lightning Bolt', cost: 'R', color: '#dc2626' },
-        { name: 'Goblin Guide', cost: 'R', color: '#ef4444' },
-        { name: 'Monastery Swiftspear', cost: 'R', color: '#b91c1c' },
+        { name: 'Lightning Bolt', imgSrc: 'https://cards.scryfall.io/normal/front/f/2/f29ba16f-c8fb-42fe-aabf-87089cb214a7.jpg' },
+        { name: 'Goblin Guide', imgSrc: 'https://cards.scryfall.io/normal/front/3/c/3c0f5411-1571-426f-a558-73c6b825e7f2.jpg' },
+        { name: 'Monastery Swiftspear', imgSrc: 'https://cards.scryfall.io/normal/front/e/8/e8b9d59d-bac9-4092-901e-2b861c186868.jpg' },
       ],
     },
     {
       name: 'Azorius Control',
-      author: 'Alice', initials: 'A', color: '#2563eb', time: '1d',
+      author: 'Alice', avatar: 'https://i.pravatar.cc/150?u=alice-mtg', time: '1d',
       format: 'Commander', archetype: 'Control', cardCount: 100, commander: 'Grand Arbiter Augustin IV',
-      bannerBg: 'linear-gradient(135deg, #1e3a5f, #2563eb)',
+      bannerSrc: 'https://picsum.photos/seed/mtg-blue/600/200',
       cards: [
-        { name: 'Counterspell', cost: 'UU', color: '#2563eb' },
-        { name: 'Swords to Plowshares', cost: 'W', color: '#fbbf24' },
-        { name: 'Cryptic Command', cost: '1UUU', color: '#1d4ed8' },
+        { name: 'Counterspell', imgSrc: 'https://cards.scryfall.io/normal/front/1/b/1b73577a-8ca1-41d7-9b2b-7300286fde43.jpg' },
+        { name: 'Swords to Plowshares', imgSrc: 'https://cards.scryfall.io/normal/front/7/d/7d839f21-68c7-47db-8407-ff3e2c3e13b4.jpg' },
+        { name: 'Cryptic Command', imgSrc: 'https://cards.scryfall.io/normal/front/3/0/30f6fca9-003b-4f6b-9d6e-1e88adda4155.jpg' },
       ],
     },
   ],
 
   treasures: [
-    { user: 'BitcoinHiker', initials: 'BH', color: '#f59e0b', action: 'hid a treasure', time: '2h', name: 'Satoshi\'s Cache', type: 'Traditional', size: 'Small', difficulty: 3, terrain: 2, desc: 'Near the old cherry blossom tree in the park. Bring a pen!' },
-    { user: 'NostrExplorer', initials: 'NE', color: '#22c55e', action: 'found a treasure', time: '5h', name: 'Lightning Ridge', type: 'Multi-cache', size: 'Micro', difficulty: 4, terrain: 3, desc: '' },
-    { user: 'CachePirate', initials: 'CP', color: '#ef4444', action: 'hid a treasure', time: '1d', name: 'Pirate\'s Bounty', type: 'Mystery', size: 'Regular', difficulty: 5, terrain: 4, desc: 'Solve the puzzle to find the coordinates. X marks the spot!' },
+    { user: 'BitcoinHiker', avatar: 'https://i.pravatar.cc/150?u=bitcoinhiker', action: 'hid a treasure', time: '2h', name: 'Satoshi\'s Cache', type: 'Traditional', size: 'Small', difficulty: 3, terrain: 2, desc: 'Near the old cherry blossom tree in the park. Bring a pen!', photo: 'https://picsum.photos/seed/treasure1/400/200' },
+    { user: 'NostrExplorer', avatar: 'https://i.pravatar.cc/150?u=nostrexplorer', action: 'found a treasure', time: '5h', name: 'Lightning Ridge', type: 'Multi-cache', size: 'Micro', difficulty: 4, terrain: 3, desc: '', photo: 'https://picsum.photos/seed/treasure2/400/200' },
+    { user: 'CachePirate', avatar: 'https://i.pravatar.cc/150?u=cachepirate', action: 'hid a treasure', time: '1d', name: 'Pirate\'s Bounty', type: 'Mystery', size: 'Regular', difficulty: 5, terrain: 4, desc: 'Solve the puzzle to find the coordinates. X marks the spot!', photo: 'https://picsum.photos/seed/treasure3/400/200' },
   ],
 };
 </script>

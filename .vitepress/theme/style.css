@@ -2123,6 +2123,16 @@ button.screen-power-btn.power-standby {
   border: 3px solid var(--vp-c-bg);
 }
 
+.fd-avatar--xs {
+  width: 20px;
+  height: 20px;
+  font-size: 8px;
+}
+
+.fd-avatar--img {
+  object-fit: cover;
+}
+
 /* ── Navigation items ── */
 
 .fd-nav {
@@ -2418,6 +2428,14 @@ button.screen-power-btn.power-standby {
   justify-content: center;
   color: var(--vp-c-text-3);
   font-size: 12px;
+}
+
+.fd-post-img {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 10px;
+  display: block;
 }
 
 .fd-post-actions {
@@ -2719,9 +2737,12 @@ button.screen-power-btn.power-standby {
 }
 
 .fd-article-cover {
+  width: 100%;
   height: 100px;
+  object-fit: cover;
   border-radius: 10px;
   margin-bottom: 8px;
+  display: block;
 }
 
 .fd-article-excerpt {
@@ -2762,12 +2783,27 @@ button.screen-power-btn.power-standby {
   align-items: center;
   justify-content: center;
   position: relative;
+  overflow: hidden;
+}
+
+.fd-video-thumb--vertical {
+  height: 200px;
+}
+
+.fd-video-thumb-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .fd-play-btn {
   font-size: 28px;
-  color: var(--vp-c-text-3);
-  opacity: 0.6;
+  color: #fff;
+  opacity: 0.85;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.5);
+  z-index: 1;
 }
 
 .fd-video-duration {
@@ -2782,6 +2818,9 @@ button.screen-power-btn.power-standby {
 }
 
 .fd-video-info {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
   padding: 8px 10px;
 }
 
@@ -2793,11 +2832,28 @@ button.screen-power-btn.power-standby {
 
 .fd-stream-thumb {
   height: 140px;
-  background: linear-gradient(135deg, #1a1a2e, #16213e);
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
   padding: 10px;
+  position: relative;
+  overflow: hidden;
+  background: #1a1a2e;
+}
+
+.fd-stream-thumb-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.7;
+}
+
+.fd-stream-thumb .fd-stream-badge,
+.fd-stream-thumb .fd-stream-viewers {
+  position: relative;
+  z-index: 1;
 }
 
 .fd-stream-badge {
@@ -3030,9 +3086,12 @@ button.screen-power-btn.power-standby {
 }
 
 .fd-followpack-cover {
+  width: 100%;
   height: 80px;
+  object-fit: cover;
   border-radius: 10px;
   margin: 8px 0;
+  display: block;
 }
 
 .fd-followpack-row {
@@ -3135,32 +3194,21 @@ button.screen-power-btn.power-standby {
   margin-bottom: 10px;
 }
 
-.fd-magic-card {
+.fd-magic-card-img {
   flex: 1;
-  height: 80px;
-  border-radius: 8px;
-  padding: 8px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  color: #fff;
-  font-size: 10px;
-}
-
-.fd-magic-cost {
-  font-weight: 800;
-  font-size: 11px;
-  align-self: flex-end;
-}
-
-.fd-magic-name {
-  font-weight: 700;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 6px;
+  min-width: 0;
 }
 
 .fd-deck-banner {
+  width: 100%;
   height: 60px;
+  object-fit: cover;
   border-radius: 10px;
   margin: 8px 0;
+  display: block;
 }
 
 .fd-deck-title {
@@ -3206,6 +3254,14 @@ button.screen-power-btn.power-standby {
 .fd-treasure-icon {
   font-size: 16px;
   flex-shrink: 0;
+}
+
+.fd-treasure-photo {
+  width: 100%;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-top: 8px;
 }
 
 /* ── Feed scrollbar ── */
