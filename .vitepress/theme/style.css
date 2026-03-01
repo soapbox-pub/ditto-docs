@@ -4931,6 +4931,7 @@ button.screen-power-btn.power-standby {
     border-radius: 16px;
     transform: translateX(-100%);
     transition: transform 0.25s ease;
+    padding-bottom: 44px;
   }
 
   .fd-sidebar--visible {
