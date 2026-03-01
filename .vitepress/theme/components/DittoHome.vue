@@ -99,6 +99,170 @@
     </section>
 
     <!-- ============================================================
+         COMMENT ON ANYTHING: NIP-22 universal comments
+         ============================================================ -->
+    <section class="comments-section" ref="commentsSectionRef">
+      <div class="section-inner">
+        <div class="section-header">
+          <h2>Comment on anything.</h2>
+          <p>Posts. Countries. Links. Profiles. Books. Treasures. If it exists, you can discuss it.</p>
+        </div>
+
+        <div class="comments-mosaic">
+          <!-- 1: Web URL -->
+          <div class="comment-card" :class="{ 'comment-card--visible': commentsVisible }" style="--delay: 0; --rotate: -1.5deg;">
+            <div class="comment-target">
+              <span class="comment-target-icon">&#x1F517;</span>
+              <span class="comment-target-label">nytimes.com/2026/nostr-protocol...</span>
+            </div>
+            <div class="comment-bubble">
+              <img src="https://i.pravatar.cc/80?u=alice-comment" class="comment-avatar" />
+              <div>
+                <span class="comment-author">Alice</span>
+                <p>Finally someone in the mainstream gets it.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- 2: Country -->
+          <div class="comment-card" :class="{ 'comment-card--visible': commentsVisible }" style="--delay: 1; --rotate: 1deg;">
+            <div class="comment-target">
+              <span class="comment-target-icon">&#x1F1E7;&#x1F1F7;</span>
+              <span class="comment-target-label">Brazil</span>
+            </div>
+            <div class="comment-bubble">
+              <img src="https://i.pravatar.cc/80?u=carlos" class="comment-avatar" />
+              <div>
+                <span class="comment-author">Carlos</span>
+                <p>Best Bitcoin community in the world, hands down.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- 3: Profile -->
+          <div class="comment-card" :class="{ 'comment-card--visible': commentsVisible }" style="--delay: 2; --rotate: -0.8deg;">
+            <div class="comment-target">
+              <span class="comment-target-icon">&#x1F464;</span>
+              <span class="comment-target-label">@fiatjaf's wall</span>
+            </div>
+            <div class="comment-bubble">
+              <img src="https://i.pravatar.cc/80?u=river-wall" class="comment-avatar" />
+              <div>
+                <span class="comment-author">River</span>
+                <p>Legend. The protocol wouldn't exist without this guy.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- 4: Post -->
+          <div class="comment-card comment-card--wide" :class="{ 'comment-card--visible': commentsVisible }" style="--delay: 3; --rotate: 0.5deg;">
+            <div class="comment-target">
+              <span class="comment-target-icon">&#x1F4AC;</span>
+              <span class="comment-target-label">Post by @ODELL</span>
+            </div>
+            <div class="comment-bubble">
+              <img src="https://i.pravatar.cc/80?u=mia-reply" class="comment-avatar" />
+              <div>
+                <span class="comment-author">Mia</span>
+                <p>This is the most important thing anyone has said today. Reposting.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- 5: Book -->
+          <div class="comment-card" :class="{ 'comment-card--visible': commentsVisible }" style="--delay: 4; --rotate: 2deg;">
+            <div class="comment-target">
+              <span class="comment-target-icon">&#x1F4D6;</span>
+              <span class="comment-target-label">The Sovereign Individual</span>
+            </div>
+            <div class="comment-bubble">
+              <img src="https://i.pravatar.cc/80?u=sam-book" class="comment-avatar" />
+              <div>
+                <span class="comment-author">Sam</span>
+                <p>Chapter 7 changed how I think about money forever.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- 6: Treasure -->
+          <div class="comment-card" :class="{ 'comment-card--visible': commentsVisible }" style="--delay: 5; --rotate: -1.2deg;">
+            <div class="comment-target">
+              <span class="comment-target-icon">&#x1F4CD;</span>
+              <span class="comment-target-label">Satoshi's Cache</span>
+            </div>
+            <div class="comment-bubble">
+              <img src="https://i.pravatar.cc/80?u=hiker" class="comment-avatar" />
+              <div>
+                <span class="comment-author">BitcoinHiker</span>
+                <p>Found it! Under the bench near the fountain. &#x1F389;</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- 7: Article -->
+          <div class="comment-card" :class="{ 'comment-card--visible': commentsVisible }" style="--delay: 6; --rotate: 0.8deg;">
+            <div class="comment-target">
+              <span class="comment-target-icon">&#x1F4DD;</span>
+              <span class="comment-target-label">Why Nostr Will Win</span>
+            </div>
+            <div class="comment-bubble">
+              <img src="https://i.pravatar.cc/80?u=priya-article" class="comment-avatar" />
+              <div>
+                <span class="comment-author">Priya</span>
+                <p>This should be required reading for every developer.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- 8: Vine -->
+          <div class="comment-card" :class="{ 'comment-card--visible': commentsVisible }" style="--delay: 7; --rotate: -1.8deg;">
+            <div class="comment-target">
+              <span class="comment-target-icon">&#x1F3AC;</span>
+              <span class="comment-target-label">Vine by @Luna</span>
+            </div>
+            <div class="comment-bubble">
+              <img src="https://i.pravatar.cc/80?u=zack-vine" class="comment-avatar" />
+              <div>
+                <span class="comment-author">Zack</span>
+                <p>I've rewatched this 10 times already lol</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- 9: Country -->
+          <div class="comment-card" :class="{ 'comment-card--visible': commentsVisible }" style="--delay: 8; --rotate: 1.5deg;">
+            <div class="comment-target">
+              <span class="comment-target-icon">&#x1F1FA;&#x1F1F8;</span>
+              <span class="comment-target-label">United States</span>
+            </div>
+            <div class="comment-bubble">
+              <img src="https://i.pravatar.cc/80?u=derek-usa" class="comment-avatar" />
+              <div>
+                <span class="comment-author">Derek</span>
+                <p>The regulatory landscape is finally shifting. Bullish.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- 10: Hashtag -->
+          <div class="comment-card" :class="{ 'comment-card--visible': commentsVisible }" style="--delay: 9; --rotate: -0.5deg;">
+            <div class="comment-target">
+              <span class="comment-target-icon">#</span>
+              <span class="comment-target-label">bitcoin</span>
+            </div>
+            <div class="comment-bubble">
+              <img src="https://i.pravatar.cc/80?u=pleb" class="comment-avatar" />
+              <div>
+                <span class="comment-author">Pleb</span>
+                <p>Stack sats. Stay humble. &#x1F9E1;</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
          OWNERSHIP: The "why decentralized" pitch
          ============================================================ -->
     <section class="ownership-section">
@@ -192,6 +356,8 @@ const currentThemeKey = ref('');
 const activeTheme = ref<Y2KTheme | null>(null);
 const homeRef = ref<HTMLElement | null>(null);
 const fontLoaded = ref(false);
+const commentsSectionRef = ref<HTMLElement | null>(null);
+const commentsVisible = ref(false);
 
 // ─── Computed styles ──────────────────────────────────────────────────
 
@@ -322,5 +488,19 @@ onMounted(() => {
   // Otherwise pick a random one. Module-level variable resets on full page reload.
   const key = _persistedThemeKey || randomThemeKey();
   applyTheme(key);
+
+  // Intersection Observer for comments section animation
+  if (commentsSectionRef.value) {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          commentsVisible.value = true;
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.15 }
+    );
+    observer.observe(commentsSectionRef.value);
+  }
 });
 </script>

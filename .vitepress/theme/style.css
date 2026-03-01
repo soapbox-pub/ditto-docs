@@ -3354,6 +3354,156 @@ button.screen-power-btn.power-standby {
   border-radius: 2px;
 }
 
+/* ---------- COMMENT ON ANYTHING SECTION ---------- */
+
+.comments-section {
+  padding: 100px 0;
+}
+
+/* ── Mosaic grid ── */
+
+.comments-mosaic {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  max-width: 900px;
+  margin: 0 auto;
+  align-items: start;
+}
+
+/* ── Card base ── */
+
+.comment-card {
+  background: var(--vp-c-bg);
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 16px;
+  padding: 14px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  transform: rotate(var(--rotate, 0deg)) translateY(20px);
+  opacity: 0;
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+              opacity 0.6s ease;
+  transition-delay: calc(var(--delay, 0) * 0.08s);
+}
+
+.comment-card--visible {
+  opacity: 1;
+  transform: rotate(var(--rotate, 0deg)) translateY(0);
+}
+
+.comment-card:nth-child(odd) {
+  margin-top: 20px;
+}
+
+.comment-card--wide {
+  grid-column: span 2;
+}
+
+/* ── Hover lift ── */
+
+.comment-card:hover {
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.1);
+}
+
+/* ── Target indicator (top of card) ── */
+
+.comment-target {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  margin: -4px -4px 10px;
+  background: var(--vp-c-bg-soft);
+  border-radius: 10px;
+  font-size: 11px;
+  color: var(--vp-c-text-3);
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.comment-target-icon {
+  font-size: 14px;
+  flex-shrink: 0;
+}
+
+.comment-target-label {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-weight: 600;
+}
+
+/* ── Bubble (avatar + text) ── */
+
+.comment-bubble {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+
+.comment-avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  object-fit: cover;
+}
+
+.comment-author {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--vp-c-text-1);
+  display: block;
+  margin-bottom: 2px;
+}
+
+.comment-bubble p {
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--vp-c-text-2);
+  margin: 0;
+}
+
+/* ── Speech tail (subtle CSS triangle on left side) ── */
+
+.comment-card::before {
+  content: '';
+  position: absolute;
+  display: none; /* hidden by default, could enable per-card */
+}
+
+/* ── Responsive ── */
+
+@media (max-width: 768px) {
+  .comments-mosaic {
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .comment-card--wide {
+    grid-column: span 2;
+  }
+
+  .comment-card:nth-child(odd) {
+    margin-top: 0;
+  }
+
+  .comment-card {
+    --rotate: 0deg !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .comments-mosaic {
+    grid-template-columns: 1fr;
+  }
+
+  .comment-card--wide {
+    grid-column: span 1;
+  }
+}
+
 /* ---------- OWNERSHIP SECTION ---------- */
 
 .ownership-section {
