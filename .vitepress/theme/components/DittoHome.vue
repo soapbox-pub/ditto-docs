@@ -86,11 +86,15 @@
     <section class="powers-section">
       <div class="section-inner">
         <div class="section-header">
-          <h2>Not just another feed app.</h2>
-          <p>Ditto is a playground. Here's some of what you can do.</p>
+          <h2>Infinite Content Types.</h2>
+          <p>Ditto is a playground. Discover what you can do.</p>
         </div>
 
         <FakeDitto :themeBg="activeTheme?.background?.bg" />
+
+        <div class="powers-cta">
+          <a href="https://ditto.pub" target="_blank" class="btn btn-primary">Try Ditto &#8599;</a>
+        </div>
       </div>
     </section>
 

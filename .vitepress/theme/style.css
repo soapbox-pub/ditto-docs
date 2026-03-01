@@ -2038,6 +2038,11 @@ button.screen-power-btn.power-standby {
   padding: 100px 0;
 }
 
+.powers-cta {
+  text-align: center;
+  margin-top: 32px;
+}
+
 /* ---------- FAKE DITTO MINI-APP ---------- */
 
 .fake-ditto {
