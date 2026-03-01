@@ -311,7 +311,7 @@ export const themes: Y2KTheme[] = [
     label: 'Light',
     emoji: '\u{2600}\u{FE0F}', // ☀️
     colors: {
-      background: '270 50% 97%',
+      background: '270 20% 92%',
       text: '258 70% 60%',
       primary: '258 70% 60%',
     },
@@ -331,7 +331,7 @@ export const themes: Y2KTheme[] = [
     label: 'Dark',
     emoji: '\u{1F319}', // 🌙
     colors: {
-      background: '228 20% 10%',
+      background: '228 25% 6%',
       text: '210 40% 98%',
       primary: '258 70% 60%',
     },

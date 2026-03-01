@@ -167,6 +167,36 @@
       </div>
     </template>
 
+    <!-- ── Light theme: modern macOS-style window ── -->
+    <template v-else-if="theme === 'light'">
+      <div class="screen-chrome">
+        <div class="screen-titlebar screen-titlebar-modern">
+          <div class="screen-traffic-lights">
+            <span class="screen-dot screen-dot--close screen-btn-interactive" @click="requestClose('main')"></span>
+            <span class="screen-dot screen-dot--minimize screen-btn-interactive" @click="minimizeWindow"></span>
+            <span class="screen-dot screen-dot--maximize"></span>
+          </div>
+          <span class="screen-titlebar-center">Ditto</span>
+          <div class="screen-traffic-lights-spacer"></div>
+        </div>
+      </div>
+    </template>
+
+    <!-- ── Dark theme: modern dark window ── -->
+    <template v-else-if="theme === 'dark'">
+      <div class="screen-chrome">
+        <div class="screen-titlebar screen-titlebar-modern screen-titlebar-modern--dark">
+          <div class="screen-traffic-lights">
+            <span class="screen-dot screen-dot--close screen-dot--dim screen-btn-interactive" @click="requestClose('main')"></span>
+            <span class="screen-dot screen-dot--minimize screen-dot--dim screen-btn-interactive" @click="minimizeWindow"></span>
+            <span class="screen-dot screen-dot--maximize screen-dot--dim"></span>
+          </div>
+          <span class="screen-titlebar-center">Ditto</span>
+          <div class="screen-traffic-lights-spacer"></div>
+        </div>
+      </div>
+    </template>
+
     <!-- ── Fallback: generic frame -->
     <template v-else>
       <div class="screen-chrome">
