@@ -829,9 +829,9 @@ const feedData = {
   ],
 
   streams: [
-    { streamer: 'ODELL', avatar: 'https://i.pravatar.cc/150?u=odell', title: 'Citadel Dispatch #142', summary: 'Bitcoin sovereignty and privacy', viewers: '1.2k', status: 'live', statusLabel: 'LIVE', thumbSrc: 'https://images.unsplash.com/photo-1478737270239-2f02b77fc618?w=600&h=340&fit=crop' },
-    { streamer: 'Ben Arc', avatar: 'https://i.pravatar.cc/150?u=benarc', title: 'Building on Nostr - Live Coding', summary: 'Hacking on LNbits plugins', viewers: '340', status: 'live', statusLabel: 'LIVE', thumbSrc: 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=600&h=340&fit=crop' },
-    { streamer: 'Marce', avatar: 'https://i.pravatar.cc/150?u=marce', title: 'Lo-fi Beats & Chill', summary: 'Music stream, come hang out', viewers: '89', status: 'ended', statusLabel: 'ENDED', thumbSrc: 'https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=600&h=340&fit=crop' },
+    { streamer: 'DaxMontana', avatar: 'https://i.pravatar.cc/150?u=daxmontana', title: 'Citadel Dispatch #142', summary: 'Bitcoin sovereignty and privacy', viewers: '1.2k', status: 'live', statusLabel: 'LIVE', thumbSrc: 'https://cdn.shopify.com/s/files/1/0095/4332/files/Screen_Shot_2018-02-21_at_10.43.11_AM_1024x1024.png?v=1519258577' },
+    { streamer: 'VibeWithNova', avatar: 'https://i.pravatar.cc/150?u=vibewithnova', title: 'Lo-fi Beats & Chill', summary: 'Music stream, come hang out', viewers: '89', status: 'ended', statusLabel: 'ENDED', thumbSrc: 'https://cdn.shopify.com/s/files/1/0630/1689/4649/files/Article_Streamers_Pokimane.jpg?v=1740469315' },
+    { streamer: 'PixelRook', avatar: 'https://i.pravatar.cc/150?u=pixelrook', title: 'Building on Nostr - Live Coding', summary: 'Hacking on LNbits plugins', viewers: '340', status: 'live', statusLabel: 'LIVE', thumbSrc: 'https://resource-cdn.obsbothk.com/product_system_back/product_img/gamestreamer.jpg' },
   ],
 
   webxdc: [
