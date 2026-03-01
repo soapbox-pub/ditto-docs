@@ -254,9 +254,9 @@
           <div class="fd-vibe-page">
             <p class="fd-vibe-subtitle">Choose a theme for the interface</p>
             <div class="fd-vibe-mode">
-              <span class="fd-vibe-mode-btn">&#x2600;&#xFE0F; Light</span>
-              <span class="fd-vibe-mode-btn fd-vibe-mode-btn--active">&#x1F319; Dark</span>
-              <span class="fd-vibe-mode-btn">&#x1F4BB; System</span>
+              <span class="fd-vibe-mode-btn" :class="{ 'fd-vibe-mode-btn--active': vibeThemeKey === 'light' }" @click="selectVibe('light')">&#x2600;&#xFE0F; Light</span>
+              <span class="fd-vibe-mode-btn" :class="{ 'fd-vibe-mode-btn--active': vibeThemeKey === 'dark' }" @click="selectVibe('dark')">&#x1F319; Dark</span>
+              <span class="fd-vibe-mode-btn" :class="{ 'fd-vibe-mode-btn--active': vibeThemeKey === null }" @click="vibeThemeKey = null">&#x1F4BB; System</span>
             </div>
             <h4 class="fd-section-title">Presets</h4>
             <div class="fd-vibe-grid">
