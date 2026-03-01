@@ -4,9 +4,15 @@
 
     <!-- Sidebar -->
     <aside class="fd-sidebar" :class="{ 'fd-sidebar--visible': mobileView === 'sidebar' }">
+      <!-- Theme background image layer -->
+      <div
+        v-if="props.themeBg"
+        class="fd-sidebar-bg"
+        :style="{ backgroundImage: `url(${props.themeBg})` }"
+      ></div>
       <!-- User header -->
-      <div class="fd-user">
-        <img src="https://i.pravatar.cc/150?u=you@ditto.pub" class="fd-avatar fd-avatar--sm fd-avatar--img" />
+      <div class="fd-user" @click="selectItem('profile')" style="cursor: pointer;">
+        <img src="https://api.dicebear.com/9.x/notionists/svg?seed=ditto-user" class="fd-avatar fd-avatar--sm fd-avatar--img" />
         <div class="fd-user-info">
           <span class="fd-user-name">You</span>
           <span class="fd-user-handle">@you@ditto.pub</span>
@@ -100,7 +106,7 @@
         <template v-if="activeId === 'feed'">
           <!-- Compose box -->
           <div class="fd-compose">
-            <img src="https://i.pravatar.cc/150?u=you@ditto.pub" class="fd-avatar fd-avatar--post fd-avatar--img" />
+            <img src="https://api.dicebear.com/9.x/notionists/svg?seed=ditto-user" class="fd-avatar fd-avatar--post fd-avatar--img" />
             <span class="fd-compose-placeholder">What's on your mind?</span>
           </div>
           <!-- Follows / Global tabs -->
@@ -199,7 +205,7 @@
           <div class="fd-profile">
             <img src="https://picsum.photos/seed/profile-banner/600/200" class="fd-profile-banner fd-profile-banner--img" />
             <div class="fd-profile-info">
-              <img src="https://i.pravatar.cc/150?u=you@ditto.pub" class="fd-avatar fd-avatar--lg fd-avatar--img" />
+              <img src="https://api.dicebear.com/9.x/notionists/svg?seed=ditto-user" class="fd-avatar fd-avatar--lg fd-avatar--img" />
               <div class="fd-profile-actions">
                 <span class="fd-profile-btn">Edit Profile</span>
                 <span class="fd-profile-btn fd-profile-btn--zap">&#x26A1; Zap</span>
@@ -544,6 +550,10 @@
 <script setup lang="ts">
 import { ref, computed, reactive } from 'vue';
 
+const props = defineProps<{
+  themeBg?: string;
+}>();
+
 // ── Sidebar item type ──
 interface SidebarItem {
   id: string;
@@ -564,24 +574,24 @@ const dragId = ref<string | null>(null);
 const dragOverId = ref<string | null>(null);
 
 const sidebarItems = reactive<SidebarItem[]>([
-  { id: 'profile',       icon: '\u{1F464}', label: 'Profile',       pinned: true,  visible: true, order: 0 },
-  { id: 'feed',          icon: '\u{1F525}', label: 'Feed',          pinned: true,  visible: true, fixed: true, order: 1 },
-  { id: 'vibe',          icon: '\u{1F30A}', label: 'Vibe',          pinned: true,  visible: true, order: 2 },
-  { id: 'trends',        icon: '\u{1F4C8}', label: 'Trends',        pinned: true,  visible: true, order: 3 },
-  { id: 'articles',      icon: '\u{1F4DD}', label: 'Articles',      pinned: true,  visible: true, order: 4 },
-  { id: 'vines',         icon: '\u{1F3AC}', label: 'Vines',         pinned: true,  visible: true, order: 5 },
-  { id: 'streams',       icon: '\u{1F4E1}', label: 'Streams',       pinned: true,  visible: true, order: 6 },
-  { id: 'webxdc',        icon: '\u{1F3AE}', label: 'Webxdc',        pinned: true,  visible: true, order: 7 },
-  { id: 'magic',         icon: '\u{1F0CF}', label: 'Magic Decks',   pinned: true,  visible: true, order: 8 },
-  { id: 'treasures',     icon: '\u{1F4E6}', label: 'Treasures',     pinned: true,  visible: true, order: 9 },
-  { id: 'notifications', icon: '\u{1F514}', label: 'Notifications', pinned: false, visible: true, order: 10 },
-  { id: 'search',        icon: '\u{1F50D}', label: 'Search',        pinned: false, visible: true, order: 11 },
-  { id: 'bookmarks',     icon: '\u{1F516}', label: 'Bookmarks',     pinned: false, visible: true, order: 12 },
-  { id: 'settings',      icon: '\u{2699}\u{FE0F}', label: 'Settings', pinned: false, visible: true, order: 13 },
-  { id: 'themes',        icon: '\u{1F3A8}', label: 'Themes',        pinned: false, visible: true, order: 14 },
-  { id: 'polls',         icon: '\u{1F4CA}', label: 'Polls',         pinned: false, visible: true, order: 15 },
-  { id: 'followpacks',   icon: '\u{1F465}', label: 'Follow Packs',  pinned: false, visible: true, order: 16 },
-  { id: 'colors',        icon: '\u{1F308}', label: 'Color Moments', pinned: false, visible: true, order: 17 },
+  { id: 'feed',          icon: '\u{1F525}', label: 'Feed',          pinned: true,  visible: true, fixed: true, order: 0 },
+  { id: 'vibe',          icon: '\u{1F3A8}', label: 'Vibe',          pinned: true,  visible: true, order: 1 },
+  { id: 'articles',      icon: '\u{1F4DD}', label: 'Articles',      pinned: true,  visible: true, order: 2 },
+  { id: 'vines',         icon: '\u{1F3AC}', label: 'Vines',         pinned: true,  visible: true, order: 3 },
+  { id: 'streams',       icon: '\u{1F4E1}', label: 'Streams',       pinned: true,  visible: true, order: 4 },
+  { id: 'webxdc',        icon: '\u{1F3AE}', label: 'Webxdc',        pinned: true,  visible: true, order: 5 },
+  { id: 'magic',         icon: '\u{1F0CF}', label: 'Magic Decks',   pinned: true,  visible: true, order: 6 },
+  { id: 'treasures',     icon: '\u{1F3C6}', label: 'Treasures',     pinned: true,  visible: true, order: 7 },
+  { id: 'notifications', icon: '\u{1F514}', label: 'Notifications', pinned: false, visible: true, order: 8 },
+  { id: 'search',        icon: '\u{1F50D}', label: 'Search',        pinned: false, visible: true, order: 9 },
+  { id: 'bookmarks',     icon: '\u{1F516}', label: 'Bookmarks',     pinned: false, visible: true, order: 10 },
+  { id: 'settings',      icon: '\u{2699}\u{FE0F}', label: 'Settings', pinned: false, visible: true, order: 11 },
+  { id: 'trends',        icon: '\u{1F4C8}', label: 'Trends',        pinned: false, visible: true, order: 12 },
+  { id: 'themes',        icon: '\u{2728}',  label: 'Themes',        pinned: false, visible: true, order: 13 },
+  { id: 'polls',         icon: '\u{1F4CA}', label: 'Polls',         pinned: false, visible: true, order: 14 },
+  { id: 'followpacks',   icon: '\u{1F389}', label: 'Follow Packs',  pinned: false, visible: true, order: 15 },
+  { id: 'colors',        icon: '\u{1F308}', label: 'Color Moments', pinned: false, visible: true, order: 16 },
+  { id: 'profile',       icon: '\u{1F464}', label: 'Profile',       pinned: false, visible: true, order: 17 },
 ]);
 
 const pinnedItems = computed(() =>

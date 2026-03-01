@@ -90,7 +90,7 @@
           <p>Ditto is a playground. Here's some of what you can do.</p>
         </div>
 
-        <FakeDitto />
+        <FakeDitto :themeBg="activeTheme?.background?.bg" />
       </div>
     </section>
 
@@ -130,7 +130,7 @@
         </div>
 
         <div class="build-actions">
-          <a href="https://shakespeare.diy/new?git=https://gitlab.com/soapbox-pub/ditto-mew.git" target="_blank" class="btn btn-primary">Edit in Shakespeare</a>
+          <a href="https://shakespeare.diy/clone?url=https%3A%2F%2Fgitlab.com%2Fsoapbox-pub%2Fditto-mew.git" target="_blank" class="btn btn-primary">Edit in Shakespeare</a>
           <a href="https://gitlab.com/soapbox-pub/ditto-mew" target="_blank" class="btn btn-ghost">View Source</a>
         </div>
 
