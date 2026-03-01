@@ -4784,7 +4784,13 @@ button.screen-power-btn.power-standby {
  * ========================================================================== */
 
 /* ── Large screens: wider frame ── */
-@media (min-width: 1200px) {
+@media (min-width: 1025px) and (max-width: 1299px) {
+  .screen-frame {
+    width: min(74vw, calc(100vw - 48px));
+  }
+}
+
+@media (min-width: 1300px) {
   .screen-frame {
     width: min(68vw, calc(100vw - 48px));
   }
