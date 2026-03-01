@@ -58,7 +58,7 @@
           <h2>Your content. Your vibe. Your&nbsp;rules.</h2>
           <p>Customize and share themes with colors, background art, fonts, and more.</p>
         </div>
-        <div class="theme-grid">
+        <div class="theme-grid scroll-reveal" ref="themeGridRef">
           <button
             v-for="theme in allThemes"
             :key="theme.key"
@@ -90,7 +90,9 @@
           <p>Ditto is a playground. Discover what you can do.</p>
         </div>
 
-        <FakeDitto :themeBg="activeTheme?.background?.bg" />
+        <div ref="fakeDittoRef" class="scroll-reveal">
+          <FakeDitto :themeBg="activeTheme?.background?.bg" />
+        </div>
 
         <div class="powers-cta">
           <a href="https://ditto.pub" target="_blank" class="btn btn-primary">Try Ditto &#8599;</a>
@@ -308,7 +310,7 @@
           <p>Ditto is open source and designed to work with tools like <a href="https://soapbox.pub/tools/shakespeare" target="_blank">Shakespeare</a> so you can fully control and customize your platform beyond themes. Add new features, change your feed, or even completely redesign the UI to fit your wants and dreams.</p>
         </div>
 
-        <div class="build-showcase">
+        <div class="build-showcase scroll-reveal" ref="shakespeareRef">
           <img src="/edit-ditto-in-shakespeare.png" alt="Edit Ditto with Shakespeare" class="build-screenshot" />
         </div>
 
@@ -373,6 +375,9 @@ const homeRef = ref<HTMLElement | null>(null);
 const fontLoaded = ref(false);
 const commentsSectionRef = ref<HTMLElement | null>(null);
 const commentsVisible = ref(false);
+const fakeDittoRef = ref<HTMLElement | null>(null);
+const themeGridRef = ref<HTMLElement | null>(null);
+const shakespeareRef = ref<HTMLElement | null>(null);
 
 // ─── Computed styles ──────────────────────────────────────────────────
 
@@ -517,5 +522,21 @@ onMounted(() => {
     );
     observer.observe(commentsSectionRef.value);
   }
+
+  // Generic scroll-reveal observer for other elements
+  const revealObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('scroll-reveal--visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.1 }
+  );
+  [fakeDittoRef, themeGridRef, shakespeareRef].forEach((ref) => {
+    if (ref.value) revealObserver.observe(ref.value);
+  });
 });
 </script>

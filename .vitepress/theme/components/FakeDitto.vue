@@ -783,9 +783,9 @@ const feedData = {
   ],
 
   streams: [
-    { streamer: 'ODELL', avatar: 'https://i.pravatar.cc/150?u=odell', title: 'Citadel Dispatch #142', summary: 'Bitcoin sovereignty and privacy', viewers: '1.2k', status: 'live', statusLabel: 'LIVE', thumbSrc: 'https://picsum.photos/seed/stream1/600/340' },
-    { streamer: 'Ben Arc', avatar: 'https://i.pravatar.cc/150?u=benarc', title: 'Building on Nostr - Live Coding', summary: 'Hacking on LNbits plugins', viewers: '340', status: 'live', statusLabel: 'LIVE', thumbSrc: 'https://picsum.photos/seed/stream2/600/340' },
-    { streamer: 'Marce', avatar: 'https://i.pravatar.cc/150?u=marce', title: 'Lo-fi Beats & Chill', summary: 'Music stream, come hang out', viewers: '89', status: 'ended', statusLabel: 'ENDED', thumbSrc: 'https://picsum.photos/seed/stream3/600/340' },
+    { streamer: 'ODELL', avatar: 'https://i.pravatar.cc/150?u=odell', title: 'Citadel Dispatch #142', summary: 'Bitcoin sovereignty and privacy', viewers: '1.2k', status: 'live', statusLabel: 'LIVE', thumbSrc: 'https://images.unsplash.com/photo-1478737270239-2f02b77fc618?w=600&h=340&fit=crop' },
+    { streamer: 'Ben Arc', avatar: 'https://i.pravatar.cc/150?u=benarc', title: 'Building on Nostr - Live Coding', summary: 'Hacking on LNbits plugins', viewers: '340', status: 'live', statusLabel: 'LIVE', thumbSrc: 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=600&h=340&fit=crop' },
+    { streamer: 'Marce', avatar: 'https://i.pravatar.cc/150?u=marce', title: 'Lo-fi Beats & Chill', summary: 'Music stream, come hang out', viewers: '89', status: 'ended', statusLabel: 'ENDED', thumbSrc: 'https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=600&h=340&fit=crop' },
   ],
 
   webxdc: [
