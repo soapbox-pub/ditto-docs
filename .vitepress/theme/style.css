@@ -202,21 +202,21 @@
 
 .screen-window-enter-active {
   transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
-              opacity 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+              opacity 0.3s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .screen-window-leave-active {
-  transition: transform 0.3s cubic-bezier(0.55, 0, 1, 0.45),
-              opacity 0.3s cubic-bezier(0.55, 0, 1, 0.45);
+  transition: transform 0.35s cubic-bezier(0.55, 0, 1, 0.45),
+              opacity 0.25s cubic-bezier(0.55, 0, 1, 0.45);
 }
 
 .screen-window-enter-from {
-  transform: translateX(-50%) scale(0.85);
+  transform: translateX(-50%) translate(-40vw, 80vh) scale(0.15);
   opacity: 0;
 }
 
 .screen-window-leave-to {
-  transform: translateX(-50%) scale(0.85);
+  transform: translateX(-50%) translate(-40vw, 80vh) scale(0.15);
   opacity: 0;
 }
 
@@ -771,6 +771,140 @@ button.screen-power-btn {
   background: transparent;
   border: 2px solid #1a0a3a;
   color: #1a0a3a;
+}
+
+/* Light theme dialog: clean modern card */
+.win-dialog-light {
+  background: #fff;
+  border: 1px solid #e0d8ea;
+  border-radius: 14px;
+  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.15);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 14px;
+}
+
+.win-dialog-light .win-dialog-titlebar {
+  background: linear-gradient(180deg, #faf7fd, #f0ecf5);
+  border-bottom: 1px solid #e0d8ea;
+  border-radius: 14px 14px 0 0;
+  padding: 10px 14px;
+  color: #4a3870;
+}
+
+.win-dialog-light .win-dialog-text {
+  color: #333;
+  font-size: 14px;
+}
+
+.win-dialog-light .win-dialog-close {
+  background: none;
+  border: none;
+  color: #999;
+  font-size: 16px;
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+}
+
+.win-dialog-light .win-dialog-close:hover {
+  background: #fee;
+  color: #c42b1c;
+}
+
+.win-dialog-light .win-dialog-btn {
+  background: #7c52e0;
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 8px 24px;
+}
+
+.win-dialog-light .win-dialog-btn:hover {
+  background: #6b45c9;
+}
+
+.win-dialog-light .win-dialog-btn:active {
+  background: #5a38b0;
+  border-style: solid;
+}
+
+.win-dialog-light .win-dialog-btn:last-child {
+  background: #f0ecf5;
+  color: #4a3870;
+}
+
+.win-dialog-light .win-dialog-btn:last-child:hover {
+  background: #e8e0f0;
+}
+
+/* Dark theme dialog: dark modern card */
+.win-dialog-dark {
+  background: #1e1e32;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.5);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 14px;
+}
+
+.win-dialog-dark .win-dialog-titlebar {
+  background: linear-gradient(180deg, #242440, #1e1e32);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 14px 14px 0 0;
+  padding: 10px 14px;
+  color: #c0c0d0;
+}
+
+.win-dialog-dark .win-dialog-text {
+  color: #c0c0d0;
+  font-size: 14px;
+}
+
+.win-dialog-dark .win-dialog-close {
+  background: none;
+  border: none;
+  color: #666;
+  font-size: 16px;
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+}
+
+.win-dialog-dark .win-dialog-close:hover {
+  background: rgba(255, 80, 80, 0.15);
+  color: #ff5f57;
+}
+
+.win-dialog-dark .win-dialog-btn {
+  background: #7c52e0;
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 8px 24px;
+}
+
+.win-dialog-dark .win-dialog-btn:hover {
+  background: #8b63e8;
+}
+
+.win-dialog-dark .win-dialog-btn:active {
+  background: #6b45c9;
+  border-style: solid;
+}
+
+.win-dialog-dark .win-dialog-btn:last-child {
+  background: rgba(255, 255, 255, 0.08);
+  color: #c0c0d0;
+}
+
+.win-dialog-dark .win-dialog-btn:last-child:hover {
+  background: rgba(255, 255, 255, 0.12);
 }
 
 /* ==========================================================================
