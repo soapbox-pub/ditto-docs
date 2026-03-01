@@ -1,14 +1,14 @@
 <template>
-  <div class="fake-ditto" :class="{ 'fake-ditto--mobile-sidebar': mobileView === 'sidebar' }">
+  <div class="fake-ditto" :class="{ 'fake-ditto--mobile-sidebar': mobileView === 'sidebar' }" :style="vibeStyles">
     <!-- Desktop: two-column layout. Mobile: toggle between sidebar/feed -->
 
     <!-- Sidebar -->
     <aside class="fd-sidebar" :class="{ 'fd-sidebar--visible': mobileView === 'sidebar' }">
       <!-- Theme background image layer -->
       <div
-        v-if="props.themeBg"
+        v-if="effectiveSidebarBg"
         class="fd-sidebar-bg"
-        :style="{ backgroundImage: `url(${props.themeBg})` }"
+        :style="{ backgroundImage: `url(${effectiveSidebarBg})` }"
       ></div>
       <!-- User header -->
       <div class="fd-user" @click="selectItem('profile')" style="cursor: pointer;">
@@ -260,11 +260,13 @@
             </div>
             <h4 class="fd-section-title">Presets</h4>
             <div class="fd-vibe-grid">
-              <div class="fd-vibe-card" v-for="(t, i) in feedData.vibe" :key="i" :class="{ 'fd-vibe-card--active': i === 0 }">
-                <div class="fd-vibe-swatch" :style="{ backgroundColor: t.bg }">
-                  <div class="fd-vibe-swatch-bg" :style="{ backgroundImage: `url(${t.bgImage})` }"></div>
+              <div class="fd-vibe-card" v-for="t in vibeThemes" :key="t.key"
+                   :class="{ 'fd-vibe-card--active': vibeThemeKey === t.key }"
+                   @click="selectVibe(t.key)">
+                <div class="fd-vibe-swatch" :style="{ backgroundColor: `hsl(${t.colors.background})` }">
+                  <div class="fd-vibe-swatch-bg" :style="{ backgroundImage: `url(${t.background.bg})` }"></div>
                   <div class="fd-vibe-swatch-overlay"></div>
-                  <span class="fd-vibe-card-name">{{ t.name }}</span>
+                  <span class="fd-vibe-card-name">{{ t.label }}</span>
                 </div>
               </div>
             </div>
@@ -549,6 +551,8 @@
 
 <script setup lang="ts">
 import { ref, computed, reactive } from 'vue';
+import { themes, deriveTokens, hslToCSS } from '../themes';
+import type { Y2KTheme } from '../themes';
 
 const props = defineProps<{
   themeBg?: string;
@@ -573,6 +577,58 @@ const mobileView = ref<'sidebar' | 'feed'>('sidebar');
 const feedTab = ref<'follows' | 'global'>('follows');
 const dragId = ref<string | null>(null);
 const dragOverId = ref<string | null>(null);
+const vibeThemeKey = ref<string | null>(null);
+
+// ── Vibe themes (creative themes from themes.ts, excluding light/dark) ──
+const vibeThemes = computed(() =>
+  themes.filter(t => t.background.bg !== '')
+);
+
+const activeVibeTheme = computed<Y2KTheme | null>(() => {
+  if (!vibeThemeKey.value) return null;
+  return themes.find(t => t.key === vibeThemeKey.value) || null;
+});
+
+const vibeStyles = computed<Record<string, string>>(() => {
+  const theme = activeVibeTheme.value;
+  if (!theme) return {};
+
+  const tokens = deriveTokens(theme.colors);
+
+  return {
+    '--theme-bg': hslToCSS(tokens.background),
+    '--theme-text': hslToCSS(tokens.foreground),
+    '--theme-primary': hslToCSS(tokens.primary),
+    '--theme-primary-fg': hslToCSS(tokens.primaryForeground),
+    '--theme-card': hslToCSS(tokens.card),
+    '--theme-card-fg': hslToCSS(tokens.cardForeground),
+    '--theme-secondary': hslToCSS(tokens.secondary),
+    '--theme-secondary-fg': hslToCSS(tokens.secondaryForeground),
+    '--theme-muted': hslToCSS(tokens.muted),
+    '--theme-muted-fg': hslToCSS(tokens.mutedForeground),
+    '--theme-accent': hslToCSS(tokens.accent),
+    '--theme-accent-fg': hslToCSS(tokens.accentForeground),
+    '--theme-border': hslToCSS(tokens.border),
+    '--theme-ring': hslToCSS(tokens.ring),
+    '--vp-c-text-1': hslToCSS(tokens.foreground),
+    '--vp-c-text-2': hslToCSS(tokens.mutedForeground),
+    '--vp-c-text-3': hslToCSS(tokens.mutedForeground),
+    '--vp-c-brand-1': hslToCSS(tokens.primary),
+    '--vp-c-bg': hslToCSS(tokens.background),
+    '--vp-c-bg-soft': hslToCSS(tokens.secondary),
+    '--vp-c-divider': hslToCSS(tokens.border),
+    'color': hslToCSS(tokens.foreground),
+  };
+});
+
+const effectiveSidebarBg = computed(() => {
+  if (activeVibeTheme.value?.background.bg) return activeVibeTheme.value.background.bg;
+  return props.themeBg || '';
+});
+
+function selectVibe(key: string) {
+  vibeThemeKey.value = vibeThemeKey.value === key ? null : key;
+}
 
 const sidebarItems = reactive<SidebarItem[]>([
   { id: 'feed',          icon: '\u{1F525}', label: 'Feed',          pinned: true,  visible: true, fixed: true, order: 0 },
@@ -755,15 +811,6 @@ const feedData = {
       body: 'Nostr is not a social network. Nostr is a protocol. The social network is what you build on top of it.',
       replies: 67, reposts: 234, likes: 1100, zaps: '12k',
     },
-  ],
-
-  vibe: [
-    { name: 'Kawaii', bg: '#fce4ec', primary: '#ff69b4', bgImage: '/kawaii-bg.png' },
-    { name: 'Grunge', bg: '#1a1a1a', primary: '#ff4444', bgImage: '/grunge-bg.png' },
-    { name: 'Gamer', bg: '#0a0a2e', primary: '#00ff88', bgImage: '/gamer-bg.png' },
-    { name: 'Bubblegum', bg: '#fff', primary: '#a600ff', bgImage: '/bubblegum-bg.png' },
-    { name: 'Retro Pop', bg: '#ffe066', primary: '#9040a0', bgImage: '/retropop-bg.png' },
-    { name: 'Skater', bg: '#f5f0e8', primary: '#e85d04', bgImage: '/skater-bg.png' },
   ],
 
   settings: [
