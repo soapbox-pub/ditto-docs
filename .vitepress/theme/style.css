@@ -3854,8 +3854,8 @@ button.screen-power-btn.power-standby {
   .fake-ditto {
     flex-direction: column;
     max-width: 360px;
-    min-height: 500px;
-    height: 500px;
+    min-height: 700px;
+    height: 700px;
     margin: 0 auto;
     border-radius: 24px;
   }
