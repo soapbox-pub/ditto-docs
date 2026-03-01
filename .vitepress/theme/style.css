@@ -3035,10 +3035,8 @@ button.screen-power-btn.power-standby {
 }
 
 .fd-vibe-card {
-  text-align: center;
   cursor: pointer;
   border-radius: 10px;
-  padding: 4px;
   border: 2px solid transparent;
 }
 
@@ -3047,27 +3045,38 @@ button.screen-power-btn.power-standby {
 }
 
 .fd-vibe-swatch {
-  height: 48px;
+  position: relative;
+  aspect-ratio: 16 / 10;
   border-radius: 8px;
-  border: 1px solid var(--vp-c-divider);
+  overflow: hidden;
   display: flex;
-  align-items: flex-end;
-  justify-content: flex-end;
-  padding: 6px;
-  margin-bottom: 4px;
+  align-items: center;
+  justify-content: center;
+  background: #111;
 }
 
-.fd-vibe-dot {
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  border: 2px solid rgba(255, 255, 255, 0.5);
+.fd-vibe-swatch-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  z-index: 0;
+}
+
+.fd-vibe-swatch-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+  z-index: 1;
 }
 
 .fd-vibe-card-name {
+  position: relative;
+  z-index: 2;
   font-size: 10px;
-  font-weight: 600;
-  color: var(--vp-c-text-1);
+  font-weight: 700;
+  color: #fff;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
 }
 
 /* ── Settings ── */

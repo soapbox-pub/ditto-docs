@@ -261,10 +261,11 @@
             <h4 class="fd-section-title">Presets</h4>
             <div class="fd-vibe-grid">
               <div class="fd-vibe-card" v-for="(t, i) in feedData.vibe" :key="i" :class="{ 'fd-vibe-card--active': i === 0 }">
-                <div class="fd-vibe-swatch" :style="{ background: t.bg }">
-                  <span class="fd-vibe-dot" :style="{ background: t.primary }"></span>
+                <div class="fd-vibe-swatch" :style="{ backgroundColor: t.bg }">
+                  <div class="fd-vibe-swatch-bg" :style="{ backgroundImage: `url(${t.bgImage})` }"></div>
+                  <div class="fd-vibe-swatch-overlay"></div>
+                  <span class="fd-vibe-card-name">{{ t.name }}</span>
                 </div>
-                <span class="fd-vibe-card-name">{{ t.name }}</span>
               </div>
             </div>
           </div>
@@ -757,12 +758,12 @@ const feedData = {
   ],
 
   vibe: [
-    { name: 'Kawaii', bg: '#fce4ec', primary: '#ff69b4' },
-    { name: 'Grunge', bg: '#1a1a1a', primary: '#ff4444' },
-    { name: 'Gamer', bg: '#0a0a2e', primary: '#00ff88' },
-    { name: 'Bubblegum', bg: '#fff', primary: '#a600ff' },
-    { name: 'Retro Pop', bg: '#ffe066', primary: '#9040a0' },
-    { name: 'Skater', bg: '#f5f0e8', primary: '#e85d04' },
+    { name: 'Kawaii', bg: '#fce4ec', primary: '#ff69b4', bgImage: '/kawaii-bg.png' },
+    { name: 'Grunge', bg: '#1a1a1a', primary: '#ff4444', bgImage: '/grunge-bg.png' },
+    { name: 'Gamer', bg: '#0a0a2e', primary: '#00ff88', bgImage: '/gamer-bg.png' },
+    { name: 'Bubblegum', bg: '#fff', primary: '#a600ff', bgImage: '/bubblegum-bg.png' },
+    { name: 'Retro Pop', bg: '#ffe066', primary: '#9040a0', bgImage: '/retropop-bg.png' },
+    { name: 'Skater', bg: '#f5f0e8', primary: '#e85d04', bgImage: '/skater-bg.png' },
   ],
 
   settings: [
