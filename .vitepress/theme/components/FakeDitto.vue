@@ -916,9 +916,9 @@ const feedData = {
   ],
 
   treasures: [
-    { user: 'BitcoinHiker', avatar: 'https://i.pravatar.cc/150?u=bitcoinhiker', action: 'hid a treasure', time: '2h', name: 'Satoshi\'s Cache', type: 'Traditional', size: 'Small', difficulty: 3, terrain: 2, desc: 'Near the old cherry blossom tree in the park. Bring a pen!', photo: 'https://picsum.photos/seed/treasure1/400/200' },
-    { user: 'NostrExplorer', avatar: 'https://i.pravatar.cc/150?u=nostrexplorer', action: 'found a treasure', time: '5h', name: 'Lightning Ridge', type: 'Multi-cache', size: 'Micro', difficulty: 4, terrain: 3, desc: '', photo: 'https://picsum.photos/seed/treasure2/400/200' },
-    { user: 'CachePirate', avatar: 'https://i.pravatar.cc/150?u=cachepirate', action: 'hid a treasure', time: '1d', name: 'Pirate\'s Bounty', type: 'Mystery', size: 'Regular', difficulty: 5, terrain: 4, desc: 'Solve the puzzle to find the coordinates. X marks the spot!', photo: 'https://picsum.photos/seed/treasure3/400/200' },
+    { user: 'BitcoinHiker', avatar: 'https://i.pravatar.cc/150?u=bitcoinhiker', action: 'hid a treasure', time: '2h', name: 'Satoshi\'s Cache', type: 'Traditional', size: 'Small', difficulty: 3, terrain: 2, desc: 'Near the old cherry blossom tree in the park. Bring a pen!', photo: 'https://images.unsplash.com/photo-1522383225653-ed111181a951?w=400&h=200&fit=crop' },
+    { user: 'NostrExplorer', avatar: 'https://i.pravatar.cc/150?u=nostrexplorer', action: 'found a treasure', time: '5h', name: 'Lightning Ridge', type: 'Multi-cache', size: 'Micro', difficulty: 4, terrain: 3, desc: '', photo: 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=400&h=200&fit=crop' },
+    { user: 'CachePirate', avatar: 'https://i.pravatar.cc/150?u=cachepirate', action: 'hid a treasure', time: '1d', name: 'Pirate\'s Bounty', type: 'Mystery', size: 'Regular', difficulty: 5, terrain: 4, desc: 'Solve the puzzle to find the coordinates. X marks the spot!', photo: 'https://images.unsplash.com/photo-1501446529957-6226bd447c46?w=400&h=200&fit=crop' },
   ],
 };
 </script>

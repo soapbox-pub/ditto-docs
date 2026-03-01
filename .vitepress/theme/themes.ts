@@ -227,7 +227,7 @@ export const themes: Y2KTheme[] = [
     label: 'Retro Pop',
     emoji: '\u{1F4BF}', // 💿
     colors: {
-      background: '59 100% 88%',
+      background: '0 0% 100%',
       text: '40 40% 10%',
       primary: '260 50% 70%',
     },
