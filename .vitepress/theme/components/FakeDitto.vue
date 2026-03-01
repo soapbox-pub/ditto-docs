@@ -411,7 +411,7 @@ interface SidebarItem {
 const activeId = ref('feed');
 const moreOpen = ref(false);
 const editMode = ref(false);
-const mobileView = ref<'sidebar' | 'feed'>('feed');
+const mobileView = ref<'sidebar' | 'feed'>('sidebar');
 const dragId = ref<string | null>(null);
 const dragOverId = ref<string | null>(null);
 
