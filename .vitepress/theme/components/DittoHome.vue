@@ -61,7 +61,7 @@
         </div>
         <div class="theme-grid scroll-reveal" ref="themeGridRef">
           <button
-            v-for="theme in allThemes"
+            v-for="theme in desktopThemes"
             :key="theme.key"
             class="theme-card"
             :class="{ 'theme-card-active': theme.key === currentThemeKey }"
@@ -69,6 +69,7 @@
           >
             <div
               class="theme-card-bg"
+              :class="{ 'theme-card-bg--light': theme.key === 'light', 'theme-card-bg--dark': theme.key === 'dark' }"
               :style="{ backgroundImage: theme.background.bg ? `url(${theme.background.bg})` : 'none', backgroundColor: `hsl(${theme.colors.background})` }"
             />
             <div class="theme-card-overlay" />
@@ -356,7 +357,7 @@
 
 <script setup lang="ts">
 import { ref, computed, onMounted } from 'vue';
-import { themes as allThemes, getTheme, randomThemeKey, deriveTokens, hslToCSS } from '../themes';
+import { themes as allThemes, desktopThemes, getTheme, systemThemeKey, deriveTokens, hslToCSS } from '../themes';
 import type { Y2KTheme } from '../themes';
 import ThemeSwitcher from './ThemeSwitcher.vue';
 import ScreenFrame from './ScreenFrame.vue';
@@ -507,7 +508,7 @@ async function applyTheme(key: string) {
 onMounted(() => {
   // If we have a persisted key from SPA navigation, use it.
   // Otherwise pick a random one. Module-level variable resets on full page reload.
-  const key = _persistedThemeKey || randomThemeKey();
+  const key = _persistedThemeKey || systemThemeKey();
   applyTheme(key);
 
   // Intersection Observer for comments section animation

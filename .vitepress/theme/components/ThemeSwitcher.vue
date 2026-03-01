@@ -33,6 +33,7 @@
           >
             <div
               class="theme-option-swatch"
+              :class="{ 'theme-swatch--light': theme.key === 'light', 'theme-swatch--dark': theme.key === 'dark' }"
               :style="{
                 background: hsl(theme.colors.background),
                 borderColor: hsl(theme.colors.primary),
@@ -53,7 +54,7 @@
 
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from 'vue';
-import { themes as allThemes, hslToCSS } from '../themes';
+import { mobileThemes as allThemes, hslToCSS } from '../themes';
 
 defineProps<{
   currentThemeKey: string;

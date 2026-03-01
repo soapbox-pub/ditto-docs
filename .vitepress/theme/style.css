@@ -2181,6 +2181,20 @@ button.screen-power-btn.power-standby {
   z-index: 0;
 }
 
+.theme-card-bg--light {
+  background:
+    radial-gradient(ellipse at 30% 40%, hsla(258 70% 75% / 0.3) 0%, transparent 60%),
+    radial-gradient(ellipse at 70% 60%, hsla(300 50% 80% / 0.2) 0%, transparent 50%),
+    hsl(270 20% 92%) !important;
+}
+
+.theme-card-bg--dark {
+  background:
+    radial-gradient(ellipse at 30% 30%, hsla(258 70% 35% / 0.5) 0%, transparent 55%),
+    radial-gradient(ellipse at 70% 70%, hsla(228 50% 25% / 0.4) 0%, transparent 55%),
+    hsl(228 25% 6%) !important;
+}
+
 .theme-card-overlay {
   position: absolute;
   inset: 0;
@@ -4153,6 +4167,20 @@ button.screen-power-btn.power-standby {
 
 .theme-option:hover .theme-option-swatch {
   transform: scale(1.08);
+}
+
+.theme-swatch--light {
+  background:
+    radial-gradient(ellipse at 30% 40%, hsla(258 70% 75% / 0.3) 0%, transparent 60%),
+    radial-gradient(ellipse at 70% 60%, hsla(300 50% 80% / 0.2) 0%, transparent 50%),
+    hsl(270 20% 92%) !important;
+}
+
+.theme-swatch--dark {
+  background:
+    radial-gradient(ellipse at 30% 30%, hsla(258 70% 35% / 0.5) 0%, transparent 55%),
+    radial-gradient(ellipse at 70% 70%, hsla(228 50% 25% / 0.4) 0%, transparent 55%),
+    hsl(228 25% 6%) !important;
 }
 
 .theme-option-emoji {

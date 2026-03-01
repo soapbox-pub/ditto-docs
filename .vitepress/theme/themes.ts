@@ -361,3 +361,17 @@ export function randomThemeKey(): string {
   const eligible = themes.filter(t => !nonRandomKeys.has(t.key));
   return eligible[Math.floor(Math.random() * eligible.length)].key;
 }
+
+/** Detect system color scheme and return 'light' or 'dark' */
+export function systemThemeKey(): string {
+  if (typeof window !== 'undefined' && window.matchMedia?.('(prefers-color-scheme: dark)').matches) {
+    return 'dark';
+  }
+  return 'light';
+}
+
+/** Themed themes: creative themes first, light/dark last (for desktop grid) */
+export const desktopThemes = themes.filter(t => !nonRandomKeys.has(t.key)).concat(themes.filter(t => nonRandomKeys.has(t.key)));
+
+/** Mobile themes: light/dark first, then creative themes */
+export const mobileThemes = themes.filter(t => nonRandomKeys.has(t.key)).concat(themes.filter(t => !nonRandomKeys.has(t.key)));
