@@ -3728,6 +3728,12 @@ button.screen-power-btn.power-standby {
   margin: 0 0 40px;
 }
 
+.final-cta-inner p a {
+  color: var(--vp-c-bg);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
 /* ---------- THEME SWITCHER ---------- */
 
 .theme-switcher {
