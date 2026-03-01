@@ -283,7 +283,8 @@ const props = defineProps<{
 const viewport = ref<HTMLElement | null>(null);
 const viewportWrap = ref<HTMLElement | null>(null);
 
-const themeLogo = computed(() => `/${props.theme}-logo.png`);
+const svgLogoThemes = new Set(['light', 'dark']);
+const themeLogo = computed(() => svgLogoThemes.has(props.theme) ? `/${props.theme}-logo.svg` : `/${props.theme}-logo.png`);
 
 // ── Window minimize/close ──
 type WindowState = 'normal' | 'minimized' | 'closed';

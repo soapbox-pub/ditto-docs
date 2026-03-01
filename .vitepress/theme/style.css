@@ -495,6 +495,18 @@ button.screen-power-btn {
   color: #fff;
 }
 
+.taskbar-light {
+  background: #f5f0fa;
+  border: 1px solid #e0d8ec;
+  color: #2d1050;
+}
+
+.taskbar-dark {
+  background: #1a1a2e;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #e0e0e0;
+}
+
 /* Fallback taskbar for any unknown theme */
 .taskbar:not([class*="taskbar-"]):not(.taskbar) {
   background: #333;
@@ -1362,6 +1374,39 @@ button.screen-nav-btn-retro:active {
   color: #666;
 }
 
+/* ── Light theme: clean minimal ── */
+
+.screen-light {
+  border-radius: 12px;
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(0, 0, 0, 0.08);
+}
+
+.screen-light .screen-titlebar {
+  background: #f5f0fa;
+  border-bottom: 1px solid #e8e0f0;
+}
+
+.screen-light .screen-viewport {
+  background: hsl(270 50% 97%);
+}
+
+/* ── Dark theme: clean minimal ── */
+
+.screen-dark {
+  border-radius: 12px;
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+
+.screen-dark .screen-titlebar {
+  background: #1a1a2e;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  color: #e0e0e0;
+}
+
+.screen-dark .screen-viewport {
+  background: hsl(228 20% 10%);
+}
+
 /* ── Skater: CRT power-off easter egg ── */
 
 /* Power button interactivity */
@@ -1659,6 +1704,32 @@ button.screen-power-btn.power-standby {
 .screen-skater .screen-viewport::-webkit-scrollbar-thumb {
   background: #b0ff00;
   border-radius: 0;
+}
+
+/* Light: purple on lavender */
+.screen-light .screen-viewport {
+  scrollbar-color: #7c52e0 hsl(270 50% 97%);
+}
+.screen-light .screen-viewport::-webkit-scrollbar-track {
+  background: hsl(270 50% 97%);
+}
+.screen-light .screen-viewport::-webkit-scrollbar-thumb {
+  background: #7c52e0;
+  border-radius: 10px;
+  border: 2px solid hsl(270 50% 97%);
+}
+
+/* Dark: violet on dark */
+.screen-dark .screen-viewport {
+  scrollbar-color: #7c6ce0 hsl(228 20% 10%);
+}
+.screen-dark .screen-viewport::-webkit-scrollbar-track {
+  background: hsl(228 20% 10%);
+}
+.screen-dark .screen-viewport::-webkit-scrollbar-thumb {
+  background: #7c6ce0;
+  border-radius: 10px;
+  border: 2px solid hsl(228 20% 10%);
 }
 
 /* Kill VitePress page layout padding when our component is shown */

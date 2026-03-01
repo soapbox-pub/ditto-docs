@@ -7,7 +7,7 @@
   >
     <!-- Background wallpaper layer (behind everything) -->
     <div
-      v-if="activeTheme?.background"
+      v-if="activeTheme?.background?.bg"
       class="theme-bg-image"
       :style="{
         backgroundImage: `url(${activeTheme.background.bg})`,
@@ -69,7 +69,7 @@
           >
             <div
               class="theme-card-bg"
-              :style="{ backgroundImage: `url(${theme.background.bg})` }"
+              :style="{ backgroundImage: theme.background.bg ? `url(${theme.background.bg})` : 'none', backgroundColor: `hsl(${theme.colors.background})` }"
             />
             <div class="theme-card-overlay" />
             <span

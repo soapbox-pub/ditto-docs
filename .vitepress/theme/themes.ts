@@ -306,14 +306,58 @@ export const themes: Y2KTheme[] = [
       mode: 'cover',
     },
   },
+  {
+    key: 'light',
+    label: 'Light',
+    emoji: '\u{2600}\u{FE0F}', // ☀️
+    colors: {
+      background: '270 50% 97%',
+      text: '270 25% 12%',
+      primary: '270 65% 55%',
+    },
+    font: {
+      family: 'Inter',
+      url: 'https://cdn.jsdelivr.net/fontsource/fonts/inter@latest/latin-400-normal.woff2',
+    },
+    bodyFont: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+    headingScale: 1,
+    background: {
+      bg: '',
+      mode: 'cover',
+    },
+  },
+  {
+    key: 'dark',
+    label: 'Dark',
+    emoji: '\u{1F319}', // 🌙
+    colors: {
+      background: '228 20% 10%',
+      text: '210 40% 98%',
+      primary: '258 70% 60%',
+    },
+    font: {
+      family: 'Inter',
+      url: 'https://cdn.jsdelivr.net/fontsource/fonts/inter@latest/latin-400-normal.woff2',
+    },
+    bodyFont: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+    headingScale: 1,
+    background: {
+      bg: '',
+      mode: 'cover',
+    },
+  },
 ];
+
+/** Theme keys excluded from random selection */
+const nonRandomKeys = new Set(['light', 'dark']);
 
 /** Get a theme by key */
 export function getTheme(key: string): Y2KTheme | undefined {
   return themes.find(t => t.key === key);
 }
 
-/** Pick a random theme key */
+/** Pick a random theme key (excludes simple light/dark themes) */
 export function randomThemeKey(): string {
-  return themes[Math.floor(Math.random() * themes.length)].key;
+  const eligible = themes.filter(t => !nonRandomKeys.has(t.key));
+  return eligible[Math.floor(Math.random() * eligible.length)].key;
 }
