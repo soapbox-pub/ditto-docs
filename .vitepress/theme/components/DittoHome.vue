@@ -322,7 +322,7 @@
         <div class="selfhost-blurb">
           <p>Ditto builds to static files. Deploy it on a $5 VPS, GitHub Pages, Netlify, or a Raspberry Pi in your closet. One config file. Your domain. Your community.</p>
           <div class="build-actions">
-            <a href="/guides/self-hosting" class="btn btn-ghost">Read the self-hosting guide →</a>
+            <a href="/guides/self-hosting" class="btn btn-ghost">Read the self-hosting&nbsp;guide&nbsp;→</a>
           </div>
         </div>
       </div>
