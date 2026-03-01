@@ -157,7 +157,7 @@
           </div>
 
           <!-- 4: Post -->
-          <div class="comment-card comment-card--wide" :class="{ 'comment-card--visible': commentsVisible }" style="--delay: 3; --rotate: 0.5deg;">
+          <div class="comment-card comment-card--wide comment-card--mobile-hide" :class="{ 'comment-card--visible': commentsVisible }" style="--delay: 3; --rotate: 0.5deg;">
             <div class="comment-target">
               <span class="comment-target-icon">&#x1F4AC;</span>
               <span class="comment-target-label">Post by @ODELL</span>
@@ -187,7 +187,7 @@
           </div>
 
           <!-- 6: Treasure -->
-          <div class="comment-card" :class="{ 'comment-card--visible': commentsVisible }" style="--delay: 5; --rotate: -1.2deg;">
+          <div class="comment-card comment-card--mobile-hide" :class="{ 'comment-card--visible': commentsVisible }" style="--delay: 5; --rotate: -1.2deg;">
             <div class="comment-target">
               <span class="comment-target-icon">&#x1F4CD;</span>
               <span class="comment-target-label">Satoshi's Cache</span>
@@ -232,7 +232,7 @@
           </div>
 
           <!-- 9: Country -->
-          <div class="comment-card" :class="{ 'comment-card--visible': commentsVisible }" style="--delay: 8; --rotate: 1.5deg;">
+          <div class="comment-card comment-card--mobile-hide" :class="{ 'comment-card--visible': commentsVisible }" style="--delay: 8; --rotate: 1.5deg;">
             <div class="comment-target">
               <span class="comment-target-icon">&#x1F1FA;&#x1F1F8;</span>
               <span class="comment-target-label">United States</span>
@@ -247,7 +247,7 @@
           </div>
 
           <!-- 10: Hashtag -->
-          <div class="comment-card" :class="{ 'comment-card--visible': commentsVisible }" style="--delay: 9; --rotate: -0.5deg;">
+          <div class="comment-card comment-card--mobile-hide" :class="{ 'comment-card--visible': commentsVisible }" style="--delay: 9; --rotate: -0.5deg;">
             <div class="comment-target">
               <span class="comment-target-icon">#</span>
               <span class="comment-target-label">bitcoin</span>

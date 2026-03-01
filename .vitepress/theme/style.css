@@ -3503,6 +3503,10 @@ button.screen-power-btn.power-standby {
     margin-top: 0;
   }
 
+  .comment-card--mobile-hide {
+    display: none;
+  }
+
   .comment-card {
     --rotate: 0deg !important;
   }
