@@ -425,9 +425,9 @@ const bridgeApps: BridgeApp[] = [
   { name: 'Mastodon', url: 'https://joinmastodon.org', logo: '/logos/mastodon.svg', protocol: 'mastodon' },
   // Nostr apps
   { name: 'Inkwell', url: 'https://inkwell.shakespeare.wtf', logo: 'https://fetch.ditto.pub/favicon/inkwell.shakespeare.wtf', protocol: 'nostr' },
-  { name: 'nostr.build', url: 'https://nostr.build', logo: 'https://fetch.ditto.pub/favicon/nostr.build', protocol: 'nostr' },
+  { name: 'diVine', url: 'https://divine.video', logo: 'https://fetch.ditto.pub/favicon/divine.video', protocol: 'nostr' },
   { name: 'zap.stream', url: 'https://zap.stream', logo: 'https://fetch.ditto.pub/favicon/zap.stream', protocol: 'nostr' },
-  { name: 'divine.video', url: 'https://divine.video', logo: 'https://fetch.ditto.pub/favicon/divine.video', protocol: 'nostr' },
+  { name: 'nostr.build', url: 'https://nostr.build', logo: 'https://fetch.ditto.pub/favicon/nostr.build', protocol: 'nostr' },
   { name: 'Nodecast', url: 'https://nodecast.xyz', logo: 'https://fetch.ditto.pub/favicon/nodecast.xyz', protocol: 'nostr' },
   { name: 'Plektos', url: 'https://plektos.app', logo: 'https://fetch.ditto.pub/favicon/plektos.app', protocol: 'nostr' },
   { name: 'webxdc', url: 'https://webxdc.org', logo: 'https://fetch.ditto.pub/favicon/webxdc.org', protocol: 'nostr' },
