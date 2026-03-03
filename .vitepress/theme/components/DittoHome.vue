@@ -425,18 +425,18 @@ const bridgeApps: BridgeApp[] = [
   { name: 'Mastodon', url: 'https://joinmastodon.org', logo: '/logos/mastodon.svg', protocol: 'mastodon' },
   // Nostr apps
   { name: 'diVine', url: 'https://divine.video', logo: 'https://fetch.ditto.pub/favicon/divine.video', protocol: 'nostr' },
-  { name: 'Inkwell', url: 'https://inkwell.shakespeare.wtf', logo: 'https://fetch.ditto.pub/favicon/inkwell.shakespeare.wtf', protocol: 'nostr' },
+  { name: 'webxdc', url: 'https://webxdc.org', logo: 'https://fetch.ditto.pub/favicon/webxdc.org', protocol: 'nostr' },
   { name: 'zap.stream', url: 'https://zap.stream', logo: 'https://fetch.ditto.pub/favicon/zap.stream', protocol: 'nostr' },
   { name: 'nostr.build', url: 'https://nostr.build', logo: 'https://fetch.ditto.pub/favicon/nostr.build', protocol: 'nostr' },
   { name: 'Nodecast', url: 'https://nodecast.xyz', logo: 'https://fetch.ditto.pub/favicon/nodecast.xyz', protocol: 'nostr' },
   { name: 'Plektos', url: 'https://plektos.app', logo: 'https://fetch.ditto.pub/favicon/plektos.app', protocol: 'nostr' },
-  { name: 'webxdc', url: 'https://webxdc.org', logo: 'https://fetch.ditto.pub/favicon/webxdc.org', protocol: 'nostr' },
-  { name: 'Pollerama', url: 'https://pollerama.fun', logo: '/logos/pollerama.svg', protocol: 'nostr' },
+  { name: 'Inkwell', url: 'https://inkwell.shakespeare.wtf', logo: 'https://fetch.ditto.pub/favicon/inkwell.shakespeare.wtf', protocol: 'nostr' },
+  { name: 'Treasures', url: 'https://treasures.to', logo: 'https://fetch.ditto.pub/favicon/treasures.to', protocol: 'nostr' },
   { name: 'following.space', url: 'https://following.space', logo: '/logos/following-space.png', protocol: 'nostr' },
   { name: 'espy.you', url: 'https://espy.you', logo: 'https://fetch.ditto.pub/favicon/espy.you', protocol: 'nostr' },
   { name: 'Surveil', url: 'https://surveil.cards', logo: 'https://fetch.ditto.pub/favicon/surveil.cards', protocol: 'nostr' },
   { name: 'EmojiVerse', url: 'https://emojiverse.shakespeare.wtf', logo: 'https://fetch.ditto.pub/favicon/emojiverse.shakespeare.wtf', protocol: 'nostr' },
-  { name: 'Treasures', url: 'https://treasures.to', logo: 'https://fetch.ditto.pub/favicon/treasures.to', protocol: 'nostr' },
+  { name: 'Pollerama', url: 'https://pollerama.fun', logo: '/logos/pollerama.svg', protocol: 'nostr' },
 ];
 
 // ─── Computed styles ──────────────────────────────────────────────────
