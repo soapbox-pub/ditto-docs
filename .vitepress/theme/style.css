@@ -4178,8 +4178,8 @@ button.screen-power-btn.power-standby {
 }
 
 .bridge-app-icon {
-  width: 56px;
-  height: 56px;
+  width: 64px;
+  height: 64px;
   border-radius: 14px;
   overflow: hidden;
   display: flex;
