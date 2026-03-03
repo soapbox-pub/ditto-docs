@@ -4131,6 +4131,89 @@ button.screen-power-btn.power-standby {
   margin: 0 0 28px;
 }
 
+/* ---------- BRIDGE TO THE OPEN WEB ---------- */
+
+.bridge-section {
+  padding: 100px 0;
+}
+
+.bridge-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+@media (max-width: 640px) {
+  .bridge-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+}
+
+@media (max-width: 400px) {
+  .bridge-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+}
+
+.bridge-app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 20px 12px;
+  border-radius: 16px;
+  text-decoration: none;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid transparent;
+}
+
+.bridge-app:hover {
+  background: var(--vp-c-bg-soft);
+  border-color: var(--vp-c-divider);
+  transform: translateY(-4px);
+}
+
+.bridge-app-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--vp-c-bg-soft);
+  border: 1px solid var(--vp-c-divider);
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.bridge-app:hover .bridge-app-icon {
+  border-color: var(--theme-primary, var(--ditto-purple));
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.bridge-app-icon img {
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+}
+
+.bridge-app-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--vp-c-text-2);
+  text-align: center;
+  line-height: 1.2;
+  transition: color 0.25s ease;
+}
+
+.bridge-app:hover .bridge-app-name {
+  color: var(--vp-c-text-1);
+}
+
 /* ---------- FINAL CTA ---------- */
 
 .final-cta {

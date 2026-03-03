@@ -282,6 +282,34 @@
     </section>
 
     <!-- ============================================================
+         BRIDGE TO THE OPEN WEB: Logo grid of connected apps
+         ============================================================ -->
+    <section class="bridge-section">
+      <div class="section-inner">
+        <div class="section-header">
+          <h2>A Bridge to the Open Web</h2>
+          <p>Ditto connects to <em>Bluesky</em>, <em>Mastodon</em>, and a growing universe of <em>Nostr</em> apps. Your community isn't an island&mdash;it's a gateway.</p>
+        </div>
+
+        <div class="bridge-grid scroll-reveal" ref="bridgeRef">
+          <a
+            v-for="app in bridgeApps"
+            :key="app.name"
+            :href="app.url"
+            target="_blank"
+            class="bridge-app"
+            :class="'bridge-app--' + app.protocol"
+          >
+            <div class="bridge-app-icon">
+              <img :src="app.logo" :alt="app.name + ' logo'" loading="lazy" />
+            </div>
+            <span class="bridge-app-name">{{ app.name }}</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
          OWNERSHIP: The "why decentralized" pitch
          ============================================================ -->
     <section class="ownership-section">
@@ -380,6 +408,36 @@ const commentsVisible = ref(false);
 const fakeDittoRef = ref<HTMLElement | null>(null);
 const themeGridRef = ref<HTMLElement | null>(null);
 const shakespeareRef = ref<HTMLElement | null>(null);
+const bridgeRef = ref<HTMLElement | null>(null);
+
+// ─── Bridge apps data ─────────────────────────────────────────────────
+
+interface BridgeApp {
+  name: string;
+  url: string;
+  logo: string;
+  protocol: 'bluesky' | 'mastodon' | 'nostr';
+}
+
+const bridgeApps: BridgeApp[] = [
+  // Cross-protocol bridges
+  { name: 'Bluesky', url: 'https://bsky.app', logo: '/logos/bluesky.svg', protocol: 'bluesky' },
+  { name: 'Mastodon', url: 'https://joinmastodon.org', logo: '/logos/mastodon.svg', protocol: 'mastodon' },
+  // Nostr apps
+  { name: 'Inkwell', url: 'https://inkwell.shakespeare.wtf', logo: 'https://fetch.ditto.pub/favicon/inkwell.shakespeare.wtf', protocol: 'nostr' },
+  { name: 'nostr.build', url: 'https://nostr.build', logo: 'https://fetch.ditto.pub/favicon/nostr.build', protocol: 'nostr' },
+  { name: 'zap.stream', url: 'https://zap.stream', logo: 'https://fetch.ditto.pub/favicon/zap.stream', protocol: 'nostr' },
+  { name: 'divine.video', url: 'https://divine.video', logo: 'https://fetch.ditto.pub/favicon/divine.video', protocol: 'nostr' },
+  { name: 'Nodecast', url: 'https://nodecast.xyz', logo: 'https://fetch.ditto.pub/favicon/nodecast.xyz', protocol: 'nostr' },
+  { name: 'Plektos', url: 'https://plektos.app', logo: 'https://fetch.ditto.pub/favicon/plektos.app', protocol: 'nostr' },
+  { name: 'webxdc', url: 'https://webxdc.org', logo: 'https://fetch.ditto.pub/favicon/webxdc.org', protocol: 'nostr' },
+  { name: 'Pollerama', url: 'https://pollerama.fun', logo: 'https://fetch.ditto.pub/favicon/pollerama.fun', protocol: 'nostr' },
+  { name: 'following.space', url: 'https://following.space', logo: 'https://fetch.ditto.pub/favicon/following.space', protocol: 'nostr' },
+  { name: 'espy.you', url: 'https://espy.you', logo: 'https://fetch.ditto.pub/favicon/espy.you', protocol: 'nostr' },
+  { name: 'Surveil', url: 'https://surveil.cards', logo: 'https://fetch.ditto.pub/favicon/surveil.cards', protocol: 'nostr' },
+  { name: 'EmojiVerse', url: 'https://emojiverse.shakespeare.wtf', logo: 'https://fetch.ditto.pub/favicon/emojiverse.shakespeare.wtf', protocol: 'nostr' },
+  { name: 'Treasures', url: 'https://treasures.to', logo: 'https://fetch.ditto.pub/favicon/treasures.to', protocol: 'nostr' },
+];
 
 // ─── Computed styles ──────────────────────────────────────────────────
 
@@ -537,7 +595,7 @@ onMounted(() => {
     },
     { threshold: 0.1 }
   );
-  [fakeDittoRef, themeGridRef, shakespeareRef].forEach((ref) => {
+  [fakeDittoRef, themeGridRef, shakespeareRef, bridgeRef].forEach((ref) => {
     if (ref.value) revealObserver.observe(ref.value);
   });
 });
