@@ -288,7 +288,7 @@
       <div class="section-inner">
         <div class="section-header">
           <h2>A Bridge to the Open Web</h2>
-          <p>Ditto connects to <em>Bluesky</em>, <em>Mastodon</em>, and a growing universe of <em>Nostr</em> apps. Your community isn't an island&mdash;it's a gateway.</p>
+          <p>Ditto connects to <em>Bluesky</em>, <em>Mastodon</em>, and a growing universe of <em>Nostr</em> apps. Ditto is your homebase on the indie web.</p>
         </div>
 
         <div class="bridge-grid scroll-reveal" ref="bridgeRef">
