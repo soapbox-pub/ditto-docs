@@ -424,8 +424,8 @@ const bridgeApps: BridgeApp[] = [
   { name: 'Bluesky', url: 'https://bsky.app', logo: '/logos/bluesky.svg', protocol: 'bluesky' },
   { name: 'Mastodon', url: 'https://joinmastodon.org', logo: '/logos/mastodon.svg', protocol: 'mastodon' },
   // Nostr apps
-  { name: 'Inkwell', url: 'https://inkwell.shakespeare.wtf', logo: 'https://fetch.ditto.pub/favicon/inkwell.shakespeare.wtf', protocol: 'nostr' },
   { name: 'diVine', url: 'https://divine.video', logo: 'https://fetch.ditto.pub/favicon/divine.video', protocol: 'nostr' },
+  { name: 'Inkwell', url: 'https://inkwell.shakespeare.wtf', logo: 'https://fetch.ditto.pub/favicon/inkwell.shakespeare.wtf', protocol: 'nostr' },
   { name: 'zap.stream', url: 'https://zap.stream', logo: 'https://fetch.ditto.pub/favicon/zap.stream', protocol: 'nostr' },
   { name: 'nostr.build', url: 'https://nostr.build', logo: 'https://fetch.ditto.pub/favicon/nostr.build', protocol: 'nostr' },
   { name: 'Nodecast', url: 'https://nodecast.xyz', logo: 'https://fetch.ditto.pub/favicon/nodecast.xyz', protocol: 'nostr' },
