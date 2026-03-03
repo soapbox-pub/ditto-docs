@@ -437,6 +437,10 @@ const bridgeApps: BridgeApp[] = [
   { name: 'Surveil', url: 'https://surveil.cards', logo: 'https://fetch.ditto.pub/favicon/surveil.cards', protocol: 'nostr' },
   { name: 'EmojiVerse', url: 'https://emojiverse.shakespeare.wtf', logo: 'https://fetch.ditto.pub/favicon/emojiverse.shakespeare.wtf', protocol: 'nostr' },
   { name: 'Pollerama', url: 'https://pollerama.fun', logo: '/logos/pollerama.svg', protocol: 'nostr' },
+  { name: 'Cashu', url: 'https://cashu.space', logo: '/logos/cashu.png', protocol: 'nostr' },
+  { name: 'Lightning', url: 'https://lightning.network', logo: '/logos/lightning.svg', protocol: 'nostr' },
+  { name: 'Shakespeare', url: 'https://shakespeare.diy', logo: '/logos/shakespeare.png', protocol: 'nostr' },
+  { name: 'Agora', url: 'https://agora.spot', logo: '/logos/agora.png', protocol: 'nostr' },
 ];
 
 // ─── Computed styles ──────────────────────────────────────────────────
