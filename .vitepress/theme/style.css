@@ -3956,18 +3956,6 @@ button.screen-power-btn.power-standby {
   color: #fff !important;
 }
 
-.theme-dark .ownership-section .btn-ghost {
-  color: #fff;
-  border-color: #fff;
-  opacity: 0.8;
-}
-
-.theme-dark .ownership-section .btn-ghost:hover {
-  color: #fff;
-  border-color: #fff;
-  opacity: 1;
-}
-
 .theme-dark .final-cta-inner h2,
 .theme-dark .final-cta-inner p,
 .theme-dark .final-cta-inner p a {
@@ -4129,23 +4117,7 @@ button.screen-power-btn.power-standby {
   transform: translateY(-4px);
 }
 
-/* ── Kicker + actions ── */
-
-.ownership-inner .build-actions {
-  margin-top: 36px;
-}
-
-.ownership-section .btn-ghost {
-  color: var(--vp-c-bg);
-  border-color: var(--vp-c-bg);
-  opacity: 0.8;
-}
-
-.ownership-section .btn-ghost:hover {
-  color: var(--vp-c-bg);
-  border-color: var(--vp-c-bg);
-  opacity: 1;
-}
+/* ── Kicker ── */
 
 .ownership-kicker {
   font-size: clamp(19px, 2.2vw, 24px) !important;
@@ -4159,26 +4131,6 @@ button.screen-power-btn.power-standby {
   color: #fff !important;
   -webkit-text-fill-color: #fff !important;
   font-weight: 800;
-}
-
-.ownership-footnote {
-  font-size: 13px !important;
-  color: var(--vp-c-bg) !important;
-  opacity: 0.5 !important;
-  margin-top: 24px !important;
-  margin-bottom: 0 !important;
-  line-height: 1.5 !important;
-}
-
-.ownership-footnote a {
-  color: var(--vp-c-bg) !important;
-  text-decoration: underline;
-  text-underline-offset: 2px;
-  opacity: 1;
-}
-
-.ownership-footnote a:hover {
-  opacity: 0.8;
 }
 
 /* ---------- BUILD ON DITTO SECTION ---------- */

@@ -319,26 +319,21 @@
         <div class="ownership-grid scroll-reveal" ref="ownershipRef">
           <div class="ownership-card" style="--delay: 0; --grad-angle: 135deg;">
             <h3>You own your data</h3>
-            <p>We don't control your Ditto account. Your identity, your content, your connections&nbsp;&mdash; they belong to&nbsp;you. No platform lock-in, no hostage data. Leave anytime and take everything with&nbsp;you.</p>
+            <p>We don't control your Ditto account. <a href="/learn/what-is-nostr">Your identity</a>, your content, your connections&nbsp;&mdash; they belong to&nbsp;you. No platform lock-in, no hostage data. Leave anytime and take everything with&nbsp;you.</p>
           </div>
           <div class="ownership-card" style="--delay: 1; --grad-angle: 180deg;">
             <h3>The community owns the&nbsp;project</h3>
-            <p>Ditto is open source, free software&nbsp;&mdash; anyone can copy, improve, and build on our&nbsp;work. Built on the free and open <a href="/learn/what-is-nostr">Nostr protocol</a>, the project belongs to&nbsp;everyone.</p>
+            <p>Ditto is <a href="https://gitlab.com/soapbox-pub/ditto" target="_blank">open source</a>, free software&nbsp;&mdash; anyone can copy, improve, and build on our&nbsp;work. Built on the free and open Nostr protocol, the project belongs to&nbsp;everyone.</p>
           </div>
           <div class="ownership-card" style="--delay: 2; --grad-angle: 225deg;">
             <h3>No Big Tech</h3>
-            <p>No central corporation controlling the data. Community servers keep things decentralized. No&nbsp;ads, no data mining, no tracking, no algorithms you're forced&nbsp;into.</p>
+            <p>No central corporation controlling the data. Community servers keep things decentralized. No&nbsp;ads, no data mining, no tracking, no algorithms you're forced&nbsp;into. Read our <a href="https://soapbox.pub/ethics/" target="_blank">ethics pledge</a>.</p>
           </div>
         </div>
 
         <p class="ownership-kicker">
           Because we think <strong>Fun</strong> requires&nbsp;<strong>Freedom</strong>.
         </p>
-        <div class="build-actions">
-          <a href="https://soapbox.pub/blog/what-is-nostr-divine" target="_blank" class="btn btn-primary">What is Nostr?</a>
-          <a href="https://soapbox.pub/blog/free-software-free-societies" target="_blank" class="btn btn-ghost">What is Free Software?</a>
-        </div>
-        <p class="ownership-footnote">The Ditto project was started by <a href="https://soapbox.pub" target="_blank">Soapbox</a>. Read our <a href="https://soapbox.pub/ethics/" target="_blank">ethics pledge</a>.</p>
       </div>
     </section>
 
@@ -353,12 +348,12 @@
         </div>
 
         <div class="build-showcase scroll-reveal" ref="shakespeareRef">
-          <a href="https://shakespeare.diy/clone?url=https%3A%2F%2Fgitlab.com%2Fsoapbox-pub%2Fditto-mew.git" target="_blank"><img src="/edit-ditto-in-shakespeare.png" alt="Edit Ditto with Shakespeare" class="build-screenshot" /></a>
+          <a href="https://shakespeare.diy/clone?url=https%3A%2F%2Fgitlab.com%2Fsoapbox-pub%2Fditto.git" target="_blank"><img src="/edit-ditto-in-shakespeare.png" alt="Edit Ditto with Shakespeare" class="build-screenshot" /></a>
         </div>
 
         <div class="build-actions">
-          <a href="https://shakespeare.diy/clone?url=https%3A%2F%2Fgitlab.com%2Fsoapbox-pub%2Fditto-mew.git" target="_blank" class="btn btn-primary">Edit in Shakespeare</a>
-          <a href="https://gitlab.com/soapbox-pub/ditto-mew" target="_blank" class="btn btn-ghost">View Source</a>
+          <a href="https://shakespeare.diy/clone?url=https%3A%2F%2Fgitlab.com%2Fsoapbox-pub%2Fditto.git" target="_blank" class="btn btn-primary">Edit in Shakespeare</a>
+          <a href="https://gitlab.com/soapbox-pub/ditto" target="_blank" class="btn btn-ghost">View Source</a>
         </div>
 
         <div class="selfhost-blurb">
