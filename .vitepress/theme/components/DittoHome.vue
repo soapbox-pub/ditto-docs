@@ -338,6 +338,7 @@
           <a href="https://soapbox.pub/blog/what-is-nostr-divine" target="_blank" class="btn btn-primary">What is Nostr?</a>
           <a href="https://soapbox.pub/blog/free-software-free-societies" target="_blank" class="btn btn-ghost">What is Free Software?</a>
         </div>
+        <p class="ownership-footnote">The Ditto project was started by <a href="https://soapbox.pub" target="_blank">Soapbox</a>. Read our <a href="https://soapbox.pub/ethics/" target="_blank">ethics pledge</a>.</p>
       </div>
     </section>
 

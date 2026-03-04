@@ -4161,6 +4161,26 @@ button.screen-power-btn.power-standby {
   font-weight: 800;
 }
 
+.ownership-footnote {
+  font-size: 13px !important;
+  color: var(--vp-c-bg) !important;
+  opacity: 0.5 !important;
+  margin-top: 24px !important;
+  margin-bottom: 0 !important;
+  line-height: 1.5 !important;
+}
+
+.ownership-footnote a {
+  color: var(--vp-c-bg) !important;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  opacity: 1;
+}
+
+.ownership-footnote a:hover {
+  opacity: 0.8;
+}
+
 /* ---------- BUILD ON DITTO SECTION ---------- */
 
 .selfhost-section {
