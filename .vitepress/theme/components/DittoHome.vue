@@ -288,7 +288,7 @@
       <div class="section-inner">
         <div class="section-header">
           <h2>A Bridge to the Open Web</h2>
-          <p>No more managing separate accounts for every new platform. Ditto connects to <em>Bluesky</em>, <em>Mastodon</em>, and a growing universe of <em>Nostr</em> apps. Ditto is your homebase on the indie web.</p>
+          <p>No more managing separate accounts for every new platform. Ditto connects to <a href="https://soapbox.pub/blog/comparing-protocols" target="_blank"><em>Bluesky</em></a>, <a href="https://soapbox.pub/blog/comparing-protocols" target="_blank"><em>Mastodon</em></a>, and a growing universe of <em>Nostr</em> apps. Ditto is your homebase on the indie web.</p>
         </div>
 
         <div class="bridge-grid scroll-reveal" ref="bridgeRef">
