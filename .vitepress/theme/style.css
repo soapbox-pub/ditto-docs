@@ -4083,8 +4083,9 @@ button.screen-power-btn.power-standby {
 }
 
 .ownership-kicker strong {
-  color: var(--vp-c-bg) !important;
-  -webkit-text-fill-color: var(--vp-c-bg) !important;
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+  font-weight: 800;
 }
 
 /* ---------- BUILD ON DITTO SECTION ---------- */
