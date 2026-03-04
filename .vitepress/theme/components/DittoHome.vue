@@ -388,7 +388,7 @@
     <!-- Footer -->
     <footer class="home-footer">
       <p class="home-footer-message">&hearts;2026 Copying is not theft.</p>
-      <p class="home-footer-credit">Made by <a href="https://soapbox.pub" target="_blank">Soapbox</a></p>
+      <p class="home-footer-credit">Made by <a href="https://soapbox.pub" target="_blank">Soapbox</a> &middot; <a href="https://gitlab.com/soapbox-pub" target="_blank">GitLab</a></p>
     </footer>
 
     </ScreenFrame>
