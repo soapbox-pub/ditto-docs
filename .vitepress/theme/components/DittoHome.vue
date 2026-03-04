@@ -310,16 +310,27 @@
     </section>
 
     <!-- ============================================================
-         OWNERSHIP: The "why decentralized" pitch
+         OWNERSHIP: What makes Ditto different?
          ============================================================ -->
     <section class="ownership-section">
       <div class="ownership-inner">
-        <h2>You own this.</h2>
-        <p class="ownership-subtitle">No Corporate Control. No Big Tech. No Lock-in.</p>
-        <p>
-          Ditto is built on the free and open <a href="/learn/what-is-nostr">Nostr protocol</a>.
-          We don't control your Ditto account — you are entirely responsible for&nbsp;yourself.
-        </p>
+        <h2>What makes Ditto different?</h2>
+
+        <div class="ownership-grid scroll-reveal" ref="ownershipRef">
+          <div class="ownership-card" style="--delay: 0; --grad-angle: 135deg;">
+            <h3>You own your data</h3>
+            <p>We don't control your Ditto account. Your identity, your content, your connections&nbsp;&mdash; they belong to&nbsp;you. No platform lock-in, no hostage data. Leave anytime and take everything with&nbsp;you.</p>
+          </div>
+          <div class="ownership-card" style="--delay: 1; --grad-angle: 180deg;">
+            <h3>The community owns the&nbsp;project</h3>
+            <p>Ditto is open source, free software&nbsp;&mdash; anyone can copy, improve, and build on our&nbsp;work. Built on the free and open <a href="/learn/what-is-nostr">Nostr protocol</a>, the project belongs to&nbsp;everyone.</p>
+          </div>
+          <div class="ownership-card" style="--delay: 2; --grad-angle: 225deg;">
+            <h3>No Big Tech</h3>
+            <p>No central corporation controlling the data. Community servers keep things decentralized. No&nbsp;ads, no data mining, no tracking, no algorithms you're forced&nbsp;into.</p>
+          </div>
+        </div>
+
         <p class="ownership-kicker">
           Because we think <strong>Fun</strong> requires&nbsp;<strong>Freedom</strong>.
         </p>
@@ -409,6 +420,7 @@ const fakeDittoRef = ref<HTMLElement | null>(null);
 const themeGridRef = ref<HTMLElement | null>(null);
 const shakespeareRef = ref<HTMLElement | null>(null);
 const bridgeRef = ref<HTMLElement | null>(null);
+const ownershipRef = ref<HTMLElement | null>(null);
 
 // ─── Bridge apps data ─────────────────────────────────────────────────
 
@@ -600,7 +612,7 @@ onMounted(() => {
     },
     { threshold: 0.1 }
   );
-  [fakeDittoRef, themeGridRef, shakespeareRef, bridgeRef].forEach((ref) => {
+  [fakeDittoRef, themeGridRef, shakespeareRef, bridgeRef, ownershipRef].forEach((ref) => {
     if (ref.value) revealObserver.observe(ref.value);
   });
 });

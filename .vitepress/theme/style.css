@@ -3927,7 +3927,6 @@ button.screen-power-btn.power-standby {
 }
 
 .theme-dark .ownership-inner h2,
-.theme-dark .ownership-subtitle,
 .theme-dark .ownership-inner p,
 .theme-dark .ownership-kicker,
 .theme-dark .ownership-kicker strong,
@@ -3937,6 +3936,24 @@ button.screen-power-btn.power-standby {
 
 .theme-dark .ownership-inner p {
   opacity: 0.85 !important;
+}
+
+.theme-dark .ownership-card {
+  background: rgba(255, 255, 255, 0.12) !important;
+  border-color: rgba(255, 255, 255, 0.18) !important;
+}
+
+.theme-dark .ownership-card h3 {
+  color: #fff !important;
+}
+
+.theme-dark .ownership-card p {
+  color: rgba(255, 255, 255, 0.85) !important;
+  opacity: 1 !important;
+}
+
+.theme-dark .ownership-card p a {
+  color: #fff !important;
 }
 
 .theme-dark .ownership-section .btn-ghost {
@@ -4017,13 +4034,9 @@ button.screen-power-btn.power-standby {
 }
 
 .ownership-inner {
-  max-width: 680px;
+  max-width: 960px;
   margin: 0 auto;
   position: relative;
-}
-
-.ownership-inner .mega-emoji {
-  font-size: 100px;
 }
 
 .ownership-inner h2 {
@@ -4031,33 +4044,92 @@ button.screen-power-btn.power-standby {
   font-weight: 900;
   line-height: 1.1;
   letter-spacing: -0.03em;
-  margin: 0 0 12px;
+  margin: 0 0 48px;
   color: var(--vp-c-bg);
 }
 
-.ownership-subtitle {
-  font-size: clamp(18px, 2.2vw, 24px) !important;
-  font-weight: 700;
-  color: var(--vp-c-bg) !important;
-  opacity: 0.85 !important;
-  margin: 0 0 32px !important;
-  letter-spacing: -0.01em;
+/* ── Card grid ── */
+
+.ownership-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  text-align: left;
 }
 
-.ownership-inner p {
-  font-size: clamp(17px, 2vw, 20px);
+.ownership-card {
+  position: relative;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 32px 28px 28px;
+  overflow: hidden;
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+              background 0.3s ease,
+              box-shadow 0.3s ease;
+}
+
+/* Gradient top accent via pseudo-element (border-image can't have border-radius) */
+.ownership-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(var(--grad-angle, 135deg), #7c52e0 0%, #e879f9 50%, #fb923c 100%);
+  border-radius: 16px 16px 0 0;
+}
+
+.ownership-card:hover {
+  transform: translateY(-4px);
+  background: rgba(255, 255, 255, 0.11);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+}
+
+.ownership-card h3 {
+  font-size: clamp(20px, 2.2vw, 24px);
+  font-weight: 800;
+  color: var(--vp-c-bg);
+  margin: 0 0 14px;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+}
+
+.ownership-card p {
+  font-size: clamp(15px, 1.6vw, 17px);
   line-height: 1.7;
   color: var(--vp-c-bg);
-  opacity: 0.7;
-  margin: 0 0 24px;
+  opacity: 0.75;
+  margin: 0;
 }
 
-.ownership-inner p a {
+.ownership-card p a {
   color: var(--vp-c-bg);
   text-decoration: underline;
   text-underline-offset: 3px;
   opacity: 1;
 }
+
+/* Staggered reveal for cards inside the grid */
+.scroll-reveal .ownership-card {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: calc(var(--delay, 0) * 0.12s);
+}
+
+.scroll-reveal--visible .ownership-card {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.scroll-reveal--visible .ownership-card:hover {
+  transform: translateY(-4px);
+}
+
+/* ── Kicker + actions ── */
 
 .ownership-inner .build-actions {
   margin-top: 36px;
@@ -4079,7 +4151,8 @@ button.screen-power-btn.power-standby {
   font-size: clamp(19px, 2.2vw, 24px) !important;
   color: var(--vp-c-bg) !important;
   opacity: 1 !important;
-  margin-top: 36px !important;
+  margin-top: 48px !important;
+  margin-bottom: 0 !important;
 }
 
 .ownership-kicker strong {
@@ -5000,7 +5073,12 @@ button.screen-power-btn.power-standby {
 
   .final-cta { padding: 60px 20px; }
 
-  .ownership-inner .mega-emoji { font-size: 56px; }
+  .ownership-section { padding: 60px 20px; }
+  .ownership-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .ownership-card { padding: 24px 20px 20px; }
 
   .theme-panel {
     position: fixed !important;
