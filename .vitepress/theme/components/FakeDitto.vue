@@ -530,6 +530,171 @@
             <p v-if="t.desc" class="fd-post-body" style="margin-top: 6px;">{{ t.desc }}</p>
           </div>
         </template>
+
+        <!-- Photos -->
+        <template v-else-if="activeId === 'photos'">
+          <div class="fd-photo-grid">
+            <div class="fd-photo-item" v-for="(p, i) in feedData.photos" :key="i">
+              <img :src="p.src" :alt="p.alt" class="fd-photo-img" loading="lazy" />
+              <div class="fd-photo-overlay">
+                <span class="fd-photo-author">{{ p.author }}</span>
+              </div>
+            </div>
+          </div>
+        </template>
+
+        <!-- Videos -->
+        <template v-else-if="activeId === 'videos'">
+          <div class="fd-video-grid">
+            <div class="fd-video-card" v-for="(v, i) in feedData.videos" :key="i">
+              <div class="fd-video-thumb">
+                <img :src="v.thumbSrc" class="fd-video-thumb-img" />
+                <span class="fd-play-btn">&#x25B6;</span>
+                <span class="fd-video-duration">{{ v.duration }}</span>
+              </div>
+              <div class="fd-video-info">
+                <img :src="v.avatar" class="fd-avatar fd-avatar--xs fd-avatar--img" />
+                <div>
+                  <span class="fd-post-name">{{ v.creator }}</span>
+                  <div class="fd-post-handle">{{ v.title }}</div>
+                  <div class="fd-post-handle">{{ v.views }} views</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </template>
+
+        <!-- Events -->
+        <template v-else-if="activeId === 'events'">
+          <div class="fd-event" v-for="(e, i) in feedData.events" :key="i">
+            <div class="fd-event-date">
+              <span class="fd-event-month">{{ e.month }}</span>
+              <span class="fd-event-day">{{ e.day }}</span>
+            </div>
+            <div class="fd-event-details">
+              <h4 class="fd-event-title">{{ e.title }}</h4>
+              <div class="fd-event-meta">
+                <span>&#x1F4CD; {{ e.location }}</span>
+              </div>
+              <div class="fd-event-meta">
+                <span>&#x1F553; {{ e.time }}</span>
+              </div>
+              <p class="fd-event-desc">{{ e.desc }}</p>
+              <div class="fd-event-footer">
+                <span class="fd-event-attendees">&#x1F465; {{ e.attendees }} going</span>
+                <span class="fd-badge fd-badge--accent">RSVP</span>
+              </div>
+            </div>
+          </div>
+        </template>
+
+        <!-- Music -->
+        <template v-else-if="activeId === 'music'">
+          <div class="fd-track" v-for="(t, i) in feedData.music" :key="i">
+            <img :src="t.coverSrc" class="fd-track-cover" />
+            <div class="fd-track-info">
+              <span class="fd-post-name">{{ t.title }}</span>
+              <span class="fd-post-handle">{{ t.artist }}</span>
+              <span class="fd-post-handle">{{ t.album }}</span>
+            </div>
+            <div class="fd-track-right">
+              <span class="fd-post-handle">{{ t.duration }}</span>
+              <span class="fd-track-play">&#x25B6;</span>
+            </div>
+          </div>
+        </template>
+
+        <!-- Podcasts -->
+        <template v-else-if="activeId === 'podcasts'">
+          <div class="fd-podcast" v-for="(p, i) in feedData.podcasts" :key="i">
+            <img :src="p.coverSrc" class="fd-podcast-cover" />
+            <div class="fd-podcast-info">
+              <span class="fd-post-name">{{ p.title }}</span>
+              <span class="fd-post-handle">{{ p.show }}</span>
+              <div class="fd-podcast-meta">
+                <span>{{ p.duration }}</span>
+                <span class="fd-badge" v-if="p.isNew">NEW</span>
+              </div>
+            </div>
+          </div>
+        </template>
+
+        <!-- Books -->
+        <template v-else-if="activeId === 'books'">
+          <div class="fd-book" v-for="(b, i) in feedData.books" :key="i">
+            <img :src="b.coverSrc" class="fd-book-cover" />
+            <div class="fd-book-info">
+              <span class="fd-post-name">{{ b.title }}</span>
+              <span class="fd-post-handle">{{ b.author }}</span>
+              <div class="fd-book-rating">
+                <span v-for="s in 5" :key="s" class="fd-star" :class="{ 'fd-star--filled': s <= b.rating }">&#x2605;</span>
+                <span class="fd-post-handle">&middot; {{ b.reviews }}</span>
+              </div>
+              <p class="fd-post-body" style="margin-top: 4px; font-size: 11px;">{{ b.excerpt }}</p>
+            </div>
+          </div>
+        </template>
+
+        <!-- Emoji Packs -->
+        <template v-else-if="activeId === 'emoji-packs'">
+          <div class="fd-emoji-pack" v-for="(p, i) in feedData.emojiPacks" :key="i">
+            <div class="fd-post-header">
+              <div class="fd-avatar fd-avatar--post" :style="{ background: p.color }">{{ p.initials }}</div>
+              <div>
+                <span class="fd-post-name">{{ p.name }}</span>
+                <span class="fd-post-handle">by {{ p.author }} &middot; {{ p.count }} emojis</span>
+              </div>
+            </div>
+            <div class="fd-emoji-grid">
+              <span class="fd-emoji-sample" v-for="(e, j) in p.emojis" :key="j">
+                <img v-if="e.src" :src="e.src" :alt="e.name" class="fd-emoji-img" />
+                <span v-else class="fd-emoji-placeholder">{{ e.fallback }}</span>
+                <span class="fd-emoji-label">:{{ e.name }}:</span>
+              </span>
+            </div>
+            <div style="padding: 0 12px 10px;">
+              <span class="fd-badge fd-badge--accent">Add Pack</span>
+            </div>
+          </div>
+        </template>
+
+        <!-- World -->
+        <template v-else-if="activeId === 'world'">
+          <div class="fd-world-map">
+            <div class="fd-world-placeholder">&#x1F5FA;&#xFE0F;</div>
+          </div>
+          <div class="fd-world-pins">
+            <div class="fd-world-pin" v-for="(pin, i) in feedData.world" :key="i">
+              <div class="fd-world-pin-header">
+                <span class="fd-world-pin-icon">&#x1F4CD;</span>
+                <span class="fd-post-name">{{ pin.location }}</span>
+                <span class="fd-post-handle">&middot; {{ pin.postCount }} posts</span>
+              </div>
+              <div class="fd-world-pin-post">
+                <div class="fd-avatar fd-avatar--xs" :style="{ background: pin.color }">{{ pin.initials }}</div>
+                <div>
+                  <span class="fd-post-name" style="font-size: 11px;">{{ pin.user }}</span>
+                  <p class="fd-post-body" style="font-size: 11px; margin: 2px 0 0;">{{ pin.body }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </template>
+
+        <!-- AI Chat -->
+        <template v-else-if="activeId === 'ai-chat'">
+          <div class="fd-ai-chat">
+            <div class="fd-ai-msg fd-ai-msg--user" v-for="(m, i) in feedData.aiChat" :key="i">
+              <div :class="'fd-ai-msg--' + m.role">
+                <div class="fd-ai-msg-label">{{ m.role === 'user' ? '\u{1F464} You' : '\u{1F916} Ditto AI' }}</div>
+                <p class="fd-ai-msg-text">{{ m.text }}</p>
+              </div>
+            </div>
+            <div class="fd-ai-input">
+              <span class="fd-ai-input-text">Ask me anything...</span>
+            </div>
+          </div>
+        </template>
       </div>
     </main>
 
@@ -634,21 +799,30 @@ const sidebarItems = reactive<SidebarItem[]>([
   { id: 'feed',          icon: '\u{1F525}', label: 'Feed',          pinned: true,  visible: true, fixed: true, order: 0 },
   { id: 'vibe',          icon: '\u{1F3A8}', label: 'Vibe',          pinned: true,  visible: true, order: 1 },
   { id: 'articles',      icon: '\u{1F4DD}', label: 'Articles',      pinned: true,  visible: true, order: 2 },
-  { id: 'vines',         icon: '\u{1F3AC}', label: 'Vines',         pinned: true,  visible: true, order: 3 },
-  { id: 'streams',       icon: '\u{1F4E1}', label: 'Streams',       pinned: true,  visible: true, order: 4 },
-  { id: 'webxdc',        icon: '\u{1F3AE}', label: 'Webxdc',        pinned: true,  visible: true, order: 5 },
-  { id: 'magic',         icon: '\u{1F0CF}', label: 'Magic Decks',   pinned: true,  visible: true, order: 6 },
-  { id: 'treasures',     icon: '\u{1F3C6}', label: 'Treasures',     pinned: true,  visible: true, order: 7 },
-  { id: 'notifications', icon: '\u{1F514}', label: 'Notifications', pinned: false, visible: true, order: 8 },
-  { id: 'search',        icon: '\u{1F50D}', label: 'Search',        pinned: false, visible: true, order: 9 },
-  { id: 'bookmarks',     icon: '\u{1F516}', label: 'Bookmarks',     pinned: false, visible: true, order: 10 },
-  { id: 'settings',      icon: '\u{2699}\u{FE0F}', label: 'Settings', pinned: false, visible: true, order: 11 },
-  { id: 'trends',        icon: '\u{1F4C8}', label: 'Trends',        pinned: false, visible: true, order: 12 },
-  { id: 'themes',        icon: '\u{2728}',  label: 'Themes',        pinned: false, visible: true, order: 13 },
-  { id: 'polls',         icon: '\u{1F4CA}', label: 'Polls',         pinned: false, visible: true, order: 14 },
-  { id: 'followpacks',   icon: '\u{1F389}', label: 'Follow Packs',  pinned: false, visible: true, order: 15 },
-  { id: 'colors',        icon: '\u{1F308}', label: 'Color Moments', pinned: false, visible: true, order: 16 },
-  { id: 'profile',       icon: '\u{1F464}', label: 'Profile',       pinned: false, visible: true, order: 17 },
+  { id: 'photos',        icon: '\u{1F4F7}', label: 'Photos',        pinned: true,  visible: true, order: 3 },
+  { id: 'vines',         icon: '\u{1F3AC}', label: 'Vines',         pinned: true,  visible: true, order: 4 },
+  { id: 'videos',        icon: '\u{1F3A5}', label: 'Videos',        pinned: true,  visible: true, order: 5 },
+  { id: 'streams',       icon: '\u{1F4E1}', label: 'Streams',       pinned: true,  visible: true, order: 6 },
+  { id: 'events',        icon: '\u{1F4C5}', label: 'Events',        pinned: true,  visible: true, order: 7 },
+  { id: 'webxdc',        icon: '\u{1F3AE}', label: 'Webxdc',        pinned: true,  visible: true, order: 8 },
+  { id: 'magic',         icon: '\u{1F0CF}', label: 'Magic Decks',   pinned: true,  visible: true, order: 9 },
+  { id: 'treasures',     icon: '\u{1F3C6}', label: 'Treasures',     pinned: true,  visible: true, order: 10 },
+  { id: 'notifications', icon: '\u{1F514}', label: 'Notifications', pinned: false, visible: true, order: 11 },
+  { id: 'search',        icon: '\u{1F50D}', label: 'Search',        pinned: false, visible: true, order: 12 },
+  { id: 'bookmarks',     icon: '\u{1F516}', label: 'Bookmarks',     pinned: false, visible: true, order: 13 },
+  { id: 'settings',      icon: '\u{2699}\u{FE0F}', label: 'Settings', pinned: false, visible: true, order: 14 },
+  { id: 'trends',        icon: '\u{1F4C8}', label: 'Trends',        pinned: false, visible: true, order: 15 },
+  { id: 'themes',        icon: '\u{2728}',  label: 'Themes',        pinned: false, visible: true, order: 16 },
+  { id: 'polls',         icon: '\u{1F4CA}', label: 'Polls',         pinned: false, visible: true, order: 17 },
+  { id: 'followpacks',   icon: '\u{1F389}', label: 'Follow Packs',  pinned: false, visible: true, order: 18 },
+  { id: 'colors',        icon: '\u{1F308}', label: 'Color Moments', pinned: false, visible: true, order: 19 },
+  { id: 'music',         icon: '\u{1F3B5}', label: 'Music',         pinned: false, visible: true, order: 20 },
+  { id: 'podcasts',      icon: '\u{1F399}\u{FE0F}', label: 'Podcasts', pinned: false, visible: true, order: 21 },
+  { id: 'books',         icon: '\u{1F4DA}', label: 'Books',         pinned: false, visible: true, order: 22 },
+  { id: 'emoji-packs',   icon: '\u{1F60E}', label: 'Emoji Packs',   pinned: false, visible: true, order: 23 },
+  { id: 'world',         icon: '\u{1F30D}', label: 'World',         pinned: false, visible: true, order: 24 },
+  { id: 'ai-chat',       icon: '\u{1F916}', label: 'AI Chat',       pinned: false, visible: true, order: 25 },
+  { id: 'profile',       icon: '\u{1F464}', label: 'Profile',       pinned: false, visible: true, order: 26 },
 ]);
 
 const pinnedItems = computed(() =>
@@ -1012,6 +1186,162 @@ const feedData = {
     { user: 'BitcoinHiker', avatar: 'https://i.pravatar.cc/150?u=bitcoinhiker', action: 'hid a treasure', time: '2h', name: 'Satoshi\'s Cache', type: 'Traditional', size: 'Small', difficulty: 3, terrain: 2, desc: 'Near the old cherry blossom tree in the park. Bring a pen!', photo: 'https://images.unsplash.com/photo-1522383225653-ed111181a951?w=400&h=200&fit=crop' },
     { user: 'NostrExplorer', avatar: 'https://i.pravatar.cc/150?u=nostrexplorer', action: 'found a treasure', time: '5h', name: 'Lightning Ridge', type: 'Multi-cache', size: 'Micro', difficulty: 4, terrain: 3, desc: '', photo: 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=400&h=200&fit=crop' },
     { user: 'CachePirate', avatar: 'https://i.pravatar.cc/150?u=cachepirate', action: 'hid a treasure', time: '1d', name: 'Pirate\'s Bounty', type: 'Mystery', size: 'Regular', difficulty: 5, terrain: 4, desc: 'Solve the puzzle to find the coordinates. X marks the spot!', photo: 'https://images.unsplash.com/photo-1501446529957-6226bd447c46?w=400&h=200&fit=crop' },
+  ],
+
+  photos: [
+    { src: 'https://picsum.photos/id/10/400/400', alt: 'Forest trail at sunset', author: 'Luna' },
+    { src: 'https://picsum.photos/id/29/400/400', alt: 'Snowy mountain peaks', author: 'Alpine_Alex' },
+    { src: 'https://picsum.photos/id/42/400/400', alt: 'Morning coffee', author: 'CafeNostr' },
+    { src: 'https://picsum.photos/id/96/400/400', alt: 'Mountain lake reflection', author: 'River' },
+    { src: 'https://picsum.photos/id/180/400/400', alt: 'Workspace setup', author: 'PixelRook' },
+    { src: 'https://picsum.photos/id/274/400/400', alt: 'City lights at night', author: 'NightOwl' },
+  ],
+
+  videos: [
+    { creator: 'ODELL', avatar: 'https://i.pravatar.cc/150?u=odell-vid', duration: '42:15', title: 'Why Self-Hosting Matters in 2026', views: '12k', thumbSrc: 'https://picsum.photos/seed/vid-selfhost/400/225' },
+    { creator: 'Marce', avatar: 'https://i.pravatar.cc/150?u=marce-vid', duration: '8:32', title: 'Building Your First Nostr App', views: '3.4k', thumbSrc: 'https://picsum.photos/seed/vid-nostrapp/400/225' },
+    { creator: 'Priya', avatar: 'https://i.pravatar.cc/150?u=priya-vid', duration: '15:07', title: 'Ditto Themes Deep Dive', views: '1.8k', thumbSrc: 'https://picsum.photos/seed/vid-themes/400/225' },
+    { creator: 'Zack', avatar: 'https://i.pravatar.cc/150?u=zack-vid', duration: '23:44', title: 'The Future of Decentralized Social', views: '8.9k', thumbSrc: 'https://picsum.photos/seed/vid-decsocial/400/225' },
+  ],
+
+  events: [
+    {
+      month: 'SEP', day: '12', title: 'Nostrville 2026',
+      location: 'Nashville, TN', time: 'Sep 12\u201313, All Day',
+      desc: 'Two-day unconference for Nostr developers and users. Lightning hackathon, relay operator meetup, and live zap-powered music showcase.',
+      attendees: 342,
+    },
+    {
+      month: 'APR', day: '17', title: 'Freedom Tech Demo Day',
+      location: 'Bitcoin Park, Nashville', time: 'Apr 17, 6:00 PM',
+      desc: 'Builders demo their latest Nostr clients, Cashu wallets, and open-source tools. Pizza and sats. Newcomers welcome.',
+      attendees: 89,
+    },
+    {
+      month: 'JUN', day: '20', title: 'Pleb Summit Prague',
+      location: 'Paralelni Polis, Prague', time: 'Jun 20\u201321, All Day',
+      desc: 'Grassroots Bitcoin and freedom tech gathering. Workshops on running your own relay, self-custody, and circular economy building.',
+      attendees: 215,
+    },
+  ],
+
+  music: [
+    {
+      title: 'Zap Me Baby One More Time',
+      artist: 'DJ Satoshi', album: 'Lightning Strikes',
+      duration: '3:42',
+      coverSrc: 'https://picsum.photos/seed/album-zap/120/120',
+    },
+    {
+      title: 'Decentralized Dreams',
+      artist: 'The Relay Nodes', album: 'Protocol Punk',
+      duration: '4:18',
+      coverSrc: 'https://picsum.photos/seed/album-dreams/120/120',
+    },
+    {
+      title: 'Stack Sats & Chill',
+      artist: 'Lo-fi Pleb', album: 'Orange Pill Beats',
+      duration: '2:57',
+      coverSrc: 'https://picsum.photos/seed/album-sats/120/120',
+    },
+  ],
+
+  podcasts: [
+    {
+      title: 'Citadel Dispatch #142: Nostr Year in Review',
+      show: 'Citadel Dispatch',
+      duration: '1h 23m',
+      isNew: true,
+      coverSrc: 'https://is1-ssl.mzstatic.com/image/thumb/Podcasts221/v4/01/bc/59/01bc59a8-83df-55dc-3f7e-b03ad6180d21/mza_16016917205334564904.jpeg/300x300bb.jpg',
+    },
+    {
+      title: 'The Sovereign Individual, Chapter 8',
+      show: 'Bitcoin Audible',
+      duration: '52m',
+      isNew: false,
+      coverSrc: 'https://is1-ssl.mzstatic.com/image/thumb/Podcasts126/v4/a8/1c/b2/a81cb23a-7aa5-c123-60a1-9e5d0335496b/mza_12623622548899082019.jpg/300x300bb.jpg',
+    },
+    {
+      title: 'Zaps, Relays, and the Future of Social',
+      show: 'Plebchain Radio',
+      duration: '1h 05m',
+      isNew: true,
+      coverSrc: 'https://is1-ssl.mzstatic.com/image/thumb/Podcasts211/v4/5d/f0/63/5df06354-a08e-010a-9576-415cfb1017d6/mza_17691993919286006024.jpg/300x300bb.jpg',
+    },
+  ],
+
+  books: [
+    {
+      title: 'The Sovereign Individual',
+      author: 'Davidson & Rees-Mogg',
+      rating: 5, reviews: '2.1k reviews',
+      coverSrc: 'https://covers.openlibrary.org/b/isbn/9780684832722-M.jpg',
+      excerpt: 'Prophetic book about how digital technology will reshape society, governments, and money. More relevant now than when it was written.',
+    },
+    {
+      title: 'The Bitcoin Standard',
+      author: 'Saifedean Ammous',
+      rating: 4, reviews: '1.8k reviews',
+      coverSrc: 'https://covers.openlibrary.org/b/id/10320866-M.jpg',
+      excerpt: 'The essential guide to understanding Bitcoin through the lens of monetary history and Austrian economics.',
+    },
+    {
+      title: 'Digital Minimalism',
+      author: 'Cal Newport',
+      rating: 4, reviews: '3.4k reviews',
+      coverSrc: 'https://covers.openlibrary.org/b/isbn/9780525536512-M.jpg',
+      excerpt: 'A philosophy for technology use that prioritizes a small number of carefully selected activities over mindless scrolling.',
+    },
+  ],
+
+  emojiPacks: [
+    {
+      name: 'Nostr Creatures', author: 'Fiatjaf', initials: 'F', color: '#8b5cf6', count: 24,
+      emojis: [
+        { name: 'ostrich', fallback: '\u{1F426}', src: '' },
+        { name: 'relay', fallback: '\u{1F4E1}', src: '' },
+        { name: 'zap_heart', fallback: '\u{26A1}', src: '' },
+        { name: 'nostr_logo', fallback: '\u{1F7E3}', src: '' },
+        { name: 'plebwave', fallback: '\u{1F30A}', src: '' },
+        { name: 'stacksats', fallback: '\u{1FA99}', src: '' },
+      ],
+    },
+    {
+      name: 'Ditto Vibes', author: 'Soapbox', initials: 'S', color: '#ec4899', count: 18,
+      emojis: [
+        { name: 'ditto_fire', fallback: '\u{1F525}', src: '' },
+        { name: 'kawaii_heart', fallback: '\u{1F496}', src: '' },
+        { name: 'grunge_skull', fallback: '\u{1F480}', src: '' },
+        { name: 'retro_tv', fallback: '\u{1F4FA}', src: '' },
+        { name: 'pixel_star', fallback: '\u{2B50}', src: '' },
+        { name: 'vibe_check', fallback: '\u{2728}', src: '' },
+      ],
+    },
+    {
+      name: 'Bitcoin Maxis', author: 'ODELL', initials: 'O', color: '#f97316', count: 32,
+      emojis: [
+        { name: 'laser_eyes', fallback: '\u{1F7E0}', src: '' },
+        { name: 'diamond_hands', fallback: '\u{1F48E}', src: '' },
+        { name: 'honey_badger', fallback: '\u{1F9A1}', src: '' },
+        { name: 'citadel', fallback: '\u{1F3F0}', src: '' },
+        { name: 'orange_pill', fallback: '\u{1F48A}', src: '' },
+        { name: 'full_node', fallback: '\u{1F5A5}\u{FE0F}', src: '' },
+      ],
+    },
+  ],
+
+  world: [
+    { location: 'Nashville, TN', postCount: 42, user: 'ODELL', initials: 'O', color: '#ef4444', body: 'Bitcoin Park is buzzing today. Three new projects demoed at the meetup.' },
+    { location: 'Prague, CZ', postCount: 28, user: 'Pavol', initials: 'P', color: '#8b5cf6', body: 'Paralelni Polis just hosted the biggest Nostr workshop in Europe yet.' },
+    { location: 'Tokyo, JP', postCount: 15, user: '\u3086\u304D', initials: 'Y', color: '#ec4899', body: 'Nostr\u306E\u65E5\u672C\u30B3\u30DF\u30E5\u30CB\u30C6\u30A3\u304C\u6210\u9577\u4E2D! Growing fast here in Shibuya.' },
+    { location: 'Madeira, PT', postCount: 19, user: 'Andre', initials: 'A', color: '#22c55e', body: 'Bitcoin island vibes. More merchants accepting sats every week.' },
+  ],
+
+  aiChat: [
+    { role: 'user', text: 'What makes Nostr different from other social protocols?' },
+    { role: 'assistant', text: 'Great question! Nostr is unique because your identity is just a cryptographic key pair \u2014 no company controls your account. Your posts are signed by your key and distributed across relays, so no single server can censor you. Think of it like email but for social media: anyone can run a relay, anyone can build a client, and you own your data completely.' },
+    { role: 'user', text: 'Can I use it with Bluesky and Mastodon too?' },
+    { role: 'assistant', text: 'Yes! Ditto bridges to both Bluesky and Mastodon, so you can interact with people on those networks without needing separate accounts. Your Nostr identity becomes your universal social identity across the open web. Pretty cool, right? \u26A1' },
   ],
 };
 </script>
