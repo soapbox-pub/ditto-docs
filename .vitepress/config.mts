@@ -5,18 +5,18 @@ export default defineConfig({
   cleanUrls: true,
 
   title: 'Ditto',
-  description: 'Your social media, your way. A fun, customizable Nostr client that puts you in control.',
+  description: 'A social platform for people who want to have fun, not feed the Big Tech machine. Open source, decentralized, and entirely yours.',
 
   head: [
     ['link', { rel: 'icon', type: 'image/svg+xml', href: '/logo.svg' }],
     ['meta', { name: 'theme-color', content: '#7c52e0' }],
     ['meta', { property: 'og:type', content: 'website' }],
-    ['meta', { property: 'og:title', content: 'Ditto - Your Social Media, Your Way' }],
-    ['meta', { property: 'og:description', content: 'A fun, customizable Nostr client that puts you in control. Express yourself with custom themes, decentralized social networking, and open source freedom.' }],
+    ['meta', { property: 'og:title', content: 'Ditto - A Social Platform That\'s Actually Fun' }],
+    ['meta', { property: 'og:description', content: 'A social platform for people who want to have fun, not feed the Big Tech machine. Open source, decentralized, and entirely yours to customize and build upon.' }],
     ['meta', { property: 'og:url', content: 'https://ditto.pub' }],
-    ['meta', { property: 'og:image', content: 'https://docs.ditto.pub/og-image.jpg' }],
+    ['meta', { property: 'og:image', content: 'https://docs.ditto.pub/og-image.gif' }],
     ['meta', { name: 'twitter:card', content: 'summary_large_image' }],
-    ['meta', { name: 'twitter:image', content: 'https://docs.ditto.pub/og-image.jpg' }],
+    ['meta', { name: 'twitter:image', content: 'https://docs.ditto.pub/og-image.gif' }],
   ],
 
   themeConfig: {
