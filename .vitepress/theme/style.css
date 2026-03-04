@@ -4083,8 +4083,8 @@ button.screen-power-btn.power-standby {
 }
 
 .ownership-kicker strong {
-  color: var(--theme-primary, inherit);
-  -webkit-text-fill-color: var(--theme-primary, unset);
+  color: var(--vp-c-bg) !important;
+  -webkit-text-fill-color: var(--vp-c-bg) !important;
 }
 
 /* ---------- BUILD ON DITTO SECTION ---------- */
