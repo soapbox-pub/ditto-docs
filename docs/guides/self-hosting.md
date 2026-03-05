@@ -115,7 +115,7 @@ This lets you distribute Ditto as a branded Android app for your community.
 
 Beyond themes, you can customize:
 
-- **Logo** -- Replace `public/logo.svg` and `public/logo.png`
+- **Logo** -- Replace `public/logo.svg`
 - **App name** -- Update in `index.html` and `public/manifest.webmanifest`
 - **Default relays** -- Set in `ditto.json`
 - **Upload servers** -- Set your own Blossom servers in `ditto.json`
