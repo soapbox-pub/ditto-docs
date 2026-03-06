@@ -2379,10 +2379,9 @@ button.screen-power-btn.power-standby {
   flex-shrink: 0;
   width: 280px;
   height: auto;
-  border-radius: 20px;
   margin-right: -30px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25), 0 2px 8px rgba(0, 0, 0, 0.15);
-  transition: transform 0.3s ease, z-index 0s;
+  filter: drop-shadow(0 6px 16px rgba(0, 0, 0, 0.3)) drop-shadow(0 2px 4px rgba(0, 0, 0, 0.15));
+  transition: transform 0.3s ease, z-index 0s, filter 0.3s ease;
   position: relative;
   user-select: none;
   -webkit-user-drag: none;
@@ -2391,7 +2390,28 @@ button.screen-power-btn.power-standby {
 .theme-carousel-slide:hover {
   transform: scale(1.08) translateY(-8px);
   z-index: 10;
-  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.35), 0 4px 12px rgba(0, 0, 0, 0.2);
+  filter: drop-shadow(0 12px 32px rgba(0, 0, 0, 0.4)) drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+}
+
+/* ── Swipe hint (mobile only) ── */
+
+.theme-carousel-hint {
+  display: none;
+}
+
+@keyframes hint-nudge {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(8px); }
+}
+
+@keyframes hint-fade {
+  0% { opacity: 0; }
+  50% { opacity: 1; }
+  100% { opacity: 1; }
+}
+
+.theme-carousel--touched .theme-carousel-hint {
+  display: none !important;
 }
 
 @keyframes carousel-scroll {
@@ -5509,20 +5529,11 @@ button.screen-power-btn.power-standby {
   .powers-section,
   .selfhost-section { padding: 60px 0; }
 
-  /* Mobile carousel: swipeable, no auto-animation */
+  /* Mobile carousel: JS-driven infinite scroll with drag */
   .theme-carousel {
-    overflow-x: auto;
-    overflow-y: hidden;
-    -webkit-overflow-scrolling: touch;
-    scroll-snap-type: x proximity;
-    mask-image: none;
-    -webkit-mask-image: none;
-    padding: 20px 24px;
-    scrollbar-width: none;
-  }
-
-  .theme-carousel::-webkit-scrollbar {
-    display: none;
+    margin-top: 12px;
+    margin-bottom: 28px;
+    padding: 16px 0;
   }
 
   .theme-carousel-track {
@@ -5530,10 +5541,30 @@ button.screen-power-btn.power-standby {
   }
 
   .theme-carousel-slide {
-    width: 180px;
-    margin-right: -18px;
-    border-radius: 14px;
-    scroll-snap-align: center;
+    width: 220px;
+    margin-right: -22px;
+  }
+
+  /* Tighten gap between h2 and carousel on mobile */
+  .themes-section .section-header:first-child {
+    margin-bottom: 0;
+  }
+
+  /* Swipe hint visible on mobile */
+  .theme-carousel-hint {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding-top: 16px;
+    font-size: 13px;
+    color: var(--vp-c-text-3);
+    letter-spacing: 0.02em;
+    animation: hint-fade 1.5s ease forwards;
+  }
+
+  .theme-carousel-hint svg {
+    animation: hint-nudge 1.2s ease-in-out infinite;
   }
 
   .mega-emoji { font-size: 48px; }
@@ -5670,8 +5701,7 @@ button.screen-power-btn.power-standby {
   }
 
   .theme-carousel-slide {
-    width: 150px;
-    margin-right: -14px;
-    border-radius: 12px;
+    width: 180px;
+    margin-right: -16px;
   }
 }

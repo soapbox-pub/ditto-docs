@@ -69,7 +69,14 @@
               :alt="img.alt"
               class="theme-carousel-slide"
               loading="lazy"
+              draggable="false"
             />
+          </div>
+          <div class="theme-carousel-hint">
+            <span>Swipe to explore</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14" /><path d="m12 5 7 7-7 7" />
+            </svg>
           </div>
         </div>
 
@@ -465,7 +472,7 @@ const themeCarouselImages = [
   alt: file.replace('-ipad.png', '').replace(/^\w/, c => c.toUpperCase()) + ' theme',
 }));
 
-let carouselInterval: ReturnType<typeof setInterval> | null = null;
+let carouselRafId: number | null = null;
 
 // ─── Bridge apps data ─────────────────────────────────────────────────
 
@@ -661,45 +668,103 @@ onMounted(() => {
     if (ref.value) revealObserver.observe(ref.value);
   });
 
-  // Mobile carousel: auto-advance with loop-back
+  // Mobile carousel: rAF-driven infinite scroll with drag/swipe + momentum
   const isMobile = window.matchMedia('(max-width: 768px)').matches;
-  if (isMobile && themeCarouselRef.value) {
+  if (isMobile && themeCarouselRef.value && themeCarouselTrackRef.value) {
     const carousel = themeCarouselRef.value;
-    let userScrolling = false;
-    let scrollTimeout: ReturnType<typeof setTimeout> | null = null;
+    const track = themeCarouselTrackRef.value;
 
-    // Detect user touch/swipe
-    carousel.addEventListener('touchstart', () => {
-      userScrolling = true;
-      if (scrollTimeout) clearTimeout(scrollTimeout);
-    }, { passive: true });
+    // Compute half-width (one full set of 13 images) for seamless wrapping
+    // Wait a tick for images to lay out
+    requestAnimationFrame(() => {
+      const halfWidth = track.scrollWidth / 2;
+      if (halfWidth <= 0) return;
 
-    carousel.addEventListener('touchend', () => {
-      scrollTimeout = setTimeout(() => { userScrolling = false; }, 3000);
-    }, { passive: true });
+      let scrollPos = 0;
+      const autoSpeed = 0.6; // px per frame (~36px/sec at 60fps)
+      let dragging = false;
+      let startX = 0;
+      let startPos = 0;
+      let velocity = 0;
+      let lastX = 0;
+      let lastTime = 0;
+      let momentumDecay = 0.95;
 
-    // Auto-advance every 3 seconds on mobile
-    carouselInterval = setInterval(() => {
-      if (userScrolling) return;
-      const slideWidth = carousel.querySelector('.theme-carousel-slide')?.clientWidth ?? 200;
-      const gap = 0; // negative margin handles spacing
-      const advance = slideWidth * 0.75;
-      const maxScroll = carousel.scrollWidth - carousel.clientWidth;
-
-      if (carousel.scrollLeft >= maxScroll - 10) {
-        // Loop back to start
-        carousel.scrollTo({ left: 0, behavior: 'smooth' });
-      } else {
-        carousel.scrollBy({ left: advance, behavior: 'smooth' });
+      function wrapPos(pos: number): number {
+        // Keep pos within [0, halfWidth)
+        let p = pos % halfWidth;
+        if (p < 0) p += halfWidth;
+        return p;
       }
-    }, 3000);
+
+      function applyTransform() {
+        track.style.transform = `translateX(${-scrollPos}px)`;
+      }
+
+      function tick() {
+        if (!dragging) {
+          if (Math.abs(velocity) > 0.3) {
+            // Momentum phase
+            scrollPos += velocity;
+            velocity *= momentumDecay;
+          } else {
+            // Auto-scroll phase
+            velocity = 0;
+            scrollPos += autoSpeed;
+          }
+          scrollPos = wrapPos(scrollPos);
+          applyTransform();
+        }
+        carouselRafId = requestAnimationFrame(tick);
+      }
+
+      // Start the animation loop
+      carouselRafId = requestAnimationFrame(tick);
+
+      // Touch handlers
+      carousel.addEventListener('touchstart', (e: TouchEvent) => {
+        dragging = true;
+        velocity = 0;
+        startX = e.touches[0].clientX;
+        startPos = scrollPos;
+        lastX = startX;
+        lastTime = Date.now();
+
+        // Hide swipe hint on first touch
+        carousel.classList.add('theme-carousel--touched');
+      }, { passive: true });
+
+      carousel.addEventListener('touchmove', (e: TouchEvent) => {
+        if (!dragging) return;
+        const currentX = e.touches[0].clientX;
+        const now = Date.now();
+        const dt = now - lastTime;
+
+        // Track velocity (px/ms -> px/frame at ~16ms)
+        if (dt > 0) {
+          velocity = ((lastX - currentX) / dt) * 16;
+        }
+
+        lastX = currentX;
+        lastTime = now;
+
+        scrollPos = wrapPos(startPos - (currentX - startX));
+        applyTransform();
+      }, { passive: true });
+
+      carousel.addEventListener('touchend', () => {
+        dragging = false;
+        // Clamp velocity to avoid extreme flings
+        velocity = Math.max(-20, Math.min(20, velocity));
+      }, { passive: true });
+    });
   }
 });
 
 onUnmounted(() => {
-  if (carouselInterval) {
-    clearInterval(carouselInterval);
-    carouselInterval = null;
+  if (carouselRafId) {
+    cancelAnimationFrame(carouselRafId);
+    carouselRafId = null;
   }
 });
 </script>
