@@ -2356,12 +2356,18 @@ button.screen-power-btn.power-standby {
 /* ── Theme Carousel: sliding iPad screenshots ── */
 
 .theme-carousel {
-  margin-top: 40px;
+  margin-top: 8px;
+  margin-bottom: 40px;
   overflow: hidden;
   width: 100%;
   padding: 20px 0;
   mask-image: linear-gradient(to right, transparent 0%, black 4%, black 96%, transparent 100%);
   -webkit-mask-image: linear-gradient(to right, transparent 0%, black 4%, black 96%, transparent 100%);
+}
+
+/* Tighten gap between h2 and carousel */
+.themes-section .section-header:first-child {
+  margin-bottom: 0;
 }
 
 .theme-carousel-track {
@@ -2380,8 +2386,7 @@ button.screen-power-btn.power-standby {
   width: 280px;
   height: auto;
   margin-right: -30px;
-  filter: drop-shadow(0 6px 16px rgba(0, 0, 0, 0.3)) drop-shadow(0 2px 4px rgba(0, 0, 0, 0.15));
-  transition: transform 0.3s ease, z-index 0s, filter 0.3s ease;
+  transition: transform 0.3s ease, z-index 0s;
   position: relative;
   user-select: none;
   -webkit-user-drag: none;
@@ -2390,7 +2395,6 @@ button.screen-power-btn.power-standby {
 .theme-carousel-slide:hover {
   transform: scale(1.08) translateY(-8px);
   z-index: 10;
-  filter: drop-shadow(0 12px 32px rgba(0, 0, 0, 0.4)) drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
 }
 
 /* ── Swipe hint (mobile only) ── */
