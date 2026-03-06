@@ -4407,6 +4407,55 @@ button.screen-power-btn.power-standby {
   color: #a0a0b8;
 }
 
+/* ── Skater theme: dark bg for inverted sections (white text theme) ── */
+
+.theme-skater .ownership-section,
+.theme-skater .final-cta {
+  background: #1a1a1a;
+  color: #fff;
+}
+
+.theme-skater .ownership-inner h2,
+.theme-skater .ownership-inner p,
+.theme-skater .ownership-kicker,
+.theme-skater .ownership-kicker strong,
+.theme-skater .ownership-inner p a {
+  color: #fff !important;
+}
+
+.theme-skater .ownership-inner p {
+  opacity: 0.85 !important;
+}
+
+.theme-skater .ownership-card {
+  background: rgba(255, 255, 255, 0.08) !important;
+  border-color: rgba(255, 255, 255, 0.15) !important;
+}
+
+.theme-skater .ownership-card h3 {
+  color: #80ff00 !important;
+}
+
+.theme-skater .ownership-card p {
+  color: rgba(255, 255, 255, 0.85) !important;
+  opacity: 1 !important;
+}
+
+.theme-skater .ownership-card p a {
+  color: #80ff00 !important;
+}
+
+.theme-skater .final-cta-inner h2,
+.theme-skater .final-cta-inner p,
+.theme-skater .final-cta-inner p a {
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+}
+
+.theme-skater .final-cta-inner p {
+  opacity: 0.85 !important;
+}
+
 /* ── Dark theme: brand purple sections + dark base for FakeDitto/comments ── */
 
 .theme-dark .ownership-section,
