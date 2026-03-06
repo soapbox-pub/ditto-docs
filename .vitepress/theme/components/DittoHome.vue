@@ -80,7 +80,7 @@
         </div>
 
         <div class="section-header">
-          <p>Customize your profile and theme with color palettes, background images, fonts, and more. Copy and share public themes!</p>
+          <p>Customize your profile and theme with color palettes, background images, fonts, and more.<br /><strong>Try it!</strong></p>
         </div>
         <div class="theme-grid scroll-reveal" ref="themeGridRef">
           <button
