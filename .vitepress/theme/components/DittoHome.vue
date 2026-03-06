@@ -57,7 +57,7 @@
       <div class="section-inner">
         <div class="section-header">
           <h2>Your content. Your vibe. Your&nbsp;rules.</h2>
-          <p>Customize and share themes with colors, background art, fonts, and more.</p>
+          <p>Customize your profile and theme with color palettes, background images, fonts, and more. Copy and share public themes!</p>
         </div>
         <div class="theme-grid scroll-reveal" ref="themeGridRef">
           <button
@@ -79,6 +79,21 @@
             >{{ theme.label }}</span>
           </button>
         </div>
+
+        <!-- iPad theme examples carousel -->
+        <div class="theme-carousel scroll-reveal" ref="themeCarouselRef">
+          <div class="theme-carousel-track" ref="themeCarouselTrackRef">
+            <img
+              v-for="(img, i) in themeCarouselImages"
+              :key="i"
+              :src="img.src"
+              :alt="img.alt"
+              class="theme-carousel-slide"
+              loading="lazy"
+            />
+          </div>
+        </div>
+
       </div>
     </section>
 
@@ -391,7 +406,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted } from 'vue';
+import { ref, computed, onMounted, onUnmounted } from 'vue';
 import { themes as allThemes, desktopThemes, getTheme, randomThemeKey, deriveTokens, hslToCSS } from '../themes';
 import type { Y2KTheme } from '../themes';
 import ThemeSwitcher from './ThemeSwitcher.vue';
@@ -417,6 +432,37 @@ const themeGridRef = ref<HTMLElement | null>(null);
 const shakespeareRef = ref<HTMLElement | null>(null);
 const bridgeRef = ref<HTMLElement | null>(null);
 const ownershipRef = ref<HTMLElement | null>(null);
+const themeCarouselRef = ref<HTMLElement | null>(null);
+const themeCarouselTrackRef = ref<HTMLElement | null>(null);
+
+// ─── Theme carousel data ──────────────────────────────────────────────
+
+const themeImageFiles = [
+  'bubblegum-ipad.png',
+  'clackophile-ipad.png',
+  'derek-ipad.png',
+  'gamer-ipad.png',
+  'grunge-ipad.png',
+  'hacker-ipad.png',
+  'hiker-ipad.png',
+  'impossible-ipad.png',
+  'kawaii-ipad.png',
+  'mkcottage-ipad.png',
+  'paint-ipad.png',
+  'skater-ipad.png',
+  'solarpunk-ipad.png',
+];
+
+// Double the images for seamless infinite loop
+const themeCarouselImages = [
+  ...themeImageFiles,
+  ...themeImageFiles,
+].map((file, i) => ({
+  src: `/themes/${file}`,
+  alt: file.replace('-ipad.png', '').replace(/^\w/, c => c.toUpperCase()) + ' theme',
+}));
+
+let carouselInterval: ReturnType<typeof setInterval> | null = null;
 
 // ─── Bridge apps data ─────────────────────────────────────────────────
 
@@ -608,8 +654,49 @@ onMounted(() => {
     },
     { threshold: 0.1 }
   );
-  [fakeDittoRef, themeGridRef, shakespeareRef, bridgeRef, ownershipRef].forEach((ref) => {
+  [fakeDittoRef, themeGridRef, themeCarouselRef, shakespeareRef, bridgeRef, ownershipRef].forEach((ref) => {
     if (ref.value) revealObserver.observe(ref.value);
   });
+
+  // Mobile carousel: auto-advance with loop-back
+  const isMobile = window.matchMedia('(max-width: 768px)').matches;
+  if (isMobile && themeCarouselRef.value) {
+    const carousel = themeCarouselRef.value;
+    let userScrolling = false;
+    let scrollTimeout: ReturnType<typeof setTimeout> | null = null;
+
+    // Detect user touch/swipe
+    carousel.addEventListener('touchstart', () => {
+      userScrolling = true;
+      if (scrollTimeout) clearTimeout(scrollTimeout);
+    }, { passive: true });
+
+    carousel.addEventListener('touchend', () => {
+      scrollTimeout = setTimeout(() => { userScrolling = false; }, 3000);
+    }, { passive: true });
+
+    // Auto-advance every 3 seconds on mobile
+    carouselInterval = setInterval(() => {
+      if (userScrolling) return;
+      const slideWidth = carousel.querySelector('.theme-carousel-slide')?.clientWidth ?? 200;
+      const gap = 0; // negative margin handles spacing
+      const advance = slideWidth * 0.75;
+      const maxScroll = carousel.scrollWidth - carousel.clientWidth;
+
+      if (carousel.scrollLeft >= maxScroll - 10) {
+        // Loop back to start
+        carousel.scrollTo({ left: 0, behavior: 'smooth' });
+      } else {
+        carousel.scrollBy({ left: advance, behavior: 'smooth' });
+      }
+    }, 3000);
+  }
+});
+
+onUnmounted(() => {
+  if (carouselInterval) {
+    clearInterval(carouselInterval);
+    carouselInterval = null;
+  }
 });
 </script>

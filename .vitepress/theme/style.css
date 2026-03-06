@@ -2353,6 +2353,59 @@ button.screen-power-btn.power-standby {
   padding: 4px 8px;
 }
 
+/* ── Theme Carousel: sliding iPad screenshots ── */
+
+.theme-carousel {
+  margin-top: 40px;
+  overflow: hidden;
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 20px 0;
+  mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
+}
+
+.theme-carousel-track {
+  display: flex;
+  align-items: center;
+  animation: carousel-scroll 60s linear infinite;
+  width: max-content;
+}
+
+.theme-carousel-track:hover {
+  animation-play-state: paused;
+}
+
+.theme-carousel-slide {
+  flex-shrink: 0;
+  width: 220px;
+  height: auto;
+  border-radius: 16px;
+  margin-right: -24px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25), 0 2px 8px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease, z-index 0s;
+  position: relative;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.theme-carousel-slide:hover {
+  transform: scale(1.08) translateY(-8px);
+  z-index: 10;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.35), 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+@keyframes carousel-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
 /* ---------- SCROLL REVEAL ANIMATION ---------- */
 
 .scroll-reveal {
@@ -5459,6 +5512,36 @@ button.screen-power-btn.power-standby {
   .powers-section,
   .selfhost-section { padding: 60px 0; }
 
+  /* Mobile carousel: swipeable, no auto-animation */
+  .theme-carousel {
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x proximity;
+    mask-image: none;
+    -webkit-mask-image: none;
+    padding: 20px 24px;
+  }
+
+  .theme-carousel-track {
+    animation: none;
+    gap: 0;
+  }
+
+  .theme-carousel-slide {
+    width: 160px;
+    margin-right: -16px;
+    scroll-snap-align: center;
+  }
+
+  /* Hide scrollbar on mobile */
+  .theme-carousel::-webkit-scrollbar {
+    display: none;
+  }
+  .theme-carousel {
+    scrollbar-width: none;
+  }
+
   .mega-emoji { font-size: 48px; }
 
   .final-cta { padding: 60px 20px; }
@@ -5590,5 +5673,10 @@ button.screen-power-btn.power-standby {
 
   .theme-card-name {
     font-size: 14px !important;
+  }
+
+  .theme-carousel-slide {
+    width: 140px;
+    margin-right: -12px;
   }
 }
