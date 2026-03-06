@@ -2361,6 +2361,7 @@ button.screen-power-btn.power-standby {
   overflow: hidden;
   width: 100%;
   padding: 20px 0;
+  position: relative;
   mask-image: linear-gradient(to right, transparent 0%, black 4%, black 96%, transparent 100%);
   -webkit-mask-image: linear-gradient(to right, transparent 0%, black 4%, black 96%, transparent 100%);
 }
@@ -2397,25 +2398,21 @@ button.screen-power-btn.power-standby {
   z-index: 10;
 }
 
-/* ── Swipe hint (mobile only) ── */
+/* ── Swipe hint arrow (mobile only) ── */
 
 .theme-carousel-hint {
   display: none;
 }
 
 @keyframes hint-nudge {
-  0%, 100% { transform: translateX(0); }
-  50% { transform: translateX(8px); }
-}
-
-@keyframes hint-fade {
-  0% { opacity: 0; }
-  50% { opacity: 1; }
-  100% { opacity: 1; }
+  0%, 100% { transform: translate(-50%, -50%) translateX(0); }
+  50% { transform: translate(-50%, -50%) translateX(6px); }
 }
 
 .theme-carousel--touched .theme-carousel-hint {
-  display: none !important;
+  opacity: 0 !important;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
 }
 
 @keyframes carousel-scroll {
@@ -5554,21 +5551,25 @@ button.screen-power-btn.power-standby {
     margin-bottom: 0;
   }
 
-  /* Swipe hint visible on mobile */
+  /* Swipe hint arrow overlaid on right edge */
   .theme-carousel-hint {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 8px;
-    padding-top: 16px;
-    font-size: 13px;
-    color: var(--vp-c-text-3);
-    letter-spacing: 0.02em;
-    animation: hint-fade 1.5s ease forwards;
-  }
-
-  .theme-carousel-hint svg {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.35);
+    color: #fff;
+    z-index: 20;
     animation: hint-nudge 1.2s ease-in-out infinite;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    pointer-events: none;
   }
 
   .mega-emoji { font-size: 48px; }
