@@ -57,6 +57,23 @@
       <div class="section-inner">
         <div class="section-header">
           <h2>Your content. Your vibe. Your&nbsp;rules.</h2>
+        </div>
+
+        <!-- iPad theme examples carousel -->
+        <div class="theme-carousel scroll-reveal" ref="themeCarouselRef">
+          <div class="theme-carousel-track" ref="themeCarouselTrackRef">
+            <img
+              v-for="(img, i) in themeCarouselImages"
+              :key="i"
+              :src="img.src"
+              :alt="img.alt"
+              class="theme-carousel-slide"
+              loading="lazy"
+            />
+          </div>
+        </div>
+
+        <div class="section-header">
           <p>Customize your profile and theme with color palettes, background images, fonts, and more. Copy and share public themes!</p>
         </div>
         <div class="theme-grid scroll-reveal" ref="themeGridRef">
@@ -78,20 +95,6 @@
               :style="{ fontFamily: `'${theme.font.family}', sans-serif`, fontSize: `calc(18px * ${theme.headingScale / 0.9})` }"
             >{{ theme.label }}</span>
           </button>
-        </div>
-
-        <!-- iPad theme examples carousel -->
-        <div class="theme-carousel scroll-reveal" ref="themeCarouselRef">
-          <div class="theme-carousel-track" ref="themeCarouselTrackRef">
-            <img
-              v-for="(img, i) in themeCarouselImages"
-              :key="i"
-              :src="img.src"
-              :alt="img.alt"
-              class="theme-carousel-slide"
-              loading="lazy"
-            />
-          </div>
         </div>
 
       </div>
