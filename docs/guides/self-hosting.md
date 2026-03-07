@@ -12,7 +12,7 @@ Ditto is a static web application. Once built, it's just HTML, CSS, and JavaScri
 
 ```bash
 # Clone the repository
-git clone https://github.com/ectosquad/ditto.git
+git clone https://gitlab.com/soapbox-pub/ditto.git
 cd ditto
 
 # Install dependencies
