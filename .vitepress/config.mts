@@ -5,10 +5,7 @@ export default defineConfig({
   cleanUrls: true,
 
   vite: {
-    define: {
-      __PLAUSIBLE_DOMAIN__: JSON.stringify(process.env.PLAUSIBLE_DOMAIN ?? ''),
-      __PLAUSIBLE_ENDPOINT__: JSON.stringify(process.env.PLAUSIBLE_ENDPOINT ?? ''),
-    },
+    envDir: process.cwd(),
   },
 
   title: 'Ditto',

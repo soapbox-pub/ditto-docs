@@ -4,9 +4,6 @@ import DefaultTheme from 'vitepress/theme'
 import DittoHome from './components/DittoHome.vue'
 import './style.css'
 
-declare const __PLAUSIBLE_DOMAIN__: string
-declare const __PLAUSIBLE_ENDPOINT__: string
-
 export default {
   extends: DefaultTheme,
   Layout: () => {
@@ -15,11 +12,11 @@ export default {
   enhanceApp({ app, router }) {
     app.component('DittoHome', DittoHome)
 
-    if (typeof window !== 'undefined' && __PLAUSIBLE_DOMAIN__) {
+    if (typeof window !== 'undefined' && import.meta.env.VITE_PLAUSIBLE_DOMAIN) {
       import('@plausible-analytics/tracker').then(({ init }) => {
         init({
-          domain: __PLAUSIBLE_DOMAIN__,
-          ...(__PLAUSIBLE_ENDPOINT__ ? { endpoint: __PLAUSIBLE_ENDPOINT__ } : {}),
+          domain: import.meta.env.VITE_PLAUSIBLE_DOMAIN,
+          ...(import.meta.env.VITE_PLAUSIBLE_ENDPOINT ? { endpoint: import.meta.env.VITE_PLAUSIBLE_ENDPOINT } : {}),
         })
       })
     }
