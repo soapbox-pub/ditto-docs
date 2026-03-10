@@ -4,6 +4,13 @@ export default defineConfig({
   srcDir: 'docs',
   cleanUrls: true,
 
+  vite: {
+    define: {
+      __PLAUSIBLE_DOMAIN__: JSON.stringify(process.env.PLAUSIBLE_DOMAIN ?? ''),
+      __PLAUSIBLE_API_HOST__: JSON.stringify(process.env.PLAUSIBLE_API_HOST ?? ''),
+    },
+  },
+
   title: 'Ditto',
   description: 'A social platform for people who want to have fun, not feed the Big Tech machine. Open source, decentralized, and entirely yours.',
 

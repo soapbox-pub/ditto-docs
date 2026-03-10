@@ -1,5 +1,7 @@
 {
-  "dependencies": {},
+  "dependencies": {
+    "@plausible-analytics/tracker": "^0.4.4"
+  },
   "devDependencies": {
     "vitepress": "^2.0.0-alpha.16"
   },
