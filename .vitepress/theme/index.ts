@@ -5,7 +5,7 @@ import DittoHome from './components/DittoHome.vue'
 import './style.css'
 
 declare const __PLAUSIBLE_DOMAIN__: string
-declare const __PLAUSIBLE_API_HOST__: string
+declare const __PLAUSIBLE_ENDPOINT__: string
 
 export default {
   extends: DefaultTheme,
@@ -19,7 +19,7 @@ export default {
       import('@plausible-analytics/tracker').then(({ init }) => {
         init({
           domain: __PLAUSIBLE_DOMAIN__,
-          ...(__PLAUSIBLE_API_HOST__ ? { endpoint: `${__PLAUSIBLE_API_HOST__}/api/event` } : {}),
+          ...(__PLAUSIBLE_ENDPOINT__ ? { endpoint: __PLAUSIBLE_ENDPOINT__ } : {}),
         })
       })
     }

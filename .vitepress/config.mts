@@ -7,7 +7,7 @@ export default defineConfig({
   vite: {
     define: {
       __PLAUSIBLE_DOMAIN__: JSON.stringify(process.env.PLAUSIBLE_DOMAIN ?? ''),
-      __PLAUSIBLE_API_HOST__: JSON.stringify(process.env.PLAUSIBLE_API_HOST ?? ''),
+      __PLAUSIBLE_ENDPOINT__: JSON.stringify(process.env.PLAUSIBLE_ENDPOINT ?? ''),
     },
   },
 
