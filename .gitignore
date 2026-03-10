@@ -3,3 +3,6 @@ node_modules/
 .vitepress/dist/
 dist/
 deploy.sh
+.env
+.env.*
+!.env.example
