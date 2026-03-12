@@ -58,7 +58,7 @@ After NIP-44 decryption with the user's own pubkey, the content is a JSON object
 | Field | Type | Description |
 |-------|------|-------------|
 | `theme` | `"light" \| "dark" \| "system" \| "custom"` | Active theme mode |
-| `customTheme` | `ThemeTokens` | HSL token values for the custom theme slot (see [Theming](#theme-definition-kind-33891)) |
+| `customTheme` | `ThemeConfig` | Custom theme configuration with 3 core colors, optional font and background (see [Theming](#theme-definition-kind-36767)) |
 | `useAppRelays` | `boolean` | Whether to use Ditto's default relays alongside the user's relay list |
 | `feedSettings` | `FeedSettings` | Toggles controlling which content types appear in the sidebar and feed |
 | `contentFilters` | `ContentFilter[]` | User-defined content filter rules |
@@ -72,10 +72,11 @@ After NIP-44 decryption with the user's own pubkey, the content is a JSON object
 {
   "theme": "dark",
   "customTheme": {
-    "background": "228 20% 10%",
-    "foreground": "210 40% 98%",
-    "primary": "258 70% 60%",
-    "accent": "225 65% 55%"
+    "colors": {
+      "background": "228 20% 10%",
+      "text": "210 40% 98%",
+      "primary": "258 70% 60%"
+    }
   },
   "useAppRelays": true,
   "feedSettings": {
@@ -169,18 +170,23 @@ Replace `"#l": ["#t"]` with `"#l": ["#e"]` for trending posts.
 
 ---
 
-## Theme definition (kind 33891)
+## Theme definition (kind 36767)
 
-Addressable event for publishing shareable custom UI themes. A user can publish multiple themes, each identified by a unique `d` tag. Themes are full HSL color token sets.
+Addressable event for publishing shareable custom UI themes. A user can publish multiple themes, each identified by a unique `d` tag. Colors are stored in `c` tags, with optional font (`f`) and background (`bg`) tags.
 
 ### Event structure
 
 ```json
 {
-  "kind": 33891,
-  "content": "{\"background\":\"228 20% 10%\",\"foreground\":\"210 40% 98%\",\"card\":\"228 20% 12%\",\"cardForeground\":\"210 40% 98%\",\"popover\":\"228 20% 12%\",\"popoverForeground\":\"210 40% 98%\",\"primary\":\"258 70% 60%\",\"primaryForeground\":\"0 0% 100%\",\"secondary\":\"228 16% 18%\",\"secondaryForeground\":\"210 40% 98%\",\"muted\":\"228 16% 18%\",\"mutedForeground\":\"215 20.2% 65.1%\",\"accent\":\"225 65% 55%\",\"accentForeground\":\"0 0% 100%\",\"destructive\":\"0 72% 51%\",\"destructiveForeground\":\"210 40% 98%\",\"border\":\"228 14% 20%\",\"input\":\"228 14% 20%\",\"ring\":\"258 70% 60%\"}",
+  "kind": 36767,
+  "content": "",
   "tags": [
     ["d", "mk-dark-theme"],
+    ["c", "#1a1a2e", "background"],
+    ["c", "#e0e0e0", "text"],
+    ["c", "#6c3ce0", "primary"],
+    ["f", "Inter", "https://example.com/inter.woff2"],
+    ["bg", "url https://example.com/bg.jpg", "mode cover", "m image/jpeg", "dim 1920x1080"],
     ["title", "MK Dark Theme"],
     ["description", "A sleek dark theme with purple and blue accents"],
     ["alt", "Custom theme: MK Dark Theme"],
@@ -189,77 +195,105 @@ Addressable event for publishing shareable custom UI themes. A user can publish 
 }
 ```
 
+### Content
+
+The `content` field is unused and MUST be an empty string (`""`).
+
 ### Tags
 
 | Tag | Required | Description |
 |-----|:--------:|-------------|
 | `d` | Yes | Unique identifier (slug) for this theme |
+| `c` | Yes (x3) | Hex color with role marker. See [Color tags](#color-tags). |
+| `f` | No | Font declaration. See [Font tag](#font-tag). |
+| `bg` | No | Background media. See [Background tag](#background-tag). |
 | `title` | Yes | Human-readable theme name |
 | `description` | No | Brief description of the theme |
 | `alt` | Yes | NIP-31 human-readable fallback |
 | `t` | Yes | Set to `"theme"` for discoverability |
 
-### Content tokens
+### Color tags
 
-The `content` field is a JSON object where each value is an HSL color string in the format `"H S% L%"` (e.g. `"258 70% 60%"`).
+Format: `["c", "#rrggbb", "<marker>"]`
 
-**Required tokens:** `background`, `foreground`, `primary`, `accent`
+Each theme requires exactly 3 color tags with these markers:
 
-**Optional tokens** (clients should derive these if missing):
+| Marker | Description |
+|--------|-------------|
+| `background` | Page background color |
+| `text` | Primary text/foreground color |
+| `primary` | Accent color (buttons, links, focus rings) |
 
-| Token | Description |
-|-------|-------------|
-| `card` | Card surface background |
-| `cardForeground` | Card text color |
-| `popover` | Popover/dropdown background |
-| `popoverForeground` | Popover text color |
-| `primaryForeground` | Text on primary-colored elements |
-| `secondary` | Secondary element background |
-| `secondaryForeground` | Secondary element text |
-| `muted` | Muted/subtle background |
-| `mutedForeground` | Muted/subtle text |
-| `accentForeground` | Text on accent-colored elements |
-| `destructive` | Danger/delete action color |
-| `destructiveForeground` | Text on destructive elements |
-| `border` | Border color |
-| `input` | Form input border color |
-| `ring` | Focus ring color |
+Colors are lowercase 6-digit hex codes including the `#` sign. Clients derive all other UI colors (card, muted, border, etc.) from these 3 values.
+
+### Font tag
+
+Format: `["f", "<family>", "<url>"]`
+
+Optional. At most one per event. The font applies globally to all text. Variable font files covering multiple weights are preferred.
+
+### Background tag
+
+Uses an imeta-style variadic format: `["bg", "url <url>", "mode <mode>", "m <mime-type>", ...]`
+
+| Key | Required | Description |
+|-----|:--------:|-------------|
+| `url` | Yes | URL to an image or video file |
+| `mode` | Yes | Display mode: `"cover"` or `"tile"` |
+| `m` | Yes | MIME type (e.g. `"image/jpeg"`, `"video/mp4"`) |
+| `dim` | No | Dimensions: `"<width>x<height>"` |
+| `blurhash` | No | Blurhash placeholder for progressive loading |
 
 ### Multiple themes per user
 
-Since kind 33891 is addressable, a user can publish multiple themes by using different `d` tag values. Publishing a new event with the same `d` tag replaces the previous version.
+Since kind 36767 is addressable, a user can publish multiple themes by using different `d` tag values. Publishing a new event with the same `d` tag replaces the previous version.
 
 ---
 
-## Active profile theme (kind 11667)
+## Active profile theme (kind 16767)
 
 Replaceable event representing the user's currently active profile theme. Only one exists per user. When visiting a profile, clients query this kind to determine what theme to display.
 
-The content is a **copy** of the theme tokens from whichever theme definition the user has set as active. An `a` tag references the source theme definition for attribution.
+The event uses the same `c`, `f`, and `bg` tags as theme definitions. An optional `a` tag references the source theme definition for attribution.
 
 ### Event structure
 
 ```json
 {
-  "kind": 11667,
-  "content": "{\"background\":\"228 20% 10%\",\"foreground\":\"210 40% 98%\",\"card\":\"228 20% 12%\",\"cardForeground\":\"210 40% 98%\",\"popover\":\"228 20% 12%\",\"popoverForeground\":\"210 40% 98%\",\"primary\":\"258 70% 60%\",\"primaryForeground\":\"0 0% 100%\",\"secondary\":\"228 16% 18%\",\"secondaryForeground\":\"210 40% 98%\",\"muted\":\"228 16% 18%\",\"mutedForeground\":\"215 20.2% 65.1%\",\"accent\":\"225 65% 55%\",\"accentForeground\":\"0 0% 100%\",\"destructive\":\"0 72% 51%\",\"destructiveForeground\":\"210 40% 98%\",\"border\":\"228 14% 20%\",\"input\":\"228 14% 20%\",\"ring\":\"258 70% 60%\"}",
+  "kind": 16767,
+  "content": "",
   "tags": [
-    ["a", "33891:<source-author-pubkey>:<source-d-tag>"],
+    ["c", "#1a1a2e", "background"],
+    ["c", "#e0e0e0", "text"],
+    ["c", "#6c3ce0", "primary"],
+    ["f", "Inter", "https://example.com/inter.woff2"],
+    ["bg", "url https://example.com/bg.jpg", "mode cover", "m image/jpeg"],
+    ["title", "MK Dark Theme"],
+    ["a", "36767:<source-author-pubkey>:<source-d-tag>"],
     ["alt", "Active profile theme"]
   ]
 }
 ```
 
+### Content
+
+The `content` field is unused and MUST be an empty string (`""`).
+
 ### Tags
 
 | Tag | Required | Description |
 |-----|:--------:|-------------|
-| `a` | No | Reference to the source kind 33891 event (`kind:pubkey:d-tag`). Enables attribution ("Using X's theme"). |
+| `c` | Yes (x3) | Hex color with role marker (same format as kind 36767). |
+| `f` | No | Font declaration. |
+| `bg` | No | Background media. |
+| `title` | No | Human-readable name for the theme. |
+| `a` | No | Reference to the source kind 36767 event (`kind:pubkey:d-tag`). Enables attribution ("Using X's theme"). |
 | `alt` | Yes | NIP-31 human-readable fallback |
 
 ### Client behavior
 
-- **Query:** `{ kinds: [11667], authors: [<pubkey>], limit: 1 }` to get a user's active theme.
+- **Query:** `{ kinds: [16767], authors: [<pubkey>], limit: 1 }` to get a user's active theme.
+- **Colors:** Read the `c` tags to extract colors, `f` tags for fonts, and `bg` tag for the background.
 - **Attribution:** The `a` tag lets clients display "Using MK Dark Theme by @mk" with a link to the source theme.
-- **Set:** Publish a new kind 11667 event to change the active theme (replaces the previous one).
-- **Clear:** Publish a kind 5 deletion event targeting kind 11667 to remove the active theme.
+- **Set:** Publish a new kind 16767 event to change the active theme (replaces the previous one).
+- **Clear:** Publish a kind 5 deletion event targeting kind 16767 to remove the active theme.

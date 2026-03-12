@@ -4,8 +4,7 @@ Ditto is a static web application. Once built, it's just HTML, CSS, and JavaScri
 
 ## Prerequisites
 
-- **Node.js 22+** (required for building)
-- **Bun** or **npm** (package manager)
+- **Node.js 22** and **npm 10.9.4** (required for building)
 - A web server or static hosting service
 
 ## Quick start
@@ -16,10 +15,10 @@ git clone https://gitlab.com/soapbox-pub/ditto.git
 cd ditto
 
 # Install dependencies
-bun install
+npm install
 
 # Build
-bun run build
+npm run build
 
 # The built site is in dist/
 ```
@@ -49,7 +48,7 @@ Just connect your fork and deploy. Ditto includes a `_redirects` file for SPA ro
 
 ```bash
 # Build locally
-bun run build
+npm run build
 
 # Upload to your server
 rsync -avz dist/ user@yourserver:/var/www/ditto/
@@ -100,7 +99,7 @@ Ditto includes a Capacitor project for building native Android apps:
 
 ```bash
 # Build the web app first
-bun run build
+npm run build
 
 # Sync with Capacitor
 npx cap sync
@@ -119,4 +118,4 @@ Beyond themes, you can customize:
 - **App name** -- Update in `index.html` and `public/manifest.webmanifest`
 - **Default relays** -- Set in `ditto.json`
 - **Upload servers** -- Set your own Blossom servers in `ditto.json`
-- **OG image** -- Replace `public/og-image.jpg` for social sharing previews
+- **OG image** -- Replace the OG image in `public/` for social sharing previews

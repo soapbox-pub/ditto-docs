@@ -36,21 +36,46 @@ Set the default theme mode:
 
 Options: `"dark"` (default), `"light"`, `"system"`, `"custom"`.
 
-To use a theme preset, set theme to `"custom"` and provide a `customTheme` object with 19 HSL color tokens:
+To use a custom theme, set theme to `"custom"` and provide a `customTheme` object with 3 core HSL colors. All other CSS tokens are derived automatically:
 
 ```json
 {
   "theme": "custom",
   "customTheme": {
-    "background": "228 20% 10%",
-    "foreground": "228 10% 92%",
-    "primary": "258 70% 60%",
-    "primaryForeground": "0 0% 100%"
+    "colors": {
+      "background": "228 20% 10%",
+      "text": "210 40% 98%",
+      "primary": "258 70% 60%"
+    }
   }
 }
 ```
 
-The full set of tokens: `background`, `foreground`, `card`, `cardForeground`, `popover`, `popoverForeground`, `primary`, `primaryForeground`, `secondary`, `secondaryForeground`, `muted`, `mutedForeground`, `accent`, `accentForeground`, `destructive`, `destructiveForeground`, `border`, `input`, `ring`.
+You can also include a custom font and background:
+
+```json
+{
+  "theme": "custom",
+  "customTheme": {
+    "colors": {
+      "background": "228 20% 10%",
+      "text": "210 40% 98%",
+      "primary": "258 70% 60%"
+    },
+    "font": {
+      "family": "Inter",
+      "url": "https://example.com/inter.woff2"
+    },
+    "background": {
+      "url": "https://example.com/bg.jpg",
+      "mode": "cover",
+      "mimeType": "image/jpeg"
+    }
+  }
+}
+```
+
+The 3 required color values: `background`, `text`, `primary`. From these, Ditto derives 19 CSS custom properties (card, secondary, muted, accent, destructive, border, etc.).
 
 ### Relay metadata
 
@@ -153,16 +178,6 @@ Set a CORS proxy for fetching external resources:
 }
 ```
 
-### Zap defaults
-
-Configure the default Lightning zap comment:
-
-```json
-{
-  "defaultZapComment": "Zapped with Ditto!"
-}
-```
-
 ### Stats pubkey
 
 Set the NIP-85 stats pubkey (64-character hex, or empty string to disable):
@@ -178,7 +193,7 @@ Set the NIP-85 stats pubkey (64-character hex, or empty string to disable):
 You can point to a different config file path using the `CONFIG_FILE` environment variable:
 
 ```bash
-CONFIG_FILE=./my-config.json bun run build
+CONFIG_FILE=./my-config.json npm run build
 ```
 
 ## Example: community instance
@@ -200,7 +215,6 @@ Here's a full example for a community-branded instance:
   "blossomServers": [
     "https://blossom.yourcommunity.com/"
   ],
-  "contentWarningPolicy": "blur",
-  "defaultZapComment": "Zapped from YourCommunity!"
+  "contentWarningPolicy": "blur"
 }
 ```

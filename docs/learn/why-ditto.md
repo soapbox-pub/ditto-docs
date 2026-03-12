@@ -10,10 +10,11 @@ Most Nostr clients feel like they were designed by protocol engineers (because t
 
 Ditto has one of the most extensive theme systems of any Nostr client:
 
-- **7 built-in theme presets** -- from OLED black to pastel pink to matrix green
-- **Full custom theming** -- 19 CSS token properties for complete control
+- **20+ built-in theme presets** -- from pastel pink to toxic green to galaxy purple
+- **Full custom theming** -- define 3 core colors and the rest are derived automatically
+- **Custom fonts and backgrounds** -- load any font or set a background image/video
 - **Light, Dark, and System modes** -- automatic or manual
-- **Instant switching** -- change your vibe in two clicks
+- **Shareable themes** -- publish your theme to Nostr and let others use it
 
 Your timeline should look and feel like *you*.
 
@@ -42,7 +43,7 @@ Ditto builds to static HTML/JS/CSS files. You can host it:
 - On **any VPS** (rsync the build folder)
 - On **any web server** (it's just files)
 
-One `config.json` file lets you customize relays, branding, upload servers, themes, and more. Run your own instance for your community with your own rules.
+One `ditto.json` file lets you customize relays, branding, upload servers, themes, and more. Run your own instance for your community with your own rules.
 
 ## Lightning-native payments
 

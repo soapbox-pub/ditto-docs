@@ -14,17 +14,33 @@ You can also switch between **Light**, **Dark**, and **System** modes from the s
 
 ## Built-in presets
 
-Ditto ships with 7 handcrafted theme presets:
+Ditto ships with 23 theme presets. Many include custom fonts and background images:
 
-| Theme | Vibe | Mode |
-|---|---|---|
-| **Black** | OLED true black | Dark |
-| **Pink** | Soft pastel warmth | Light |
-| **Midnight** | Deep blue night | Dark |
-| **Toxic** | Matrix green-on-black | Dark |
-| **Lavender** | Purple pastel dream | Light |
-| **Ocean** | Cool teal depths | Dark |
-| **Sunset** | Warm golden hour | Light |
+| Theme | Vibe |
+|---|---|
+| **Pink** | Soft pastel warmth with Comfortaa font |
+| **Toxic** | Matrix green-on-black with JetBrains Mono |
+| **Sunset** | Warm golden hour with Lora |
+| **Skater** | Bold neon with Rubik Maps |
+| **Kawaii** | Cute pink with Cherry Bomb One |
+| **Grunge** | Dark purple with Lacquer |
+| **MS Paint** | Retro desktop with Silkscreen |
+| **Retro Pop** | Y2K vibes with Bungee Shade |
+| **Bubblegum** | Bright purple with Barriecito |
+| **Gamer** | Neon green/cyan with Press Start 2P |
+| **Cottage** | Earthy greens with Lora |
+| **Midnight** | City lights with Inter |
+| **Sky** | Airy blue with Nunito |
+| **Motherboard** | Classic computing with Courier Prime |
+| **Plush** | Soft purple with Comic Neue |
+| **Galaxy** | Deep space with DM Sans |
+| **Ocean** | Cool teal depths with Nunito |
+| **Forest** | Deep greens with Merriweather |
+| **Clear Sky Vibes** | Night sky with Comfortaa |
+| **Silent Torii** | Japanese red with DM Sans |
+| **Quiet Horizon** | Muted earth with Lora |
+| **Where Paths Meet** | Moody teal with DM Sans |
+| **Once** | Random image with Outfit |
 
 ## Full appearance settings
 
@@ -34,20 +50,20 @@ For more control, go to **Settings > Appearance**:
 - **Theme preset** -- Choose from the built-in options
 - **Content visibility** -- Toggle which content types appear in your sidebar and feed
 
-## Theme tokens
+## How themes work
 
-Under the hood, each theme is a set of 19 CSS custom properties (tokens) that control every color in the interface:
+Under the hood, each theme is defined by just **3 core colors**:
 
-- `background` / `foreground` -- Main page colors
-- `card` / `card-foreground` -- Card surfaces
-- `primary` / `primary-foreground` -- Brand accent
-- `secondary` / `secondary-foreground` -- Secondary elements
-- `muted` / `muted-foreground` -- Subtle text and backgrounds
-- `accent` / `accent-foreground` -- Interactive highlights
-- `destructive` / `destructive-foreground` -- Danger/delete actions
-- `border` -- Border colors
-- `input` -- Form input borders
-- `ring` -- Focus ring color
+- `background` -- Main page background
+- `text` -- Primary text/foreground color
+- `primary` -- Brand accent (buttons, links, focus rings)
+
+From these 3 values, Ditto automatically derives 19 CSS custom properties (tokens) that control every color in the interface -- card surfaces, secondary elements, muted text, borders, and more. You never need to set the derived tokens manually.
+
+Themes can also include:
+
+- **Custom fonts** -- Any web font loaded by URL
+- **Background images or videos** -- Displayed behind the interface
 
 ## Theming for self-hosters
 
@@ -57,10 +73,15 @@ If you're running your own Ditto instance, you can set a default theme for all u
 {
   "theme": "custom",
   "customTheme": {
-    "background": "228 20% 10%",
-    "foreground": "228 10% 92%",
-    "primary": "258 70% 60%",
-    "primaryForeground": "0 0% 100%"
+    "colors": {
+      "background": "228 20% 10%",
+      "text": "210 40% 98%",
+      "primary": "258 70% 60%"
+    },
+    "font": {
+      "family": "Inter",
+      "url": "https://example.com/inter.woff2"
+    }
   }
 }
 ```

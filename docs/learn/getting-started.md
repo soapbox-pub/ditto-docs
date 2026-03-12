@@ -9,7 +9,7 @@ Before using Ditto, you need a way to manage your Nostr keys. The recommended ap
 Popular options:
 
 - **[Alby](https://getalby.com)** -- Browser extension with built-in Lightning wallet
-- **[nos2x](https://github.com/nicehash/nos2x)** -- Lightweight Chrome extension
+- **[nos2x](https://github.com/fiatjaf/nos2x)** -- Lightweight Chrome extension
 - **[Nostore](https://apps.apple.com/app/nostore/id1666553677)** -- Safari extension for macOS/iOS
 
 Install one, create a new key (or import an existing one), and you're ready.
