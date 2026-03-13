@@ -1,3 +1,7 @@
+---
+description: Host your own Ditto instance. It's just static files -- deploy to GitHub Pages, Netlify, Vercel, or any web server.
+---
+
 # Self-Hosting Ditto
 
 Ditto is a static web application. Once built, it's just HTML, CSS, and JavaScript files that can be served from anywhere. This makes self-hosting straightforward.

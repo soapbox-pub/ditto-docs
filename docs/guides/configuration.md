@@ -1,3 +1,7 @@
+---
+description: Configure Ditto through ditto.json -- relays, branding, upload servers, themes, and more.
+---
+
 # Configuration
 
 Ditto is configured through a `ditto.json` file at the project root. This file is read at **build time** and validated against a strict Zod schema. Its values override the hardcoded defaults.

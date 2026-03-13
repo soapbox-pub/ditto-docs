@@ -1,3 +1,7 @@
+---
+description: "Ditto's client manifesto: rebellion against utilitarian UX, the Saturn symbolism, and why fun is the only selling point that matters."
+---
+
 # Philosophy
 
 Ditto's client philosophy -- why it exists, what it believes, and where it's going.

@@ -1,3 +1,7 @@
+---
+description: What makes Ditto different from every other Nostr client -- themes, fun, Other Stuff content, self-hosting, and more.
+---
+
 # Why Ditto?
 
 There are many Nostr clients. Here's what makes Ditto different.

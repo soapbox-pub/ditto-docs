@@ -1,5 +1,6 @@
 ---
 outline: false
+description: Nostr is a decentralized protocol where you own your identity through cryptographic keys, not accounts on someone else's server.
 ---
 
 <div class="page-hero">

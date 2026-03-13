@@ -1,3 +1,7 @@
+---
+description: Make Ditto look exactly the way you want with 20+ built-in presets, full custom theming, custom fonts, and shareable themes.
+---
+
 # Custom Themes
 
 One of Ditto's most beloved features is its theme engine. Here's how to make Ditto look exactly the way you want.

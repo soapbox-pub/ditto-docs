@@ -1,3 +1,7 @@
+---
+description: Get started with Ditto in about 2 minutes. All you need is a Nostr signer.
+---
+
 # Getting Started with Ditto
 
 Getting started takes about 2 minutes. Here's everything you need to know.
