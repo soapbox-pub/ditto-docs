@@ -34,6 +34,7 @@ export default defineConfig({
           { text: 'What is Nostr?', link: '/learn/what-is-nostr' },
           { text: 'Getting Started', link: '/learn/getting-started' },
           { text: 'Why Ditto?', link: '/learn/why-ditto' },
+          { text: 'Philosophy', link: '/learn/philosophy' },
         ],
       },
       {
@@ -64,6 +65,7 @@ export default defineConfig({
             { text: 'What is Nostr?', link: '/learn/what-is-nostr' },
             { text: 'Getting Started', link: '/learn/getting-started' },
             { text: 'Why Ditto?', link: '/learn/why-ditto' },
+            { text: 'Philosophy', link: '/learn/philosophy' },
           ],
         },
       ],
