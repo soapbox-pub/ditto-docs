@@ -14,7 +14,7 @@ The free exchange of thought and currency, this is a beautiful idea on paper. Ho
 
 Decentralization is a hard sell to all except the wounded and paranoid. Free commerce suffers a crueler fate, contrivance at best and another crypto scam at medium expectation. Who needs zaps when you have Cash App, Venmo, or Zelle?
 
-Who needs Primal when they can have Twitter and Bluesky? The riveting bitcoin and carnivore diet discussions, perhaps? Who needs diVine when Tiktok has already evolved short form video into an algorithmic science?
+Who needs Primal when they can have Twitter and Bluesky? The riveting bitcoin and carnivore diet discussions?
 
 What is our selling point? Morality? That worked well for the vegans.
 
