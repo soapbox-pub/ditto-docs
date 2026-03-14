@@ -12,6 +12,10 @@ export default defineConfig({
     envDir: process.cwd(),
   },
 
+  markdown: {
+    typographer: true,
+  },
+
   title: 'Ditto',
   description: DEFAULT_DESCRIPTION,
 
