@@ -384,31 +384,6 @@ A label event with `l: #t` contains the current trending hashtags. Each `t` tag 
 | 3 | accounts | Number of distinct accounts using this hashtag |
 | 4 | uses | Total number of uses |
 
-### Trending posts
-
-A label event with `l: #e` contains the current trending event IDs, ordered by rank.
-
-```json
-{
-  "kind": 1985,
-  "pubkey": "15b68d319a088a9b0c6853d2232aff0d69c8c58f0dccceabfb9a82bd4fd19c58",
-  "content": "",
-  "tags": [
-    ["L", "pub.ditto.trends"],
-    ["l", "#e", "pub.ditto.trends"],
-    ["e", "abc123..."],
-    ["e", "def456..."],
-    ["e", "ghi789..."]
-  ]
-}
-```
-
-Clients fetch trending posts by first querying for the label event, extracting the `e` tags, then fetching those events by ID.
-
-### Sparkline data
-
-Ditto publishes one trending-hashtags label event per UTC calendar day. Clients build sparkline charts by querying multiple days of label events filtered by `#t` and reading the `uses` count from each day's `t` tag. The day boundaries are aligned to UTC midnight derived from the most recent label event's `created_at`.
-
 ### Filter structure
 
 ```json
@@ -420,5 +395,3 @@ Ditto publishes one trending-hashtags label event per UTC calendar day. Clients 
   "limit": 1
 }
 ```
-
-Replace `"#l": ["#t"]` with `"#l": ["#e"]` for trending posts.
