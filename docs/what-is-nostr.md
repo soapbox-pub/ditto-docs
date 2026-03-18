@@ -93,6 +93,8 @@ Your posts don't live on one company's servers. They get sent to **relays** -- s
 
 Because Nostr is a **protocol** (not a platform), there are many apps that speak it. Ditto is one of them. You can use Ditto today, switch to another Nostr app tomorrow, and all your followers, posts, and messages come with you.
 
+The protocol evolves through [NIPs](https://github.com/nostr-protocol/nips) (Nostr Implementation Possibilities) -- proposals that anyone can write. Community members share and discuss custom NIPs on [NostrHub](https://nostrhub.io/).
+
 <div class="big-quote">
   <span class="big-quote-mark">"</span>
   <p>Your identity is portable. Your data is portable. Your social graph is portable.</p>

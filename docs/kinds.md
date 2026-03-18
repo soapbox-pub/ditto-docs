@@ -6,6 +6,8 @@ description: All non-standard Nostr event kinds that Ditto supports, including c
 
 Ditto uses standard Nostr event kinds alongside a number of community and Ditto-specific kinds. This page documents all non-standard kinds that Ditto supports.
 
+For a complete list of all Nostr event kinds, see [nostrbook.dev](https://nostrbook.dev/). The protocol is defined by [NIPs](https://github.com/nostr-protocol/nips) (Nostr Implementation Possibilities), and community members can share custom NIP proposals on [NostrHub](https://nostrhub.io/).
+
 ## Supported kinds
 
 <style>
