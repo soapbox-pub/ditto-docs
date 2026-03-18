@@ -10,7 +10,7 @@ Ditto is a static web application -- just HTML, CSS, and JavaScript. Deploy it o
 
 Get the latest pre-built release as a zip file. Extract it and upload the contents to any web server or hosting service.
 
-<a href="https://gitlab.com/soapbox-pub/ditto/-/jobs/artifacts/main/download?job=zip" class="vp-raw" style="display:inline-flex;align-items:center;gap:8px;padding:10px 24px;background:var(--vp-c-brand-3);color:#fff;border-radius:8px;font-weight:600;text-decoration:none;font-size:15px;transition:background 0.2s" onmouseover="this.style.background='var(--vp-c-brand-2)'" onmouseout="this.style.background='var(--vp-c-brand-3)'">Download Ditto (zip)</a>
+<a href="https://gitlab.com/api/v4/projects/79646323/jobs/artifacts/main/download?job=pages" class="vp-raw" style="display:inline-flex;align-items:center;gap:8px;padding:10px 24px;background:var(--vp-c-brand-3);color:#fff;border-radius:8px;font-weight:600;text-decoration:none;font-size:15px;transition:background 0.2s" onmouseover="this.style.background='var(--vp-c-brand-2)'" onmouseout="this.style.background='var(--vp-c-brand-3)'">Download Ditto (zip)</a>
 
 No build step required -- just serve the files from your domain. Make sure your web server serves `index.html` for all routes (SPA routing).
 
