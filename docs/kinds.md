@@ -6,22 +6,136 @@ description: All non-standard Nostr event kinds that Ditto supports, including c
 
 Ditto uses standard Nostr event kinds alongside a number of community and Ditto-specific kinds. This page documents all non-standard kinds that Ditto supports.
 
-## External product kinds
+## Supported kinds
 
-These kinds originate from external Nostr apps and communities. Ditto renders them in the feed and provides toggle controls in settings.
+<style>
+.kinds-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 24px 0;
+}
+.kinds-table th,
+.kinds-table td {
+  padding: 10px 14px;
+  border: 1px solid var(--vp-c-divider);
+  text-align: left;
+}
+.kinds-table th {
+  font-weight: 600;
+  background: var(--vp-c-bg-soft);
+}
+.kinds-table th:nth-child(4) {
+  text-align: center;
+}
+.kinds-table td:nth-child(4) {
+  text-align: center;
+}
+.kinds-table .ditto-kind {
+  background: linear-gradient(135deg, rgba(124, 82, 224, 0.15) 0%, rgba(232, 121, 249, 0.15) 50%, rgba(251, 146, 60, 0.10) 100%);
+}
+:root.dark .kinds-table .ditto-kind {
+  background: linear-gradient(135deg, rgba(124, 82, 224, 0.25) 0%, rgba(232, 121, 249, 0.20) 50%, rgba(251, 146, 60, 0.15) 100%);
+}
+</style>
 
-| Kind | Name | Description | Addressable | External site |
-|------|------|-------------|:-----------:|---------------|
-| 34236 | Vine | Short-form video post | Yes | [divine.video](https://divine.video) |
-| 30311 | Stream | Live streaming event | Yes | [zap.stream](https://zap.stream) |
-| 1068 | Poll | Community poll with multiple-choice options | No | [pollerama.fun](https://pollerama.fun) |
-| 1018 | Poll Vote | Cast a vote on a kind 1068 poll | No | [pollerama.fun](https://pollerama.fun) |
-| 39089 | Follow Pack | Curated follow recommendations (starter packs) | Yes | [following.space](https://following.space), [following.party](https://following.party) |
-| 30023 | Article | Long-form blog post with Markdown content (NIP-23) | Yes | [inkwell.shakespeare.wtf](https://inkwell.shakespeare.wtf) |
-| 3367 | Color Moment | Color palette post expressing a mood | No | [espy.you](https://espy.you) |
-| 37381 | Magic Deck | Magic: The Gathering deck list | Yes | [surveil.cards](https://surveil.cards) |
-| 37516 | Geocache | Geocache listing for real-world treasure hunting | Yes | [treasures.to](https://treasures.to) |
-| 7516 | Found Log | Log entry recording a user finding a geocache | No | [treasures.to](https://treasures.to) |
+Rows with a <span style="display:inline-block;width:12px;height:12px;border-radius:3px;background:var(--ditto-gradient);vertical-align:middle;"></span> purple gradient background are Ditto-created kinds.
+
+<table class="kinds-table">
+  <thead>
+    <tr>
+      <th>Kind</th>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Addressable</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1018</td>
+      <td>Poll Vote</td>
+      <td>Cast a vote on a kind 1068 poll</td>
+      <td>No</td>
+    </tr>
+    <tr>
+      <td>1068</td>
+      <td>Poll</td>
+      <td>Community poll with multiple-choice options</td>
+      <td>No</td>
+    </tr>
+    <tr>
+      <td>1985</td>
+      <td><a href="#trending-labels-kind-1985">Trending Labels</a></td>
+      <td>Trending hashtags and posts published by the relay</td>
+      <td>No</td>
+    </tr>
+    <tr>
+      <td>3367</td>
+      <td>Color Moment</td>
+      <td>Color palette post expressing a mood</td>
+      <td>No</td>
+    </tr>
+    <tr>
+      <td>7516</td>
+      <td>Found Log</td>
+      <td>Log entry recording a user finding a geocache</td>
+      <td>No</td>
+    </tr>
+    <tr class="ditto-kind">
+      <td>16767</td>
+      <td><a href="#active-profile-theme-kind-16767">Active Profile Theme</a></td>
+      <td>The user's currently active profile theme</td>
+      <td>No</td>
+    </tr>
+    <tr>
+      <td>30023</td>
+      <td>Article</td>
+      <td>Long-form blog post with Markdown content (NIP-23)</td>
+      <td>Yes</td>
+    </tr>
+    <tr class="ditto-kind">
+      <td>30078</td>
+      <td><a href="#app-settings-kind-30078">App Settings</a></td>
+      <td>Encrypted per-user Ditto settings (NIP-78)</td>
+      <td>Yes</td>
+    </tr>
+    <tr>
+      <td>30311</td>
+      <td>Stream</td>
+      <td>Live streaming event</td>
+      <td>Yes</td>
+    </tr>
+    <tr>
+      <td>34236</td>
+      <td>Vine</td>
+      <td>Short-form video post</td>
+      <td>Yes</td>
+    </tr>
+    <tr class="ditto-kind">
+      <td>36767</td>
+      <td><a href="#theme-definition-kind-36767">Theme Definition</a></td>
+      <td>Shareable custom UI theme with colors, font, and background</td>
+      <td>Yes</td>
+    </tr>
+    <tr>
+      <td>37381</td>
+      <td>Magic Deck</td>
+      <td>Magic: The Gathering deck list</td>
+      <td>Yes</td>
+    </tr>
+    <tr>
+      <td>37516</td>
+      <td>Geocache</td>
+      <td>Geocache listing for real-world treasure hunting</td>
+      <td>Yes</td>
+    </tr>
+    <tr>
+      <td>39089</td>
+      <td>Follow Pack</td>
+      <td>Curated follow recommendations (starter packs)</td>
+      <td>Yes</td>
+    </tr>
+  </tbody>
+</table>
 
 ---
 
