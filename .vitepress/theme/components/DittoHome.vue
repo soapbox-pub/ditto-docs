@@ -40,8 +40,8 @@
           not feed the Big Tech machine. Open source, decentralized, and entirely yours to customize and build upon.
         </p>
         <div class="hero-actions">
-          <a href="/guides/themes" class="btn btn-ghost">
-            Guides
+          <a href="/docs" class="btn btn-ghost">
+            Docs
           </a>
           <a href="https://ditto.pub" target="_blank" class="btn btn-primary">
             <span>Launch Ditto &#8599;</span>

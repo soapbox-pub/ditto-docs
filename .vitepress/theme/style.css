@@ -5199,6 +5199,13 @@ button.screen-power-btn.power-standby {
   margin-bottom: 28px;
 }
 
+.three-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px;
+  margin-bottom: 28px;
+}
+
 .fun-card {
   background: var(--vp-c-bg-soft);
   border: 1px solid var(--vp-c-divider);
@@ -5233,6 +5240,30 @@ button.screen-power-btn.power-standby {
   line-height: 1.65;
   color: var(--vp-c-text-2);
   margin: 0;
+}
+
+a.fun-card-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+a.fun-card-link:hover {
+  text-decoration: none;
+}
+
+.card-link-hint {
+  display: inline-block;
+  margin-top: 14px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ditto-purple);
+  transition: letter-spacing 0.2s ease;
+}
+
+a.fun-card-link:hover .card-link-hint {
+  letter-spacing: 0.5px;
 }
 
 /* ---------- Callout ---------- */
@@ -5444,7 +5475,8 @@ button.screen-power-btn.power-standby {
 
   .big-idea-emoji { font-size: 56px; }
 
-  .two-cards {
+  .two-cards,
+  .three-cards {
     grid-template-columns: 1fr;
   }
 

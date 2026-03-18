@@ -51,6 +51,7 @@ export default defineConfig({
 
     nav: [
       { text: 'Home', link: '/' },
+      { text: 'Docs', link: '/docs' },
       {
         text: 'Learn',
         items: [
