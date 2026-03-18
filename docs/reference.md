@@ -58,7 +58,6 @@ Rows with a <span style="display:inline-block;width:12px;height:12px;border-radi
       <th>Kind</th>
       <th>Name</th>
       <th>Description</th>
-      <th>Addressable</th>
     </tr>
   </thead>
   <tbody>
@@ -66,85 +65,71 @@ Rows with a <span style="display:inline-block;width:12px;height:12px;border-radi
       <td>1018</td>
       <td>Poll Vote</td>
       <td>Cast a vote on a kind 1068 poll</td>
-      <td>No</td>
     </tr>
     <tr>
       <td>1068</td>
       <td>Poll</td>
       <td>Community poll with multiple-choice options</td>
-      <td>No</td>
     </tr>
     <tr>
       <td>1985</td>
       <td><a href="#trends">Trending Labels</a></td>
       <td>Trending hashtags and posts published by the relay</td>
-      <td>No</td>
     </tr>
     <tr>
       <td>3367</td>
       <td>Color Moment</td>
       <td>Color palette post expressing a mood</td>
-      <td>No</td>
     </tr>
     <tr>
       <td>7516</td>
       <td>Found Log</td>
       <td>Log entry recording a user finding a geocache</td>
-      <td>No</td>
     </tr>
     <tr class="ditto-kind">
       <td>16767</td>
       <td><a href="#ditto-profile-theme">Active Profile Theme</a></td>
       <td>The user's currently active profile theme</td>
-      <td>No</td>
     </tr>
     <tr>
       <td>30023</td>
       <td>Article</td>
       <td>Long-form blog post with Markdown content (NIP-23)</td>
-      <td>Yes</td>
     </tr>
     <tr class="ditto-kind">
       <td>30078</td>
       <td><a href="#ditto-settings">App Settings</a></td>
       <td>Encrypted per-user Ditto settings (NIP-78)</td>
-      <td>Yes</td>
     </tr>
     <tr>
       <td>30311</td>
       <td>Stream</td>
       <td>Live streaming event</td>
-      <td>Yes</td>
     </tr>
     <tr>
       <td>34236</td>
       <td>Vine</td>
       <td>Short-form video post</td>
-      <td>Yes</td>
     </tr>
     <tr class="ditto-kind">
       <td>36767</td>
       <td><a href="#ditto-theme">Theme Definition</a></td>
       <td>Shareable custom UI theme with colors, font, and background</td>
-      <td>Yes</td>
     </tr>
     <tr>
       <td>37381</td>
       <td>Magic Deck</td>
       <td>Magic: The Gathering deck list</td>
-      <td>Yes</td>
     </tr>
     <tr>
       <td>37516</td>
       <td>Geocache</td>
       <td>Geocache listing for real-world treasure hunting</td>
-      <td>Yes</td>
     </tr>
     <tr>
       <td>39089</td>
       <td>Follow Pack</td>
       <td>Curated follow recommendations (starter packs)</td>
-      <td>Yes</td>
     </tr>
   </tbody>
 </table>
