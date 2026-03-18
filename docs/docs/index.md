@@ -13,24 +13,18 @@ description: Everything you need to understand, customize, and self-host Ditto.
 </div>
 
 <div class="page-section">
-<div class="three-cards">
+<div class="two-cards">
 <div class="fun-card">
   <div class="fun-card-emoji">🌱</div>
   <h3>Learn</h3>
-  <p>New to Ditto or Nostr? Start here. Understand the protocol, discover what makes Ditto different, and get set up in about 2 minutes.</p>
+  <p>New to Ditto or Nostr? Start here. Understand the protocol and the ideas behind Ditto.</p>
   <a href="/docs/what-is-nostr" class="card-link-hint">Get started &rarr;</a>
 </div>
 <div class="fun-card">
   <div class="fun-card-emoji">🛠️</div>
-  <h3>Guides</h3>
-  <p>Hands-on guides for customizing and running Ditto. Themes, configuration, self-hosting, and everything in between.</p>
-  <a href="/docs/themes" class="card-link-hint">Read the guides &rarr;</a>
-</div>
-<div class="fun-card">
-  <div class="fun-card-emoji">📐</div>
-  <h3>Specs</h3>
-  <p>Technical reference for developers building on Ditto. Event kinds, protocol details, and implementation notes.</p>
-  <a href="/docs/kinds" class="card-link-hint">View the specs &rarr;</a>
+  <h3>Development</h3>
+  <p>Themes, self-hosting, configuration, and Nostr event references for building on Ditto.</p>
+  <a href="/docs/themes" class="card-link-hint">Start building &rarr;</a>
 </div>
 </div>
 </div>
@@ -54,7 +48,7 @@ description: Everything you need to understand, customize, and self-host Ditto.
 </div>
 <div class="fun-card">
   <div class="fun-card-emoji">🪐</div>
-  <h3>Philosophy</h3>
+  <h3>Ditto Philosophy</h3>
   <p>The ideas and principles behind Ditto's design. Why we build the way we build.</p>
   <a href="/docs/philosophy" class="card-link-hint">Read more &rarr;</a>
 </div>
@@ -67,7 +61,7 @@ description: Everything you need to understand, customize, and self-host Ditto.
 <div class="section-header-left">
   <span class="section-emoji">🛠️</span>
 
-## Guides
+## Development
 
 </div>
 
@@ -81,32 +75,12 @@ description: Everything you need to understand, customize, and self-host Ditto.
 <div class="fun-card">
   <div class="fun-card-emoji">🖥️</div>
   <h3>Self-Hosting</h3>
-  <p>Deploy your own Ditto instance. Step-by-step instructions for running Ditto on your own server.</p>
+  <p>Deploy and configure your own Ditto instance. Deployment options, <code>ditto.json</code> reference, and custom branding.</p>
   <a href="/docs/self-hosting" class="card-link-hint">Read more &rarr;</a>
 </div>
 <div class="fun-card">
-  <div class="fun-card-emoji">⚙️</div>
-  <h3>Configuration</h3>
-  <p>The complete reference for <code>ditto.json</code>. Every setting, explained.</p>
-  <a href="/docs/configuration" class="card-link-hint">Read more &rarr;</a>
-</div>
-</div>
-</div>
-
-<div class="page-divider"></div>
-
-<div class="page-section">
-<div class="section-header-left">
-  <span class="section-emoji">📐</span>
-
-## Specs
-
-</div>
-
-<div class="two-cards">
-<div class="fun-card">
   <div class="fun-card-emoji">📋</div>
-  <h3>Event Kinds</h3>
+  <h3>Nostr Events</h3>
   <p>All non-standard Nostr event kinds that Ditto supports, including community and Ditto-specific kinds.</p>
   <a href="/docs/kinds" class="card-link-hint">Read more &rarr;</a>
 </div>

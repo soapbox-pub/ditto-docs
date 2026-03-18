@@ -64,21 +64,15 @@ export default defineConfig({
           text: 'Learn',
           items: [
             { text: 'What is Nostr?', link: '/docs/what-is-nostr' },
-            { text: 'Philosophy', link: '/docs/philosophy' },
+            { text: 'Ditto Philosophy', link: '/docs/philosophy' },
           ],
         },
         {
-          text: 'Guides',
+          text: 'Development',
           items: [
             { text: 'Custom Themes', link: '/docs/themes' },
             { text: 'Self-Hosting', link: '/docs/self-hosting' },
-            { text: 'Configuration', link: '/docs/configuration' },
-          ],
-        },
-        {
-          text: 'Specs',
-          items: [
-            { text: 'Event Kinds', link: '/docs/kinds' },
+            { text: 'Nostr Events', link: '/docs/kinds' },
           ],
         },
       ],

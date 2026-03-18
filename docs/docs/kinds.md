@@ -2,7 +2,7 @@
 description: All non-standard Nostr event kinds that Ditto supports, including community and Ditto-specific kinds.
 ---
 
-# Event Kinds
+# Nostr Events
 
 Ditto uses standard Nostr event kinds alongside a number of community and Ditto-specific kinds. This page documents all non-standard kinds that Ditto supports.
 
