@@ -1,6 +1,6 @@
 ---
 outline: [2, 2]
-description: All non-standard Nostr event kinds that Ditto supports, including community and Ditto-specific kinds.
+description: All Nostr event kinds that Ditto supports beyond the core protocol, including community and Ditto-specific kinds.
 ---
 
 <div class="page-hero">
@@ -8,7 +8,7 @@ description: All non-standard Nostr event kinds that Ditto supports, including c
 
 # Ditto Nostr Reference
 
-  <p class="page-hero-sub">All non-standard Nostr event kinds that Ditto supports, including community and Ditto-specific kinds.</p>
+  <p class="page-hero-sub">All Nostr event kinds that Ditto supports beyond the core protocol, including community and Ditto-specific kinds.</p>
 </div>
 
 For a complete list of all Nostr event kinds, see [nostrbook.dev](https://nostrbook.dev/). The protocol is defined by [NIPs](https://github.com/nostr-protocol/nips) (Nostr Implementation Possibilities), and community members can share custom NIP proposals on [NostrHub](https://nostrhub.io/).
