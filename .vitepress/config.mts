@@ -15,8 +15,8 @@ const docsSidebar = [
   {
     text: 'Development',
     items: [
-      { text: 'Self-Hosting', link: '/self-hosting' },
       { text: 'Nostr Events', link: '/kinds' },
+      { text: 'Self-Hosting', link: '/self-hosting' },
     ],
   },
 ]
