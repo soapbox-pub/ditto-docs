@@ -57,17 +57,17 @@
               <div class="win-help-heading">Help Topics</div>
               <div class="win-help-separator"></div>
               <div class="win-help-group-label">Learn</div>
-              <a href="/learn/what-is-nostr" class="win-help-link">What is Nostr?</a>
-              <a href="/learn/getting-started" class="win-help-link">Getting Started</a>
-              <a href="/learn/why-ditto" class="win-help-link">Why Ditto?</a>
+              <a href="/docs/what-is-nostr" class="win-help-link">What is Nostr?</a>
+              <a href="/docs/getting-started" class="win-help-link">Getting Started</a>
+              <a href="/docs/why-ditto" class="win-help-link">Why Ditto?</a>
               <div class="win-help-separator"></div>
               <div class="win-help-group-label">Guides</div>
-              <a href="/guides/themes" class="win-help-link">Custom Themes</a>
-              <a href="/guides/self-hosting" class="win-help-link">Self-Hosting</a>
-              <a href="/guides/configuration" class="win-help-link">Configuration</a>
+              <a href="/docs/themes" class="win-help-link">Custom Themes</a>
+              <a href="/docs/self-hosting" class="win-help-link">Self-Hosting</a>
+              <a href="/docs/configuration" class="win-help-link">Configuration</a>
               <div class="win-help-separator"></div>
               <div class="win-help-group-label">Specs</div>
-              <a href="/specs/kinds" class="win-help-link">Event Kinds</a>
+              <a href="/docs/kinds" class="win-help-link">Event Kinds</a>
               <div class="win-help-separator"></div>
               <a href="https://ditto.pub" class="win-help-link" target="_blank">About Ditto...</a>
             </div>

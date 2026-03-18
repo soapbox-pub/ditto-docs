@@ -53,61 +53,34 @@ export default defineConfig({
       { text: 'Home', link: '/' },
       { text: 'Docs', link: '/docs' },
       {
-        text: 'Learn',
-        items: [
-          { text: 'What is Nostr?', link: '/learn/what-is-nostr' },
-          { text: 'Getting Started', link: '/learn/getting-started' },
-          { text: 'Why Ditto?', link: '/learn/why-ditto' },
-          { text: 'Philosophy', link: '/learn/philosophy' },
-        ],
-      },
-      {
-        text: 'Guides',
-        items: [
-          { text: 'Custom Themes', link: '/guides/themes' },
-          { text: 'Self-Hosting', link: '/guides/self-hosting' },
-          { text: 'Configuration', link: '/guides/configuration' },
-        ],
-      },
-      {
-        text: 'Specs',
-        items: [
-          { text: 'Event Kinds', link: '/specs/kinds' },
-        ],
-      },
-      {
         text: 'Launch Ditto ↗',
         link: 'https://ditto.pub',
       },
     ],
 
     sidebar: {
-      '/learn/': [
+      '/docs/': [
         {
           text: 'Learn',
           items: [
-            { text: 'What is Nostr?', link: '/learn/what-is-nostr' },
-            { text: 'Getting Started', link: '/learn/getting-started' },
-            { text: 'Why Ditto?', link: '/learn/why-ditto' },
-            { text: 'Philosophy', link: '/learn/philosophy' },
+            { text: 'What is Nostr?', link: '/docs/what-is-nostr' },
+            { text: 'Getting Started', link: '/docs/getting-started' },
+            { text: 'Why Ditto?', link: '/docs/why-ditto' },
+            { text: 'Philosophy', link: '/docs/philosophy' },
           ],
         },
-      ],
-      '/guides/': [
         {
           text: 'Guides',
           items: [
-            { text: 'Custom Themes', link: '/guides/themes' },
-            { text: 'Self-Hosting', link: '/guides/self-hosting' },
-            { text: 'Configuration', link: '/guides/configuration' },
+            { text: 'Custom Themes', link: '/docs/themes' },
+            { text: 'Self-Hosting', link: '/docs/self-hosting' },
+            { text: 'Configuration', link: '/docs/configuration' },
           ],
         },
-      ],
-      '/specs/': [
         {
           text: 'Specs',
           items: [
-            { text: 'Event Kinds', link: '/specs/kinds' },
+            { text: 'Event Kinds', link: '/docs/kinds' },
           ],
         },
       ],

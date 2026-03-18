@@ -56,5 +56,5 @@ Head to **Settings > Appearance** to customize your experience:
 That's it. Start posting, start following, start exploring. Welcome to the network.
 
 ::: tip New to the whole thing?
-Read [What is Nostr?](/learn/what-is-nostr) for the full picture of how this all works.
+Read [What is Nostr?](/docs/what-is-nostr) for the full picture of how this all works.
 :::

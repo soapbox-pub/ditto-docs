@@ -91,7 +91,7 @@ Create a `ditto.json` file in the project root before building. This file lets y
 }
 ```
 
-See the [Configuration guide](/guides/configuration) for all available options.
+See the [Configuration guide](/docs/configuration) for all available options.
 
 ::: tip
 The `ditto.json` file is in `.gitignore` by default, so each deployment can have its own configuration without conflicts.

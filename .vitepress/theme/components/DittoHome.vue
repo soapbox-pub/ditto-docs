@@ -343,7 +343,7 @@
         <div class="ownership-grid scroll-reveal" ref="ownershipRef">
           <div class="ownership-card" style="--delay: 0; --grad-angle: 135deg;">
             <h3>You own your data</h3>
-            <p>We don't control your Ditto account. <a href="/learn/what-is-nostr">Your identity</a>, your content, your connections&nbsp;&mdash; they belong to&nbsp;you. No platform lock-in, no hostage data. Leave anytime and take everything with&nbsp;you.</p>
+            <p>We don't control your Ditto account. <a href="/docs/what-is-nostr">Your identity</a>, your content, your connections&nbsp;&mdash; they belong to&nbsp;you. No platform lock-in, no hostage data. Leave anytime and take everything with&nbsp;you.</p>
           </div>
           <div class="ownership-card" style="--delay: 1; --grad-angle: 180deg;">
             <h3>The community owns the&nbsp;project</h3>
@@ -383,7 +383,7 @@
         <div class="selfhost-blurb">
           <p>Ditto builds to static files. Deploy it on a $5 VPS, GitHub Pages, Netlify, or a Raspberry Pi in your closet. One config file. Your domain. Your community.</p>
           <div class="build-actions">
-            <a href="/guides/self-hosting" class="btn btn-ghost">Read the self-hosting&nbsp;guide&nbsp;→</a>
+            <a href="/docs/self-hosting" class="btn btn-ghost">Read the self-hosting&nbsp;guide&nbsp;→</a>
           </div>
         </div>
       </div>
