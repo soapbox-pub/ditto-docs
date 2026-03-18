@@ -53,12 +53,6 @@ description: Everything you need to understand, customize, and self-host Ditto.
   <a href="/docs/what-is-nostr" class="card-link-hint">Read more &rarr;</a>
 </div>
 <div class="fun-card">
-  <div class="fun-card-emoji">💜</div>
-  <h3>Why Ditto?</h3>
-  <p>What makes Ditto different from other Nostr apps. Custom themes, bridge apps, community tools, and more.</p>
-  <a href="/docs/why-ditto" class="card-link-hint">Read more &rarr;</a>
-</div>
-<div class="fun-card">
   <div class="fun-card-emoji">🪐</div>
   <h3>Philosophy</h3>
   <p>The ideas and principles behind Ditto's design. Why we build the way we build.</p>

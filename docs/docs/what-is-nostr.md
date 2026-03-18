@@ -157,6 +157,6 @@ It takes about 2 minutes to get started. No, really.
     <a href="https://ditto.pub" target="_blank" class="btn btn-primary">
       <span>Launch Ditto &#8599;</span>
     </a>
-    <a href="/docs/why-ditto" class="btn btn-ghost">Why Ditto?</a>
+    <a href="/docs/philosophy" class="btn btn-ghost">Philosophy</a>
   </div>
 </div>
