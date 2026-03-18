@@ -64,7 +64,7 @@ Rows with a <span style="display:inline-block;width:12px;height:12px;border-radi
     </tr>
     <tr>
       <td>1985</td>
-      <td><a href="#trending-labels-kind-1985">Trending Labels</a></td>
+      <td><a href="#ditto-trends">Trending Labels</a></td>
       <td>Trending hashtags and posts published by the relay</td>
       <td>No</td>
     </tr>
@@ -82,7 +82,7 @@ Rows with a <span style="display:inline-block;width:12px;height:12px;border-radi
     </tr>
     <tr class="ditto-kind">
       <td>16767</td>
-      <td><a href="#active-profile-theme-kind-16767">Active Profile Theme</a></td>
+      <td><a href="#ditto-active-theme-event">Active Profile Theme</a></td>
       <td>The user's currently active profile theme</td>
       <td>No</td>
     </tr>
@@ -94,7 +94,7 @@ Rows with a <span style="display:inline-block;width:12px;height:12px;border-radi
     </tr>
     <tr class="ditto-kind">
       <td>30078</td>
-      <td><a href="#app-settings-kind-30078">App Settings</a></td>
+      <td><a href="#ditto-settings-event">App Settings</a></td>
       <td>Encrypted per-user Ditto settings (NIP-78)</td>
       <td>Yes</td>
     </tr>
@@ -112,7 +112,7 @@ Rows with a <span style="display:inline-block;width:12px;height:12px;border-radi
     </tr>
     <tr class="ditto-kind">
       <td>36767</td>
-      <td><a href="#theme-definition-kind-36767">Theme Definition</a></td>
+      <td><a href="#ditto-theme-event">Theme Definition</a></td>
       <td>Shareable custom UI theme with colors, font, and background</td>
       <td>Yes</td>
     </tr>
@@ -139,7 +139,7 @@ Rows with a <span style="display:inline-block;width:12px;height:12px;border-radi
 
 ---
 
-## App settings (kind 30078)
+## Ditto Settings Event
 
 Ditto stores encrypted per-user settings in a [NIP-78](https://github.com/nostr-protocol/nips/blob/master/78.md) application-specific data event. The `d` tag is always `ditto-metadata` and the content is NIP-44 encrypted JSON.
 
@@ -164,7 +164,7 @@ After NIP-44 decryption with the user's own pubkey, the content is a JSON object
 | Field | Type | Description |
 |-------|------|-------------|
 | `theme` | `"light" \| "dark" \| "system" \| "custom"` | Active theme mode |
-| `customTheme` | `ThemeConfig` | Custom theme configuration with 3 core colors, optional font and background (see [Theming](#theme-definition-kind-36767)) |
+| `customTheme` | `ThemeConfig` | Custom theme configuration with 3 core colors, optional font and background (see [Theming](#ditto-theme-event)) |
 | `useAppRelays` | `boolean` | Whether to use Ditto's default relays alongside the user's relay list |
 | `feedSettings` | `FeedSettings` | Toggles controlling which content types appear in the sidebar and feed |
 | `contentFilters` | `ContentFilter[]` | User-defined content filter rules |
@@ -202,7 +202,7 @@ After NIP-44 decryption with the user's own pubkey, the content is a JSON object
 
 ---
 
-## Trending labels (kind 1985)
+## Ditto Trends
 
 Ditto uses [NIP-32](https://github.com/nostr-protocol/nips/blob/master/32.md) label events to publish trending data. A trusted relay pubkey publishes these periodically under the `pub.ditto.trends` namespace.
 
@@ -274,9 +274,26 @@ Ditto publishes one trending-hashtags label event per UTC calendar day. Clients 
 
 Replace `"#l": ["#t"]` with `"#l": ["#e"]` for trending posts.
 
+### NIP-50 search extensions
+
+Ditto extends [NIP-50](https://github.com/nostr-protocol/nips/blob/master/50.md) search with two sort modes for retrieving trending content directly through relay queries:
+
+- **`sort:hot`** — Returns events ranked by recent engagement velocity. Events are scored based on interactions (replies, reposts, reactions) weighted toward recency, surfacing content that is trending right now.
+- **`sort:top`** — Returns events ranked by total engagement. Events are sorted by their overall interaction count, surfacing the most popular content over a longer time period.
+
+```json
+{
+  "kinds": [1],
+  "search": "sort:hot",
+  "limit": 20
+}
+```
+
+These extensions can be combined with other NIP-50 search terms. For example, `"search": "bitcoin sort:hot"` returns trending posts matching "bitcoin".
+
 ---
 
-## Theme definition (kind 36767)
+## Ditto Theme Event
 
 Addressable event for publishing shareable custom UI themes. A user can publish multiple themes, each identified by a unique `d` tag. Colors are stored in `c` tags, with optional font (`f`) and background (`bg`) tags.
 
@@ -356,7 +373,7 @@ Since kind 36767 is addressable, a user can publish multiple themes by using dif
 
 ---
 
-## Active profile theme (kind 16767)
+## Ditto Active Theme Event
 
 Replaceable event representing the user's currently active profile theme. Only one exists per user. When visiting a profile, clients query this kind to determine what theme to display.
 
