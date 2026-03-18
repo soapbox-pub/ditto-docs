@@ -336,7 +336,7 @@ After NIP-44 decryption with the user's own pubkey, the content is a JSON object
 
 ## Search & Trends
 
-Ditto's relay supports full-text search and trending content discovery. Search is available through [NIP-50](https://github.com/nostr-protocol/nips/blob/master/50.md) with custom sort extensions, and trending data is published as [NIP-32](https://github.com/nostr-protocol/nips/blob/master/32.md) label events.
+[Ditto's relay](https://gitlab.com/soapbox-pub/ditto-relay) supports full-text search and trending content discovery. Search is available through [NIP-50](https://github.com/nostr-protocol/nips/blob/master/50.md) with custom sort extensions, and trending data is published as [NIP-32](https://github.com/nostr-protocol/nips/blob/master/32.md) label events. The public relay is available at `wss://relay.ditto.pub`.
 
 ### NIP-50 search extensions
 
