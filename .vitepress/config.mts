@@ -49,16 +49,17 @@ export default defineConfig({
     const ogTitle = title ? `${title} | Ditto` : 'Ditto'
     const pagePath = pageData.relativePath.replace(/((^|\/)index)?\.md$/, '')
     const ogUrl = pagePath ? `${SITE_URL}/${pagePath}` : SITE_URL
+    const ogImage = pageData.frontmatter.og_image ? `${SITE_URL}${pageData.frontmatter.og_image}` : OG_IMAGE
 
     head.push(['meta', { property: 'og:type', content: 'website' }])
     head.push(['meta', { property: 'og:title', content: ogTitle }])
     head.push(['meta', { property: 'og:description', content: description }])
     head.push(['meta', { property: 'og:url', content: ogUrl }])
-    head.push(['meta', { property: 'og:image', content: OG_IMAGE }])
+    head.push(['meta', { property: 'og:image', content: ogImage }])
     head.push(['meta', { name: 'twitter:card', content: 'summary_large_image' }])
     head.push(['meta', { name: 'twitter:title', content: ogTitle }])
     head.push(['meta', { name: 'twitter:description', content: description }])
-    head.push(['meta', { name: 'twitter:image', content: OG_IMAGE }])
+    head.push(['meta', { name: 'twitter:image', content: ogImage }])
 
     return head
   },
