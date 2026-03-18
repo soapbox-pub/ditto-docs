@@ -1,6 +1,6 @@
 ---
 outline: false
-description: Nostr is a decentralized protocol where you own your identity through cryptographic keys, not accounts on someone else's server.
+description: Nostr is an open protocol where your identity, social graph, and data are yours — and the apps built on it are unlike anything else on the internet.
 ---
 
 <div class="page-hero">
@@ -8,19 +8,19 @@ description: Nostr is a decentralized protocol where you own your identity throu
 
 # What is Nostr?
 
-  <p class="page-hero-sub">The social media protocol that gives you your power back.<br>And it's way simpler than you think.</p>
+  <p class="page-hero-sub">The open protocol behind the most interesting apps on the internet.<br>Here's why it matters.</p>
 </div>
 
 <div class="page-section">
 <div class="big-idea">
-<div class="big-idea-emoji">💡</div>
+<div class="big-idea-emoji">🔥</div>
 <div class="big-idea-text">
 
-## The elevator pitch
+## Forget what you've heard
 
-Imagine social media where **you** own your account. Not Twitter. Not Meta. Not anyone. Your identity is a cryptographic keypair that lives on your device. You can take it anywhere, use it with any app, and *nobody can ban you from the network*.
+You don't need to care about decentralization to love what's being built on Nostr. You just need to try it. Games that run inside social feeds. Profiles you can theme like personal planets. An ecosystem of apps that all talk to each other -- so you never lose your stuff.
 
-That's Nostr. It stands for **Notes and Other Stuff Transmitted by Relays**. Yes, the acronym is intentionally playful. That's the vibe.
+Nostr stands for **Notes and Other Stuff Transmitted by Relays**. The "Other Stuff" is where things get interesting.
 
 </div>
 </div>
@@ -30,36 +30,42 @@ That's Nostr. It stands for **Notes and Other Stuff Transmitted by Relays**. Yes
 
 <div class="page-section">
 <div class="section-header-left">
-  <span class="section-emoji">🔑</span>
+  <span class="section-emoji">🎪</span>
 
-## Keys, not accounts
+## What makes it different
 
 </div>
 
-Instead of a username and password managed by some corporation, you get two things:
-
-<div class="two-cards">
+<div class="three-cards">
 <div class="fun-card">
-  <div class="fun-card-emoji">🟢</div>
+  <div class="fun-card-emoji">🎮</div>
 
-### Public key
+### Apps that interoperate
 
-Your identity. Like an email address anyone can see. This is how people find you and follow you across the network.
+Play a game, browse a marketplace, read long-form articles -- all from different developers, all sharing the same identity and social graph. No walled gardens.
 
 </div>
 <div class="fun-card">
-  <div class="fun-card-emoji">🔴</div>
+  <div class="fun-card-emoji">🎨</div>
 
-### Private key
+### Infinite "Other Stuff"
 
-Your secret. Like a password that proves you're you. Never share this. It signs everything you post.
+The protocol doesn't just do posts. It carries games, live streams, collaborative lists, custom app data, and things nobody has invented yet. If you can imagine it, Nostr can transmit it.
+
+</div>
+<div class="fun-card">
+  <div class="fun-card-emoji">🔄</div>
+
+### Take everything with you
+
+Switch apps whenever you want. Your followers, posts, messages, and history come with you. Nothing is locked inside a single platform.
 
 </div>
 </div>
 
 <div class="callout-fun">
   <span class="callout-emoji">✨</span>
-  <p>That's it. No email verification. No phone number. No selfie with your ID. No CAPTCHA. No waiting list. <strong>Just math.</strong></p>
+  <p>This is what the internet was supposed to feel like. Not a handful of walled-off apps fighting for your attention -- a <strong>shared, open playground</strong> where anyone can build.</p>
 </div>
 </div>
 
@@ -67,37 +73,36 @@ Your secret. Like a password that proves you're you. Never share this. It signs 
 
 <div class="page-section">
 <div class="section-header-left">
-  <span class="section-emoji">📡</span>
+  <span class="section-emoji">⚙️</span>
 
-## Relays, not servers
+## How it actually works
 
 </div>
 
-Your posts don't live on one company's servers. They get sent to **relays** -- simple servers that store and forward messages. You can use as many relays as you want. If one goes down or kicks you off, your data lives on all the others.
+Now that you know what it feels like -- here's the simple machinery underneath.
+
+<div class="two-cards">
+<div class="fun-card">
+  <div class="fun-card-emoji">🔑</div>
+
+### Keys, not accounts
+
+Your identity is a cryptographic keypair that lives on your device. A **public key** is how people find you. A **private key** proves you're you. No sign-up forms, no corporations managing your login.
+
+</div>
+<div class="fun-card">
+  <div class="fun-card-emoji">📡</div>
+
+### Relays, not servers
+
+Your data gets sent to **relays** -- simple servers that store and forward messages. Use as many as you want. If one goes down, your data lives on the others. Think of them like email servers: different providers, same protocol.
+
+</div>
+</div>
 
 <div class="callout-fun">
   <span class="callout-emoji">📬</span>
-  <p>Think of relays like email servers. You can send mail from Gmail to Outlook because they speak the same protocol. Nostr works the same way -- <strong>different apps, different relays, same network</strong>.</p>
-</div>
-</div>
-
-<div class="page-divider"></div>
-
-<div class="page-section">
-<div class="section-header-left">
-  <span class="section-emoji">📱</span>
-
-## Apps, not platforms
-
-</div>
-
-Because Nostr is a **protocol** (not a platform), there are many apps that speak it. Ditto is one of them. You can use Ditto today, switch to another Nostr app tomorrow, and all your followers, posts, and messages come with you.
-
-The protocol evolves through [NIPs](https://github.com/nostr-protocol/nips) (Nostr Implementation Possibilities) -- proposals that anyone can write. Community members share and discuss custom NIPs on [NostrHub](https://nostrhub.io/).
-
-<div class="big-quote">
-  <span class="big-quote-mark">"</span>
-  <p>Your identity is portable. Your data is portable. Your social graph is portable.</p>
+  <p>The protocol evolves through <a href="https://github.com/nostr-protocol/nips">NIPs</a> (Nostr Implementation Possibilities) -- proposals anyone can write. The community shares and discusses custom NIPs on <a href="https://nostrhub.io/">NostrHub</a>.</p>
 </div>
 </div>
 
@@ -107,7 +112,7 @@ The protocol evolves through [NIPs](https://github.com/nostr-protocol/nips) (Nos
 <div class="section-header-left">
   <span class="section-emoji">⚔️</span>
 
-## Why does this matter?
+## Why this matters
 
 </div>
 
@@ -115,14 +120,14 @@ The protocol evolves through [NIPs](https://github.com/nostr-protocol/nips) (Nos
 <div class="versus-col versus-old">
   <div class="versus-header">
     <span class="versus-emoji">🏢</span>
-    <h3>Traditional Social Media</h3>
+    <h3>The old internet</h3>
   </div>
   <ul>
     <li>Company owns your account</li>
-    <li>Posts live on their servers</li>
+    <li>Posts locked in one app</li>
     <li>They choose the algorithm</li>
     <li>They can ban you</li>
-    <li>Locked into one app</li>
+    <li>Same square interfaces everywhere</li>
     <li>Your data is their product</li>
   </ul>
 </div>
@@ -136,10 +141,10 @@ The protocol evolves through [NIPs](https://github.com/nostr-protocol/nips) (Nos
   </div>
   <ul>
     <li>You own your keys</li>
-    <li>Posts live across many relays</li>
+    <li>Data flows across every app</li>
     <li>You choose the experience</li>
     <li>No central authority</li>
-    <li>Works with any Nostr app</li>
+    <li>Wild, creative, different apps</li>
     <li>Your data is yours</li>
   </ul>
 </div>
@@ -151,7 +156,7 @@ The protocol evolves through [NIPs](https://github.com/nostr-protocol/nips) (Nos
 <div class="page-cta">
   <div class="page-cta-emoji">🚀</div>
 
-## Ready to jump in?
+## Ready to see it for yourself?
 
 It takes about 2 minutes to get started. No, really.
 
