@@ -1,14 +1,24 @@
 ---
+outline: [2, 2]
 description: All non-standard Nostr event kinds that Ditto supports, including community and Ditto-specific kinds.
 ---
 
+<div class="page-hero">
+  <div class="page-hero-emoji">📋</div>
+
 # Ditto Nostr Reference
 
-Ditto uses standard Nostr event kinds alongside a number of community and Ditto-specific kinds. This page documents all non-standard kinds that Ditto supports.
+  <p class="page-hero-sub">All non-standard Nostr event kinds that Ditto supports, including community and Ditto-specific kinds.</p>
+</div>
 
 For a complete list of all Nostr event kinds, see [nostrbook.dev](https://nostrbook.dev/). The protocol is defined by [NIPs](https://github.com/nostr-protocol/nips) (Nostr Implementation Possibilities), and community members can share custom NIP proposals on [NostrHub](https://nostrhub.io/).
 
+<div class="section-header-left">
+  <span class="section-emoji">📦</span>
+
 ## Supported kinds
+
+</div>
 
 <style>
 .kinds-table {
@@ -141,7 +151,12 @@ Rows with a <span style="display:inline-block;width:12px;height:12px;border-radi
 
 ---
 
+<div class="section-header-left">
+  <span class="section-emoji">🎨</span>
+
 ## Ditto Profile Theme
+
+</div>
 
 Replaceable event representing the user's currently active profile theme. Only one exists per user. When visiting a profile, clients query this kind to determine what theme to display.
 
@@ -191,7 +206,12 @@ The `content` field is unused and MUST be an empty string (`""`).
 
 ---
 
+<div class="section-header-left">
+  <span class="section-emoji">🖌️</span>
+
 ## Ditto Theme
+
+</div>
 
 Addressable event for publishing shareable custom UI themes. A user can publish multiple themes, each identified by a unique `d` tag. Colors are stored in `c` tags, with optional font (`f`) and background (`bg`) tags.
 
@@ -271,7 +291,12 @@ Since kind 36767 is addressable, a user can publish multiple themes by using dif
 
 ---
 
+<div class="section-header-left">
+  <span class="section-emoji">⚙️</span>
+
 ## Ditto Settings
+
+</div>
 
 Ditto stores encrypted per-user settings in a [NIP-78](https://github.com/nostr-protocol/nips/blob/master/78.md) application-specific data event. The `d` tag is always `ditto-metadata` and the content is NIP-44 encrypted JSON.
 
@@ -334,7 +359,12 @@ After NIP-44 decryption with the user's own pubkey, the content is a JSON object
 
 ---
 
+<div class="section-header-left">
+  <span class="section-emoji">🔍</span>
+
 ## Search
+
+</div>
 
 [Ditto's relay](https://gitlab.com/soapbox-pub/ditto-relay) supports full-text search through [NIP-50](https://github.com/nostr-protocol/nips/blob/master/50.md) with custom sort extensions. The public relay is available at `wss://relay.ditto.pub`.
 
@@ -355,7 +385,12 @@ These extensions can be combined with other NIP-50 search terms. For example, `"
 
 ---
 
+<div class="section-header-left">
+  <span class="section-emoji">📊</span>
+
 ## Stats
+
+</div>
 
 Ditto's relay publishes engagement stats for events using [NIP-85](https://github.com/nostr-protocol/nips/pull/1534) ([kind 30383](https://nostrbook.dev/kinds/30383)). These are addressable events authored by the relay's stats pubkey, with the `d` tag set to the target event's ID.
 
@@ -411,7 +446,12 @@ Clients can batch multiple event IDs into a single request by passing an array o
 
 ---
 
+<div class="section-header-left">
+  <span class="section-emoji">🔥</span>
+
 ## Trends
+
+</div>
 
 Ditto publishes trending data as [NIP-32](https://github.com/nostr-protocol/nips/blob/master/32.md) label events under the `pub.ditto.trends` namespace. A trusted relay pubkey publishes these periodically.
 
