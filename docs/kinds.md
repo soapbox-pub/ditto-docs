@@ -10,26 +10,14 @@ Ditto uses standard Nostr event kinds alongside a number of community and Ditto-
 
 These kinds originate from external Nostr apps and communities. Ditto renders them in the feed and provides toggle controls in settings.
 
-### Media
-
 | Kind | Name | Description | Addressable | External site |
 |------|------|-------------|:-----------:|---------------|
 | 34236 | Vine | Short-form video post | Yes | [divine.video](https://divine.video) |
 | 30311 | Stream | Live streaming event | Yes | [zap.stream](https://zap.stream) |
-
-### Social
-
-| Kind | Name | Description | Addressable | External site |
-|------|------|-------------|:-----------:|---------------|
 | 1068 | Poll | Community poll with multiple-choice options | No | [pollerama.fun](https://pollerama.fun) |
 | 1018 | Poll Vote | Cast a vote on a kind 1068 poll | No | [pollerama.fun](https://pollerama.fun) |
 | 39089 | Follow Pack | Curated follow recommendations (starter packs) | Yes | [following.space](https://following.space), [following.party](https://following.party) |
 | 30023 | Article | Long-form blog post with Markdown content (NIP-23) | Yes | [inkwell.shakespeare.wtf](https://inkwell.shakespeare.wtf) |
-
-### Whimsy
-
-| Kind | Name | Description | Addressable | External site |
-|------|------|-------------|:-----------:|---------------|
 | 3367 | Color Moment | Color palette post expressing a mood | No | [espy.you](https://espy.you) |
 | 37381 | Magic Deck | Magic: The Gathering deck list | Yes | [surveil.cards](https://surveil.cards) |
 | 37516 | Geocache | Geocache listing for real-world treasure hunting | Yes | [treasures.to](https://treasures.to) |
