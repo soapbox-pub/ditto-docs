@@ -64,7 +64,6 @@ export default defineConfig({
           text: 'Learn',
           items: [
             { text: 'What is Nostr?', link: '/docs/what-is-nostr' },
-            { text: 'Getting Started', link: '/docs/getting-started' },
             { text: 'Why Ditto?', link: '/docs/why-ditto' },
             { text: 'Philosophy', link: '/docs/philosophy' },
           ],

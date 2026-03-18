@@ -154,9 +154,8 @@ Because Nostr is a **protocol** (not a platform), there are many apps that speak
 It takes about 2 minutes to get started. No, really.
 
   <div class="page-cta-actions">
-    <a href="/docs/getting-started" class="btn btn-primary">
-      <span>Get started</span>
-      <span class="btn-emoji">⚡</span>
+    <a href="https://ditto.pub" target="_blank" class="btn btn-primary">
+      <span>Launch Ditto &#8599;</span>
     </a>
     <a href="/docs/why-ditto" class="btn btn-ghost">Why Ditto?</a>
   </div>

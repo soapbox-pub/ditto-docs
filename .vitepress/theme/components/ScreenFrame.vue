@@ -58,7 +58,6 @@
               <div class="win-help-separator"></div>
               <div class="win-help-group-label">Learn</div>
               <a href="/docs/what-is-nostr" class="win-help-link">What is Nostr?</a>
-              <a href="/docs/getting-started" class="win-help-link">Getting Started</a>
               <a href="/docs/why-ditto" class="win-help-link">Why Ditto?</a>
               <div class="win-help-separator"></div>
               <div class="win-help-group-label">Guides</div>
