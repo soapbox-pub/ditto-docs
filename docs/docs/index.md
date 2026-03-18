@@ -76,7 +76,7 @@ description: Everything you need to understand, customize, and self-host Ditto.
   <div class="fun-card-emoji">📋</div>
   <h3>Ditto Nostr Reference</h3>
   <p>All non-standard Nostr event kinds that Ditto supports, including community and Ditto-specific kinds.</p>
-  <a href="/kinds" class="card-link-hint">Read more &rarr;</a>
+  <a href="/nostr-reference" class="card-link-hint">Read more &rarr;</a>
 </div>
 </div>
 </div>

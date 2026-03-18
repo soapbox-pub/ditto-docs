@@ -62,7 +62,7 @@
               <div class="win-help-separator"></div>
               <div class="win-help-group-label">Development</div>
               <a href="/self-hosting" class="win-help-link">Self-Hosting</a>
-              <a href="/kinds" class="win-help-link">Ditto Nostr Reference</a>
+              <a href="/nostr-reference" class="win-help-link">Ditto Nostr Reference</a>
               <div class="win-help-separator"></div>
               <a href="https://ditto.pub" class="win-help-link" target="_blank">About Ditto...</a>
             </div>
