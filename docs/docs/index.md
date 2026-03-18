@@ -18,13 +18,13 @@ description: Everything you need to understand, customize, and self-host Ditto.
   <div class="fun-card-emoji">🌱</div>
   <h3>Learn</h3>
   <p>New to Ditto or Nostr? Start here. Understand the protocol and the ideas behind Ditto.</p>
-  <a href="/docs/what-is-nostr" class="card-link-hint">Get started &rarr;</a>
+  <a href="/what-is-nostr" class="card-link-hint">Get started &rarr;</a>
 </div>
 <div class="fun-card">
   <div class="fun-card-emoji">🛠️</div>
   <h3>Development</h3>
   <p>Themes, self-hosting, configuration, and Nostr event references for building on Ditto.</p>
-  <a href="/docs/self-hosting" class="card-link-hint">Start building &rarr;</a>
+  <a href="/self-hosting" class="card-link-hint">Start building &rarr;</a>
 </div>
 </div>
 </div>
@@ -44,13 +44,13 @@ description: Everything you need to understand, customize, and self-host Ditto.
   <div class="fun-card-emoji">🌐</div>
   <h3>What is Nostr?</h3>
   <p>The social media protocol that gives you your power back. A beginner-friendly explainer of how Nostr works and why it matters.</p>
-  <a href="/docs/what-is-nostr" class="card-link-hint">Read more &rarr;</a>
+  <a href="/what-is-nostr" class="card-link-hint">Read more &rarr;</a>
 </div>
 <div class="fun-card">
   <div class="fun-card-emoji">🪐</div>
   <h3>Ditto Philosophy</h3>
   <p>The ideas and principles behind Ditto's design. Why we build the way we build.</p>
-  <a href="/docs/philosophy" class="card-link-hint">Read more &rarr;</a>
+  <a href="/philosophy" class="card-link-hint">Read more &rarr;</a>
 </div>
 </div>
 </div>
@@ -70,13 +70,13 @@ description: Everything you need to understand, customize, and self-host Ditto.
   <div class="fun-card-emoji">🖥️</div>
   <h3>Self-Hosting</h3>
   <p>Deploy and configure your own Ditto instance. Deployment options, <code>ditto.json</code> reference, and custom branding.</p>
-  <a href="/docs/self-hosting" class="card-link-hint">Read more &rarr;</a>
+  <a href="/self-hosting" class="card-link-hint">Read more &rarr;</a>
 </div>
 <div class="fun-card">
   <div class="fun-card-emoji">📋</div>
   <h3>Nostr Events</h3>
   <p>All non-standard Nostr event kinds that Ditto supports, including community and Ditto-specific kinds.</p>
-  <a href="/docs/kinds" class="card-link-hint">Read more &rarr;</a>
+  <a href="/kinds" class="card-link-hint">Read more &rarr;</a>
 </div>
 </div>
 </div>
@@ -95,6 +95,6 @@ Jump in and see what decentralized social feels like.
       <span>Launch Ditto</span>
       <span class="btn-emoji">&#8599;</span>
     </a>
-    <a href="/docs/what-is-nostr" class="btn btn-ghost">What is Nostr?</a>
+    <a href="/what-is-nostr" class="btn btn-ghost">What is Nostr?</a>
   </div>
 </div>

@@ -57,12 +57,12 @@
               <div class="win-help-heading">Help Topics</div>
               <div class="win-help-separator"></div>
               <div class="win-help-group-label">Learn</div>
-              <a href="/docs/what-is-nostr" class="win-help-link">What is Nostr?</a>
-              <a href="/docs/philosophy" class="win-help-link">Ditto Philosophy</a>
+              <a href="/what-is-nostr" class="win-help-link">What is Nostr?</a>
+              <a href="/philosophy" class="win-help-link">Ditto Philosophy</a>
               <div class="win-help-separator"></div>
               <div class="win-help-group-label">Development</div>
-              <a href="/docs/self-hosting" class="win-help-link">Self-Hosting</a>
-              <a href="/docs/kinds" class="win-help-link">Nostr Events</a>
+              <a href="/self-hosting" class="win-help-link">Self-Hosting</a>
+              <a href="/kinds" class="win-help-link">Nostr Events</a>
               <div class="win-help-separator"></div>
               <a href="https://ditto.pub" class="win-help-link" target="_blank">About Ditto...</a>
             </div>

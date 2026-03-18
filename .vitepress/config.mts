@@ -4,6 +4,23 @@ const SITE_URL = 'https://about.ditto.pub'
 const OG_IMAGE = `${SITE_URL}/og-image.gif`
 const DEFAULT_DESCRIPTION = 'A social platform for people who want to have fun, not feed the Big Tech machine. Open source, decentralized, and entirely yours.'
 
+const docsSidebar = [
+  {
+    text: 'Learn',
+    items: [
+      { text: 'What is Nostr?', link: '/what-is-nostr' },
+      { text: 'Ditto Philosophy', link: '/philosophy' },
+    ],
+  },
+  {
+    text: 'Development',
+    items: [
+      { text: 'Self-Hosting', link: '/self-hosting' },
+      { text: 'Nostr Events', link: '/kinds' },
+    ],
+  },
+]
+
 export default defineConfig({
   srcDir: 'docs',
   cleanUrls: true,
@@ -59,22 +76,11 @@ export default defineConfig({
     ],
 
     sidebar: {
-      '/docs/': [
-        {
-          text: 'Learn',
-          items: [
-            { text: 'What is Nostr?', link: '/docs/what-is-nostr' },
-            { text: 'Ditto Philosophy', link: '/docs/philosophy' },
-          ],
-        },
-        {
-          text: 'Development',
-          items: [
-            { text: 'Self-Hosting', link: '/docs/self-hosting' },
-            { text: 'Nostr Events', link: '/docs/kinds' },
-          ],
-        },
-      ],
+      '/docs/': docsSidebar,
+      '/what-is-nostr': docsSidebar,
+      '/philosophy': docsSidebar,
+      '/self-hosting': docsSidebar,
+      '/kinds': docsSidebar,
     },
 
 
