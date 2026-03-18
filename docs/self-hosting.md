@@ -1,17 +1,28 @@
 ---
-description: Host your own Ditto instance. It's just static files -- deploy to GitHub Pages, Netlify, Vercel, or any web server.
+description: Host your own Ditto instance. It's just static files you can deploy on any domain.
 ---
 
 # Self-Hosting Ditto
 
-Ditto is a static web application. Once built, it's just HTML, CSS, and JavaScript files that can be served from anywhere. This makes self-hosting straightforward.
+Ditto is a static web application -- just HTML, CSS, and JavaScript. Deploy it on any domain with any web server or static hosting provider.
 
-## Prerequisites
+## Download
 
-- **Node.js 22** and **npm 10.9.4** (required for building)
-- A web server or static hosting service
+Get the latest pre-built release as a zip file. Extract it and upload the contents to any web server or hosting service.
 
-## Quick start
+<a href="https://gitlab.com/soapbox-pub/ditto/-/jobs/artifacts/main/download?job=zip" class="vp-raw" style="display:inline-flex;align-items:center;gap:8px;padding:10px 24px;background:var(--vp-c-brand-3);color:#fff;border-radius:8px;font-weight:600;text-decoration:none;font-size:15px;transition:background 0.2s" onmouseover="this.style.background='var(--vp-c-brand-2)'" onmouseout="this.style.background='var(--vp-c-brand-3)'">Download Ditto (zip)</a>
+
+No build step required -- just serve the files from your domain. Make sure your web server serves `index.html` for all routes (SPA routing).
+
+## Compiling
+
+If you want to customize Ditto before deploying, you can compile it from source.
+
+### Prerequisites
+
+- **Node.js 22** and **npm 10.9.4**
+
+### Build from source
 
 ```bash
 # Clone the repository
@@ -29,50 +40,7 @@ npm run build
 
 The `dist/` directory now contains everything you need. Upload it to any web server.
 
-## Deployment options
-
-### GitHub Pages
-
-The repository includes a GitHub Actions workflow that automatically deploys to GitHub Pages when you push to `main`:
-
-1. Fork the Ditto repository
-2. Enable GitHub Pages in your repository settings
-3. Push to `main`
-4. Your instance is live at `https://yourusername.github.io/ditto/`
-
-### GitLab Pages
-
-The repository also includes a `.gitlab-ci.yml` that builds and deploys to GitLab Pages on pushes to the default branch.
-
-### Netlify / Vercel
-
-Just connect your fork and deploy. Ditto includes a `_redirects` file for SPA routing on these platforms.
-
-### VPS / Any web server
-
-```bash
-# Build locally
-npm run build
-
-# Upload to your server
-rsync -avz dist/ user@yourserver:/var/www/ditto/
-```
-
-Make sure your web server serves `index.html` for all routes (SPA routing). For Nginx:
-
-```nginx
-server {
-    listen 80;
-    server_name your-domain.com;
-    root /var/www/ditto;
-
-    location / {
-        try_files $uri $uri/ /index.html;
-    }
-}
-```
-
-## Configuration
+### Build Config (ditto.json)
 
 Ditto is configured through a `ditto.json` file at the project root. This file is read at **build time** and validated against a strict Zod schema. Its values override the hardcoded defaults.
 
@@ -88,7 +56,7 @@ This means your `ditto.json` sets the defaults for your instance, but users can 
 The `ditto.json` file is in `.gitignore` by default, so each deployment can have its own configuration without conflicts.
 :::
 
-### Creating the config file
+#### Creating the config file
 
 Create a file named `ditto.json` in the project root:
 
@@ -98,7 +66,7 @@ Create a file named `ditto.json` in the project root:
 
 All fields are optional. Only include what you want to override. The schema is validated at build time -- invalid fields will cause a build error.
 
-### Theme
+#### Theme
 
 Set the default theme mode:
 
@@ -151,7 +119,7 @@ You can also include a custom font and background:
 
 The 3 required color values: `background`, `text`, `primary`. From these, Ditto derives 19 CSS custom properties (card, secondary, muted, accent, destructive, border, etc.).
 
-### Relay metadata
+#### Relay metadata
 
 Configure the default relays for your instance:
 
@@ -170,7 +138,7 @@ Configure the default relays for your instance:
 
 Each relay has `url`, `read`, and `write` boolean flags. `useAppRelays` controls whether the app's default relays are used in addition to the user's personal relay list.
 
-### Blossom upload servers
+#### Blossom upload servers
 
 Configure where file uploads (images, videos) are stored:
 
@@ -185,7 +153,7 @@ Configure where file uploads (images, videos) are stored:
 
 Defaults: `blossom.ditto.pub`, `blossom.dreamith.to`, `blossom.primal.net`.
 
-### Content warning policy
+#### Content warning policy
 
 Control how content warnings are handled:
 
@@ -197,7 +165,7 @@ Control how content warnings are handled:
 
 Options: `"blur"` (default), `"hide"`, `"show"`.
 
-### Feed settings
+#### Feed settings
 
 Toggle which content types appear in the sidebar and feed. All fields are optional booleans:
 
@@ -231,7 +199,7 @@ Toggle which content types appear in the sidebar and feed. All fields are option
 
 Fields starting with `feedInclude` control whether that content type appears in the main feed. Fields starting with `show` control whether it gets a sidebar navigation entry.
 
-### Link previews and favicons
+#### Link previews and favicons
 
 Set custom services for link preview generation and favicon fetching. These use URI templates:
 
@@ -242,7 +210,7 @@ Set custom services for link preview generation and favicon fetching. These use 
 }
 ```
 
-### CORS proxy
+#### CORS proxy
 
 Set a CORS proxy for fetching external resources:
 
@@ -252,7 +220,7 @@ Set a CORS proxy for fetching external resources:
 }
 ```
 
-### Stats pubkey
+#### Stats pubkey
 
 Set the NIP-85 stats pubkey (64-character hex, or empty string to disable):
 
@@ -262,7 +230,7 @@ Set the NIP-85 stats pubkey (64-character hex, or empty string to disable):
 }
 ```
 
-### Environment variables
+#### Environment variables
 
 You can point to a different config file path using the `CONFIG_FILE` environment variable:
 
@@ -270,7 +238,7 @@ You can point to a different config file path using the `CONFIG_FILE` environmen
 CONFIG_FILE=./my-config.json npm run build
 ```
 
-### Example: community instance
+#### Example: community instance
 
 Here's a full example for a community-branded instance:
 
