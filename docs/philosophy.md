@@ -1,137 +1,261 @@
 ---
+outline: false
 description: "Ditto's client manifesto: rebellion against utilitarian UX, the Saturn symbolism, and why fun is the only selling point that matters."
 ---
 
+<div class="page-hero">
+  <div class="page-hero-emoji">🪐</div>
+
 # Ditto Philosophy
 
-Ditto's client philosophy -- why it exists, what it believes, and where it's going.
+  <p class="page-hero-sub">Why Ditto exists, what it believes, and where it's going.<br>A manifesto for the golden era of the internet.</p>
+</div>
 
-## The Current Era
+<div class="page-section">
+<div class="big-idea">
+<div class="big-idea-emoji">🔥</div>
+<div class="big-idea-text">
 
-Nostr (Notes and Other Stuff Transmitted by Relays) is a decentralized protocol that offers a censorship-resistant solution for sharing your thoughts, creations, and data with the world. Popular, Twitter-like clients for this protocol include Primal, Damus, Amethyst, among others. Creators and individuals can reward each other's contributions with zaps -- lightning payments.
+## The problem
 
-The free exchange of thought and currency, this is a beautiful idea on paper. However, the reality is that the population at large doesn't use nostr for anything. Why is that?
+Decentralization is a hard sell to all except the wounded and paranoid. Free commerce suffers a crueler fate -- contrivance at best, *another crypto scam* at medium expectation. Who needs zaps when you have Cash App, Venmo, or Zelle?
 
-Decentralization is a hard sell to all except the wounded and paranoid. Free commerce suffers a crueler fate, contrivance at best and another crypto scam at medium expectation. Who needs zaps when you have Cash App, Venmo, or Zelle?
+We have the hubris to pitch inferior user experiences and user education, telling humans living in a candy store to eat their veggies. **How can nostr ever win in this scenario?**
 
-Who needs Primal when they can have Twitter and Bluesky? The riveting bitcoin and carnivore diet discussions?
+</div>
+</div>
+</div>
 
-What is our selling point? Morality? That worked well for the vegans.
+<div class="page-divider"></div>
 
-We have the hubris to pitch inferior user experiences and user education, telling humans living in a candy store to eat their veggies. How can nostr ever win in this scenario?
+<div class="page-section">
+<div class="section-header-left">
+  <span class="section-emoji">⚡</span>
 
-Nostr can't, but something built on it will. Welcome to Ditto.
+## The answer
 
-## The New Era
+</div>
 
-Ditto is a proposal of rebellion against the status quo of big tech platforms, modern utilitarian UX, and the current nostr ecosystem.
+Nostr can't win on morality alone. But something **built on it** will. Something that doesn't demand you care about decentralization. Something that makes you care because it's the most fun you've had on the internet in years.
 
-Everything is an everything app. Everything is the same -- black and white square interfaces optimized ad nauseam; any focus group could trip through them successfully.
+<div class="big-quote">
+  <span class="big-quote-mark">"</span>
+  <p>Welcome to Ditto.</p>
+</div>
+</div>
 
-The modern internet is a two dimensional space in which all thoughts must be filtered through text and short-form content. Everything is hostile, everything is draining, and pedantic misery prevails.
+<div class="page-divider"></div>
 
-Ditto seeks to turn this world upside down. Creation, intrigue, games, whimsy. A world of endless customization and color. Easter eggs. Subverting utilitarian UX in favor of total gamification. The entire experience is more akin to a carnival than a platform.
+<div class="page-section">
+<div class="section-header-left">
+  <span class="section-emoji">🎪</span>
 
-This is where nostr shines, through its infinite potential for "Other Stuff" content. Webxdc games, treasure hunting adventures, abstract color palettes, hobbies that have traditionally required dedicated platforms (Magic: The Gathering) can have contents rendered with first-class support in your feed.
+## Rebellion against the status quo
 
-The entire platform is a playground that can be customized in any way desired, everything can be shared and discussed. It doesn't demand your time and devotion, only the hope that you have found the one place on the internet that doesn't suck.
+</div>
 
-## Core Symbolism
+Everything is an everything app. Everything is the same -- black and white square interfaces optimized ad nauseam. The modern internet is a two-dimensional space in which all thoughts are filtered through text and short-form content. Everything is hostile, draining, and pedantic misery prevails.
 
-Ditto's logo is the planet Saturn, which has existed since Ditto v1. It is in some ways the perfect keystone for the entire design and philosophy behind Ditto v2. Saturn has roots in space, mythology, religion, and magic -- it has served as multiple symbols throughout history.
+Ditto seeks to turn this world upside down.
+
+<div class="three-cards">
+<div class="fun-card">
+  <div class="fun-card-emoji">🎨</div>
+
+### Color & whimsy
+
+A world of endless customization. Easter eggs. Subverting utilitarian UX in favor of total gamification.
+
+</div>
+<div class="fun-card">
+  <div class="fun-card-emoji">🎮</div>
+
+### Games & creation
+
+Webxdc games, treasure hunting, abstract color palettes, hobbies with first-class feed support.
+
+</div>
+<div class="fun-card">
+  <div class="fun-card-emoji">🎡</div>
+
+### Carnival, not platform
+
+The entire experience is more akin to a carnival than a platform. Every facet is its own attraction.
+
+</div>
+</div>
+
+<div class="callout-fun">
+  <span class="callout-emoji">✨</span>
+  <p>This is where nostr shines -- through its infinite potential for <strong>"Other Stuff"</strong> content. The entire platform is a playground. It doesn't demand your time and devotion, only the hope that you've found the one place on the internet that doesn't suck.</p>
+</div>
+</div>
+
+<div class="page-divider"></div>
+
+<div class="page-section">
+<div class="section-header-left">
+  <span class="section-emoji">🔮</span>
+
+## Core symbolism
+
+</div>
+
+Ditto's logo is the planet Saturn, a symbol that has served as many things throughout history -- spanning space, mythology, religion, and magic.
+
+<div class="showcase-image">
 
 ![Saturn symbolism -- agriculture, the golden age, and time on the left; boundary, mysticism, and controlled chaos on the right](/philosophy/saturn-symbolism.jpg)
 
-### Saturn, The Planet
+</div>
 
-Saturn is the sixth planet in the solar system, most recognizable for the system of rings that encircle the planet. It has a hexagonal wave pattern vortex on its north pole, as well.
+<div class="two-cards">
+<div class="fun-card">
+  <div class="fun-card-emoji">🌍</div>
 
-### Saturn, The God
+### Saturn, the planet
 
-In Roman mythology, Saturn is the god of agriculture, time, wealth, and liberation. He is a symbol that represents the golden age of abundance and peace. He was celebrated via a festival of the people, Saturnalia, a holiday of feasting, freedom, and revelry. The original carnival, in some ways.
+The sixth planet in the solar system, famous for its rings and the hexagonal vortex on its north pole.
 
-His Greek counterpart, Cronus (sometimes identified as god of time), is famed for overthrowing his father, devouring his children, and ultimately falling to his son Zeus. In this version, he represents the dangers of clinging to the past and rejecting the future.
+</div>
+<div class="fun-card">
+  <div class="fun-card-emoji">⚔️</div>
 
-### Saturn, Astrological Magic Abstract
+### Saturn, the god
 
-Saturn is the outermost visible planet, which serves as a boundary of the "known cosmos". It is a barrier between the material known and the ethereal unknown.
+Roman god of agriculture, time, wealth, and liberation. His festival, Saturnalia, was a holiday of feasting, freedom, and revelry -- the original carnival.
 
-It is associated with the flow of time, mostly due to the relationship with Chronos/Cronus.
+</div>
+</div>
 
-In Kabbalah (Jewish Mysticism), Saturn is associated with Binah (understanding), representing a strict flow of energy and a symbol of limitation and boundary.
+<div class="two-cards">
+<div class="fun-card">
+  <div class="fun-card-emoji">🃏</div>
 
-The hexagonal storm on top of Saturn has also been labeled the "Black Cube of Saturn". The cube is a rigid and stable structure, a representation of the three-dimensional material world. The black cube is also the subject of conspiracies, conflated as an object of worship for the occult.
+### Astrological magic
 
-### What do these symbols mean?
+The outermost visible planet -- a boundary between the material known and the ethereal unknown. Associated with the flow of time, strict energy, and the rigid structure of the material world.
 
-Time and the boundary between the real and unreal, in short. Saturn is representative of controlled chaos, a juxtaposition of the rigid material world and the boundless celestial.
+</div>
+<div class="fun-card">
+  <div class="fun-card-emoji">🪐</div>
 
-How does this relate to Ditto? Ditto is a juxtaposition of the opinionated and controlled UI/UX that built Soapbox and Truth Social with the chaotic whimsy that has all but vanished from online discourse. It is the fusion of two concepts that should repel each other, but with surgical precision to bring out the best of both.
+### What it means for Ditto
 
-Ditto seeks to surpass its mythological namesake. It admires the past, but embraces the future. It isn't trying to be Twitter, Tiktok, Instagram, or anything that exists as a solution already. It isn't here to embrace nostr's sacred cows. It is built to be something different. Something odd. Something intriguing, fresh, and captivating. The golden era of the internet, realized.
+Saturn represents **controlled chaos** -- a juxtaposition of the rigid material world and the boundless celestial. Ditto fuses opinionated UI/UX with chaotic whimsy. Two forces that should repel each other, combined with surgical precision.
 
-## Core Philosophy
+</div>
+</div>
 
-Ditto is meant to be different, and most importantly, fun. It should feel like a carnival in which every facet of the application is its own attraction.
+<div class="callout-fun">
+  <span class="callout-emoji">💫</span>
+  <p>Ditto seeks to surpass its mythological namesake. It admires the past, but embraces the future. It isn't trying to be Twitter, TikTok, or Instagram. It's built to be something <strong>different, odd, intriguing, fresh, and captivating</strong>. The golden era of the internet, realized.</p>
+</div>
+</div>
 
-Antiquated UI/UX should be intentionally subverted while maintaining a high standard. Everything should feel smooth, but everything should also feel interesting. Users should feel incentivized and rewarded for exploring the application and engaging with Other Stuff content.
+<div class="page-divider"></div>
 
-Colors, themes, adventure, hobbies, games, whimsy.
+<div class="page-section">
+<div class="section-header-left">
+  <span class="section-emoji">🧊</span>
 
-Short-form content and text posts, the current offerings of mainstream social media, should be dwarfed in comparison to this unique combination of odd and interesting ideas.
+## The Nostr Kind Cube
 
-### The Nostr Kind Cube
+</div>
 
-To further explore what "odd and interesting" looks like, we created a [cube-based graph](https://nostr-kind-cube.shakespeare.wtf/) ranking all known nostr kinds on an axis of fun-serious, boomer-zoomer, and odd-utility -- approached from the perspective of someone who has all their needs met already via existing mainstream platforms.
+To explore what "odd and interesting" looks like, we created a [cube-based graph](https://nostr-kind-cube.shakespeare.wtf/) ranking all known nostr kinds on an axis of **fun-serious**, **boomer-zoomer**, and **odd-utility** -- approached from the perspective of someone who already has all their needs met via mainstream platforms.
+
+<div class="showcase-image">
 
 ![The Nostr Kind Cube -- a 3D visualization of nostr event kinds ranked by fun, oddity, and generation](/philosophy/nostr-kind-cube.jpg)
 
-Is this an accurate reading? Possibly. Informal? Most certainly.
+</div>
 
-Regardless, it shows areas where nostr has external appeal, primarily in the category of interoperable Other Stuff.
+<div class="callout-fun">
+  <span class="callout-emoji">🎯</span>
+  <p>The cube shows areas where nostr has <strong>external appeal</strong>, primarily in the category of interoperable Other Stuff. This is what Ditto bets on.</p>
+</div>
+</div>
 
-### Conversion through experience
+<div class="page-divider"></div>
 
-Imagine for a moment: instead of having to front-load education about decentralization and relays, bitcoin, clunky applications to a new user... instead... you send them a link to a Quake III Arena game in their browser.
+<div class="page-section">
+<div class="section-header-left">
+  <span class="section-emoji">🎯</span>
 
-Immediate, actionable conversion. No exposition required. Instant investment.
+## Conversion through experience
 
-You finish your game and go to the author's profile. Pumpkins, serif font, goodness. Oddity, intrigue, allure -- "what is this, and how do I sign up?"
+</div>
 
-Welcome to Ditto.
+Imagine: instead of front-loading education about decentralization, relays, and bitcoin to a new user... you send them a link to a **Quake III Arena game in their browser**.
 
-## Design Philosophy
+<div class="big-quote">
+  <span class="big-quote-mark">"</span>
+  <p>Immediate, actionable conversion. No exposition required. Instant investment.</p>
+</div>
 
-Ditto embraces all the pros of sophisticated UI/UX while rejecting everything overtly traditional and boring about them. It rejects the colorless world. It rejects the literal box that modern design has been confined to.
+You finish your game and visit the author's profile. Pumpkins, serif font, goodness. Oddity, intrigue, allure -- *"what is this, and how do I sign up?"*
+</div>
 
-Your profile is a canvas to turn into anything you see fit via extensive themes and personalization.
+<div class="page-divider"></div>
+
+<div class="page-section">
+<div class="section-header-left">
+  <span class="section-emoji">🖌️</span>
+
+## Design philosophy
+
+</div>
+
+Ditto embraces the pros of sophisticated UI/UX while rejecting everything overtly traditional and boring. Your profile is a canvas you can turn into anything you see fit.
+
+<div class="showcase-image">
 
 ![Themed Ditto profiles -- each one a unique world of color and personality](/philosophy/themed-profiles.jpg)
 
+</div>
+
+<div class="three-cards">
+<div class="fun-card">
+  <div class="fun-card-emoji">⭕</div>
+
 ### Reject the square
 
-Ditto rejects the square as a prison, as well as an antique and literal marker for being "lame". Unless doing so would result in hostile UX, boxes should be rejected where possible, circles and asymmetrical design should be championed. Break the monotony, make every visual experience engaging.
+Boxes are prisons. Unless doing so creates hostile UX, squares should be replaced by circles and asymmetry. Break the monotony.
+
+</div>
+<div class="fun-card">
+  <div class="fun-card-emoji">🌟</div>
 
 ### Highlight the fun
 
-Fun, Other Stuff interactions are highlighted with repost-level super actions. Everything fun is highlighted. Users should feel like they're playing a game that rewards them for embracing the fun of life through various means, rather than via pure content consumption.
+Fun interactions get repost-level super actions. Users feel like they're playing a game that rewards them for embracing life.
 
-### Space, mythology, and magic
+</div>
+<div class="fun-card">
+  <div class="fun-card-emoji">🌌</div>
 
-Relating to the core symbolism, aspects of space, mythology, and magic are embraced where possible in the design:
+### Space, myth & magic
 
-- **Space** -- Your profile and feed are a literal planet/realm you inhabit. Users visiting your profile are visiting your world.
-- **Space** -- The circle is the symbol of orbit, planets, and the cosmos.
-- **Magic** -- The settings menu is an intentional spin into the arcane, with a full ritual to unlock further magical powers included (as an easter egg).
-- **Magic** -- Magic decks, quite literally. Tarot should/would likely have equal support here.
-- **Mythology** -- Other Stuff. The nostr protocol is a representation of one's soul and journey, their literal mythos -- treasures found, moments captured, commentary on the walls of friends in their profiles.
+Your profile is a planet you inhabit. Settings channel the arcane. Nostr is a representation of your soul -- your literal mythos.
 
-## The Future
+</div>
+</div>
+</div>
 
-The internet has remained unchanged for too long. Cultural stagnation forces us to reach into the depths of nostalgia to reclaim the embers of the incandescent past.
+<div class="page-divider"></div>
 
-There is nothing to look forward to, and the future remains rejected and consumed by those stuck in the eternal present. No longer. Ditto seeks to destroy the current order, reigning in a new day.
+<div class="page-cta">
+  <div class="page-cta-emoji">🔥</div>
 
-If nostr is going to win, it needs something to showcase the unique qualities of an interoperable microapp ecosystem in the best way possible. Ditto will see this vision through.
+## Our time begins now
 
-Our time begins now.
+The internet has remained unchanged for too long. If nostr is going to win, it needs something to showcase the unique qualities of an interoperable microapp ecosystem in the best way possible. Ditto will see this vision through.
+
+  <div class="page-cta-actions">
+    <a href="https://ditto.pub" target="_blank" class="btn btn-primary">
+      <span>Launch Ditto &#8599;</span>
+    </a>
+    <a href="/what-is-nostr" class="btn btn-ghost">What is Nostr?</a>
+  </div>
+</div>
