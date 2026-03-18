@@ -2161,6 +2161,23 @@ button.screen-power-btn.power-standby {
   font-size: 22px;
 }
 
+.vp-doc .btn {
+  text-decoration: none;
+  color: inherit;
+}
+
+.vp-doc .btn.btn-primary {
+  color: #fff;
+}
+
+.vp-doc .btn.btn-ghost {
+  color: var(--theme-primary, var(--ditto-purple));
+}
+
+.vp-doc .btn.btn-ghost:hover {
+  color: var(--vp-c-text-1);
+}
+
 .btn-emoji {
   font-size: 1.2em;
   display: inline-block;
@@ -5242,7 +5259,8 @@ button.screen-power-btn.power-standby {
   margin: 0;
 }
 
-.card-link-hint {
+.card-link-hint,
+.vp-doc .card-link-hint {
   display: inline-block;
   margin-top: 14px;
   font-size: 14px;
@@ -5252,9 +5270,11 @@ button.screen-power-btn.power-standby {
   transition: letter-spacing 0.2s ease;
 }
 
-.card-link-hint:hover {
+.card-link-hint:hover,
+.vp-doc .card-link-hint:hover {
   letter-spacing: 0.5px;
   text-decoration: none;
+  color: var(--ditto-purple);
 }
 
 /* ---------- Callout ---------- */
