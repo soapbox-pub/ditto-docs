@@ -71,7 +71,7 @@ export default defineConfig({
       { text: 'Home', link: '/' },
       { text: 'Docs', link: '/docs' },
       {
-        text: 'Launch Ditto ↗',
+        text: 'Launch Ditto',
         link: 'https://ditto.pub',
       },
     ],
