@@ -15,7 +15,7 @@ const docsSidebar = [
   {
     text: 'Development',
     items: [
-      { text: 'Nostr Events', link: '/kinds' },
+      { text: 'Ditto Nostr Reference', link: '/kinds' },
       { text: 'Self-Hosting', link: '/self-hosting' },
     ],
   },
