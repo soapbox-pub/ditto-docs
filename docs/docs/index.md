@@ -24,7 +24,7 @@ description: Everything you need to understand, customize, and self-host Ditto.
   <div class="fun-card-emoji">🛠️</div>
   <h3>Development</h3>
   <p>Themes, self-hosting, configuration, and Nostr event references for building on Ditto.</p>
-  <a href="/docs/themes" class="card-link-hint">Start building &rarr;</a>
+  <a href="/docs/self-hosting" class="card-link-hint">Start building &rarr;</a>
 </div>
 </div>
 </div>
@@ -66,12 +66,6 @@ description: Everything you need to understand, customize, and self-host Ditto.
 </div>
 
 <div class="two-cards">
-<div class="fun-card">
-  <div class="fun-card-emoji">🎨</div>
-  <h3>Custom Themes</h3>
-  <p>Make Ditto look exactly the way you want with 20+ built-in presets, full custom theming, custom fonts, and shareable themes.</p>
-  <a href="/docs/themes" class="card-link-hint">Read more &rarr;</a>
-</div>
 <div class="fun-card">
   <div class="fun-card-emoji">🖥️</div>
   <h3>Self-Hosting</h3>

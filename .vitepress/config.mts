@@ -70,7 +70,6 @@ export default defineConfig({
         {
           text: 'Development',
           items: [
-            { text: 'Custom Themes', link: '/docs/themes' },
             { text: 'Self-Hosting', link: '/docs/self-hosting' },
             { text: 'Nostr Events', link: '/docs/kinds' },
           ],

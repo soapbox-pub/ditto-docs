@@ -61,7 +61,6 @@
               <a href="/docs/philosophy" class="win-help-link">Ditto Philosophy</a>
               <div class="win-help-separator"></div>
               <div class="win-help-group-label">Development</div>
-              <a href="/docs/themes" class="win-help-link">Custom Themes</a>
               <a href="/docs/self-hosting" class="win-help-link">Self-Hosting</a>
               <a href="/docs/kinds" class="win-help-link">Nostr Events</a>
               <div class="win-help-separator"></div>
