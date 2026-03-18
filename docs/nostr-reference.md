@@ -66,7 +66,7 @@ Rows with a <span style="display:inline-block;width:12px;height:12px;border-radi
     </tr>
     <tr>
       <td>1985</td>
-      <td><a href="#trends-search">Trending Labels</a></td>
+      <td><a href="#search-trends">Trending Labels</a></td>
       <td>Trending hashtags and posts published by the relay</td>
       <td>No</td>
     </tr>
@@ -334,13 +334,30 @@ After NIP-44 decryption with the user's own pubkey, the content is a JSON object
 
 ---
 
-## Trends & Search
+## Search & Trends
 
-Ditto uses [NIP-32](https://github.com/nostr-protocol/nips/blob/master/32.md) label events to publish trending data. A trusted relay pubkey publishes these periodically under the `pub.ditto.trends` namespace.
+Ditto's relay supports full-text search and trending content discovery. Search is available through [NIP-50](https://github.com/nostr-protocol/nips/blob/master/50.md) with custom sort extensions, and trending data is published as [NIP-32](https://github.com/nostr-protocol/nips/blob/master/32.md) label events.
+
+### NIP-50 search extensions
+
+Ditto extends [NIP-50](https://github.com/nostr-protocol/nips/blob/master/50.md) search with two sort modes for retrieving trending content directly through relay queries:
+
+- **`sort:hot`** — Returns events ranked by recent engagement velocity. Events are scored based on interactions (replies, reposts, reactions) weighted toward recency, surfacing content that is trending right now.
+- **`sort:top`** — Returns events ranked by total engagement. Events are sorted by their overall interaction count, surfacing the most popular content over a longer time period.
+
+```json
+{
+  "kinds": [1],
+  "search": "sort:hot",
+  "limit": 20
+}
+```
+
+These extensions can be combined with other NIP-50 search terms. For example, `"search": "bitcoin sort:hot"` returns trending posts matching "bitcoin".
 
 ### Trending hashtags
 
-A label event with `l: #t` contains the current trending hashtags. Each `t` tag carries the hashtag name along with engagement counts.
+A label event with `l: #t` contains the current trending hashtags. Each `t` tag carries the hashtag name along with engagement counts. A trusted relay pubkey publishes these periodically under the `pub.ditto.trends` namespace.
 
 ```json
 {
@@ -405,20 +422,3 @@ Ditto publishes one trending-hashtags label event per UTC calendar day. Clients 
 ```
 
 Replace `"#l": ["#t"]` with `"#l": ["#e"]` for trending posts.
-
-### NIP-50 search extensions
-
-Ditto extends [NIP-50](https://github.com/nostr-protocol/nips/blob/master/50.md) search with two sort modes for retrieving trending content directly through relay queries:
-
-- **`sort:hot`** — Returns events ranked by recent engagement velocity. Events are scored based on interactions (replies, reposts, reactions) weighted toward recency, surfacing content that is trending right now.
-- **`sort:top`** — Returns events ranked by total engagement. Events are sorted by their overall interaction count, surfacing the most popular content over a longer time period.
-
-```json
-{
-  "kinds": [1],
-  "search": "sort:hot",
-  "limit": 20
-}
-```
-
-These extensions can be combined with other NIP-50 search terms. For example, `"search": "bitcoin sort:hot"` returns trending posts matching "bitcoin".
