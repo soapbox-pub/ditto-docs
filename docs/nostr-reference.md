@@ -66,7 +66,7 @@ Rows with a <span style="display:inline-block;width:12px;height:12px;border-radi
     </tr>
     <tr>
       <td>1985</td>
-      <td><a href="#ditto-trends">Trending Labels</a></td>
+      <td><a href="#trends-search">Trending Labels</a></td>
       <td>Trending hashtags and posts published by the relay</td>
       <td>No</td>
     </tr>
@@ -84,7 +84,7 @@ Rows with a <span style="display:inline-block;width:12px;height:12px;border-radi
     </tr>
     <tr class="ditto-kind">
       <td>16767</td>
-      <td><a href="#ditto-active-theme-event">Active Profile Theme</a></td>
+      <td><a href="#ditto-profile-theme">Active Profile Theme</a></td>
       <td>The user's currently active profile theme</td>
       <td>No</td>
     </tr>
@@ -96,7 +96,7 @@ Rows with a <span style="display:inline-block;width:12px;height:12px;border-radi
     </tr>
     <tr class="ditto-kind">
       <td>30078</td>
-      <td><a href="#ditto-settings-event">App Settings</a></td>
+      <td><a href="#ditto-settings">App Settings</a></td>
       <td>Encrypted per-user Ditto settings (NIP-78)</td>
       <td>Yes</td>
     </tr>
@@ -114,7 +114,7 @@ Rows with a <span style="display:inline-block;width:12px;height:12px;border-radi
     </tr>
     <tr class="ditto-kind">
       <td>36767</td>
-      <td><a href="#ditto-theme-event">Theme Definition</a></td>
+      <td><a href="#ditto-theme">Theme Definition</a></td>
       <td>Shareable custom UI theme with colors, font, and background</td>
       <td>Yes</td>
     </tr>
@@ -141,7 +141,137 @@ Rows with a <span style="display:inline-block;width:12px;height:12px;border-radi
 
 ---
 
-## Ditto Settings Event
+## Ditto Profile Theme
+
+Replaceable event representing the user's currently active profile theme. Only one exists per user. When visiting a profile, clients query this kind to determine what theme to display.
+
+The event uses the same `c`, `f`, and `bg` tags as theme definitions. An optional `a` tag references the source theme definition for attribution.
+
+### Event structure
+
+```json
+{
+  "kind": 16767,
+  "content": "",
+  "tags": [
+    ["c", "#1a1a2e", "background"],
+    ["c", "#e0e0e0", "text"],
+    ["c", "#6c3ce0", "primary"],
+    ["f", "Inter", "https://example.com/inter.woff2"],
+    ["bg", "url https://example.com/bg.jpg", "mode cover", "m image/jpeg"],
+    ["title", "MK Dark Theme"],
+    ["a", "36767:<source-author-pubkey>:<source-d-tag>"],
+    ["alt", "Active profile theme"]
+  ]
+}
+```
+
+### Content
+
+The `content` field is unused and MUST be an empty string (`""`).
+
+### Tags
+
+| Tag | Required | Description |
+|-----|:--------:|-------------|
+| `c` | Yes (x3) | Hex color with role marker (same format as kind 36767). |
+| `f` | No | Font declaration. |
+| `bg` | No | Background media. |
+| `title` | No | Human-readable name for the theme. |
+| `a` | No | Reference to the source kind 36767 event (`kind:pubkey:d-tag`). Enables attribution ("Using X's theme"). |
+| `alt` | Yes | NIP-31 human-readable fallback |
+
+### Client behavior
+
+- **Query:** `{ kinds: [16767], authors: [<pubkey>], limit: 1 }` to get a user's active theme.
+- **Colors:** Read the `c` tags to extract colors, `f` tags for fonts, and `bg` tag for the background.
+- **Attribution:** The `a` tag lets clients display "Using MK Dark Theme by @mk" with a link to the source theme.
+- **Set:** Publish a new kind 16767 event to change the active theme (replaces the previous one).
+- **Clear:** Publish a kind 5 deletion event targeting kind 16767 to remove the active theme.
+
+---
+
+## Ditto Theme
+
+Addressable event for publishing shareable custom UI themes. A user can publish multiple themes, each identified by a unique `d` tag. Colors are stored in `c` tags, with optional font (`f`) and background (`bg`) tags.
+
+### Event structure
+
+```json
+{
+  "kind": 36767,
+  "content": "",
+  "tags": [
+    ["d", "mk-dark-theme"],
+    ["c", "#1a1a2e", "background"],
+    ["c", "#e0e0e0", "text"],
+    ["c", "#6c3ce0", "primary"],
+    ["f", "Inter", "https://example.com/inter.woff2"],
+    ["bg", "url https://example.com/bg.jpg", "mode cover", "m image/jpeg", "dim 1920x1080"],
+    ["title", "MK Dark Theme"],
+    ["description", "A sleek dark theme with purple and blue accents"],
+    ["alt", "Custom theme: MK Dark Theme"],
+    ["t", "theme"]
+  ]
+}
+```
+
+### Content
+
+The `content` field is unused and MUST be an empty string (`""`).
+
+### Tags
+
+| Tag | Required | Description |
+|-----|:--------:|-------------|
+| `d` | Yes | Unique identifier (slug) for this theme |
+| `c` | Yes (x3) | Hex color with role marker. See [Color tags](#color-tags). |
+| `f` | No | Font declaration. See [Font tag](#font-tag). |
+| `bg` | No | Background media. See [Background tag](#background-tag). |
+| `title` | Yes | Human-readable theme name |
+| `description` | No | Brief description of the theme |
+| `alt` | Yes | NIP-31 human-readable fallback |
+| `t` | Yes | Set to `"theme"` for discoverability |
+
+### Color tags
+
+Format: `["c", "#rrggbb", "<marker>"]`
+
+Each theme requires exactly 3 color tags with these markers:
+
+| Marker | Description |
+|--------|-------------|
+| `background` | Page background color |
+| `text` | Primary text/foreground color |
+| `primary` | Accent color (buttons, links, focus rings) |
+
+Colors are lowercase 6-digit hex codes including the `#` sign. Clients derive all other UI colors (card, muted, border, etc.) from these 3 values.
+
+### Font tag
+
+Format: `["f", "<family>", "<url>"]`
+
+Optional. At most one per event. The font applies globally to all text. Variable font files covering multiple weights are preferred.
+
+### Background tag
+
+Uses an imeta-style variadic format: `["bg", "url <url>", "mode <mode>", "m <mime-type>", ...]`
+
+| Key | Required | Description |
+|-----|:--------:|-------------|
+| `url` | Yes | URL to an image or video file |
+| `mode` | Yes | Display mode: `"cover"` or `"tile"` |
+| `m` | Yes | MIME type (e.g. `"image/jpeg"`, `"video/mp4"`) |
+| `dim` | No | Dimensions: `"<width>x<height>"` |
+| `blurhash` | No | Blurhash placeholder for progressive loading |
+
+### Multiple themes per user
+
+Since kind 36767 is addressable, a user can publish multiple themes by using different `d` tag values. Publishing a new event with the same `d` tag replaces the previous version.
+
+---
+
+## Ditto Settings
 
 Ditto stores encrypted per-user settings in a [NIP-78](https://github.com/nostr-protocol/nips/blob/master/78.md) application-specific data event. The `d` tag is always `ditto-metadata` and the content is NIP-44 encrypted JSON.
 
@@ -166,7 +296,7 @@ After NIP-44 decryption with the user's own pubkey, the content is a JSON object
 | Field | Type | Description |
 |-------|------|-------------|
 | `theme` | `"light" \| "dark" \| "system" \| "custom"` | Active theme mode |
-| `customTheme` | `ThemeConfig` | Custom theme configuration with 3 core colors, optional font and background (see [Theming](#ditto-theme-event)) |
+| `customTheme` | `ThemeConfig` | Custom theme configuration with 3 core colors, optional font and background (see [Theming](#ditto-theme)) |
 | `useAppRelays` | `boolean` | Whether to use Ditto's default relays alongside the user's relay list |
 | `feedSettings` | `FeedSettings` | Toggles controlling which content types appear in the sidebar and feed |
 | `contentFilters` | `ContentFilter[]` | User-defined content filter rules |
@@ -204,7 +334,7 @@ After NIP-44 decryption with the user's own pubkey, the content is a JSON object
 
 ---
 
-## Ditto Trends
+## Trends & Search
 
 Ditto uses [NIP-32](https://github.com/nostr-protocol/nips/blob/master/32.md) label events to publish trending data. A trusted relay pubkey publishes these periodically under the `pub.ditto.trends` namespace.
 
@@ -292,133 +422,3 @@ Ditto extends [NIP-50](https://github.com/nostr-protocol/nips/blob/master/50.md)
 ```
 
 These extensions can be combined with other NIP-50 search terms. For example, `"search": "bitcoin sort:hot"` returns trending posts matching "bitcoin".
-
----
-
-## Ditto Theme Event
-
-Addressable event for publishing shareable custom UI themes. A user can publish multiple themes, each identified by a unique `d` tag. Colors are stored in `c` tags, with optional font (`f`) and background (`bg`) tags.
-
-### Event structure
-
-```json
-{
-  "kind": 36767,
-  "content": "",
-  "tags": [
-    ["d", "mk-dark-theme"],
-    ["c", "#1a1a2e", "background"],
-    ["c", "#e0e0e0", "text"],
-    ["c", "#6c3ce0", "primary"],
-    ["f", "Inter", "https://example.com/inter.woff2"],
-    ["bg", "url https://example.com/bg.jpg", "mode cover", "m image/jpeg", "dim 1920x1080"],
-    ["title", "MK Dark Theme"],
-    ["description", "A sleek dark theme with purple and blue accents"],
-    ["alt", "Custom theme: MK Dark Theme"],
-    ["t", "theme"]
-  ]
-}
-```
-
-### Content
-
-The `content` field is unused and MUST be an empty string (`""`).
-
-### Tags
-
-| Tag | Required | Description |
-|-----|:--------:|-------------|
-| `d` | Yes | Unique identifier (slug) for this theme |
-| `c` | Yes (x3) | Hex color with role marker. See [Color tags](#color-tags). |
-| `f` | No | Font declaration. See [Font tag](#font-tag). |
-| `bg` | No | Background media. See [Background tag](#background-tag). |
-| `title` | Yes | Human-readable theme name |
-| `description` | No | Brief description of the theme |
-| `alt` | Yes | NIP-31 human-readable fallback |
-| `t` | Yes | Set to `"theme"` for discoverability |
-
-### Color tags
-
-Format: `["c", "#rrggbb", "<marker>"]`
-
-Each theme requires exactly 3 color tags with these markers:
-
-| Marker | Description |
-|--------|-------------|
-| `background` | Page background color |
-| `text` | Primary text/foreground color |
-| `primary` | Accent color (buttons, links, focus rings) |
-
-Colors are lowercase 6-digit hex codes including the `#` sign. Clients derive all other UI colors (card, muted, border, etc.) from these 3 values.
-
-### Font tag
-
-Format: `["f", "<family>", "<url>"]`
-
-Optional. At most one per event. The font applies globally to all text. Variable font files covering multiple weights are preferred.
-
-### Background tag
-
-Uses an imeta-style variadic format: `["bg", "url <url>", "mode <mode>", "m <mime-type>", ...]`
-
-| Key | Required | Description |
-|-----|:--------:|-------------|
-| `url` | Yes | URL to an image or video file |
-| `mode` | Yes | Display mode: `"cover"` or `"tile"` |
-| `m` | Yes | MIME type (e.g. `"image/jpeg"`, `"video/mp4"`) |
-| `dim` | No | Dimensions: `"<width>x<height>"` |
-| `blurhash` | No | Blurhash placeholder for progressive loading |
-
-### Multiple themes per user
-
-Since kind 36767 is addressable, a user can publish multiple themes by using different `d` tag values. Publishing a new event with the same `d` tag replaces the previous version.
-
----
-
-## Ditto Active Theme Event
-
-Replaceable event representing the user's currently active profile theme. Only one exists per user. When visiting a profile, clients query this kind to determine what theme to display.
-
-The event uses the same `c`, `f`, and `bg` tags as theme definitions. An optional `a` tag references the source theme definition for attribution.
-
-### Event structure
-
-```json
-{
-  "kind": 16767,
-  "content": "",
-  "tags": [
-    ["c", "#1a1a2e", "background"],
-    ["c", "#e0e0e0", "text"],
-    ["c", "#6c3ce0", "primary"],
-    ["f", "Inter", "https://example.com/inter.woff2"],
-    ["bg", "url https://example.com/bg.jpg", "mode cover", "m image/jpeg"],
-    ["title", "MK Dark Theme"],
-    ["a", "36767:<source-author-pubkey>:<source-d-tag>"],
-    ["alt", "Active profile theme"]
-  ]
-}
-```
-
-### Content
-
-The `content` field is unused and MUST be an empty string (`""`).
-
-### Tags
-
-| Tag | Required | Description |
-|-----|:--------:|-------------|
-| `c` | Yes (x3) | Hex color with role marker (same format as kind 36767). |
-| `f` | No | Font declaration. |
-| `bg` | No | Background media. |
-| `title` | No | Human-readable name for the theme. |
-| `a` | No | Reference to the source kind 36767 event (`kind:pubkey:d-tag`). Enables attribution ("Using X's theme"). |
-| `alt` | Yes | NIP-31 human-readable fallback |
-
-### Client behavior
-
-- **Query:** `{ kinds: [16767], authors: [<pubkey>], limit: 1 }` to get a user's active theme.
-- **Colors:** Read the `c` tags to extract colors, `f` tags for fonts, and `bg` tag for the background.
-- **Attribution:** The `a` tag lets clients display "Using MK Dark Theme by @mk" with a link to the source theme.
-- **Set:** Publish a new kind 16767 event to change the active theme (replaces the previous one).
-- **Clear:** Publish a kind 5 deletion event targeting kind 16767 to remove the active theme.
