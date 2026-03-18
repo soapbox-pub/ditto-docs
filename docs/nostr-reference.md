@@ -66,7 +66,7 @@ Rows with a <span style="display:inline-block;width:12px;height:12px;border-radi
     </tr>
     <tr>
       <td>1985</td>
-      <td><a href="#search-trends">Trending Labels</a></td>
+      <td><a href="#trends">Trending Labels</a></td>
       <td>Trending hashtags and posts published by the relay</td>
       <td>No</td>
     </tr>
@@ -334,13 +334,11 @@ After NIP-44 decryption with the user's own pubkey, the content is a JSON object
 
 ---
 
-## Search & Trends
+## Search
 
-[Ditto's relay](https://gitlab.com/soapbox-pub/ditto-relay) supports full-text search and trending content discovery. Search is available through [NIP-50](https://github.com/nostr-protocol/nips/blob/master/50.md) with custom sort extensions, and trending data is published as [NIP-32](https://github.com/nostr-protocol/nips/blob/master/32.md) label events. The public relay is available at `wss://relay.ditto.pub`.
+[Ditto's relay](https://gitlab.com/soapbox-pub/ditto-relay) supports full-text search through [NIP-50](https://github.com/nostr-protocol/nips/blob/master/50.md) with custom sort extensions. The public relay is available at `wss://relay.ditto.pub`.
 
-### NIP-50 search extensions
-
-Ditto extends [NIP-50](https://github.com/nostr-protocol/nips/blob/master/50.md) search with two sort modes for retrieving trending content directly through relay queries:
+Ditto extends NIP-50 with two sort modes for retrieving trending content directly through relay queries:
 
 - **`sort:hot`** — Returns events ranked by recent engagement velocity. Events are scored based on interactions (replies, reposts, reactions) weighted toward recency, surfacing content that is trending right now.
 - **`sort:top`** — Returns events ranked by total engagement. Events are sorted by their overall interaction count, surfacing the most popular content over a longer time period.
@@ -355,9 +353,71 @@ Ditto extends [NIP-50](https://github.com/nostr-protocol/nips/blob/master/50.md)
 
 These extensions can be combined with other NIP-50 search terms. For example, `"search": "bitcoin sort:hot"` returns trending posts matching "bitcoin".
 
+---
+
+## Stats
+
+Ditto's relay publishes engagement stats for events using [NIP-85](https://github.com/nostr-protocol/nips/pull/1534) ([kind 30383](https://nostrbook.dev/kinds/30383)). These are addressable events authored by the relay's stats pubkey, with the `d` tag set to the target event's ID.
+
+The stats pubkey for `wss://relay.ditto.pub` is:
+
+```
+5f68e85ee174102ca8978eef302129f081f03456c884185d5ec1c1224ab633ea
+```
+
+### Event structure
+
+```json
+{
+  "kind": 30383,
+  "pubkey": "5f68e85ee174102ca8978eef302129f081f03456c884185d5ec1c1224ab633ea",
+  "content": "",
+  "tags": [
+    ["d", "<target-event-id>"],
+    ["k", "1"],
+    ["p", "<target-event-pubkey>"],
+    ["comment_cnt", "42"],
+    ["repost_cnt", "7"],
+    ["reaction_cnt", "128"],
+    ["zap_cnt", "15"]
+  ]
+}
+```
+
+### Tags
+
+| Tag | Description |
+|-----|-------------|
+| `d` | ID of the event being described |
+| `k` | Kind of the referenced event |
+| `p` | Pubkey of the referenced event's author |
+| `comment_cnt` | Number of replies/comments |
+| `repost_cnt` | Number of reposts |
+| `reaction_cnt` | Number of reactions |
+| `zap_cnt` | Number of zaps |
+
+### Filter example
+
+```json
+{
+  "kinds": [30383],
+  "authors": ["5f68e85ee174102ca8978eef302129f081f03456c884185d5ec1c1224ab633ea"],
+  "#d": ["<target-event-id>"],
+  "limit": 1
+}
+```
+
+Clients can batch multiple event IDs into a single request by passing an array of IDs in `#d`.
+
+---
+
+## Trends
+
+Ditto publishes trending data as [NIP-32](https://github.com/nostr-protocol/nips/blob/master/32.md) label events under the `pub.ditto.trends` namespace. A trusted relay pubkey publishes these periodically.
+
 ### Trending hashtags
 
-A label event with `l: #t` contains the current trending hashtags. Each `t` tag carries the hashtag name along with engagement counts. A trusted relay pubkey publishes these periodically under the `pub.ditto.trends` namespace.
+A label event with `l: #t` contains the current trending hashtags. Each `t` tag carries the hashtag name along with engagement counts.
 
 ```json
 {
