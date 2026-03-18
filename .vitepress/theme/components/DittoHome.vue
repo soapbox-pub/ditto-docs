@@ -343,7 +343,7 @@
         <div class="ownership-grid scroll-reveal" ref="ownershipRef">
           <div class="ownership-card" style="--delay: 0; --grad-angle: 135deg;">
             <h3>You own your data</h3>
-            <p>We don't control your Ditto account. <a href="/what-is-nostr">Your identity</a>, your content, your connections&nbsp;&mdash; they belong to&nbsp;you. No platform lock-in, no hostage data. Leave anytime and take everything with&nbsp;you.</p>
+            <p>We don't control your Ditto account. <a href="/nostr-101">Your identity</a>, your content, your connections&nbsp;&mdash; they belong to&nbsp;you. No platform lock-in, no hostage data. Leave anytime and take everything with&nbsp;you.</p>
           </div>
           <div class="ownership-card" style="--delay: 1; --grad-angle: 180deg;">
             <h3>The community owns the&nbsp;project</h3>

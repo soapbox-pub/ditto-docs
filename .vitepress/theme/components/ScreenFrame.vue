@@ -57,7 +57,7 @@
               <div class="win-help-heading">Help Topics</div>
               <div class="win-help-separator"></div>
               <div class="win-help-group-label">Learn</div>
-              <a href="/what-is-nostr" class="win-help-link">What is Nostr?</a>
+              <a href="/nostr-101" class="win-help-link">What is Nostr?</a>
               <a href="/philosophy" class="win-help-link">Ditto Philosophy</a>
               <div class="win-help-separator"></div>
               <div class="win-help-group-label">Development</div>

@@ -8,7 +8,7 @@ const docsSidebar = [
   {
     text: 'Learn',
     items: [
-      { text: 'What is Nostr?', link: '/what-is-nostr' },
+      { text: 'What is Nostr?', link: '/nostr-101' },
       { text: 'Ditto Philosophy', link: '/philosophy' },
     ],
   },
@@ -78,7 +78,7 @@ export default defineConfig({
 
     sidebar: {
       '/docs/': docsSidebar,
-      '/what-is-nostr': docsSidebar,
+      '/nostr-101': docsSidebar,
       '/philosophy': docsSidebar,
       '/self-hosting': docsSidebar,
       '/nostr-reference': docsSidebar,

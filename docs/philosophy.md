@@ -257,6 +257,6 @@ The internet has remained unchanged for too long. If nostr is going to win, it n
     <a href="https://ditto.pub" target="_blank" class="btn btn-primary">
       <span>Launch Ditto &#8599;</span>
     </a>
-    <a href="/what-is-nostr" class="btn btn-ghost">What is Nostr?</a>
+    <a href="/nostr-101" class="btn btn-ghost">What is Nostr?</a>
   </div>
 </div>
