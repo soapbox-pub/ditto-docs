@@ -42,9 +42,20 @@ For a complete list of all Nostr event kinds, see [nostrbook.dev](https://nostrb
 :root.dark .kinds-table .ditto-kind {
   background: linear-gradient(135deg, rgba(124, 82, 224, 0.25) 0%, rgba(232, 121, 249, 0.20) 50%, rgba(251, 146, 60, 0.15) 100%);
 }
+.whimsy-star {
+  display: inline-block;
+  color: #e84393;
+  font-size: 14px;
+  margin-left: 6px;
+  vertical-align: middle;
+  line-height: 1;
+}
 </style>
 
-Rows with a <span style="display:inline-block;width:12px;height:12px;border-radius:3px;background:var(--ditto-gradient);vertical-align:middle;"></span> purple gradient background are Ditto-created kinds.
+<div class="kinds-legend" style="display:flex;flex-wrap:wrap;gap:16px;align-items:center;margin-bottom:8px;">
+  <span><span style="display:inline-block;width:12px;height:12px;border-radius:3px;background:var(--ditto-gradient);vertical-align:middle;"></span> Ditto-created kind</span>
+  <span><span style="color:#e84393;font-size:14px;vertical-align:middle;">✦</span> <a href="/philosophy#the-nostr-kind-cube">WHIMSY</a> — sweet spot of <em>The Nostr Kind Cube</em></span>
+</div>
 
 <table class="kinds-table">
   <thead>
@@ -157,12 +168,12 @@ Rows with a <span style="display:inline-block;width:12px;height:12px;border-radi
     </tr>
     <tr>
       <td>3367</td>
-      <td>Color Moment</td>
+      <td>Color Moment <span class="whimsy-star">✦</span></td>
       <td>Color palette post expressing a mood</td>
     </tr>
     <tr>
       <td>7516</td>
-      <td>Found Log</td>
+      <td>Found Log <span class="whimsy-star">✦</span></td>
       <td>Log entry recording a user finding a geocache</td>
     </tr>
     <tr>
@@ -332,7 +343,7 @@ Rows with a <span style="display:inline-block;width:12px;height:12px;border-radi
     </tr>
     <tr>
       <td>34236</td>
-      <td>Vine</td>
+      <td>Vine <span class="whimsy-star">✦</span></td>
       <td>Short-form video post</td>
     </tr>
     <tr>
@@ -352,12 +363,12 @@ Rows with a <span style="display:inline-block;width:12px;height:12px;border-radi
     </tr>
     <tr>
       <td>37381</td>
-      <td>Magic Deck</td>
+      <td>Magic Deck <span class="whimsy-star">✦</span></td>
       <td>Magic: The Gathering deck list</td>
     </tr>
     <tr>
       <td>37516</td>
-      <td>Geocache</td>
+      <td>Geocache <span class="whimsy-star">✦</span></td>
       <td>Geocache listing for real-world treasure hunting</td>
     </tr>
     <tr>
