@@ -15,22 +15,19 @@ export default {
     if (typeof window !== 'undefined') {
       const docsPaths = ['/docs', '/nostr-101', '/philosophy', '/hacking', '/self-hosting', '/reference']
 
-      const updateLogoLink = () => {
+      // Intercept clicks on the logo link in the capture phase so it fires
+      // before VitePress's own router link handler.
+      document.addEventListener('click', (e) => {
+        const link = (e.target as HTMLElement).closest?.('.VPNavBarTitle a')
+        if (!link) return
         const path = window.location.pathname
         const inDocs = docsPaths.some((p) => path === p || path.startsWith(p + '/'))
-        const logoLink = document.querySelector('.VPNavBarTitle a.title') as HTMLAnchorElement | null
-        if (logoLink) {
-          logoLink.setAttribute('href', inDocs ? '/docs' : '/')
-          logoLink.onclick = (e) => {
-            e.preventDefault()
-            router.go(inDocs ? '/docs' : '/')
-          }
+        if (inDocs) {
+          e.preventDefault()
+          e.stopPropagation()
+          router.go('/docs')
         }
-      }
-
-      router.onAfterRouteChanged = updateLogoLink
-      // Initial run after first paint
-      requestAnimationFrame(() => requestAnimationFrame(updateLogoLink))
+      }, true)
     }
 
     if (typeof window !== 'undefined' && import.meta.env.VITE_PLAUSIBLE_DOMAIN) {
