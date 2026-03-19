@@ -67,11 +67,20 @@ description: Everything you need to understand, customize, and self-host Ditto.
 
 <div class="two-cards">
 <div class="fun-card">
+  <div class="fun-card-emoji">⚡</div>
+  <h3>Hacking on Ditto</h3>
+  <p>Use Shakespeare, OpenCode, and MKStack to build features, fix bugs, and hack on Ditto with AI-powered tools.</p>
+  <a href="/hacking" class="card-link-hint">Read more &rarr;</a>
+</div>
+<div class="fun-card">
   <div class="fun-card-emoji">🖥️</div>
   <h3>Self-Hosting</h3>
   <p>Deploy and configure your own Ditto instance. Deployment options, <code>ditto.json</code> reference, and custom branding.</p>
   <a href="/self-hosting" class="card-link-hint">Read more &rarr;</a>
 </div>
+</div>
+
+<div class="two-cards">
 <div class="fun-card">
   <div class="fun-card-emoji">📋</div>
   <h3>Ditto Nostr Reference</h3>
