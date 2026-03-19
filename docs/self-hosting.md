@@ -185,7 +185,14 @@ For those who want full sovereignty, you can run your own Nostr relay alongside 
 
 </div>
 
-Ditto includes a Capacitor project for building native Android apps. Distribute Ditto as a branded app for your community:
+Ditto is available on [zap.store](https://zapstore.dev/apps/pub.ditto.app), or you can download the latest builds directly:
+
+<div style="display:flex;flex-wrap:wrap;gap:8px;margin:16px 0;">
+  <a href="https://gitlab.com/api/v4/projects/79646323/jobs/artifacts/main/raw/Ditto.apk?job=build-apk" class="vp-raw" style="display:inline-flex;align-items:center;gap:8px;padding:10px 24px;background:var(--vp-c-brand-3);color:#fff;border-radius:8px;font-weight:600;text-decoration:none;font-size:15px;transition:background 0.2s" onmouseover="this.style.background='var(--vp-c-brand-2)'" onmouseout="this.style.background='var(--vp-c-brand-3)'">Download .apk</a>
+  <a href="https://gitlab.com/api/v4/projects/79646323/jobs/artifacts/main/raw/Ditto.aab?job=build-apk" class="vp-raw" style="display:inline-flex;align-items:center;gap:8px;padding:10px 24px;background:var(--vp-c-brand-3);color:#fff;border-radius:8px;font-weight:600;text-decoration:none;font-size:15px;transition:background 0.2s" onmouseover="this.style.background='var(--vp-c-brand-2)'" onmouseout="this.style.background='var(--vp-c-brand-3)'">Download .aab</a>
+</div>
+
+Ditto also includes a Capacitor project for building custom Android apps. Distribute Ditto as a branded app for your community:
 
 ```bash
 # Build the web app first
