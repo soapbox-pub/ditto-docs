@@ -42,7 +42,7 @@ Nostr stands for **Notes and Other Stuff Transmitted by Relays**. The "Other Stu
 
 ### Apps that interoperate
 
-Play a game, browse a marketplace, read long-form articles -- all from different developers, all sharing the same identity and social graph. No walled gardens.
+Different apps, same identity and social graph. No walled gardens.
 
 </div>
 <div class="fun-card">
@@ -50,7 +50,7 @@ Play a game, browse a marketplace, read long-form articles -- all from different
 
 ### Infinite "Other Stuff"
 
-The protocol doesn't just do posts. It carries games, live streams, collaborative lists, custom app data, and things nobody has invented yet. If you can imagine it, Nostr can transmit it.
+Not just posts -- games, live streams, lists, custom app data, and things nobody has invented yet.
 
 </div>
 <div class="fun-card">
@@ -58,7 +58,7 @@ The protocol doesn't just do posts. It carries games, live streams, collaborativ
 
 ### Take everything with you
 
-Switch apps whenever you want. Your followers, posts, messages, and history come with you. Nothing is locked inside a single platform.
+Switch apps anytime. Your followers, posts, and history come with you.
 
 </div>
 </div>
@@ -87,7 +87,7 @@ Now that you know what it feels like -- here's the simple machinery underneath.
 
 ### Keys, not accounts
 
-Your identity is a cryptographic keypair that lives on your device. A **public key** is how people find you. A **private key** proves you're you. No sign-up forms, no corporations managing your login.
+Your identity is a cryptographic keypair on your device. No sign-up forms, no corporations managing your login.
 
 </div>
 <div class="fun-card">
@@ -95,7 +95,7 @@ Your identity is a cryptographic keypair that lives on your device. A **public k
 
 ### Relays, not servers
 
-Your data gets sent to **relays** -- simple servers that store and forward messages. Use as many as you want. If one goes down, your data lives on the others. Think of them like email servers: different providers, same protocol.
+**Relays** store and forward your data. Use as many as you want -- if one goes down, the others have you covered.
 
 </div>
 </div>
@@ -126,8 +126,6 @@ Your data gets sent to **relays** -- simple servers that store and forward messa
     <li>Company owns your account</li>
     <li>Posts locked in one app</li>
     <li>They choose the algorithm</li>
-    <li>They can ban you</li>
-    <li>Same square interfaces everywhere</li>
     <li>Your data is their product</li>
   </ul>
 </div>
@@ -143,8 +141,6 @@ Your data gets sent to **relays** -- simple servers that store and forward messa
     <li>You own your keys</li>
     <li>Data flows across every app</li>
     <li>You choose the experience</li>
-    <li>No central authority</li>
-    <li>Wild, creative, different apps</li>
     <li>Your data is yours</li>
   </ul>
 </div>
