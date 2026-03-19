@@ -36,7 +36,7 @@ The golden era of the internet won't be built by a small team. **It'll be built 
 
 </div>
 
-[Shakespeare](https://shakespeare.diy) is a browser-based AI development environment. No installation, no terminal, no local dev setup — just import the Ditto repo and start building. Describe what you want in plain language and watch it happen in real time.
+Shakespeare is a browser-based AI development environment. No installation, no terminal, no local dev setup — just import the Ditto repo and start building. Describe what you want in plain language and watch it happen in real time.
 
 <div class="three-cards">
 <div class="fun-card">
@@ -67,7 +67,7 @@ See your changes rendered in real time as the AI makes edits. Git is built in �
 
 ### How it works
 
-1. Click **Edit with Shakespeare** — it opens the Ditto repo in your browser, ready to go
+1. Click **[Edit with Shakespeare](https://shakespeare.diy/clone?url=https://gitlab.com/soapbox-pub/ditto.git)** — it opens the Ditto repo in your browser, ready to go
 2. Describe what you want — *"add a dark purple theme option"*, *"fix the avatar upload on mobile"*, *"add a new sidebar link for bookmarks"*
 3. Shakespeare reads the codebase, understands the structure, and makes the changes
 4. See results live, iterate through conversation, and push when you're done
