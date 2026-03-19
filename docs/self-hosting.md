@@ -345,63 +345,6 @@ Controls whether a content type gets a **sidebar navigation entry**. Shape the j
 
 <div class="page-section">
 <div class="section-header-left">
-  <span class="section-emoji">🔗</span>
-
-## Services & proxies
-
-</div>
-
-<div class="three-cards">
-<div class="fun-card">
-  <div class="fun-card-emoji">🖼️</div>
-
-### Link previews
-
-```json
-{
-  "linkPreviewUrl": "https://fetch.ditto.pub/link/{url}",
-  "faviconUrl": "https://fetch.ditto.pub/favicon/{hostname}"
-}
-```
-
-URI templates for link preview generation and favicon fetching.
-
-</div>
-<div class="fun-card">
-  <div class="fun-card-emoji">🌐</div>
-
-### CORS proxy
-
-```json
-{
-  "corsProxy": "https://proxy.shakespeare.diy/?url={href}"
-}
-```
-
-Proxy for fetching external resources that block cross-origin requests.
-
-</div>
-<div class="fun-card">
-  <div class="fun-card-emoji">📊</div>
-
-### Stats pubkey
-
-```json
-{
-  "nip85StatsPubkey": "5f68e85ee...ab633ea"
-}
-```
-
-NIP-85 stats pubkey (64-char hex, or empty string to disable).
-
-</div>
-</div>
-</div>
-
-<div class="page-divider"></div>
-
-<div class="page-section">
-<div class="section-header-left">
   <span class="section-emoji">🌍</span>
 
 ## Environment variables
