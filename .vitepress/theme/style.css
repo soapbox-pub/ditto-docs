@@ -5828,12 +5828,12 @@ button.screen-power-btn.power-standby {
   margin-top: 4px;
 }
 
-.VPSidebar .VPSidebarItem.level-0:last-child .link {
+.VPSidebar .VPSidebarItem.level-0:last-child > .items > .VPSidebarItem > .item > .link {
   opacity: 0.6;
   font-size: 13px;
   transition: opacity 0.2s;
 }
 
-.VPSidebar .VPSidebarItem.level-0:last-child .link:hover {
+.VPSidebar .VPSidebarItem.level-0:last-child > .items > .VPSidebarItem > .item > .link:hover {
   opacity: 1;
 }
