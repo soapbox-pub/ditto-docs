@@ -20,6 +20,11 @@ const docsSidebar = [
       { text: 'Self-Hosting', link: '/self-hosting' },
     ],
   },
+  {
+    items: [
+      { text: '\u2190 Landing page', link: '/' },
+    ],
+  },
 ]
 
 export default defineConfig({
@@ -70,7 +75,6 @@ export default defineConfig({
     logoLink: '/docs',
 
     nav: [
-      { text: 'Landing', link: '/' },
       {
         text: 'Launch Ditto',
         link: 'https://ditto.pub',

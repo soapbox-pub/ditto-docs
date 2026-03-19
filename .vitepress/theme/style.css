@@ -5819,3 +5819,23 @@ button.screen-power-btn.power-standby {
     margin-right: -16px;
   }
 }
+
+/* --------------------------------------------------------------------------
+ * Sidebar back link
+ * -------------------------------------------------------------------------- */
+
+.VPSidebar .VPSidebarItem.level-0:last-child {
+  margin-top: 4px;
+  padding-top: 12px;
+  border-top: 1px solid var(--vp-c-divider);
+}
+
+.VPSidebar .VPSidebarItem.level-0:last-child .link {
+  opacity: 0.6;
+  font-size: 13px;
+  transition: opacity 0.2s;
+}
+
+.VPSidebar .VPSidebarItem.level-0:last-child .link:hover {
+  opacity: 1;
+}
