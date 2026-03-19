@@ -67,6 +67,7 @@ export default defineConfig({
 
   themeConfig: {
     logo: '/logo.svg',
+    logoLink: '/docs',
 
     nav: [
       { text: 'Landing', link: '/' },
