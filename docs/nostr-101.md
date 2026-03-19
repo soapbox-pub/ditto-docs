@@ -1,4 +1,5 @@
 ---
+outline: false
 description: Nostr is an open protocol where your identity, social graph, and data are yours — and the apps built on it are unlike anything else on the internet.
 ---
 
