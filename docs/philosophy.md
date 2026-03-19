@@ -1,5 +1,4 @@
 ---
-outline: false
 description: "Ditto's client manifesto: rebellion against utilitarian UX, the Saturn symbolism, and why fun is the only selling point that matters."
 og_image: /philosophy/saturn-symbolism.jpg
 ---
