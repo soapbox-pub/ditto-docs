@@ -80,89 +80,7 @@ The `dist/` directory now contains everything you need. Upload it to any web ser
 
 </div>
 
-Ditto is configured through a `ditto.json` file at the project root. This file is read at **build time** and validated against a strict Zod schema. Its values override the hardcoded defaults.
-
-<div class="three-cards">
-<div class="fun-card">
-  <div class="fun-card-emoji">👤</div>
-
-### User settings
-
-Stored in localStorage. **Highest priority** — users can always override your defaults with their own preferences.
-
-</div>
-<div class="fun-card">
-  <div class="fun-card-emoji">📋</div>
-
-### Build config
-
-Your `ditto.json` file. Sets instance defaults. This is where you shape the experience for your community.
-
-</div>
-<div class="fun-card">
-  <div class="fun-card-emoji">🏗️</div>
-
-### Hardcoded defaults
-
-Ditto's built-in fallbacks. Used when nothing else is specified.
-
-</div>
-</div>
-
-::: tip
-The `ditto.json` file is in `.gitignore` by default, so each deployment can have its own configuration without conflicts.
-:::
-
-#### Creating the config file
-
-Create a file named `ditto.json` in the project root:
-
-```json
-{}
-```
-
-All fields are optional. Only include what you want to override. The schema is validated at build time — invalid fields will cause a build error.
-
-</div>
-
-<div class="page-divider"></div>
-
-<div class="page-section">
-<div class="section-header-left">
-  <span class="section-emoji">🎨</span>
-
-## Theme
-
-</div>
-
-This is where the fun starts. Ditto doesn't believe in one-size-fits-all — your instance should look like *your* world.
-
-Set the default theme mode:
-
-```json
-{
-  "theme": "dark"
-}
-```
-
-Options: `"dark"` (default), `"light"`, `"system"`, `"custom"`.
-
-To use a custom theme, set theme to `"custom"` and provide a `customTheme` object with 3 core HSL colors. All other CSS tokens are derived automatically:
-
-```json
-{
-  "theme": "custom",
-  "customTheme": {
-    "colors": {
-      "background": "228 20% 10%",
-      "text": "210 40% 98%",
-      "primary": "258 70% 60%"
-    }
-  }
-}
-```
-
-You can also include a custom font and background:
+Ditto is configured through a `ditto.json` file at the project root. This file is read at **build time**. All fields are optional — only include what you want to override.
 
 ```json
 {
@@ -182,103 +100,20 @@ You can also include a custom font and background:
       "mode": "cover",
       "mimeType": "image/jpeg"
     }
-  }
-}
-```
-
-<div class="callout-fun">
-  <span class="callout-emoji">🪐</span>
-  <p>From just 3 colors — <code>background</code>, <code>text</code>, <code>primary</code> — Ditto derives 19 CSS custom properties (card, secondary, muted, accent, destructive, border, and more). Your instance becomes its own planet.</p>
-</div>
-</div>
-
-<div class="page-divider"></div>
-
-<div class="page-section">
-<div class="section-header-left">
-  <span class="section-emoji">📡</span>
-
-## Relay metadata
-
-</div>
-
-Configure the default relays for your instance:
-
-```json
-{
+  },
   "relayMetadata": {
     "relays": [
-      { "url": "wss://your-relay.example.com", "read": true, "write": true },
-      { "url": "wss://relay.damus.io", "read": true, "write": false }
+      { "url": "wss://relay.yourcommunity.com", "read": true, "write": true },
+      { "url": "wss://relay.damus.io", "read": true, "write": false },
+      { "url": "wss://nos.lol", "read": true, "write": false }
     ],
     "updatedAt": 0
   },
-  "useAppRelays": true
-}
-```
-
-Each relay has `url`, `read`, and `write` boolean flags. `useAppRelays` controls whether the app's default relays are used in addition to the user's personal relay list.
-</div>
-
-<div class="page-divider"></div>
-
-<div class="page-section">
-<div class="section-header-left">
-  <span class="section-emoji">🌸</span>
-
-## Blossom upload servers
-
-</div>
-
-Configure where file uploads (images, videos) are stored:
-
-```json
-{
+  "useAppRelays": false,
   "blossomServers": [
-    "https://blossom.ditto.pub/",
-    "https://blossom.primal.net/"
-  ]
-}
-```
-
-Defaults: `blossom.ditto.pub`, `blossom.dreamith.to`, `blossom.primal.net`.
-</div>
-
-<div class="page-divider"></div>
-
-<div class="page-section">
-<div class="section-header-left">
-  <span class="section-emoji">🔒</span>
-
-## Content warning policy
-
-</div>
-
-Control how content warnings are handled:
-
-```json
-{
-  "contentWarningPolicy": "blur"
-}
-```
-
-Options: `"blur"` (default), `"hide"`, `"show"`.
-</div>
-
-<div class="page-divider"></div>
-
-<div class="page-section">
-<div class="section-header-left">
-  <span class="section-emoji">📺</span>
-
-## Feed settings
-
-</div>
-
-Toggle which content types appear in the sidebar and feed. All fields are optional booleans:
-
-```json
-{
+    "https://blossom.yourcommunity.com/"
+  ],
+  "contentWarningPolicy": "blur",
   "feedSettings": {
     "feedIncludePosts": true,
     "feedIncludeReposts": true,
@@ -305,83 +140,12 @@ Toggle which content types appear in the sidebar and feed. All fields are option
 }
 ```
 
-<div class="two-cards">
-<div class="fun-card">
-  <div class="fun-card-emoji">📥</div>
-
-### feedInclude*
-
-Controls whether a content type appears in the **main feed**. Choose what's front and center.
-
-</div>
-<div class="fun-card">
-  <div class="fun-card-emoji">📌</div>
-
-### show*
-
-Controls whether a content type gets a **sidebar navigation entry**. Shape the journey.
-
-</div>
-</div>
-
-<div class="callout-fun">
-  <span class="callout-emoji">🎪</span>
-  <p>This is how you curate your carnival. A music community might show playlists and streams front and center. A gaming community might highlight Webxdc games and treasure hunts. <strong>Your instance, your attractions.</strong></p>
-</div>
-</div>
-
-<div class="page-divider"></div>
-
-<div class="page-section">
-<div class="section-header-left">
-  <span class="section-emoji">🌍</span>
-
-## Environment variables
-
-</div>
-
 You can point to a different config file path using the `CONFIG_FILE` environment variable:
 
 ```bash
 CONFIG_FILE=./my-config.json npm run build
 ```
-</div>
 
-<div class="page-divider"></div>
-
-<div class="page-section">
-<div class="section-header-left">
-  <span class="section-emoji">🏘️</span>
-
-## Example: community instance
-
-</div>
-
-Here's a full `ditto.json` for a community-branded instance:
-
-```json
-{
-  "theme": "dark",
-  "relayMetadata": {
-    "relays": [
-      { "url": "wss://relay.yourcommunity.com", "read": true, "write": true },
-      { "url": "wss://relay.damus.io", "read": true, "write": false },
-      { "url": "wss://nos.lol", "read": true, "write": false }
-    ],
-    "updatedAt": 0
-  },
-  "useAppRelays": false,
-  "blossomServers": [
-    "https://blossom.yourcommunity.com/"
-  ],
-  "contentWarningPolicy": "blur"
-}
-```
-
-<div class="callout-fun">
-  <span class="callout-emoji">💫</span>
-  <p>Every instance is its own world — its own colors, its own relays, its own personality. The protocol connects them all, but the experience is entirely yours to shape.</p>
-</div>
 </div>
 
 <div class="page-divider"></div>
