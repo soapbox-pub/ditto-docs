@@ -1,6 +1,6 @@
 ---
 outline: [2, 2]
-description: All Nostr event kinds that Ditto supports beyond the core protocol, including community and Ditto-specific kinds.
+description: All non-core Nostr event kinds that Ditto supports, including NIP extensions, community kinds, and Ditto-specific kinds.
 ---
 
 <div class="page-hero">
@@ -8,7 +8,7 @@ description: All Nostr event kinds that Ditto supports beyond the core protocol,
 
 # Ditto Nostr Reference
 
-  <p class="page-hero-sub">All Nostr event kinds that Ditto supports beyond the core protocol, including community and Ditto-specific kinds.</p>
+  <p class="page-hero-sub">All non-core Nostr event kinds that Ditto supports, including NIP extensions, community kinds, and Ditto-specific kinds.</p>
 </div>
 
 For a complete list of all Nostr event kinds, see [nostrbook.dev](https://nostrbook.dev/). The protocol is defined by [NIPs](https://github.com/nostr-protocol/nips) (Nostr Implementation Possibilities), and community members can share custom NIP proposals on [NostrHub](https://nostrhub.io/).
@@ -36,12 +36,6 @@ For a complete list of all Nostr event kinds, see [nostrbook.dev](https://nostrb
   font-weight: 600;
   background: var(--vp-c-bg-soft);
 }
-.kinds-table th:nth-child(4) {
-  text-align: center;
-}
-.kinds-table td:nth-child(4) {
-  text-align: center;
-}
 .kinds-table .ditto-kind {
   background: linear-gradient(135deg, rgba(124, 82, 224, 0.15) 0%, rgba(232, 121, 249, 0.15) 50%, rgba(251, 146, 60, 0.10) 100%);
 }
@@ -58,93 +52,298 @@ Rows with a <span style="display:inline-block;width:12px;height:12px;border-radi
       <th>Kind</th>
       <th>Name</th>
       <th>Description</th>
-      <th>Addressable</th>
     </tr>
   </thead>
   <tbody>
     <tr>
+      <td>17</td>
+      <td>External Content Reaction</td>
+      <td>Reaction on external content like URLs or ISBNs (NIP-73)</td>
+    </tr>
+    <tr>
+      <td>20</td>
+      <td>Photo</td>
+      <td>Photo post displayed in the Photos feed (NIP-68)</td>
+    </tr>
+    <tr>
+      <td>21</td>
+      <td>Video</td>
+      <td>Video post displayed in the Videos feed (NIP-71)</td>
+    </tr>
+    <tr>
+      <td>22</td>
+      <td>Short Video</td>
+      <td>Short-form vertical video, Reels/TikTok-style (NIP-71)</td>
+    </tr>
+    <tr>
+      <td>62</td>
+      <td>Request to Vanish</td>
+      <td>Request identity deletion from relays (NIP-62)</td>
+    </tr>
+    <tr>
       <td>1018</td>
       <td>Poll Vote</td>
       <td>Cast a vote on a kind 1068 poll</td>
-      <td>No</td>
+    </tr>
+    <tr>
+      <td>1063</td>
+      <td>File Metadata</td>
+      <td>File metadata for uploads, including Webxdc apps (NIP-94)</td>
     </tr>
     <tr>
       <td>1068</td>
       <td>Poll</td>
       <td>Community poll with multiple-choice options</td>
-      <td>No</td>
+    </tr>
+    <tr>
+      <td>1111</td>
+      <td>Comment</td>
+      <td>Threaded comment on posts and external content (NIP-22)</td>
+    </tr>
+    <tr>
+      <td>1222</td>
+      <td>Voice Message</td>
+      <td>Root voice message post</td>
+    </tr>
+    <tr>
+      <td>1244</td>
+      <td>Voice Message Reply</td>
+      <td>Voice message reply to a kind 1 note</td>
+    </tr>
+    <tr>
+      <td>1311</td>
+      <td>Live Chat Message</td>
+      <td>Chat message in a live stream (NIP-53)</td>
+    </tr>
+    <tr>
+      <td>1617</td>
+      <td>Patch</td>
+      <td>Git patch for code review (NIP-34)</td>
+    </tr>
+    <tr>
+      <td>1618</td>
+      <td>Pull Request</td>
+      <td>Git pull request (NIP-34)</td>
+    </tr>
+    <tr>
+      <td>1984</td>
+      <td>Report</td>
+      <td>Flag content or users for moderation</td>
     </tr>
     <tr>
       <td>1985</td>
       <td><a href="#trends">Trending Labels</a></td>
-      <td>Trending hashtags and posts published by the relay</td>
-      <td>No</td>
+      <td>Trending hashtags and posts published by the relay (NIP-32)</td>
     </tr>
     <tr>
       <td>3367</td>
       <td>Color Moment</td>
       <td>Color palette post expressing a mood</td>
-      <td>No</td>
     </tr>
     <tr>
       <td>7516</td>
       <td>Found Log</td>
       <td>Log entry recording a user finding a geocache</td>
-      <td>No</td>
+    </tr>
+    <tr>
+      <td>9735</td>
+      <td>Zap Receipt</td>
+      <td>Lightning zap receipt for payments (NIP-57)</td>
+    </tr>
+    <tr>
+      <td>10000</td>
+      <td>Mute List</td>
+      <td>Muted users, threads, and words (NIP-51)</td>
+    </tr>
+    <tr>
+      <td>10001</td>
+      <td>Pinned Notes</td>
+      <td>Pinned posts displayed on user profiles (NIP-51)</td>
+    </tr>
+    <tr>
+      <td>10002</td>
+      <td>Relay List</td>
+      <td>User's preferred relays for reading and writing (NIP-65)</td>
+    </tr>
+    <tr>
+      <td>10003</td>
+      <td>Bookmark List</td>
+      <td>Bookmarked events (NIP-51)</td>
+    </tr>
+    <tr>
+      <td>10015</td>
+      <td>Interests</td>
+      <td>User's followed hashtags and interests (NIP-51)</td>
+    </tr>
+    <tr>
+      <td>10030</td>
+      <td>Custom Emoji List</td>
+      <td>User's preferred custom emoji packs (NIP-30)</td>
+    </tr>
+    <tr>
+      <td>10063</td>
+      <td>Blossom Server List</td>
+      <td>User's Blossom file upload servers (BUD-03)</td>
+    </tr>
+    <tr>
+      <td>10073</td>
+      <td>Read Books</td>
+      <td>Books the user has finished reading (Bookstr)</td>
+    </tr>
+    <tr>
+      <td>10074</td>
+      <td>Currently Reading</td>
+      <td>Books the user is currently reading (Bookstr)</td>
+    </tr>
+    <tr>
+      <td>10075</td>
+      <td>To Be Read</td>
+      <td>Books the user wants to read (Bookstr)</td>
     </tr>
     <tr class="ditto-kind">
       <td>16767</td>
       <td><a href="#ditto-profile-theme">Active Profile Theme</a></td>
       <td>The user's currently active profile theme</td>
-      <td>No</td>
+    </tr>
+    <tr class="ditto-kind">
+      <td>16769</td>
+      <td>Profile Tabs</td>
+      <td>Custom profile tab configuration</td>
+    </tr>
+    <tr>
+      <td>30000</td>
+      <td>People List</td>
+      <td>User-defined lists of people (NIP-51)</td>
+    </tr>
+    <tr>
+      <td>30008</td>
+      <td>Profile Badges</td>
+      <td>Badges a user has accepted and displayed (NIP-58)</td>
+    </tr>
+    <tr>
+      <td>30009</td>
+      <td>Badge Definition</td>
+      <td>Badge metadata and imagery (NIP-58)</td>
     </tr>
     <tr>
       <td>30023</td>
       <td>Article</td>
       <td>Long-form blog post with Markdown content (NIP-23)</td>
-      <td>Yes</td>
+    </tr>
+    <tr>
+      <td>30030</td>
+      <td>Emoji Pack</td>
+      <td>Custom emoji pack definition (NIP-30)</td>
+    </tr>
+    <tr>
+      <td>30054</td>
+      <td>Podcast Episode</td>
+      <td>Podcast episode displayed in the Podcasts feed</td>
+    </tr>
+    <tr>
+      <td>30055</td>
+      <td>Podcast Trailer</td>
+      <td>Podcast trailer displayed in the Podcasts feed</td>
     </tr>
     <tr class="ditto-kind">
       <td>30078</td>
       <td><a href="#ditto-settings">App Settings</a></td>
       <td>Encrypted per-user Ditto settings (NIP-78)</td>
-      <td>Yes</td>
     </tr>
     <tr>
       <td>30311</td>
       <td>Stream</td>
-      <td>Live streaming event</td>
-      <td>Yes</td>
+      <td>Live streaming event (NIP-53)</td>
+    </tr>
+    <tr>
+      <td>30315</td>
+      <td>User Status</td>
+      <td>User status displayed on profiles and posts (NIP-38)</td>
+    </tr>
+    <tr>
+      <td>30382</td>
+      <td>User Stats</td>
+      <td>Follower and post counts from the relay stats pubkey (NIP-85)</td>
+    </tr>
+    <tr>
+      <td>30383</td>
+      <td><a href="#stats">Event Stats</a></td>
+      <td>Engagement counts for events from the relay stats pubkey (NIP-85)</td>
+    </tr>
+    <tr>
+      <td>30384</td>
+      <td>Addressable Event Stats</td>
+      <td>Engagement counts for addressable events (NIP-85)</td>
+    </tr>
+    <tr>
+      <td>30617</td>
+      <td>Git Repository</td>
+      <td>Git repository or app submission (NIP-34)</td>
+    </tr>
+    <tr>
+      <td>30817</td>
+      <td>Custom NIP</td>
+      <td>Custom NIP proposal on NostrHub</td>
+    </tr>
+    <tr>
+      <td>31922</td>
+      <td>Date Calendar Event</td>
+      <td>Date-based calendar event (NIP-52)</td>
+    </tr>
+    <tr>
+      <td>31923</td>
+      <td>Time Calendar Event</td>
+      <td>Time-based calendar event (NIP-52)</td>
+    </tr>
+    <tr>
+      <td>31925</td>
+      <td>Calendar RSVP</td>
+      <td>RSVP response to a calendar event (NIP-52)</td>
+    </tr>
+    <tr>
+      <td>31985</td>
+      <td>Book Review</td>
+      <td>Book review and rating (Bookstr)</td>
+    </tr>
+    <tr>
+      <td>34139</td>
+      <td>Music Playlist</td>
+      <td>Music playlist displayed in the Music feed</td>
     </tr>
     <tr>
       <td>34236</td>
       <td>Vine</td>
       <td>Short-form video post</td>
-      <td>Yes</td>
+    </tr>
+    <tr>
+      <td>34550</td>
+      <td>Community Definition</td>
+      <td>Community definition (NIP-72)</td>
     </tr>
     <tr class="ditto-kind">
       <td>36767</td>
       <td><a href="#ditto-theme">Theme Definition</a></td>
       <td>Shareable custom UI theme with colors, font, and background</td>
-      <td>Yes</td>
+    </tr>
+    <tr>
+      <td>36787</td>
+      <td>Music Track</td>
+      <td>Music track displayed in the Music feed</td>
     </tr>
     <tr>
       <td>37381</td>
       <td>Magic Deck</td>
       <td>Magic: The Gathering deck list</td>
-      <td>Yes</td>
     </tr>
     <tr>
       <td>37516</td>
       <td>Geocache</td>
       <td>Geocache listing for real-world treasure hunting</td>
-      <td>Yes</td>
     </tr>
     <tr>
       <td>39089</td>
       <td>Follow Pack</td>
       <td>Curated follow recommendations (starter packs)</td>
-      <td>Yes</td>
     </tr>
   </tbody>
 </table>
