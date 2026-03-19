@@ -54,7 +54,7 @@ For a complete list of all Nostr event kinds, see [nostrbook.dev](https://nostrb
 
 <div class="kinds-legend" style="display:flex;flex-wrap:wrap;gap:16px;align-items:center;margin-bottom:8px;">
   <span><span style="display:inline-block;width:12px;height:12px;border-radius:3px;background:var(--ditto-gradient);vertical-align:middle;"></span> Ditto-created kind</span>
-  <span><span style="color:#e84393;font-size:14px;vertical-align:middle;">✦</span> <a href="/philosophy#the-nostr-kind-cube">whimsy</a> — sweet spot of <em>The Nostr Kind Cube</em></span>
+  <span><span style="color:#e84393;font-size:14px;vertical-align:middle;">✦</span> <a href="/philosophy#the-nostr-kind-cube">whimsy</a></span>
 </div>
 
 <table class="kinds-table">
