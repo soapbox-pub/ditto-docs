@@ -112,31 +112,7 @@ Ditto is configured through a `ditto.json` file at the project root. This file i
   "useAppRelays": false,
   "blossomServers": [
     "https://blossom.yourcommunity.com/"
-  ],
-  "contentWarningPolicy": "blur",
-  "feedSettings": {
-    "feedIncludePosts": true,
-    "feedIncludeReposts": true,
-    "feedIncludeArticles": false,
-    "feedIncludeVines": false,
-    "feedIncludePolls": false,
-    "feedIncludeStreams": false,
-    "feedIncludeColors": false,
-    "feedIncludePacks": false,
-    "feedIncludeDecks": false,
-    "feedIncludeTreasureGeocaches": false,
-    "feedIncludeTreasureFoundLogs": false,
-    "showArticles": false,
-    "showVines": true,
-    "showPolls": false,
-    "showStreams": true,
-    "showColors": false,
-    "showPacks": true,
-    "showDecks": false,
-    "showTreasures": false,
-    "showTreasureGeocaches": true,
-    "showTreasureFoundLogs": true
-  }
+  ]
 }
 ```
 
