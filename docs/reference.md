@@ -382,6 +382,26 @@ For a complete list of all Nostr event kinds, see [nostrbook.dev](https://nostrb
 ---
 
 <div class="section-header-left">
+  <span class="section-emoji">🔷</span>
+
+## Avatar Shape
+
+</div>
+
+Kind 0 profile metadata ([NIP-24](https://github.com/nostr-protocol/nips/blob/master/24.md)) is extended with a `shape` property. The value is any emoji, which is used as a mask over the user's avatar to set its shape.
+
+```json
+{
+  "kind": 0,
+  "content": "{\"name\":\"alex\",\"picture\":\"https://example.com/avatar.jpg\",\"shape\":\"🔷\"}"
+}
+```
+
+A [NIP proposal](https://github.com/nostr-protocol/nips/pull/2268) has been submitted to standardize this field.
+
+---
+
+<div class="section-header-left">
   <span class="section-emoji">🎨</span>
 
 ## Ditto Profile Theme
