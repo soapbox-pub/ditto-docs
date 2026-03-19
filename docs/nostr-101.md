@@ -40,25 +40,25 @@ Nostr stands for **Notes and Other Stuff Transmitted by Relays**. The "Other Stu
 <div class="fun-card">
   <div class="fun-card-emoji">🎮</div>
 
-### Apps that interoperate
+### One identity, every app
 
-Different apps, same identity and social graph. No walled gardens.
+Play a game, browse a marketplace, and scroll your feed -- all knowing who you are. No new accounts, ever.
 
 </div>
 <div class="fun-card">
   <div class="fun-card-emoji">🎨</div>
 
-### Infinite "Other Stuff"
+### Way more than posts
 
-Not just posts -- games, live streams, lists, custom app data, and things nobody has invented yet.
+Games inside your feed. Live streams. Collaborative lists. Things nobody has invented yet. This is the "Other Stuff."
 
 </div>
 <div class="fun-card">
   <div class="fun-card-emoji">🔄</div>
 
-### Take everything with you
+### Nothing gets left behind
 
-Switch apps anytime. Your followers, posts, and history come with you.
+Find something better? Move. Your followers, posts, and history come with you automatically.
 
 </div>
 </div>
@@ -87,7 +87,7 @@ Now that you know what it feels like -- here's the simple machinery underneath.
 
 ### Keys, not accounts
 
-Your identity is a cryptographic keypair on your device. No sign-up forms, no corporations managing your login.
+You don't "sign up" -- you generate a keypair that lives on your device. No corporation between you and your identity.
 
 </div>
 <div class="fun-card">
@@ -95,7 +95,7 @@ Your identity is a cryptographic keypair on your device. No sign-up forms, no co
 
 ### Relays, not servers
 
-**Relays** store and forward your data. Use as many as you want -- if one goes down, the others have you covered.
+Your stuff lives on **relays** -- pick as many as you like. No single point of failure, no single company in control.
 
 </div>
 </div>
