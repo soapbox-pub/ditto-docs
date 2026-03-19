@@ -13,25 +13,6 @@ description: Everything you need to understand, customize, and self-host Ditto.
 </div>
 
 <div class="page-section">
-<div class="two-cards">
-<div class="fun-card">
-  <div class="fun-card-emoji">🌱</div>
-  <h3>Learn</h3>
-  <p>New to Ditto or Nostr? Start here. Understand the protocol and the ideas behind Ditto.</p>
-  <a href="/nostr-101" class="card-link-hint">Get started &rarr;</a>
-</div>
-<div class="fun-card">
-  <div class="fun-card-emoji">🛠️</div>
-  <h3>Development</h3>
-  <p>Themes, self-hosting, configuration, and Nostr event references for building on Ditto.</p>
-  <a href="/self-hosting" class="card-link-hint">Start building &rarr;</a>
-</div>
-</div>
-</div>
-
-<div class="page-divider"></div>
-
-<div class="page-section">
 <div class="section-header-left">
   <span class="section-emoji">🌱</span>
 
