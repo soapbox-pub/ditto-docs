@@ -1,5 +1,4 @@
 ---
-outline: false
 description: "Host your own Ditto instance. It's just static files — deploy on any domain, customize everything, and build your own corner of the carnival."
 ---
 
