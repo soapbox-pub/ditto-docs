@@ -5820,14 +5820,3 @@ button.screen-power-btn.power-standby {
   }
 }
 
-/* --------------------------------------------------------------------------
- * Sidebar back link
- * -------------------------------------------------------------------------- */
-
-.VPSidebar .VPSidebarItem.level-0:last-child {
-  margin-top: 4px;
-}
-
-.VPSidebar .VPSidebarItem.level-0:last-child > .items > .VPSidebarItem > .item > .link .text {
-  font-size: 13px;
-}
