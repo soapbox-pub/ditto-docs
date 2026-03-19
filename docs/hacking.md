@@ -44,7 +44,7 @@ Shakespeare is a browser-based AI development environment. No installation, no t
 
 ### Zero setup
 
-No Node.js, no `npm install`, no build tooling. Everything runs in the browser via WebAssembly. Open a tab and you're in.
+Everything runs in the browser. Open a tab and you're in.
 
 </div>
 <div class="fun-card">
@@ -52,7 +52,7 @@ No Node.js, no `npm install`, no build tooling. Everything runs in the browser v
 
 ### Nostr-native tools
 
-13+ built-in tools for working with Nostr events, NIPs, relay queries, and NIP-19 identifiers. It speaks the protocol Ditto is built on.
+13+ built-in tools for Nostr events, NIPs, and relay queries.
 
 </div>
 <div class="fun-card">
@@ -60,7 +60,7 @@ No Node.js, no `npm install`, no build tooling. Everything runs in the browser v
 
 ### Live preview
 
-See your changes rendered in real time as the AI makes edits. Git is built in — clone, commit, push, and open a merge request without ever touching a terminal.
+See changes in real time. Built-in Git for commits and merge requests.
 
 </div>
 </div>
