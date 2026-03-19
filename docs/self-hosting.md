@@ -127,6 +127,42 @@ CONFIG_FILE=./my-config.json npm run build
 
 <div class="page-section">
 <div class="section-header-left">
+  <span class="section-emoji">🎨</span>
+
+## Custom branding
+
+</div>
+
+Beyond themes, you can make Ditto entirely your own:
+
+<div class="two-cards">
+<div class="fun-card">
+  <div class="fun-card-emoji">🖼️</div>
+
+### Visual identity
+
+- **Logo** — Replace `public/logo.svg`
+- **App name** — Update in `index.html` and `public/manifest.webmanifest`
+- **OG image** — Replace the OG image in `public/` for social sharing previews
+
+</div>
+<div class="fun-card">
+  <div class="fun-card-emoji">⚙️</div>
+
+### Infrastructure
+
+- **Default relays** — Set in `ditto.json`
+- **Upload servers** — Set your own Blossom servers in `ditto.json`
+- **Content policy** — Configure content warnings and feed visibility
+
+</div>
+</div>
+</div>
+
+<div class="page-divider"></div>
+
+<div class="page-section">
+<div class="section-header-left">
   <span class="section-emoji">📡</span>
 
 ## Ditto Relay
@@ -161,42 +197,6 @@ npx cap sync
 # Open in Android Studio
 npx cap open android
 ```
-</div>
-
-<div class="page-divider"></div>
-
-<div class="page-section">
-<div class="section-header-left">
-  <span class="section-emoji">🎨</span>
-
-## Custom branding
-
-</div>
-
-Beyond themes, you can make Ditto entirely your own:
-
-<div class="two-cards">
-<div class="fun-card">
-  <div class="fun-card-emoji">🖼️</div>
-
-### Visual identity
-
-- **Logo** — Replace `public/logo.svg`
-- **App name** — Update in `index.html` and `public/manifest.webmanifest`
-- **OG image** — Replace the OG image in `public/` for social sharing previews
-
-</div>
-<div class="fun-card">
-  <div class="fun-card-emoji">⚙️</div>
-
-### Infrastructure
-
-- **Default relays** — Set in `ditto.json`
-- **Upload servers** — Set your own Blossom servers in `ditto.json`
-- **Content policy** — Configure content warnings and feed visibility
-
-</div>
-</div>
 </div>
 
 <div class="page-divider"></div>
