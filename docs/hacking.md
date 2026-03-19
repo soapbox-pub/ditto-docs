@@ -1,6 +1,6 @@
 ---
 outline: false
-description: "Hack on Ditto with AI-powered tools. Use Shakespeare, OpenCode, or MKStack to build features, fix bugs, and ship changes — no gatekeeping required."
+description: "Hack on Ditto with AI-powered tools. Use MKStack, OpenCode, or Shakespeare to build features, fix bugs, and ship changes — no gatekeeping required."
 ---
 
 <div class="page-hero">
@@ -30,55 +30,72 @@ The golden era of the internet won't be built by a small team. **It'll be built 
 
 <div class="page-section">
 <div class="section-header-left">
-  <span class="section-emoji">🎭</span>
+  <span class="section-emoji">🏗️</span>
 
-## Shakespeare
+## MKStack
 
 </div>
 
-[Shakespeare](https://shakespeare.diy) is Soapbox's open source, browser-based AI development environment. No installation, no terminal, no local dev setup — just import the Ditto repo and start building. Describe what you want in plain language and watch it happen in real time.
+[MKStack](https://mkstack.xyz) is the framework that Ditto and other Soapbox Nostr apps are built on. A batteries-included React + TypeScript + Tailwind starter with deep Nostr integration — and what both Shakespeare and OpenCode understand when they work on Ditto.
 
 <div class="three-cards">
 <div class="fun-card">
-  <div class="fun-card-emoji">🌐</div>
+  <div class="fun-card-emoji">📡</div>
 
-### Zero setup
+### Nostrify
 
-No Node.js, no `npm install`, no build tooling. Everything runs in the browser via WebAssembly. Open a tab and you're in.
-
-</div>
-<div class="fun-card">
-  <div class="fun-card-emoji">🔮</div>
-
-### Nostr-native tools
-
-13+ built-in tools for working with Nostr events, NIPs, relay queries, and NIP-19 identifiers. It speaks the protocol Ditto is built on.
+Relay connections, event queries, and full protocol handling out of the box.
 
 </div>
 <div class="fun-card">
-  <div class="fun-card-emoji">👁️</div>
+  <div class="fun-card-emoji">🧩</div>
 
-### Live preview
+### 48+ components
 
-See your changes rendered in real time as the AI makes edits. Git is built in — clone, commit, push, and open a merge request without ever touching a terminal.
+shadcn/ui component library with TailwindCSS. React 18, TypeScript, and TanStack Query for data fetching.
+
+</div>
+<div class="fun-card">
+  <div class="fun-card-emoji">🔐</div>
+
+### Nostr built-in
+
+Auth (NIP-07), relay management (NIP-65), DMs (NIP-04/17), zaps (NIP-57), file uploads via Blossom, and NIP-19 routing.
 
 </div>
 </div>
 
-### How it works
+### Build something new
 
-1. Go to [shakespeare.diy](https://shakespeare.diy) and sign in with a Nostr browser extension (Alby, nos2x, etc.)
-2. Import the Ditto repository: `https://gitlab.com/soapbox-pub/ditto.git`
-3. Describe what you want — *"add a dark purple theme option"*, *"fix the avatar upload on mobile"*, *"add a new sidebar link for bookmarks"*
-4. Shakespeare reads the codebase, understands the structure, and makes the changes
-5. See results live, iterate through conversation, and push when you're done
+If you want to create your own Nostr app using the same stack Ditto is built on:
+
+```bash
+# Install Stacks CLI
+npm install -g @getstacks/stacks
+
+# Create a new project from the MKStack template
+stacks mkstack
+
+# Start the AI agent
+stacks agent
+```
+
+The `stacks agent` command launches **Dork**, an AI assistant that understands the full MKStack framework, all 50+ Nostr NIPs (via [Nostrbook MCP](https://nostrbook.dev)), and the React/TypeScript patterns used across the project.
+
+When you're ready to ship:
+
+```bash
+npm run deploy
+```
+
+This builds your app, uploads it to Blossom servers, publishes it to Nostr relays, and makes it live on [NostrDeploy.com](https://nostrdeploy.com).
 
 <div class="callout-fun">
-  <span class="callout-emoji">✨</span>
-  <p>Shakespeare is the fastest path from <em>"I have an idea"</em> to a working change. It's especially good for UI tweaks, theme work, adding components, and exploring the codebase. Choose from <strong>50+ AI models</strong> across OpenRouter, Anthropic, OpenAI, xAI, and local models.</p>
+  <span class="callout-emoji">🪐</span>
+  <p>The Nostr ecosystem needs more rides in the carnival. MKStack is how you build them — with full AI support, first-class protocol integration, and one-command deployment to the decentralized web.</p>
 </div>
 
-**Source code:** [gitlab.com/soapbox-pub/shakespeare](https://gitlab.com/soapbox-pub/shakespeare)
+**Source code:** [gitlab.com/soapbox-pub/mkstack](https://gitlab.com/soapbox-pub/mkstack)
 
 </div>
 
@@ -160,72 +177,55 @@ You see every change before it lands. 75+ providers through Models.dev, includin
 
 <div class="page-section">
 <div class="section-header-left">
-  <span class="section-emoji">🏗️</span>
+  <span class="section-emoji">🎭</span>
 
-## MKStack
+## Shakespeare
 
 </div>
 
-[MKStack](https://mkstack.xyz) is the framework that Ditto and other Soapbox Nostr apps are built on. A batteries-included React + TypeScript + Tailwind starter with deep Nostr integration — and what both Shakespeare and OpenCode understand when they work on Ditto.
+[Shakespeare](https://shakespeare.diy) is Soapbox's open source, browser-based AI development environment. No installation, no terminal, no local dev setup — just import the Ditto repo and start building. Describe what you want in plain language and watch it happen in real time.
 
 <div class="three-cards">
 <div class="fun-card">
-  <div class="fun-card-emoji">📡</div>
+  <div class="fun-card-emoji">🌐</div>
 
-### Nostrify
+### Zero setup
 
-Relay connections, event queries, and full protocol handling out of the box.
-
-</div>
-<div class="fun-card">
-  <div class="fun-card-emoji">🧩</div>
-
-### 48+ components
-
-shadcn/ui component library with TailwindCSS. React 18, TypeScript, and TanStack Query for data fetching.
+No Node.js, no `npm install`, no build tooling. Everything runs in the browser via WebAssembly. Open a tab and you're in.
 
 </div>
 <div class="fun-card">
-  <div class="fun-card-emoji">🔐</div>
+  <div class="fun-card-emoji">🔮</div>
 
-### Nostr built-in
+### Nostr-native tools
 
-Auth (NIP-07), relay management (NIP-65), DMs (NIP-04/17), zaps (NIP-57), file uploads via Blossom, and NIP-19 routing.
+13+ built-in tools for working with Nostr events, NIPs, relay queries, and NIP-19 identifiers. It speaks the protocol Ditto is built on.
+
+</div>
+<div class="fun-card">
+  <div class="fun-card-emoji">👁️</div>
+
+### Live preview
+
+See your changes rendered in real time as the AI makes edits. Git is built in — clone, commit, push, and open a merge request without ever touching a terminal.
 
 </div>
 </div>
 
-### Build something new
+### How it works
 
-If you want to create your own Nostr app using the same stack Ditto is built on:
-
-```bash
-# Install Stacks CLI
-npm install -g @getstacks/stacks
-
-# Create a new project from the MKStack template
-stacks mkstack
-
-# Start the AI agent
-stacks agent
-```
-
-The `stacks agent` command launches **Dork**, an AI assistant that understands the full MKStack framework, all 50+ Nostr NIPs (via [Nostrbook MCP](https://nostrbook.dev)), and the React/TypeScript patterns used across the project.
-
-When you're ready to ship:
-
-```bash
-npm run deploy
-```
-
-This builds your app, uploads it to Blossom servers, publishes it to Nostr relays, and makes it live on [NostrDeploy.com](https://nostrdeploy.com).
+1. Go to [shakespeare.diy](https://shakespeare.diy) and sign in with a Nostr browser extension (Alby, nos2x, etc.)
+2. Import the Ditto repository: `https://gitlab.com/soapbox-pub/ditto.git`
+3. Describe what you want — *"add a dark purple theme option"*, *"fix the avatar upload on mobile"*, *"add a new sidebar link for bookmarks"*
+4. Shakespeare reads the codebase, understands the structure, and makes the changes
+5. See results live, iterate through conversation, and push when you're done
 
 <div class="callout-fun">
-  <span class="callout-emoji">🪐</span>
-  <p>The Nostr ecosystem needs more rides in the carnival. MKStack is how you build them — with full AI support, first-class protocol integration, and one-command deployment to the decentralized web.</p>
+  <span class="callout-emoji">✨</span>
+  <p>Shakespeare is the fastest path from <em>"I have an idea"</em> to a working change. It's especially good for UI tweaks, theme work, adding components, and exploring the codebase. Choose from <strong>50+ AI models</strong> across OpenRouter, Anthropic, OpenAI, xAI, and local models.</p>
 </div>
 
-**Source code:** [gitlab.com/soapbox-pub/mkstack](https://gitlab.com/soapbox-pub/mkstack)
+**Source code:** [gitlab.com/soapbox-pub/shakespeare](https://gitlab.com/soapbox-pub/shakespeare)
 
 </div>
 
@@ -239,44 +239,37 @@ This builds your app, uploads it to Blossom servers, publishes it to Nostr relay
 
 </div>
 
-<div class="versus-grid">
-<div class="versus-col versus-old">
-  <div class="versus-header">
-    <span class="versus-emoji">🎭</span>
-    <h3>Shakespeare</h3>
+<div class="two-cards">
+<div class="fun-card">
+  <div class="fun-card-emoji">🖥️</div>
+
+### OpenCode
+
+Terminal-based AI agent with full local filesystem access. Best for deep changes, debugging, multi-file refactors, and running the full build pipeline. The power tool.
+
+  <div style="margin-top: 16px;">
+    <a href="https://opencode.ai" target="_blank" class="btn btn-primary" style="padding: 12px 28px; font-size: 15px;">
+      <span>Get OpenCode &#8599;</span>
+    </a>
   </div>
-  <ul>
-    <li>Quick changes & UI work</li>
-    <li>Zero setup (browser)</li>
-    <li>50+ AI models</li>
-    <li>Built-in Git & live preview</li>
-    <li>Exploring the codebase</li>
-    <li>First-time contributors</li>
-  </ul>
+
 </div>
-<div class="versus-divider">
-  <span>vs</span>
-</div>
-<div class="versus-col versus-new">
-  <div class="versus-header">
-    <span class="versus-emoji">🖥️</span>
-    <h3>OpenCode</h3>
+<div class="fun-card">
+  <div class="fun-card-emoji">🎭</div>
+
+### Shakespeare
+
+Browser-based AI builder with zero setup. Best for quick changes, UI tweaks, theme work, and exploring the codebase. Open a tab and start building.
+
+  <div style="margin-top: 16px;">
+    <a href="https://shakespeare.diy" target="_blank" class="btn btn-primary" style="padding: 12px 28px; font-size: 15px;">
+      <span>Open Shakespeare &#8599;</span>
+    </a>
   </div>
-  <ul>
-    <li>Deep changes & debugging</li>
-    <li>Install CLI + clone repo</li>
-    <li>75+ AI models</li>
-    <li>Full local filesystem</li>
-    <li>Multi-file refactors</li>
-    <li>Full build pipeline</li>
-  </ul>
+
 </div>
 </div>
 
-<div class="callout-fun">
-  <span class="callout-emoji">🏗️</span>
-  <p><strong>Building something entirely new?</strong> Use MKStack to scaffold a fresh Nostr app with the same stack Ditto uses. Install the Stacks CLI, run <code>stacks mkstack</code>, and let the AI agent handle the rest.</p>
-</div>
 </div>
 
 <div class="page-divider"></div>
