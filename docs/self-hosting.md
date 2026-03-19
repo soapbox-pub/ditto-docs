@@ -128,6 +128,22 @@ CONFIG_FILE=./my-config.json npm run build
 
 <div class="page-section">
 <div class="section-header-left">
+  <span class="section-emoji">📡</span>
+
+## Ditto Relay
+
+</div>
+
+For those who want full sovereignty, you can run your own Nostr relay alongside Ditto. This is entirely optional and only recommended if you're serious about controlling your own infrastructure.
+
+[Ditto Relay on GitLab](https://gitlab.com/soapbox-pub/ditto-relay)
+
+</div>
+
+<div class="page-divider"></div>
+
+<div class="page-section">
+<div class="section-header-left">
   <span class="section-emoji">📱</span>
 
 ## Android app
