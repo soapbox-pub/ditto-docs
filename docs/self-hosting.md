@@ -56,26 +56,15 @@ No build step required — just serve the files from your domain. Make sure your
 
 </div>
 
-If you want to customize Ditto before deploying, compile it yourself.
+If you want to customize Ditto before deploying, compile it yourself. Requires **Node.js 22+**.
 
-### Prerequisites
-
-- **Node.js 22** and **npm 10.9.4**
-
-### Build from source
+```
+https://gitlab.com/soapbox-pub/ditto.git
+```
 
 ```bash
-# Clone the repository
-git clone https://gitlab.com/soapbox-pub/ditto.git
-cd ditto
-
-# Install dependencies
-npm install
-
-# Build
+npm i
 npm run build
-
-# The built site is in dist/
 ```
 
 The `dist/` directory now contains everything you need. Upload it to any web server.
