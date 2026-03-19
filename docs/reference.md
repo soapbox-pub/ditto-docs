@@ -56,6 +56,26 @@ Rows with a <span style="display:inline-block;width:12px;height:12px;border-radi
   </thead>
   <tbody>
     <tr>
+      <td>0</td>
+      <td>Profile Metadata</td>
+      <td>User profile information: name, bio, avatar, and more (NIP-01)</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>Short Text Note</td>
+      <td>The core post type on Nostr (NIP-01)</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Follow List</td>
+      <td>The user's list of followed pubkeys (NIP-02)</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>Deletion</td>
+      <td>Delete a previously published event (NIP-09)</td>
+    </tr>
+    <tr>
       <td>17</td>
       <td>External Content Reaction</td>
       <td>Reaction on external content like URLs or ISBNs (NIP-73)</td>
