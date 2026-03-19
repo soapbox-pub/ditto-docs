@@ -67,14 +67,13 @@ See your changes rendered in real time as the AI makes edits. Git is built in �
 
 ### How it works
 
-1. Go to [shakespeare.diy](https://shakespeare.diy) and sign in with a Nostr browser extension (Alby, nos2x, etc.)
-2. Import the Ditto repository: `https://gitlab.com/soapbox-pub/ditto.git`
-3. Describe what you want — *"add a dark purple theme option"*, *"fix the avatar upload on mobile"*, *"add a new sidebar link for bookmarks"*
-4. Shakespeare reads the codebase, understands the structure, and makes the changes
-5. See results live, iterate through conversation, and push when you're done
+1. Click **Edit with Shakespeare** — it opens the Ditto repo in your browser, ready to go
+2. Describe what you want — *"add a dark purple theme option"*, *"fix the avatar upload on mobile"*, *"add a new sidebar link for bookmarks"*
+3. Shakespeare reads the codebase, understands the structure, and makes the changes
+4. See results live, iterate through conversation, and push when you're done
 
 <div style="margin-top: 20px;">
-  <a href="https://shakespeare.diy" target="_blank" class="btn btn-primary">
+  <a href="https://shakespeare.diy/clone?url=https://gitlab.com/soapbox-pub/ditto.git" target="_blank" class="btn btn-primary">
     <span>Edit with Shakespeare &#8599;</span>
   </a>
 </div>
@@ -224,7 +223,7 @@ How Shakespeare evolved from Block's Goose to a browser-based AI builder.
 Ditto isn't trying to be another platform. It's trying to be the most fun place on the internet — and that takes more than one team. Grab a tool, break something, build something better. The golden era won't build itself.
 
   <div class="page-cta-actions">
-    <a href="https://shakespeare.diy" target="_blank" class="btn btn-primary">
+    <a href="https://shakespeare.diy/clone?url=https://gitlab.com/soapbox-pub/ditto.git" target="_blank" class="btn btn-primary">
       <span>Edit with Shakespeare &#8599;</span>
     </a>
     <a href="/philosophy" class="btn btn-ghost">Ditto Philosophy</a>
