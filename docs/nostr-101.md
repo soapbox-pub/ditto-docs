@@ -123,10 +123,9 @@ Your identity is a cryptographic keypair on your device. No sign-up forms, no co
     <h3>The old internet</h3>
   </div>
   <ul>
-    <li>Company owns your account</li>
-    <li>Posts locked in one app</li>
-    <li>They choose the algorithm</li>
-    <li>Your data is their product</li>
+    <li>Same black-and-white squares everywhere</li>
+    <li>Your identity belongs to a corporation</li>
+    <li>Everything locked inside walled gardens</li>
   </ul>
 </div>
 <div class="versus-divider">
@@ -138,10 +137,9 @@ Your identity is a cryptographic keypair on your device. No sign-up forms, no co
     <h3>Nostr</h3>
   </div>
   <ul>
-    <li>You own your keys</li>
-    <li>Data flows across every app</li>
-    <li>You choose the experience</li>
-    <li>Your data is yours</li>
+    <li>A playground of wild, creative apps</li>
+    <li>Your keys, your identity, forever</li>
+    <li>One open ecosystem, infinite possibilities</li>
   </ul>
 </div>
 </div>
