@@ -90,17 +90,7 @@ See your changes rendered in real time as the AI makes edits. Git is built in �
 
 </div>
 
-Ditto's code lives on GitLab. Clone it, browse it, fork it — it's all yours.
-
-<div class="big-quote">
-  <span class="big-quote-mark">"</span>
-  <p>gitlab.com/soapbox-pub/ditto</p>
-</div>
-
-```bash
-git clone https://gitlab.com/soapbox-pub/ditto.git
-cd ditto
-```
+Ditto is proudly open source under the AGPL. Clone it, browse it, fork it — it's all yours.
 
 <div style="margin-top: 20px;">
   <a href="https://gitlab.com/soapbox-pub/ditto" target="_blank" class="btn btn-primary">
@@ -128,7 +118,7 @@ Ditto is built on [MKStack](https://mkstack.xyz), a batteries-included Nostr app
 
 ### React + TypeScript
 
-React 18 with full TypeScript coverage. TanStack Query for data fetching. shadcn/ui component library with TailwindCSS (48+ components).
+React 18, TanStack Query, shadcn/ui with TailwindCSS.
 
 </div>
 <div class="fun-card">
@@ -136,7 +126,7 @@ React 18 with full TypeScript coverage. TanStack Query for data fetching. shadcn
 
 ### Nostrify
 
-First-class Nostr protocol support — relay connections, event queries, NIP-07 auth, NIP-65 relay management, NIP-04/17 DMs, NIP-57 zaps, and Blossom file uploads.
+Relay connections, event queries, zaps, DMs, and Blossom uploads.
 
 </div>
 <div class="fun-card">
@@ -144,7 +134,7 @@ First-class Nostr protocol support — relay connections, event queries, NIP-07 
 
 ### AI-ready
 
-An extensive `AGENTS.md` system prompt and MCP server configs are baked in, so AI tools like Shakespeare and OpenCode understand the full stack out of the box.
+Built-in `AGENTS.md` and MCP configs so AI tools understand the full stack.
 
 </div>
 </div>
