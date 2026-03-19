@@ -1,6 +1,6 @@
 ---
 outline: false
-description: "Hack on Ditto with AI-powered tools. Use MKStack, OpenCode, or Shakespeare to build features, fix bugs, and ship changes — no gatekeeping required."
+description: "Hack on Ditto with Shakespeare, a browser-based AI builder. Edit the code, tweak the UI, add features — no setup required."
 ---
 
 <div class="page-hero">
@@ -30,160 +30,13 @@ The golden era of the internet won't be built by a small team. **It'll be built 
 
 <div class="page-section">
 <div class="section-header-left">
-  <span class="section-emoji">🏗️</span>
-
-## MKStack
-
-</div>
-
-[MKStack](https://mkstack.xyz) is the framework that Ditto and other Soapbox Nostr apps are built on. A batteries-included React + TypeScript + Tailwind starter with deep Nostr integration — and what both Shakespeare and OpenCode understand when they work on Ditto.
-
-<div class="three-cards">
-<div class="fun-card">
-  <div class="fun-card-emoji">📡</div>
-
-### Nostrify
-
-Relay connections, event queries, and full protocol handling out of the box.
-
-</div>
-<div class="fun-card">
-  <div class="fun-card-emoji">🧩</div>
-
-### 48+ components
-
-shadcn/ui component library with TailwindCSS. React 18, TypeScript, and TanStack Query for data fetching.
-
-</div>
-<div class="fun-card">
-  <div class="fun-card-emoji">🔐</div>
-
-### Nostr built-in
-
-Auth (NIP-07), relay management (NIP-65), DMs (NIP-04/17), zaps (NIP-57), file uploads via Blossom, and NIP-19 routing.
-
-</div>
-</div>
-
-### Build something new
-
-If you want to create your own Nostr app using the same stack Ditto is built on:
-
-```bash
-# Install Stacks CLI
-npm install -g @getstacks/stacks
-
-# Create a new project from the MKStack template
-stacks mkstack
-
-# Start the AI agent
-stacks agent
-```
-
-The `stacks agent` command launches **Dork**, an AI assistant that understands the full MKStack framework, all 50+ Nostr NIPs (via [Nostrbook MCP](https://nostrbook.dev)), and the React/TypeScript patterns used across the project.
-
-When you're ready to ship:
-
-```bash
-npm run deploy
-```
-
-This builds your app, uploads it to Blossom servers, publishes it to Nostr relays, and makes it live on [NostrDeploy.com](https://nostrdeploy.com).
-
-<div class="callout-fun">
-  <span class="callout-emoji">🪐</span>
-  <p>The Nostr ecosystem needs more rides in the carnival. MKStack is how you build them — with full AI support, first-class protocol integration, and one-command deployment to the decentralized web.</p>
-</div>
-
-**Source code:** [gitlab.com/soapbox-pub/mkstack](https://gitlab.com/soapbox-pub/mkstack)
-
-</div>
-
-<div class="page-divider"></div>
-
-<div class="page-section">
-<div class="section-header-left">
-  <span class="section-emoji">🖥️</span>
-
-## OpenCode
-
-</div>
-
-[OpenCode](https://opencode.ai) is an open source AI coding agent that runs in your terminal. Full local filesystem access, shell commands, LSP integration, multi-session support — this is the option for developers who want total control.
-
-### Getting started
-
-```bash
-# Install OpenCode
-curl -fsSL https://opencode.ai/install | bash
-
-# Clone Ditto and start hacking
-git clone https://gitlab.com/soapbox-pub/ditto.git
-cd ditto
-npm install
-opencode
-```
-
-Describe what you want to do in natural language. OpenCode reads your files, runs commands, makes edits, and verifies the results — all while you watch and guide it.
-
-<div class="two-cards">
-<div class="fun-card">
-  <div class="fun-card-emoji">⚙️</div>
-
-### Full local environment
-
-Access to the real filesystem, real build tools, real test runners. Run `npm run dev` in one terminal, OpenCode in another.
-
-</div>
-<div class="fun-card">
-  <div class="fun-card-emoji">🧠</div>
-
-### LSP-enabled intelligence
-
-OpenCode automatically loads language servers for TypeScript, giving the AI deep understanding of types, imports, and project structure.
-
-</div>
-</div>
-
-<div class="two-cards">
-<div class="fun-card">
-  <div class="fun-card-emoji">🔀</div>
-
-### Multi-session
-
-Run multiple agents in parallel on different parts of the codebase. This is the pattern Soapbox uses to build its own AI agents — including [Sheila](https://soapbox.pub/blog/announcing-sheila/), an accounting agent built entirely with OpenCode.
-
-</div>
-<div class="fun-card">
-  <div class="fun-card-emoji">🎯</div>
-
-### Human-in-the-loop
-
-You see every change before it lands. 75+ providers through Models.dev, including local models, GitHub Copilot, and ChatGPT Plus/Pro.
-
-</div>
-</div>
-
-<div class="callout-fun">
-  <span class="callout-emoji">🔥</span>
-  <p>OpenCode is the right choice when you need the full build pipeline, runtime debugging, multi-file refactors, or deep iteration on complex changes.</p>
-</div>
-
-**Source code:** [github.com/anomalyco/opencode](https://github.com/anomalyco/opencode)
-
-</div>
-
-<div class="page-divider"></div>
-
-<div class="page-section">
-<div class="section-header-left">
   <span class="section-emoji">🎭</span>
 
-## Shakespeare
+## Edit with Shakespeare
 
 </div>
 
-[Shakespeare](https://shakespeare.diy) is Soapbox's open source, browser-based AI development environment. No installation, no terminal, no local dev setup — just import the Ditto repo and start building. Describe what you want in plain language and watch it happen in real time.
+[Shakespeare](https://shakespeare.diy) is a browser-based AI development environment. No installation, no terminal, no local dev setup — just import the Ditto repo and start building. Describe what you want in plain language and watch it happen in real time.
 
 <div class="three-cards">
 <div class="fun-card">
@@ -220,12 +73,11 @@ See your changes rendered in real time as the AI makes edits. Git is built in �
 4. Shakespeare reads the codebase, understands the structure, and makes the changes
 5. See results live, iterate through conversation, and push when you're done
 
-<div class="callout-fun">
-  <span class="callout-emoji">✨</span>
-  <p>Shakespeare is the fastest path from <em>"I have an idea"</em> to a working change. It's especially good for UI tweaks, theme work, adding components, and exploring the codebase. Choose from <strong>50+ AI models</strong> across OpenRouter, Anthropic, OpenAI, xAI, and local models.</p>
+<div style="margin-top: 20px;">
+  <a href="https://shakespeare.diy" target="_blank" class="btn btn-primary">
+    <span>Edit with Shakespeare &#8599;</span>
+  </a>
 </div>
-
-**Source code:** [gitlab.com/soapbox-pub/shakespeare](https://gitlab.com/soapbox-pub/shakespeare)
 
 </div>
 
@@ -233,43 +85,84 @@ See your changes rendered in real time as the AI makes edits. Git is built in �
 
 <div class="page-section">
 <div class="section-header-left">
-  <span class="section-emoji">🧭</span>
+  <span class="section-emoji">📂</span>
 
-## Which tool should I use?
+## Source code
 
 </div>
 
-<div class="two-cards">
+Ditto's code lives on GitLab. Clone it, browse it, fork it — it's all yours.
+
+<div class="big-quote">
+  <span class="big-quote-mark">"</span>
+  <p>gitlab.com/soapbox-pub/ditto</p>
+</div>
+
+```bash
+git clone https://gitlab.com/soapbox-pub/ditto.git
+cd ditto
+```
+
+<div style="margin-top: 20px;">
+  <a href="https://gitlab.com/soapbox-pub/ditto" target="_blank" class="btn btn-primary">
+    <span>View on GitLab &#8599;</span>
+  </a>
+</div>
+
+</div>
+
+<div class="page-divider"></div>
+
+<div class="page-section">
+<div class="section-header-left">
+  <span class="section-emoji">🧰</span>
+
+## Tech stack
+
+</div>
+
+Ditto is built on [MKStack](https://mkstack.xyz), a batteries-included Nostr application framework. Here's what's under the hood:
+
+<div class="three-cards">
 <div class="fun-card">
-  <div class="fun-card-emoji">🖥️</div>
+  <div class="fun-card-emoji">⚛️</div>
 
-### OpenCode
+### React + TypeScript
 
-Terminal-based AI agent with full local filesystem access. Best for deep changes, debugging, multi-file refactors, and running the full build pipeline. The power tool.
-
-  <div style="margin-top: 16px;">
-    <a href="https://opencode.ai" target="_blank" class="btn btn-primary" style="padding: 12px 28px; font-size: 15px;">
-      <span>Get OpenCode &#8599;</span>
-    </a>
-  </div>
+React 18 with full TypeScript coverage. TanStack Query for data fetching. shadcn/ui component library with TailwindCSS (48+ components).
 
 </div>
 <div class="fun-card">
-  <div class="fun-card-emoji">🎭</div>
+  <div class="fun-card-emoji">📡</div>
 
-### Shakespeare
+### Nostrify
 
-Browser-based AI builder with zero setup. Best for quick changes, UI tweaks, theme work, and exploring the codebase. Open a tab and start building.
+First-class Nostr protocol support — relay connections, event queries, NIP-07 auth, NIP-65 relay management, NIP-04/17 DMs, NIP-57 zaps, and Blossom file uploads.
 
-  <div style="margin-top: 16px;">
-    <a href="https://shakespeare.diy" target="_blank" class="btn btn-primary" style="padding: 12px 28px; font-size: 15px;">
-      <span>Open Shakespeare &#8599;</span>
-    </a>
-  </div>
+</div>
+<div class="fun-card">
+  <div class="fun-card-emoji">🤖</div>
+
+### AI-ready
+
+An extensive `AGENTS.md` system prompt and MCP server configs are baked in, so AI tools like Shakespeare and OpenCode understand the full stack out of the box.
 
 </div>
 </div>
 
+### Running locally
+
+```bash
+npm install
+npm run dev
+```
+
+That's it. The dev server starts and you can see your changes live at `localhost`.
+
+<div class="callout-fun">
+  <span class="callout-emoji">✨</span>
+  <p>You don't need to understand the full stack to contribute. Shakespeare and OpenCode both have deep context on the project — describe what you want and let the AI handle the wiring.</p>
+</div>
 </div>
 
 <div class="page-divider"></div>
@@ -280,6 +173,25 @@ Browser-based AI builder with zero setup. Best for quick changes, UI tweaks, the
 
 ## Further reading
 
+</div>
+
+<div class="two-cards">
+<div class="fun-card">
+  <div class="fun-card-emoji">🏗️</div>
+
+### [MKStack](https://mkstack.xyz)
+
+The framework Ditto is built on. Use it to scaffold new Nostr apps with the same stack.
+
+</div>
+<div class="fun-card">
+  <div class="fun-card-emoji">🖥️</div>
+
+### [OpenCode](https://opencode.ai)
+
+Terminal-based AI coding agent. Full local filesystem, LSP, multi-session — the power tool for deep changes.
+
+</div>
 </div>
 
 <div class="two-cards">
@@ -300,25 +212,6 @@ How Shakespeare evolved from Block's Goose to a browser-based AI builder.
 
 </div>
 </div>
-
-<div class="two-cards">
-<div class="fun-card">
-  <div class="fun-card-emoji">🤖</div>
-
-### [Announcing Sheila](https://soapbox.pub/blog/announcing-sheila/)
-
-How Soapbox built an AI accounting agent entirely with OpenCode.
-
-</div>
-<div class="fun-card">
-  <div class="fun-card-emoji">🔮</div>
-
-### [Coding Doesn't Die](https://soapbox.pub/blog/coding-doesnt-die/)
-
-Why AI tools like these are the future of development.
-
-</div>
-</div>
 </div>
 
 <div class="page-divider"></div>
@@ -332,7 +225,7 @@ Ditto isn't trying to be another platform. It's trying to be the most fun place 
 
   <div class="page-cta-actions">
     <a href="https://shakespeare.diy" target="_blank" class="btn btn-primary">
-      <span>Open Shakespeare &#8599;</span>
+      <span>Edit with Shakespeare &#8599;</span>
     </a>
     <a href="/philosophy" class="btn btn-ghost">Ditto Philosophy</a>
   </div>
