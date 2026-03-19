@@ -69,7 +69,7 @@ export default defineConfig({
     logo: '/logo.svg',
 
     nav: [
-      { text: 'Home', link: '/' },
+      { text: 'Landing', link: '/' },
       { text: 'Docs', link: '/docs' },
       {
         text: 'Launch Ditto',
