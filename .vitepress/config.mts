@@ -70,8 +70,6 @@ export default defineConfig({
     logoLink: '/docs',
 
     nav: [
-      { text: 'Landing', link: '/' },
-      { text: 'Docs', link: '/docs' },
       {
         text: 'Launch Ditto',
         link: 'https://ditto.pub',
