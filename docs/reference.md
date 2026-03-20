@@ -36,9 +36,6 @@ For a complete list of all Nostr event kinds, see [nostrbook.dev](https://nostrb
   font-weight: 600;
   background: var(--vp-c-bg-soft);
 }
-.kinds-table tbody tr:nth-child(even):not(.ditto-kind) {
-  background: var(--vp-c-bg-alt);
-}
 .kinds-table .ditto-kind {
   background: linear-gradient(135deg, rgba(124, 82, 224, 0.15) 0%, rgba(232, 121, 249, 0.15) 50%, rgba(251, 146, 60, 0.10) 100%);
 }
