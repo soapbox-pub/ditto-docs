@@ -187,7 +187,7 @@ To explore what "odd and interesting" looks like, we created a [cube-based graph
 
 </div>
 
-Imagine: instead of front-loading education about decentralization, relays, and bitcoin to a new user... you send them a link to a **Quake III Arena game in their browser**.
+Imagine: instead of front-loading education about decentralization, relays, and bitcoin to a new user... you send them a link to a [**Quake III Arena game in their browser**](https://ditto.pub/nevent1qgsqgc0uhmxycvm5gwvn944c7yfxnnxm0nyh8tt62zhrvtd3xkj8fhgqyzrp3v2mu96ndhmlhq2sk8fmnz7c6nj2jf6y5lpcguw9pxkj8gmzqte4fnc).
 
 <div class="big-quote">
   <span class="big-quote-mark">"</span>
