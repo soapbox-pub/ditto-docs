@@ -179,6 +179,22 @@ For those who want full sovereignty, you can run your own Nostr relay alongside 
 
 <div class="page-section">
 <div class="section-header-left">
+  <span class="section-emoji">🖥️</span>
+
+## Ditto Server
+
+</div>
+
+An optional Node.js server that adds rich link previews, dynamic OG images, SEO meta tags, and a CORS proxy to your Ditto instance. Ditto works great as a static SPA on its own — this is for when you want professional-grade social sharing and search engine visibility.
+
+[Ditto Server on GitLab](https://gitlab.com/soapbox-pub/ditto-server)
+
+</div>
+
+<div class="page-divider"></div>
+
+<div class="page-section">
+<div class="section-header-left">
   <span class="section-emoji">📱</span>
 
 ## Android app
