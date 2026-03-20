@@ -6025,197 +6025,228 @@ button.screen-power-btn.power-standby {
 /* ---------- PINK ---------- */
 
 [data-doc-theme="pink"] {
-  --vp-c-bg: #1a0e16;
-  --vp-c-bg-alt: #201420;
-  --vp-c-bg-elv: #281a28;
-  --vp-c-bg-soft: #30202e;
-  --vp-c-text-1: #f0dce8;
-  --vp-c-text-2: #c09aae;
-  --vp-c-text-3: #7a5a6e;
-  --vp-c-divider: #3a2438;
-  --vp-c-brand-1: #f472b6;
-  --vp-c-brand-2: #ec4899;
-  --vp-c-brand-3: #db2777;
-  --vp-c-brand-soft: rgba(244, 114, 182, 0.12);
-  --ditto-purple: #f472b6;
-  --ditto-pink: #f9a8d4;
-  --ditto-gradient: linear-gradient(135deg, #db2777 0%, #f472b6 40%, #f9a8d4 70%, #fce7f3 100%);
-  --vp-sidebar-bg-color: #201420;
-  color-scheme: dark;
+  --vp-c-bg: #fff0f6;
+  --vp-c-bg-alt: #ffe4ef;
+  --vp-c-bg-elv: #fff8fb;
+  --vp-c-bg-soft: #ffd6e8;
+  --vp-c-text-1: #4a1942;
+  --vp-c-text-2: #8b3a70;
+  --vp-c-text-3: #b87aa0;
+  --vp-c-divider: #f5b8d8;
+  --vp-c-brand-1: #ec4899;
+  --vp-c-brand-2: #db2777;
+  --vp-c-brand-3: #be185d;
+  --vp-c-brand-soft: rgba(236, 72, 153, 0.10);
+  --ditto-purple: #db2777;
+  --ditto-pink: #ec4899;
+  --ditto-gradient: linear-gradient(135deg, #ec4899 0%, #f472b6 35%, #f9a8d4 65%, #fce7f3 100%);
+  --vp-sidebar-bg-color: #ffe4ef;
+  color-scheme: light;
 }
 
 [data-doc-theme="pink"] .VPNav,
 [data-doc-theme="pink"] .VPSidebar {
-  background: #201420 !important;
-  border-color: #3a2438 !important;
+  background: #ffe4ef !important;
+  border-color: #f5b8d8 !important;
 }
 
 [data-doc-theme="pink"] .VPNavBar {
-  background: rgba(32, 20, 32, 0.85) !important;
+  background: rgba(255, 228, 239, 0.85) !important;
   backdrop-filter: blur(12px);
-  border-color: #3a2438 !important;
+  border-color: #f5b8d8 !important;
 }
 
 [data-doc-theme="pink"] .VPContent {
-  background: #1a0e16;
+  background: #fff0f6;
 }
 
-/* Soft rose glow background */
+/* Dreamy blush cloudscape */
 [data-doc-theme="pink"] .VPDoc::before {
   content: '';
   position: fixed;
   inset: 0;
   background:
-    radial-gradient(ellipse at 25% 20%, rgba(244, 114, 182, 0.07) 0%, transparent 50%),
-    radial-gradient(ellipse at 75% 70%, rgba(219, 39, 119, 0.05) 0%, transparent 50%),
-    radial-gradient(ellipse at 50% 50%, rgba(249, 168, 212, 0.03) 0%, transparent 60%),
-    radial-gradient(1px 1px at 15% 40%, rgba(249, 168, 212, 0.25) 0%, transparent 100%),
-    radial-gradient(1px 1px at 60% 25%, rgba(244, 114, 182, 0.2) 0%, transparent 100%),
-    radial-gradient(1px 1px at 80% 55%, rgba(249, 168, 212, 0.15) 0%, transparent 100%),
-    radial-gradient(1px 1px at 35% 75%, rgba(244, 114, 182, 0.2) 0%, transparent 100%);
+    radial-gradient(ellipse at 20% 30%, rgba(244, 114, 182, 0.12) 0%, transparent 45%),
+    radial-gradient(ellipse at 80% 15%, rgba(249, 168, 212, 0.15) 0%, transparent 40%),
+    radial-gradient(ellipse at 50% 75%, rgba(236, 72, 153, 0.06) 0%, transparent 45%),
+    radial-gradient(ellipse at 70% 50%, rgba(252, 231, 243, 0.3) 0%, transparent 35%),
+    radial-gradient(ellipse at 10% 70%, rgba(249, 168, 212, 0.1) 0%, transparent 40%);
   pointer-events: none;
   z-index: 0;
 }
 
-/* Pink hero */
+/* Pink hero: bouncy whimsy */
 [data-doc-theme="pink"] .page-hero-emoji {
-  text-shadow: 0 0 30px rgba(244, 114, 182, 0.4);
-  animation: pink-pulse 4s ease-in-out infinite;
+  animation: pink-float 3s ease-in-out infinite;
 }
 
-@keyframes pink-pulse {
-  0%, 100% { text-shadow: 0 0 30px rgba(244, 114, 182, 0.3), 0 0 60px rgba(219, 39, 119, 0.1); filter: brightness(1); }
-  50% { text-shadow: 0 0 40px rgba(244, 114, 182, 0.5), 0 0 80px rgba(219, 39, 119, 0.2); filter: brightness(1.1); }
+@keyframes pink-float {
+  0%, 100% { transform: translateY(0) rotate(0deg) scale(1); }
+  25% { transform: translateY(-12px) rotate(-5deg) scale(1.05); }
+  50% { transform: translateY(-6px) rotate(3deg) scale(1.02); }
+  75% { transform: translateY(-14px) rotate(-3deg) scale(1.06); }
 }
 
 [data-doc-theme="pink"] .vp-doc .page-hero h1 {
-  background: linear-gradient(135deg, #db2777 0%, #f472b6 40%, #f9a8d4 70%, #fce7f3 100%);
+  background: linear-gradient(135deg, #be185d 0%, #ec4899 40%, #f472b6 70%, #f9a8d4 100%);
   -webkit-background-clip: text;
   background-clip: text;
 }
 
-/* Pink cards: soft glass with blush borders */
+/* Pink cards: candy soft with rosy borders */
 [data-doc-theme="pink"] .fun-card {
-  background: rgba(48, 32, 46, 0.6);
-  border: 1px solid rgba(244, 114, 182, 0.15);
-  backdrop-filter: blur(8px);
-  box-shadow: 0 0 20px rgba(219, 39, 119, 0.05);
+  background: #fff8fb;
+  border: 2px solid #f5b8d8;
+  border-radius: 24px;
+  box-shadow: 0 4px 16px rgba(236, 72, 153, 0.06);
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+[data-doc-theme="pink"] .fun-card:nth-child(odd) {
+  transform: rotate(-0.6deg);
+}
+
+[data-doc-theme="pink"] .fun-card:nth-child(even) {
+  transform: rotate(0.5deg);
 }
 
 [data-doc-theme="pink"] .fun-card:hover {
-  border-color: rgba(244, 114, 182, 0.4);
-  box-shadow: 0 0 30px rgba(244, 114, 182, 0.1);
+  transform: rotate(0deg) translateY(-5px) scale(1.01) !important;
+  border-color: #ec4899;
+  box-shadow: 0 8px 24px rgba(236, 72, 153, 0.12);
 }
 
-/* Pink card emojis glow */
+/* Pink card emojis: bouncy on hover */
 [data-doc-theme="pink"] .fun-card-emoji {
-  text-shadow: 0 0 16px rgba(244, 114, 182, 0.3);
+  font-size: 44px;
+  transition: transform 0.3s ease;
 }
 
+[data-doc-theme="pink"] .fun-card:hover .fun-card-emoji {
+  transform: scale(1.15) rotate(8deg);
+}
+
+/* Pink section emojis: float */
 [data-doc-theme="pink"] .section-emoji {
-  text-shadow: 0 0 20px rgba(244, 114, 182, 0.3);
+  animation: pink-float 3.5s ease-in-out infinite;
 }
 
-/* Pink callouts */
+[data-doc-theme="pink"] .big-idea-emoji {
+  animation: pink-float 3s ease-in-out infinite;
+}
+
+/* Pink callouts: soft blush with heart accent */
 [data-doc-theme="pink"] .callout-fun {
-  background: rgba(244, 114, 182, 0.06);
-  border: 1px solid rgba(244, 114, 182, 0.15);
-  border-left: 3px solid rgba(244, 114, 182, 0.4);
+  background: rgba(236, 72, 153, 0.06);
+  border: 2px solid #f5b8d8;
+  border-radius: 20px;
 }
 
-/* Pink divider: soft blush glow */
+/* Pink divider: dotted hearts vibe */
 [data-doc-theme="pink"] .page-divider {
-  height: 1px;
-  background: linear-gradient(90deg, transparent 0%, rgba(244, 114, 182, 0.25) 30%, rgba(249, 168, 212, 0.3) 50%, rgba(244, 114, 182, 0.25) 70%, transparent 100%);
+  height: 2px;
+  background: repeating-linear-gradient(
+    90deg,
+    #f5b8d8 0px,
+    #f5b8d8 6px,
+    transparent 6px,
+    transparent 10px,
+    #f9a8d4 10px,
+    #f9a8d4 20px,
+    transparent 20px,
+    transparent 22px
+  );
+  opacity: 0.6;
 }
 
 /* Pink big-quote */
 [data-doc-theme="pink"] .big-quote-mark {
-  background: linear-gradient(135deg, #db2777, #f9a8d4);
+  background: linear-gradient(135deg, #ec4899, #f9a8d4);
   -webkit-background-clip: text;
   background-clip: text;
-  opacity: 0.3;
+  opacity: 0.35;
 }
 
 /* Pink code blocks */
 [data-doc-theme="pink"] .vp-doc div[class*='language-'] {
-  background: #201420 !important;
-  border: 1px solid #3a2438;
+  background: #ffe4ef !important;
+  border: 2px solid #f5b8d8;
+  border-radius: 16px !important;
 }
 
 /* Pink versus grid */
 [data-doc-theme="pink"] .versus-col {
-  background: rgba(48, 32, 46, 0.6);
-  border-color: rgba(244, 114, 182, 0.15);
+  background: #fff8fb;
+  border: 2px solid #f5b8d8;
+  border-radius: 24px;
 }
 
 [data-doc-theme="pink"] .versus-new {
-  border-color: rgba(244, 114, 182, 0.3);
+  border-color: #ec4899;
 }
 
-/* Pink links */
+[data-doc-theme="pink"] .versus-divider span {
+  color: #ec4899;
+}
+
+/* Pink links: bubbly */
 [data-doc-theme="pink"] .vp-doc a {
-  color: #f472b6;
+  color: #db2777;
+  text-decoration-style: wavy;
+  text-decoration-color: rgba(236, 72, 153, 0.3);
 }
 
 [data-doc-theme="pink"] .vp-doc a:hover {
-  color: #f9a8d4;
-  text-shadow: 0 0 8px rgba(244, 114, 182, 0.3);
+  color: #ec4899;
 }
 
 /* Pink showcase images */
 [data-doc-theme="pink"] .showcase-image {
-  border-color: rgba(244, 114, 182, 0.15);
-  box-shadow: 0 0 30px rgba(219, 39, 119, 0.06);
+  border: 2px solid #f5b8d8;
+  border-radius: 24px;
+  box-shadow: 0 4px 20px rgba(236, 72, 153, 0.08);
 }
 
 /* Pink btn overrides */
 [data-doc-theme="pink"] .btn-primary {
-  background: linear-gradient(135deg, #db2777, #f472b6) !important;
-  box-shadow: 0 0 20px rgba(219, 39, 119, 0.25);
+  background: linear-gradient(135deg, #ec4899, #f472b6) !important;
+  border-radius: 999px !important;
+  box-shadow: 0 4px 16px rgba(236, 72, 153, 0.2);
 }
 
 [data-doc-theme="pink"] .btn-primary:hover {
-  box-shadow: 0 0 30px rgba(244, 114, 182, 0.4);
+  transform: scale(1.04) !important;
+  box-shadow: 0 6px 24px rgba(236, 72, 153, 0.3);
 }
 
 [data-doc-theme="pink"] .btn-ghost {
-  border-color: rgba(244, 114, 182, 0.4) !important;
-  color: #f472b6 !important;
+  border-color: #ec4899 !important;
+  color: #db2777 !important;
+  border-radius: 999px !important;
 }
 
 /* Pink tables */
 [data-doc-theme="pink"] .kinds-table th {
-  background: rgba(48, 32, 46, 0.8);
+  background: #ffe4ef;
 }
 
 [data-doc-theme="pink"] .kinds-table td,
 [data-doc-theme="pink"] .kinds-table th {
-  border-color: #3a2438;
+  border-color: #f5b8d8;
 }
 
 [data-doc-theme="pink"] .kinds-table .ditto-kind {
-  background: linear-gradient(135deg, rgba(219, 39, 119, 0.15) 0%, rgba(244, 114, 182, 0.1) 100%);
-}
-
-/* Pink sidebar items */
-[data-doc-theme="pink"] .VPSidebarItem .link .text {
-  color: #c09aae;
-}
-
-[data-doc-theme="pink"] .VPSidebarItem .is-active .text {
-  color: #f472b6 !important;
-}
-
-/* Pink page-cta glow */
-[data-doc-theme="pink"] .page-cta-emoji {
-  text-shadow: 0 0 40px rgba(244, 114, 182, 0.4);
-  animation: pink-pulse 4s ease-in-out infinite;
+  background: linear-gradient(135deg, rgba(236, 72, 153, 0.08) 0%, rgba(244, 114, 182, 0.06) 100%);
 }
 
 /* Pink whimsy star */
 [data-doc-theme="pink"] .whimsy-star {
-  color: #f472b6;
+  color: #ec4899;
+}
+
+/* Pink page-cta */
+[data-doc-theme="pink"] .page-cta-emoji {
+  animation: pink-float 3s ease-in-out infinite;
 }
 
 

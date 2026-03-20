@@ -52,7 +52,7 @@ const themes: DocTheme[] = [
   { key: 'arcane', emoji: '🔮', label: 'Mystical & Arcane', desc: 'Sigils, gold & myth' },
   { key: 'warm', emoji: '📜', label: 'Warm & Textured', desc: 'Old-web parchment charm' },
   { key: 'celestial', emoji: '🌌', label: 'Dark & Celestial', desc: 'Deep space cosmic glow' },
-  { key: 'pink', emoji: '🌸', label: 'Pink', desc: 'Soft blush, dreamy glow' },
+  { key: 'pink', emoji: '🌸', label: 'Pink', desc: 'Whimsical candy dreamland' },
 ];
 
 const STORAGE_KEY = 'ditto-doc-theme';
@@ -85,7 +85,7 @@ function applyTheme(key: string) {
   html.setAttribute('data-doc-theme', key);
 
   // Force appropriate color scheme for each theme
-  if (key === 'celestial' || key === 'arcane' || key === 'pink') {
+  if (key === 'celestial' || key === 'arcane') {
     html.classList.add('dark');
   } else {
     html.classList.remove('dark');
