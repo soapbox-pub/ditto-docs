@@ -2,12 +2,15 @@ import { h } from 'vue'
 import type { Theme } from 'vitepress'
 import DefaultTheme from 'vitepress/theme'
 import DittoHome from './components/DittoHome.vue'
+import DocThemeSwitcher from './components/DocThemeSwitcher.vue'
 import './style.css'
 
 export default {
   extends: DefaultTheme,
   Layout: () => {
-    return h(DefaultTheme.Layout, null, {})
+    return h(DefaultTheme.Layout, null, {
+      'layout-bottom': () => h(DocThemeSwitcher),
+    })
   },
   enhanceApp({ app }) {
     app.component('DittoHome', DittoHome)
