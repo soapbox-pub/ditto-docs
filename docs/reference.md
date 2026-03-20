@@ -276,6 +276,11 @@ For a complete list of all Nostr event kinds, see [nostrbook.dev](https://nostrb
       <td>Podcast Trailer</td>
       <td>Podcast trailer displayed in the Podcasts feed</td>
     </tr>
+    <tr>
+      <td>30063</td>
+      <td>Software Release</td>
+      <td>App release metadata from Zapstore (NIP-82)</td>
+    </tr>
     <tr class="ditto-kind">
       <td>30078</td>
       <td><a href="#ditto-settings">App Settings</a></td>
@@ -335,6 +340,11 @@ For a complete list of all Nostr event kinds, see [nostrbook.dev](https://nostrb
       <td>31985</td>
       <td>Book Review</td>
       <td>Book review and rating (Bookstr)</td>
+    </tr>
+    <tr>
+      <td>32267</td>
+      <td>App</td>
+      <td>Software application listing from Zapstore (NIP-82)</td>
     </tr>
     <tr>
       <td>34139</td>
