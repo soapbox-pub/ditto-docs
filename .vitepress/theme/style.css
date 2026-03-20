@@ -5831,6 +5831,10 @@ button.screen-power-btn.power-standby {
   border-color: #e0d3c1;
 }
 
+[data-doc-theme="warm"] .kinds-table tbody tr:nth-child(even):not(.ditto-kind) {
+  background: #f4ede3;
+}
+
 
 /* ---------- DARK & CELESTIAL ---------- */
 
@@ -6001,6 +6005,10 @@ button.screen-power-btn.power-standby {
 [data-doc-theme="celestial"] .kinds-table td,
 [data-doc-theme="celestial"] .kinds-table th {
   border-color: #1e2a4a;
+}
+
+[data-doc-theme="celestial"] .kinds-table tbody tr:nth-child(even):not(.ditto-kind) {
+  background: rgba(26, 34, 64, 0.4);
 }
 
 [data-doc-theme="celestial"] .kinds-table .ditto-kind {
@@ -6235,6 +6243,10 @@ button.screen-power-btn.power-standby {
   border-color: #f5b8d8;
 }
 
+[data-doc-theme="pink"] .kinds-table tbody tr:nth-child(even):not(.ditto-kind) {
+  background: #ffe4ef;
+}
+
 [data-doc-theme="pink"] .kinds-table .ditto-kind {
   background: linear-gradient(135deg, rgba(236, 72, 153, 0.08) 0%, rgba(244, 114, 182, 0.06) 100%);
 }
@@ -6445,6 +6457,10 @@ button.screen-power-btn.power-standby {
 [data-doc-theme="arcane"] .kinds-table td,
 [data-doc-theme="arcane"] .kinds-table th {
   border-color: #2a1e3e;
+}
+
+[data-doc-theme="arcane"] .kinds-table tbody tr:nth-child(even):not(.ditto-kind) {
+  background: rgba(26, 18, 40, 0.4);
 }
 
 [data-doc-theme="arcane"] .kinds-table .ditto-kind {
