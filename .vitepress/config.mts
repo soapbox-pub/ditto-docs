@@ -30,6 +30,7 @@ const docsSidebar = [
 export default defineConfig({
   srcDir: 'docs',
   cleanUrls: true,
+  appearance: 'dark',
 
   vite: {
     envDir: process.cwd(),

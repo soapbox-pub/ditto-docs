@@ -5198,13 +5198,9 @@ button.screen-power-btn.power-standby {
 }
 
 .big-idea-text em {
-  color: var(--ditto-purple);
+  color: var(--ditto-pink);
   font-style: normal;
   font-weight: 600;
-}
-
-.dark .big-idea-text em {
-  color: var(--ditto-pink);
 }
 
 /* ---------- Two Cards ---------- */
