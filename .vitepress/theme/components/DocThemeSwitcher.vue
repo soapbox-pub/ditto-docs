@@ -49,10 +49,10 @@ interface DocTheme {
 }
 
 const themes: DocTheme[] = [
+  { key: 'arcane', emoji: '🔮', label: 'Mystical & Arcane', desc: 'Sigils, gold & myth' },
   { key: 'warm', emoji: '📜', label: 'Warm & Textured', desc: 'Old-web parchment charm' },
   { key: 'celestial', emoji: '🌌', label: 'Dark & Celestial', desc: 'Deep space cosmic glow' },
-  { key: 'playful', emoji: '🎨', label: 'Playful & Colorful', desc: 'Bouncy saturated fun' },
-  { key: 'arcane', emoji: '🔮', label: 'Mystical & Arcane', desc: 'Sigils, gold & myth' },
+  { key: 'pink', emoji: '🌸', label: 'Pink', desc: 'Soft blush, dreamy glow' },
 ];
 
 const STORAGE_KEY = 'ditto-doc-theme';
@@ -60,7 +60,7 @@ const STORAGE_KEY = 'ditto-doc-theme';
 const route = useRoute();
 const isOpen = ref(false);
 const root = ref<HTMLElement | null>(null);
-const activeKey = ref('warm');
+const activeKey = ref('arcane');
 
 const isDocPage = computed(() => {
   const path = route.path;
@@ -85,7 +85,7 @@ function applyTheme(key: string) {
   html.setAttribute('data-doc-theme', key);
 
   // Force appropriate color scheme for each theme
-  if (key === 'celestial' || key === 'arcane') {
+  if (key === 'celestial' || key === 'arcane' || key === 'pink') {
     html.classList.add('dark');
   } else {
     html.classList.remove('dark');
@@ -135,6 +135,9 @@ onMounted(() => {
     const saved = localStorage.getItem(STORAGE_KEY);
     if (saved && themes.some(t => t.key === saved)) {
       activeKey.value = saved;
+    } else if (saved) {
+      // Migrate stale keys (e.g. removed 'playful') to default
+      localStorage.removeItem(STORAGE_KEY);
     }
   } catch {}
   if (isDocPage.value) {
