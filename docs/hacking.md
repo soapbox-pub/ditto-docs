@@ -151,7 +151,7 @@ That's it. The dev server starts and you can see your changes live at `localhost
 
 <div class="callout-fun">
   <span class="callout-emoji">✨</span>
-  <p>You don't need to understand the full stack to contribute. Shakespeare and OpenCode both have deep context on the project — describe what you want and let the AI handle the wiring.</p>
+  <p>You don't need to understand the full stack to contribute. Shakespeare and OpenCode both have deep context on the project — describe what you want and let the AI handle the wiring. When you're ready to contribute upstream, see the <a href="/contributing">Contributing</a> guide.</p>
 </div>
 </div>
 
@@ -217,6 +217,6 @@ Ditto isn't trying to be another platform. It's trying to be the most fun place 
     <a href="https://shakespeare.diy/clone?url=https://gitlab.com/soapbox-pub/ditto.git" target="_blank" class="btn btn-primary">
       <span>Edit with Shakespeare &#8599;</span>
     </a>
-    <a href="/philosophy" class="btn btn-ghost">Ditto Philosophy</a>
+    <a href="/contributing" class="btn btn-ghost">Contributing</a>
   </div>
 </div>

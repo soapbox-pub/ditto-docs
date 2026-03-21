@@ -64,6 +64,12 @@ og_image: /og-image-docs.jpg
 
 <div class="two-cards">
 <div class="fun-card">
+  <div class="fun-card-emoji">🤝</div>
+  <h3>Contributing</h3>
+  <p>How to build on Ditto and the Nostr ecosystem, and how to get new features and bug fixes merged upstream.</p>
+  <a href="/contributing" class="card-link-hint">Read more &rarr;</a>
+</div>
+<div class="fun-card">
   <div class="fun-card-emoji">📋</div>
   <h3>Ditto Nostr Reference</h3>
   <p>All Nostr event kinds that Ditto supports beyond the core protocol, including community and Ditto-specific kinds.</p>
