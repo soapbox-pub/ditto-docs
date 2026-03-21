@@ -177,7 +177,7 @@ export const themes: Y2KTheme[] = [
     bodyFontUrl: 'https://cdn.jsdelivr.net/fontsource/fonts/quicksand@latest/latin-400-normal.woff2',
     headingScale: 0.9,
     background: {
-      bg: '/kawaii-bg.png',
+      bg: '/kawaii-bg.jpg',
       mode: 'cover',
     },
   },
@@ -198,7 +198,7 @@ export const themes: Y2KTheme[] = [
     bodyFontUrl: 'https://cdn.jsdelivr.net/fontsource/fonts/outfit@latest/latin-400-normal.woff2',
     headingScale: 0.85,
     background: {
-      bg: '/grunge-bg.png',
+      bg: '/grunge-bg.jpg',
       mode: 'cover',
     },
   },
@@ -218,7 +218,7 @@ export const themes: Y2KTheme[] = [
     bodyFont: "'Tahoma', sans-serif",
     headingScale: 0.9,
     background: {
-      bg: '/mspaint-bg.png',
+      bg: '/mspaint-bg.jpg',
       mode: 'cover',
     },
   },
@@ -239,7 +239,7 @@ export const themes: Y2KTheme[] = [
     bodyFontUrl: 'https://cdn.jsdelivr.net/fontsource/fonts/space-grotesk@latest/latin-400-normal.woff2',
     headingScale: 0.55,
     background: {
-      bg: '/retropop-bg.png',
+      bg: '/retropop-bg.jpg',
       mode: 'cover',
     },
   },
@@ -260,7 +260,7 @@ export const themes: Y2KTheme[] = [
     bodyFontUrl: 'https://cdn.jsdelivr.net/fontsource/fonts/nunito@latest/latin-400-normal.woff2',
     headingScale: 0.8,
     background: {
-      bg: '/bubblegum-bg.png',
+      bg: '/bubblegum-bg.jpg',
       mode: 'cover',
     },
   },
@@ -302,7 +302,7 @@ export const themes: Y2KTheme[] = [
     bodyFontUrl: 'https://cdn.jsdelivr.net/fontsource/fonts/archivo-black@latest/latin-400-normal.woff2',
     headingScale: 0.9,
     background: {
-      bg: '/skater-bg.png',
+      bg: '/skater-bg.jpg',
       mode: 'cover',
     },
   },
