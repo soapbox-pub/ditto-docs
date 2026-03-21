@@ -69,7 +69,7 @@ When your app is working, tested, and has some traction, submit a merge request 
 
 <div class="callout-fun">
   <span class="callout-emoji">💡</span>
-  <p>Apps that gain more traction and that are more complete and polished will get stronger consideration than apps where less effort was put in or there was less interest. To convince us, first convince yourself — and then to at least some small degree, try to convince other people. We encourage you.</p>
+  <p>Convince yourself first, then convince others. The more love your app gets, the stronger the case to merge it.</p>
 </div>
 
 </div>
