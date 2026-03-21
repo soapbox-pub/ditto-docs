@@ -629,6 +629,16 @@ After NIP-44 decryption with the user's own pubkey, the content is a JSON object
 
 [Ditto's relay](https://gitlab.com/soapbox-pub/ditto-relay) supports full-text search through [NIP-50](https://github.com/nostr-protocol/nips/blob/master/50.md) with search extensions. The public relay is available at `wss://relay.ditto.pub`.
 
+Extensions can be combined with each other and with free-text search terms. For example, `"search": "bitcoin sort:hot language:en"` returns trending English-language posts matching "bitcoin".
+
+```json
+{
+  "kinds": [1],
+  "search": "bitcoin sort:hot language:en",
+  "limit": 20
+}
+```
+
 ### Search extensions
 
 <div class="kinds-legend" style="display:flex;flex-wrap:wrap;gap:16px;align-items:center;margin-bottom:8px;">
@@ -697,16 +707,6 @@ After NIP-44 decryption with the user's own pubkey, the content is a JSON object
     </tr>
   </tbody>
 </table>
-
-Extensions can be combined with each other and with free-text search terms. For example, `"search": "bitcoin sort:hot language:en"` returns trending English-language posts matching "bitcoin".
-
-```json
-{
-  "kinds": [1],
-  "search": "bitcoin sort:hot language:en",
-  "limit": 20
-}
-```
 
 ---
 
