@@ -57,11 +57,11 @@ For a complete list of all Nostr event kinds, see [nostrbook.dev](https://nostrb
   height: 12px;
   border-radius: 3px;
   vertical-align: middle;
-  background: linear-gradient(135deg, rgba(124, 82, 224, 0.15) 0%, rgba(232, 121, 249, 0.15) 50%, rgba(251, 146, 60, 0.10) 100%);
+  background: linear-gradient(135deg, rgba(124, 82, 224, 0.45) 0%, rgba(232, 121, 249, 0.40) 50%, rgba(251, 146, 60, 0.35) 100%);
   border: 1px solid rgba(124, 82, 224, 0.3);
 }
 :root.dark .ditto-kind-swatch {
-  background: linear-gradient(135deg, rgba(124, 82, 224, 0.25) 0%, rgba(232, 121, 249, 0.20) 50%, rgba(251, 146, 60, 0.15) 100%);
+  background: linear-gradient(135deg, rgba(124, 82, 224, 0.55) 0%, rgba(232, 121, 249, 0.45) 50%, rgba(251, 146, 60, 0.35) 100%);
 }
 </style>
 

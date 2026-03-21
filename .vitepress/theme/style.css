@@ -6024,7 +6024,7 @@ button.screen-power-btn.power-standby {
 }
 
 [data-doc-theme="celestial"] .ditto-kind-swatch {
-  background: linear-gradient(135deg, rgba(61, 94, 255, 0.15) 0%, rgba(192, 132, 252, 0.12) 100%);
+  background: linear-gradient(135deg, rgba(61, 94, 255, 0.45) 0%, rgba(192, 132, 252, 0.40) 100%);
   border-color: rgba(61, 94, 255, 0.3);
 }
 
@@ -6266,7 +6266,7 @@ button.screen-power-btn.power-standby {
 }
 
 [data-doc-theme="pink"] .ditto-kind-swatch {
-  background: linear-gradient(135deg, rgba(236, 72, 153, 0.08) 0%, rgba(244, 114, 182, 0.06) 100%);
+  background: linear-gradient(135deg, rgba(236, 72, 153, 0.35) 0%, rgba(244, 114, 182, 0.25) 100%);
   border-color: rgba(236, 72, 153, 0.3);
 }
 
@@ -6488,7 +6488,7 @@ button.screen-power-btn.power-standby {
 }
 
 [data-doc-theme="arcane"] .ditto-kind-swatch {
-  background: linear-gradient(135deg, rgba(144, 96, 208, 0.15) 0%, rgba(212, 164, 74, 0.1) 100%);
+  background: linear-gradient(135deg, rgba(144, 96, 208, 0.50) 0%, rgba(212, 164, 74, 0.40) 100%);
   border-color: rgba(144, 96, 208, 0.3);
 }
 
