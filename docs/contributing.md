@@ -1,6 +1,7 @@
 ---
 outline: [2, 2]
 description: "How to contribute to Ditto — from building your own Nostr app to submitting merge requests."
+og_image: /og-image-contributing.jpg
 ---
 
 <div class="page-hero">
