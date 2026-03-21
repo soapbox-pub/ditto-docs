@@ -627,22 +627,86 @@ After NIP-44 decryption with the user's own pubkey, the content is a JSON object
 
 </div>
 
-[Ditto's relay](https://gitlab.com/soapbox-pub/ditto-relay) supports full-text search through [NIP-50](https://github.com/nostr-protocol/nips/blob/master/50.md) with custom sort extensions. The public relay is available at `wss://relay.ditto.pub`.
+[Ditto's relay](https://gitlab.com/soapbox-pub/ditto-relay) supports full-text search through [NIP-50](https://github.com/nostr-protocol/nips/blob/master/50.md) with search extensions. The public relay is available at `wss://relay.ditto.pub`.
 
-Ditto extends NIP-50 with two sort modes for retrieving trending content directly through relay queries:
+### Search extensions
 
-- **`sort:hot`** — Returns events ranked by recent engagement velocity. Events are scored based on interactions (replies, reposts, reactions) weighted toward recency, surfacing content that is trending right now.
-- **`sort:top`** — Returns events ranked by total engagement. Events are sorted by their overall interaction count, surfacing the most popular content over a longer time period.
+<div class="kinds-legend" style="display:flex;flex-wrap:wrap;gap:16px;align-items:center;margin-bottom:8px;">
+  <span><span style="display:inline-block;width:12px;height:12px;border-radius:3px;background:var(--ditto-gradient);vertical-align:middle;"></span> Ditto-introduced extension</span>
+</div>
+
+<table class="kinds-table">
+  <thead>
+    <tr>
+      <th>Extension</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>language:&lt;en/zh/ja/...&gt;</code></td>
+      <td>Filter events by detected language (NIP-50)</td>
+    </tr>
+    <tr class="ditto-kind">
+      <td><code>sentiment:&lt;positive/negative/neutral&gt;</code></td>
+      <td>Filter events by detected sentiment</td>
+    </tr>
+    <tr class="ditto-kind">
+      <td><code>protocol:&lt;activitypub/atproto/nostr&gt;</code></td>
+      <td>Filter by originating protocol (NIP-48). <code>protocol:nostr</code> returns native Nostr events only.</td>
+    </tr>
+    <tr class="ditto-kind">
+      <td><code>media:&lt;true/false&gt;</code></td>
+      <td>Filter by presence of media attachments</td>
+    </tr>
+    <tr class="ditto-kind">
+      <td><code>video:&lt;true/false&gt;</code></td>
+      <td>Filter by presence of video content</td>
+    </tr>
+    <tr class="ditto-kind">
+      <td><code>sort:top</code></td>
+      <td>Sort by total engagement (unique engagers). Default when search text is present.</td>
+    </tr>
+    <tr class="ditto-kind">
+      <td><code>sort:hot</code></td>
+      <td>Sort by engagement weighted with time decay, surfacing what's trending now</td>
+    </tr>
+    <tr class="ditto-kind">
+      <td><code>sort:controversial</code></td>
+      <td>Sort by controversy score, favoring events with balanced comments and reactions</td>
+    </tr>
+    <tr class="ditto-kind">
+      <td><code>sort:rising</code></td>
+      <td>Sort by engagement velocity relative to age</td>
+    </tr>
+    <tr class="ditto-kind">
+      <td><code>sort:zaps</code></td>
+      <td>Sort by total zap amount</td>
+    </tr>
+    <tr class="ditto-kind">
+      <td><code>sort:new</code></td>
+      <td>Sort chronologically (prevents the default <code>sort:top</code> behavior)</td>
+    </tr>
+    <tr class="ditto-kind">
+      <td><code>distinct:author</code></td>
+      <td>Deduplicate results to one event per author</td>
+    </tr>
+    <tr class="ditto-kind">
+      <td><code>-&lt;term&gt;</code></td>
+      <td>Exclude events matching the given term</td>
+    </tr>
+  </tbody>
+</table>
+
+Extensions can be combined with each other and with free-text search terms. For example, `"search": "bitcoin sort:hot language:en"` returns trending English-language posts matching "bitcoin".
 
 ```json
 {
   "kinds": [1],
-  "search": "sort:hot",
+  "search": "bitcoin sort:hot language:en",
   "limit": 20
 }
 ```
-
-These extensions can be combined with other NIP-50 search terms. For example, `"search": "bitcoin sort:hot"` returns trending posts matching "bitcoin".
 
 ---
 
