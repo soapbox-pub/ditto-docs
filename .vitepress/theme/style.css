@@ -6507,12 +6507,6 @@ button.screen-power-btn.power-standby {
   animation: arcane-glow 4s ease-in-out infinite;
 }
 
-/* Arcane whimsy star */
-[data-doc-theme="arcane"] .whimsy-star {
-  color: #d4a44a;
-}
-
-
 /* ---------- Hide VitePress appearance toggle when a doc theme is active ---------- */
 
 [data-doc-theme] .VPNavBarAppearance,
