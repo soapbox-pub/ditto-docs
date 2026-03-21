@@ -40,18 +40,20 @@ Want to bring a new Nostr kind or feature into Ditto? Great — here's the roadm
 
 ### 1. Build a dedicated Nostr app
 
-Before touching Ditto's codebase, build a standalone app for the user experience you have in mind. This forces you to think through the UX end-to-end and gives you something concrete to show. We encourage you to do this with [Shakespeare](https://shakespeare.diy) — open your browser, describe what you want, and it builds the app for you. No setup required.
+Before touching Ditto's codebase, build a standalone app for the user experience you have in mind. This forces you to think through the UX end-to-end and gives you something concrete to show.
 
-<div style="margin-top: 20px;">
-  <a href="https://shakespeare.diy" target="_blank" class="btn btn-primary">
-    <span>Open Shakespeare &#8599;</span>
-  </a>
+<div class="fun-card">
+  <div class="fun-card-emoji">🎭</div>
+
+#### Shakespeare
+
+The easiest way to start. Open your browser, describe what you want, and Shakespeare builds it for you. No setup required.
+
+<a href="https://shakespeare.diy" target="_blank" class="card-link-hint">Open Shakespeare &rarr;</a>
+
 </div>
 
-<div class="callout-fun">
-  <span class="callout-emoji">🧰</span>
-  <p>More advanced users can scaffold a Nostr app with <a href="https://gitlab.com/soapbox-pub/mkstack" target="_blank">mkstack</a> and build it out with <a href="https://opencode.ai" target="_blank">OpenCode</a> in the terminal.</p>
-</div>
+More advanced users can also scaffold a Nostr app with [mkstack](https://gitlab.com/soapbox-pub/mkstack) and build it out with [OpenCode](https://opencode.ai) in the terminal.
 
 ### 2. Integrate your kinds into Ditto
 
