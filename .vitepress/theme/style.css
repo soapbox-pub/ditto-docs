@@ -6023,6 +6023,11 @@ button.screen-power-btn.power-standby {
   background: linear-gradient(135deg, rgba(61, 94, 255, 0.15) 0%, rgba(192, 132, 252, 0.12) 100%);
 }
 
+[data-doc-theme="celestial"] .ditto-kind-swatch {
+  background: linear-gradient(135deg, rgba(61, 94, 255, 0.15) 0%, rgba(192, 132, 252, 0.12) 100%);
+  border-color: rgba(61, 94, 255, 0.3);
+}
+
 /* Celestial page-cta glow */
 [data-doc-theme="celestial"] .page-cta-emoji {
   text-shadow: 0 0 40px rgba(124, 160, 255, 0.5);
@@ -6260,6 +6265,11 @@ button.screen-power-btn.power-standby {
   background: linear-gradient(135deg, rgba(236, 72, 153, 0.08) 0%, rgba(244, 114, 182, 0.06) 100%);
 }
 
+[data-doc-theme="pink"] .ditto-kind-swatch {
+  background: linear-gradient(135deg, rgba(236, 72, 153, 0.08) 0%, rgba(244, 114, 182, 0.06) 100%);
+  border-color: rgba(236, 72, 153, 0.3);
+}
+
 /* Pink whimsy star */
 [data-doc-theme="pink"] .whimsy-star {
   color: #ec4899;
@@ -6475,6 +6485,11 @@ button.screen-power-btn.power-standby {
 
 [data-doc-theme="arcane"] .kinds-table .ditto-kind {
   background: linear-gradient(135deg, rgba(144, 96, 208, 0.15) 0%, rgba(212, 164, 74, 0.1) 100%);
+}
+
+[data-doc-theme="arcane"] .ditto-kind-swatch {
+  background: linear-gradient(135deg, rgba(144, 96, 208, 0.15) 0%, rgba(212, 164, 74, 0.1) 100%);
+  border-color: rgba(144, 96, 208, 0.3);
 }
 
 /* Arcane sidebar items */

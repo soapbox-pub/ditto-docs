@@ -51,11 +51,23 @@ For a complete list of all Nostr event kinds, see [nostrbook.dev](https://nostrb
   vertical-align: middle;
   line-height: 1;
 }
+.ditto-kind-swatch {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+  vertical-align: middle;
+  background: linear-gradient(135deg, rgba(124, 82, 224, 0.15) 0%, rgba(232, 121, 249, 0.15) 50%, rgba(251, 146, 60, 0.10) 100%);
+  border: 1px solid rgba(124, 82, 224, 0.3);
+}
+:root.dark .ditto-kind-swatch {
+  background: linear-gradient(135deg, rgba(124, 82, 224, 0.25) 0%, rgba(232, 121, 249, 0.20) 50%, rgba(251, 146, 60, 0.15) 100%);
+}
 </style>
 
 <div class="kinds-legend" style="display:flex;flex-wrap:wrap;gap:16px;align-items:center;margin-bottom:8px;">
-  <span><span style="display:inline-block;width:12px;height:12px;border-radius:3px;background:var(--ditto-gradient);vertical-align:middle;"></span> Ditto-created kind</span>
-  <span><span style="color:#e84393;font-size:14px;vertical-align:middle;">✦</span> <a href="/philosophy#the-nostr-kind-cube">whimsy</a></span>
+  <span><span class="ditto-kind-swatch"></span> Ditto-created kind</span>
+  <span><span class="whimsy-star" style="margin-left:0;">✦</span> <a href="/philosophy#the-nostr-kind-cube">whimsy</a></span>
 </div>
 
 <table class="kinds-table">
@@ -642,7 +654,7 @@ Extensions can be combined with each other and with free-text search terms. For 
 ### Search extensions
 
 <div class="kinds-legend" style="display:flex;flex-wrap:wrap;gap:16px;align-items:center;margin-bottom:8px;">
-  <span><span style="display:inline-block;width:12px;height:12px;border-radius:3px;background:var(--ditto-gradient);vertical-align:middle;"></span> Ditto-introduced extension</span>
+  <span><span class="ditto-kind-swatch"></span> Ditto-introduced extension</span>
 </div>
 
 <table class="kinds-table">
