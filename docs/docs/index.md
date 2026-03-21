@@ -2,6 +2,7 @@
 outline: false
 title: Documentation
 description: Everything you need to understand, customize, and self-host Ditto.
+og_image: /og-image-docs.jpg
 ---
 
 <div class="page-hero">

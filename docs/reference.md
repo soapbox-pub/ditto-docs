@@ -1,6 +1,7 @@
 ---
 outline: [2, 2]
 description: All Nostr event kinds that Ditto supports, including NIP extensions, community kinds, and Ditto-specific kinds.
+og_image: /og-image-reference.jpg
 ---
 
 <div class="page-hero">

@@ -1,7 +1,7 @@
 import { defineConfig, type HeadConfig } from 'vitepress'
 
 const SITE_URL = 'https://about.ditto.pub'
-const OG_IMAGE = `${SITE_URL}/og-image.gif`
+const OG_IMAGE = `${SITE_URL}/og-image-home.jpg`
 const DEFAULT_DESCRIPTION = 'A social platform for people who want to have fun, not feed the Big Tech machine. Open source, decentralized, and entirely yours.'
 
 const docsSidebar = [

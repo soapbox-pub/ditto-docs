@@ -1,6 +1,7 @@
 ---
 outline: [2, 2]
 description: "Hack on Ditto with Shakespeare, a browser-based AI builder. Edit the code, tweak the UI, add features — no setup required."
+og_image: /og-image-hacking.jpg
 ---
 
 <div class="page-hero">
