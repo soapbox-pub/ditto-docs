@@ -647,9 +647,9 @@ After NIP-44 decryption with the user's own pubkey, the content is a JSON object
       <td><code>language:&lt;en/zh/ja/...&gt;</code></td>
       <td>Filter events by detected language (NIP-50)</td>
     </tr>
-    <tr class="ditto-kind">
+    <tr>
       <td><code>sentiment:&lt;positive/negative/neutral&gt;</code></td>
-      <td>Filter events by detected sentiment</td>
+      <td>Filter events by detected sentiment (NIP-50)</td>
     </tr>
     <tr class="ditto-kind">
       <td><code>protocol:&lt;activitypub/atproto/nostr&gt;</code></td>
