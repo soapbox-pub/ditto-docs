@@ -33,6 +33,10 @@ export default defineConfig({
   cleanUrls: true,
   appearance: 'dark',
 
+  sitemap: {
+    hostname: SITE_URL,
+  },
+
   vite: {
     envDir: process.cwd(),
   },
