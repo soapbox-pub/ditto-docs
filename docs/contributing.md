@@ -66,7 +66,7 @@ Post your app publicly. Share it on Nostr. Get real people using it. User feedba
 
 ### 4. Submit a merge request
 
-When your app is working, tested, and has some traction, submit a merge request on [GitLab](https://gitlab.com/soapbox-pub/ditto).
+When your app is working, tested, and has some traction, submit a merge request on [GitLab](https://gitlab.com/soapbox-pub/ditto). Include a link to your app and its source code in the MR description.
 
 <div class="callout-fun">
   <span class="callout-emoji">💡</span>
