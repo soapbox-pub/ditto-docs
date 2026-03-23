@@ -41,7 +41,7 @@ Want to bring a new Nostr kind or feature into Ditto? Great — here's the roadm
 
 ### 1. Build a dedicated Nostr app
 
-Before touching Ditto's codebase, build a standalone app for the user experience you have in mind. This forces you to think through the UX end-to-end and gives you something concrete to show.
+Before touching Ditto's codebase, build a standalone, open-source app for the user experience you have in mind. This forces you to think through the UX end-to-end and gives you something concrete to show.
 
 <div class="fun-card">
   <div class="fun-card-emoji">🎭</div>
