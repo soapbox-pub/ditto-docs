@@ -377,7 +377,7 @@ For a complete list of all Nostr event kinds, see [nostrbook.dev](https://nostrb
     <tr class="ditto-kind">
       <td>36767</td>
       <td><a href="#ditto-theme">Theme Definition</a></td>
-      <td>Shareable custom UI theme with colors, font, and background</td>
+      <td>Shareable custom UI theme with colors, fonts, and background</td>
     </tr>
     <tr>
       <td>36787</td>
@@ -445,7 +445,8 @@ The event uses the same `c`, `f`, and `bg` tags as theme definitions. An optiona
     ["c", "#1a1a2e", "background"],
     ["c", "#e0e0e0", "text"],
     ["c", "#6c3ce0", "primary"],
-    ["f", "Inter", "https://example.com/inter.woff2"],
+    ["f", "Inter", "https://example.com/inter.woff2", "body"],
+    ["f", "Playfair Display", "https://example.com/playfair.woff2", "title"],
     ["bg", "url https://example.com/bg.jpg", "mode cover", "m image/jpeg"],
     ["title", "MK Dark Theme"],
     ["a", "36767:<source-author-pubkey>:<source-d-tag>"],
@@ -463,7 +464,7 @@ The `content` field is unused and MUST be an empty string (`""`).
 | Tag | Required | Description |
 |-----|:--------:|-------------|
 | `c` | Yes (x3) | Hex color with role marker (same format as kind 36767). |
-| `f` | No | Font declaration. |
+| `f` | No | Font declaration with role. See [Font tag](#font-tag). |
 | `bg` | No | Background media. |
 | `title` | No | Human-readable name for the theme. |
 | `a` | No | Reference to the source kind 36767 event (`kind:pubkey:d-tag`). Enables attribution ("Using X's theme"). |
@@ -486,7 +487,7 @@ The `content` field is unused and MUST be an empty string (`""`).
 
 </div>
 
-Addressable event for publishing shareable custom UI themes. A user can publish multiple themes, each identified by a unique `d` tag. Colors are stored in `c` tags, with optional font (`f`) and background (`bg`) tags.
+Addressable event for publishing shareable custom UI themes. A user can publish multiple themes, each identified by a unique `d` tag. Colors are stored in `c` tags, with optional fonts (`f`) and background (`bg`) tags.
 
 ### Event structure
 
@@ -499,7 +500,8 @@ Addressable event for publishing shareable custom UI themes. A user can publish 
     ["c", "#1a1a2e", "background"],
     ["c", "#e0e0e0", "text"],
     ["c", "#6c3ce0", "primary"],
-    ["f", "Inter", "https://example.com/inter.woff2"],
+    ["f", "Inter", "https://example.com/inter.woff2", "body"],
+    ["f", "Playfair Display", "https://example.com/playfair.woff2", "title"],
     ["bg", "url https://example.com/bg.jpg", "mode cover", "m image/jpeg", "dim 1920x1080"],
     ["title", "MK Dark Theme"],
     ["description", "A sleek dark theme with purple and blue accents"],
@@ -519,7 +521,7 @@ The `content` field is unused and MUST be an empty string (`""`).
 |-----|:--------:|-------------|
 | `d` | Yes | Unique identifier (slug) for this theme |
 | `c` | Yes (x3) | Hex color with role marker. See [Color tags](#color-tags). |
-| `f` | No | Font declaration. See [Font tag](#font-tag). |
+| `f` | No | Font declaration with role. See [Font tag](#font-tag). |
 | `bg` | No | Background media. See [Background tag](#background-tag). |
 | `title` | Yes | Human-readable theme name |
 | `description` | No | Brief description of the theme |
@@ -542,9 +544,16 @@ Colors are lowercase 6-digit hex codes including the `#` sign. Clients derive al
 
 ### Font tag
 
-Format: `["f", "<family>", "<url>"]`
+Format: `["f", "<family>", "<url>", "<role>"]`
 
-Optional. At most one per event. The font applies globally to all text. Variable font files covering multiple weights are preferred.
+Optional. The role specifies where the font is applied:
+
+| Role | Applies to |
+|------|------------|
+| `"body"` | All text globally (body, headings, UI elements) |
+| `"title"` | The user's profile display name |
+
+At most one `f` tag per role is allowed (i.e. one body font and one title font). The `"body"` font tag MUST be ordered before the `"title"` font tag so that backward-compatible clients reading only the first `f` tag will pick up the body font. Legacy events with an `f` tag that has no role (only 3 elements) SHOULD be treated as `"body"`. Variable font files covering multiple weights are preferred.
 
 ### Background tag
 
