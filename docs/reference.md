@@ -181,7 +181,7 @@ For a complete list of all Nostr event kinds, see [nostrbook.dev](https://nostrb
     </tr>
     <tr>
       <td>3367</td>
-      <td>Color Moment <span class="whimsy-star">✦</span></td>
+      <td><a href="https://gitlab.com/chad.curtis/espy/-/blob/main/NIP.md">Color Moment</a> <span class="whimsy-star">✦</span></td>
       <td>Color palette post expressing a mood</td>
     </tr>
     <tr class="ditto-kind">
@@ -191,7 +191,7 @@ For a complete list of all Nostr event kinds, see [nostrbook.dev](https://nostrb
     </tr>
     <tr>
       <td>7516</td>
-      <td>Found Log <span class="whimsy-star">✦</span></td>
+      <td><a href="https://gitlab.com/chad.curtis/treasures/-/blob/main/NIP-GC.md">Found Log</a> <span class="whimsy-star">✦</span></td>
       <td>Log entry recording a user finding a geocache</td>
     </tr>
     <tr class="ditto-kind">
@@ -431,7 +431,7 @@ For a complete list of all Nostr event kinds, see [nostrbook.dev](https://nostrb
     </tr>
     <tr>
       <td>37516</td>
-      <td>Geocache <span class="whimsy-star">✦</span></td>
+      <td><a href="https://gitlab.com/chad.curtis/treasures/-/blob/main/NIP-GC.md">Geocache</a> <span class="whimsy-star">✦</span></td>
       <td>Geocache listing for real-world treasure hunting</td>
     </tr>
     <tr>
