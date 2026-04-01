@@ -184,10 +184,20 @@ For a complete list of all Nostr event kinds, see [nostrbook.dev](https://nostrb
       <td>Color Moment <span class="whimsy-star">✦</span></td>
       <td>Color palette post expressing a mood</td>
     </tr>
+    <tr class="ditto-kind">
+      <td>4223</td>
+      <td><a href="#weather-station">Weather Reading</a> <span class="whimsy-star">✦</span></td>
+      <td>Sensor readings from a weather station</td>
+    </tr>
     <tr>
       <td>7516</td>
       <td>Found Log <span class="whimsy-star">✦</span></td>
       <td>Log entry recording a user finding a geocache</td>
+    </tr>
+    <tr class="ditto-kind">
+      <td>8211</td>
+      <td><a href="#personal-letters">Encrypted Letter</a> <span class="whimsy-star">✦</span></td>
+      <td>Encrypted personal letter with visual stationery</td>
     </tr>
     <tr>
       <td>9735</td>
@@ -243,6 +253,31 @@ For a complete list of all Nostr event kinds, see [nostrbook.dev](https://nostrb
       <td>10075</td>
       <td>To Be Read</td>
       <td>Books the user wants to read (Bookstr)</td>
+    </tr>
+    <tr class="ditto-kind">
+      <td>11125</td>
+      <td><a href="#blobbi-virtual-pet">Blobbonaut Profile</a> <span class="whimsy-star">✦</span></td>
+      <td>Owner profile with coins, achievements, and inventory</td>
+    </tr>
+    <tr class="ditto-kind">
+      <td>14919</td>
+      <td><a href="#blobbi-virtual-pet">Blobbi Interaction</a> <span class="whimsy-star">✦</span></td>
+      <td>Individual pet interaction (feed, play, clean, etc.)</td>
+    </tr>
+    <tr class="ditto-kind">
+      <td>14920</td>
+      <td><a href="#blobbi-virtual-pet">Blobbi Breeding</a> <span class="whimsy-star">✦</span></td>
+      <td>Breeding event between two adult Blobbis</td>
+    </tr>
+    <tr class="ditto-kind">
+      <td>14921</td>
+      <td><a href="#blobbi-virtual-pet">Blobbi Record</a> <span class="whimsy-star">✦</span></td>
+      <td>Immutable lifecycle record (birth, evolution, adoption)</td>
+    </tr>
+    <tr class="ditto-kind">
+      <td>16158</td>
+      <td><a href="#weather-station">Weather Station</a> <span class="whimsy-star">✦</span></td>
+      <td>Weather station metadata (location, sensors, connectivity)</td>
     </tr>
     <tr class="ditto-kind">
       <td>16767</td>
@@ -333,6 +368,11 @@ For a complete list of all Nostr event kinds, see [nostrbook.dev](https://nostrb
       <td>30817</td>
       <td>Custom NIP</td>
       <td>Custom NIP proposal on NostrHub</td>
+    </tr>
+    <tr class="ditto-kind">
+      <td>31124</td>
+      <td><a href="#blobbi-virtual-pet">Blobbi Pet State</a> <span class="whimsy-star">✦</span></td>
+      <td>Current state of a virtual Blobbi pet</td>
     </tr>
     <tr>
       <td>31922</td>
@@ -841,3 +881,149 @@ A label event with `l: #t` contains the current trending hashtags. Each `t` tag 
   "limit": 1
 }
 ```
+
+---
+
+<div class="section-header-left">
+  <span class="section-emoji">💌</span>
+
+## Personal Letters
+
+</div>
+
+**Kind 8211** | **Author:** Chad Curtis | **App:** [lief.to](https://lief.to)
+
+NIP-44 encrypted personal letters with visual stationery. Letters render as 5:4 landscape postcards with hand-drawn stickers, decorative frames, and custom fonts. The privacy model is intentionally postcard-like: sender/recipient metadata is visible, content is encrypted.
+
+Letters support two sticker types: emoji stickers sourced from NIP-30 custom emoji packs, and freehand SVG drawings created by the sender. Stationery can be sourced from kind 36767 themes or kind 3367 color moments.
+
+### Event structure
+
+```json
+{
+  "kind": 8211,
+  "content": "<NIP-44 encrypted JSON>",
+  "tags": [
+    ["p", "<recipient-pubkey-hex>"],
+    ["alt", "Personal letter"]
+  ]
+}
+```
+
+The encrypted content contains `body`, `closing`, `signature`, `stickers`, and `stationery` fields. Body text is limited to 220 characters. At least one of `body` (non-empty) or `stickers` (non-empty array) must be present.
+
+::: tip Full specification
+The complete spec covers sticker objects, stationery sourcing, frame catalog, font handling, card dimensions, and text color rendering rules.
+
+[Read the full NIP](https://gitlab.com/chad.curtis/lief/-/blob/main/NIP.md)
+:::
+
+---
+
+<div class="section-header-left">
+  <span class="section-emoji">🌦️</span>
+
+## Weather Station
+
+</div>
+
+**Kinds 4223, 16158** | **Author:** Sam Thomson | **App:** [weather.shakespeare.wtf](https://weather.shakespeare.wtf)
+
+Weather station data on Nostr. Each station has its own keypair. Kind 16158 (replaceable) describes a station's configuration: name, geohash location, elevation, power source, connectivity, and sensor inventory. Kind 4223 (regular) carries individual sensor readings, enabling historical queries.
+
+### Station metadata (kind 16158)
+
+```json
+{
+  "kind": 16158,
+  "tags": [
+    ["name", "Backyard Station"],
+    ["g", "9q5h"],
+    ["elevation", "52"],
+    ["power", "solar"],
+    ["connectivity", "wifi"],
+    ["sensor", "temp", "DHT11"],
+    ["sensor", "humidity", "DHT11"],
+    ["sensor", "pm25", "PMS5003"]
+  ],
+  "content": ""
+}
+```
+
+### Sensor readings (kind 4223)
+
+Readings use 3-parameter tags: `[sensor_type, value, model]`. Only include a tag when the sensor produced a valid value.
+
+```json
+{
+  "kind": 4223,
+  "tags": [
+    ["temp", "22.5", "DHT11"],
+    ["humidity", "65.2", "DHT11"],
+    ["pm25", "12", "PMS5003"]
+  ],
+  "content": ""
+}
+```
+
+Supported sensor types include `temp`, `humidity`, `pm1`, `pm25`, `pm10`, `air_quality`, `light`, `co2`, `pressure`, `rain`, and more.
+
+::: tip Full specification
+The complete spec covers all sensor types and models, station grouping, discovery, and reference implementations.
+
+[Read the draft NIP](https://github.com/nostr-protocol/nips/pull/2163) | [Firmware source](https://github.com/samthomson/weather-station)
+:::
+
+---
+
+<div class="section-header-left">
+  <span class="section-emoji">🫧</span>
+
+## Blobbi Virtual Pet
+
+</div>
+
+**Kinds 31124, 14919, 14920, 14921, 11125** | **Author:** Danifra | **App:** [nostr-pet.vercel.app](https://nostr-pet.vercel.app)
+
+NIP-BB defines a virtual pet lifecycle on Nostr. Blobbi pets progress through three stages: **egg** (4+ days of incubation) &rarr; **baby** (7-10 days of care) &rarr; **adult** (breeding, lower maintenance). Stats include hunger, happiness, health, hygiene, and energy on a 0-100 scale with decay over time.
+
+### Event kinds
+
+| Kind | Type | Purpose |
+|------|------|---------|
+| 31124 | Addressable | Current pet state (stats, appearance, personality, stage) |
+| 14919 | Regular | Individual interactions (feed, play, clean, rest, etc.) |
+| 14920 | Regular | Breeding events between adult Blobbis |
+| 14921 | Regular | Immutable lifecycle records (birth, evolution, adoption) |
+| 11125 | Replaceable | Owner profile (coins, achievements, inventory) |
+
+### Pet state (kind 31124)
+
+```json
+{
+  "kind": 31124,
+  "tags": [
+    ["d", "blobbi-fluffy"],
+    ["stage", "baby"],
+    ["breeding_ready", "false"],
+    ["generation", "1"],
+    ["hunger", "75"],
+    ["happiness", "85"],
+    ["health", "90"],
+    ["hygiene", "60"],
+    ["energy", "70"],
+    ["experience", "150"],
+    ["care_streak", "3"],
+    ["base_color", "#7C3AED"],
+    ["eye_color", "blue"],
+    ["mood", "happy"]
+  ],
+  "content": "Fluffy is a happy baby Blobbi"
+}
+```
+
+::: tip Full specification
+The complete NIP-BB spec covers all 35+ tags across appearance, personality, social, and progression categories, plus interaction actions, breeding mechanics, lifecycle records, and validation rules.
+
+[Read the full NIP-BB](https://github.com/Danidfra/nostr-pet/blob/production/NIP.md) | [Blobbi Island](https://blobbi-island.vercel.app)
+:::
