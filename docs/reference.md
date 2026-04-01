@@ -181,22 +181,22 @@ For a complete list of all Nostr event kinds, see [nostrbook.dev](https://nostrb
     </tr>
     <tr>
       <td>3367</td>
-      <td><a href="https://gitlab.com/chad.curtis/espy/-/blob/main/NIP.md">Color Moment</a> <span class="whimsy-star">✦</span></td>
+      <td><a href="https://gitlab.com/chad.curtis/espy/-/blob/main/NIP.md" target="_blank" rel="noopener noreferrer">Color Moment</a> <span class="whimsy-star">✦</span></td>
       <td>Color palette post expressing a mood</td>
     </tr>
     <tr class="ditto-kind">
       <td>4223</td>
-      <td><a href="https://github.com/nostr-protocol/nips/pull/2163">Weather Reading</a> <span class="whimsy-star">✦</span></td>
+      <td><a href="https://github.com/nostr-protocol/nips/pull/2163" target="_blank" rel="noopener noreferrer">Weather Reading</a> <span class="whimsy-star">✦</span></td>
       <td>Sensor readings from a weather station</td>
     </tr>
     <tr>
       <td>7516</td>
-      <td><a href="https://gitlab.com/chad.curtis/treasures/-/blob/main/NIP-GC.md">Found Log</a> <span class="whimsy-star">✦</span></td>
+      <td><a href="https://gitlab.com/chad.curtis/treasures/-/blob/main/NIP-GC.md" target="_blank" rel="noopener noreferrer">Found Log</a> <span class="whimsy-star">✦</span></td>
       <td>Log entry recording a user finding a geocache</td>
     </tr>
     <tr class="ditto-kind">
       <td>8211</td>
-      <td><a href="https://gitlab.com/chad.curtis/lief/-/blob/main/NIP.md">Encrypted Letter</a> <span class="whimsy-star">✦</span></td>
+      <td><a href="https://gitlab.com/chad.curtis/lief/-/blob/main/NIP.md" target="_blank" rel="noopener noreferrer">Encrypted Letter</a> <span class="whimsy-star">✦</span></td>
       <td>Encrypted personal letter with visual stationery</td>
     </tr>
     <tr>
@@ -256,27 +256,27 @@ For a complete list of all Nostr event kinds, see [nostrbook.dev](https://nostrb
     </tr>
     <tr class="ditto-kind">
       <td>11125</td>
-      <td><a href="https://github.com/Danidfra/nostr-pet/blob/production/NIP.md">Blobbonaut Profile</a> <span class="whimsy-star">✦</span></td>
+      <td><a href="https://github.com/Danidfra/nostr-pet/blob/production/NIP.md" target="_blank" rel="noopener noreferrer">Blobbonaut Profile</a> <span class="whimsy-star">✦</span></td>
       <td>Owner profile with coins, achievements, and inventory</td>
     </tr>
     <tr class="ditto-kind">
       <td>14919</td>
-      <td><a href="https://github.com/Danidfra/nostr-pet/blob/production/NIP.md">Blobbi Interaction</a> <span class="whimsy-star">✦</span></td>
+      <td><a href="https://github.com/Danidfra/nostr-pet/blob/production/NIP.md" target="_blank" rel="noopener noreferrer">Blobbi Interaction</a> <span class="whimsy-star">✦</span></td>
       <td>Individual pet interaction (feed, play, clean, etc.)</td>
     </tr>
     <tr class="ditto-kind">
       <td>14920</td>
-      <td><a href="https://github.com/Danidfra/nostr-pet/blob/production/NIP.md">Blobbi Breeding</a> <span class="whimsy-star">✦</span></td>
+      <td><a href="https://github.com/Danidfra/nostr-pet/blob/production/NIP.md" target="_blank" rel="noopener noreferrer">Blobbi Breeding</a> <span class="whimsy-star">✦</span></td>
       <td>Breeding event between two adult Blobbis</td>
     </tr>
     <tr class="ditto-kind">
       <td>14921</td>
-      <td><a href="https://github.com/Danidfra/nostr-pet/blob/production/NIP.md">Blobbi Record</a> <span class="whimsy-star">✦</span></td>
+      <td><a href="https://github.com/Danidfra/nostr-pet/blob/production/NIP.md" target="_blank" rel="noopener noreferrer">Blobbi Record</a> <span class="whimsy-star">✦</span></td>
       <td>Immutable lifecycle record (birth, evolution, adoption)</td>
     </tr>
     <tr class="ditto-kind">
       <td>16158</td>
-      <td><a href="https://github.com/nostr-protocol/nips/pull/2163">Weather Station</a> <span class="whimsy-star">✦</span></td>
+      <td><a href="https://github.com/nostr-protocol/nips/pull/2163" target="_blank" rel="noopener noreferrer">Weather Station</a> <span class="whimsy-star">✦</span></td>
       <td>Weather station metadata (location, sensors, connectivity)</td>
     </tr>
     <tr class="ditto-kind">
@@ -371,7 +371,7 @@ For a complete list of all Nostr event kinds, see [nostrbook.dev](https://nostrb
     </tr>
     <tr class="ditto-kind">
       <td>31124</td>
-      <td><a href="https://github.com/Danidfra/nostr-pet/blob/production/NIP.md">Blobbi Pet State</a> <span class="whimsy-star">✦</span></td>
+      <td><a href="https://github.com/Danidfra/nostr-pet/blob/production/NIP.md" target="_blank" rel="noopener noreferrer">Blobbi Pet State</a> <span class="whimsy-star">✦</span></td>
       <td>Current state of a virtual Blobbi pet</td>
     </tr>
     <tr>
@@ -431,7 +431,7 @@ For a complete list of all Nostr event kinds, see [nostrbook.dev](https://nostrb
     </tr>
     <tr>
       <td>37516</td>
-      <td><a href="https://gitlab.com/chad.curtis/treasures/-/blob/main/NIP-GC.md">Geocache</a> <span class="whimsy-star">✦</span></td>
+      <td><a href="https://gitlab.com/chad.curtis/treasures/-/blob/main/NIP-GC.md" target="_blank" rel="noopener noreferrer">Geocache</a> <span class="whimsy-star">✦</span></td>
       <td>Geocache listing for real-world treasure hunting</td>
     </tr>
     <tr>

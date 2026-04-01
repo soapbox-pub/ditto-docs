@@ -43,6 +43,7 @@ export default defineConfig({
 
   markdown: {
     typographer: true,
+    externalLinks: { target: '_blank', rel: 'noopener noreferrer' },
   },
 
   title: 'Ditto',
