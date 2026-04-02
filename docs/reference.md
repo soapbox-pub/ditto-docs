@@ -327,7 +327,7 @@ For a complete list of all Nostr event kinds, see [nostrbook.dev](https://nostrb
     <tr>
       <td>30063</td>
       <td>Software Release</td>
-      <td>App release metadata from Zapstore (NIP-82)</td>
+      <td>App release metadata from Zapstore (<a href="https://github.com/franzaps/nips/blob/applications/82.md">NIP-82</a>)</td>
     </tr>
     <tr class="ditto-kind">
       <td>30078</td>
@@ -397,7 +397,7 @@ For a complete list of all Nostr event kinds, see [nostrbook.dev](https://nostrb
     <tr>
       <td>32267</td>
       <td>App</td>
-      <td>Software application listing from Zapstore (NIP-82)</td>
+      <td>Software application listing from Zapstore (<a href="https://github.com/franzaps/nips/blob/applications/82.md">NIP-82</a>)</td>
     </tr>
     <tr>
       <td>34139</td>
