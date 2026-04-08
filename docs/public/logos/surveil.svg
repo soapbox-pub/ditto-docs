@@ -1,0 +1,28 @@
+<svg width="90" height="90" viewBox="0 0 90 90" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:hsl(210 100% 56% / 0.2);stop-opacity:1" />
+      <stop offset="100%" style="stop-color:hsl(210 100% 56% / 0.05);stop-opacity:1" />
+    </linearGradient>
+    <g id="card">
+      <rect x="0" y="0" width="50" height="70" rx="12" ry="12" fill="hsl(222, 47%, 4%)"/>
+      <rect x="0" y="0" width="50" height="70" rx="12" ry="12" fill="url(#grad1)" stroke="hsl(210 100% 56% / 0.2)" stroke-width="1"/>
+    </g>
+  </defs>
+
+  <g transform="rotate(-10 45 45)">
+    <g transform="translate(25, 10)">
+        <!-- Bottom card, fanned out -->
+        <use href="#card" transform="rotate(-15, 0, 70)" />
+
+        <!-- Top card with Eye -->
+        <g>
+            <use href="#card"/>
+            <g transform="translate(13, 23)">
+                <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z" fill="none" stroke="hsl(210 100% 56%)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <circle cx="12" cy="12" r="3" fill="none" stroke="hsl(210 100% 56%)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </g>
+        </g>
+    </g>
+  </g>
+</svg>
