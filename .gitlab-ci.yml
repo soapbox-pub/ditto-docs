@@ -2,7 +2,6 @@ image: oven/bun:1
 
 default:
   interruptible: true
-  timeout: 20 minutes
 
 cache:
   key:
