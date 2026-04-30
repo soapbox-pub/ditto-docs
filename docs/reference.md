@@ -195,6 +195,11 @@ For a complete list of all Nostr event kinds, see [nostrbook.dev](https://nostrb
       <td>Log entry recording a user finding a geocache</td>
     </tr>
     <tr class="ditto-kind">
+      <td>8333</td>
+      <td><a href="https://gitlab.com/soapbox-pub/ditto/-/blob/main/NIP.md#kind-8333-onchain-zap" target="_blank" rel="noopener noreferrer">Onchain Zap</a></td>
+      <td>Attestation that an on-chain Bitcoin transaction paid a Nostr event or profile</td>
+    </tr>
+    <tr class="ditto-kind">
       <td>8211</td>
       <td><a href="https://gitlab.com/chad.curtis/lief/-/blob/main/NIP.md" target="_blank" rel="noopener noreferrer">Encrypted Letter</a> <span class="whimsy-star">✦</span></td>
       <td>Encrypted personal letter with visual stationery</td>
