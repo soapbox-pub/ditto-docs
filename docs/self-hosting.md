@@ -58,11 +58,9 @@ No build step required — just serve the files from your domain. Make sure your
 
 If you want to customize Ditto before deploying, compile it yourself. Requires **Node.js 22+**.
 
-```
-https://gitlab.com/soapbox-pub/ditto.git
-```
-
 ```bash
+git clone https://gitlab.com/soapbox-pub/ditto.git
+cd ditto
 npm i
 npm run build
 ```
@@ -80,12 +78,13 @@ The `dist/` directory now contains everything you need. Upload it to any web ser
 
 </div>
 
-Ditto is configured through a `ditto.json` file at the project root. This file is read at **build time**. All fields are optional — only include what you want to override.
+Ditto is configured through a `ditto.json` file at the project root. This file is read at **build time** and validated against a strict schema — unknown keys will fail the build. All fields are optional — only include what you want to override.
 
 ```json
 {
   "theme": "custom",
   "customTheme": {
+    "title": "My Community",
     "colors": {
       "background": "228 20% 10%",
       "text": "210 40% 98%",
@@ -110,16 +109,21 @@ Ditto is configured through a `ditto.json` file at the project root. This file i
     "updatedAt": 0
   },
   "useAppRelays": false,
-  "blossomServers": [
-    "https://blossom.yourcommunity.com/"
-  ]
+  "blossomServerMetadata": {
+    "servers": [
+      "https://blossom.yourcommunity.com/"
+    ],
+    "updatedAt": 0
+  }
 }
 ```
 
-You can point to a different config file path using the `CONFIG_FILE` environment variable:
+Color values are HSL components (no `hsl()` wrapper, no commas). Set `theme` to `"custom"` for `customTheme` to take effect — otherwise use `"dark"`, `"light"`, or `"system"`. For separate light/dark customizations, use the `themes: { light, dark }` field instead of `customTheme`.
+
+You can point to a different config file path using the `DITTO_CONFIG_FILE` environment variable:
 
 ```bash
-CONFIG_FILE=./my-config.json npm run build
+DITTO_CONFIG_FILE=./my-config.json npm run build
 ```
 
 </div>
