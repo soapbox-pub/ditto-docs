@@ -190,6 +190,11 @@ For a complete list of all Nostr event kinds, see [nostrbook.dev](https://nostrb
       <td>Sensor readings from a weather station</td>
     </tr>
     <tr>
+      <td>4312</td>
+      <td><a href="https://gitlab.com/soapbox-pub/ditto/-/blob/main/NIP.md#nests-live-audio-rooms" target="_blank" rel="noopener noreferrer">Nest Admin Command</a></td>
+      <td>Moderation command (kick) targeting a user in a live audio room</td>
+    </tr>
+    <tr>
       <td>7516</td>
       <td><a href="https://gitlab.com/chad.curtis/treasures/-/blob/main/NIP-GC.md" target="_blank" rel="noopener noreferrer">Found Log</a> <span class="whimsy-star">✦</span></td>
       <td>Log entry recording a user finding a geocache</td>
@@ -258,6 +263,16 @@ For a complete list of all Nostr event kinds, see [nostrbook.dev](https://nostrb
       <td>10075</td>
       <td>To Be Read</td>
       <td>Books the user wants to read (Bookstr)</td>
+    </tr>
+    <tr>
+      <td>10112</td>
+      <td><a href="https://gitlab.com/soapbox-pub/ditto/-/blob/main/NIP.md#nests-live-audio-rooms" target="_blank" rel="noopener noreferrer">MoQ Server List</a></td>
+      <td>User's preferred MoQ audio relay servers for Nests</td>
+    </tr>
+    <tr>
+      <td>10312</td>
+      <td><a href="https://gitlab.com/soapbox-pub/ditto/-/blob/main/NIP.md#nests-live-audio-rooms" target="_blank" rel="noopener noreferrer">Room Presence</a></td>
+      <td>Live presence heartbeat in a meeting space (NIP-53)</td>
     </tr>
     <tr class="ditto-kind">
       <td>11125</td>
@@ -343,6 +358,11 @@ For a complete list of all Nostr event kinds, see [nostrbook.dev](https://nostrb
       <td>30311</td>
       <td>Stream</td>
       <td>Live streaming event (NIP-53)</td>
+    </tr>
+    <tr>
+      <td>30312</td>
+      <td><a href="https://gitlab.com/soapbox-pub/ditto/-/blob/main/NIP.md#nests-live-audio-rooms" target="_blank" rel="noopener noreferrer">Meeting Space</a></td>
+      <td>Live audio room definition for Nests (NIP-53)</td>
     </tr>
     <tr>
       <td>30315</td>
