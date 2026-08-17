@@ -13,20 +13,11 @@ cache:
 before_script:
   - bun install --frozen-lockfile
 
+# GitLab is a mirror of the nostr repo and only builds here; about.ditto.pub is
+# published as an nsite by .ngit/act/workflows/deploy-nsite.yml, which runs on
+# the ngit-ci coordinator. Nothing is rsynced to venus any more, so this runs
+# on every branch rather than standing aside for a deploy job on the default
+# one.
 build:
   script:
     - bun run build
-  rules:
-    - if: $CI_COMMIT_BRANCH != $CI_DEFAULT_BRANCH
-
-deploy:
-  script:
-    - bun run build
-    - apt-get update -qq && apt-get install -y --no-install-recommends rsync openssh-client >/dev/null
-    - mkdir -p ~/.ssh && chmod 700 ~/.ssh
-    - echo "$DEPLOY_SSH_KEY" | tr -d '\r' > ~/.ssh/id_ed25519 && chmod 600 ~/.ssh/id_ed25519
-    - ssh-keyscan -H "${DEPLOY_TARGET##*@}" >> ~/.ssh/known_hosts 2>/dev/null
-    - rsync -av --exclude=/sw.js --exclude=/index.html -e "ssh -i ~/.ssh/id_ed25519" .vitepress/dist/ "${DEPLOY_TARGET}:/"
-    - rsync -av -e "ssh -i ~/.ssh/id_ed25519" .vitepress/dist/index.html "${DEPLOY_TARGET}:/"
-  rules:
-    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH && $DEPLOY_SSH_KEY && $DEPLOY_TARGET

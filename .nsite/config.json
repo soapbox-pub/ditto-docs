@@ -1,0 +1,20 @@
+{
+  "$schema": "https://nsyte.run/schemas/config.schema.json",
+  "relays": [
+    "wss://relay.ditto.pub",
+    "wss://relay.dreamith.to",
+    "wss://relay.primal.net"
+  ],
+  "id": "ditto-docs",
+  "servers": [
+    "https://blossom.ditto.pub",
+    "https://blossom.dreamith.to",
+    "https://blossom.primal.net"
+  ],
+  "fallback": "/404.html",
+  "publishRelayList": false,
+  "publishServerList": false,
+  "title": "Ditto Docs",
+  "description": "Documentation and marketing site for Ditto, a fun and customizable Nostr client made by Soapbox.",
+  "source": "https://gitworkshop.dev/soapbox.pub/relay.ngit.dev/ditto-docs"
+}
