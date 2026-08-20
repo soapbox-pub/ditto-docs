@@ -1,8 +1,18 @@
+import { writeFile } from 'node:fs/promises'
+import { join } from 'node:path'
 import { defineConfig, type HeadConfig } from 'vitepress'
 
 const SITE_URL = 'https://about.ditto.pub'
 const OG_IMAGE = `${SITE_URL}/og-image-home.jpg`
 const DEFAULT_DESCRIPTION = 'A social platform for people who want to have fun, not feed the Big Tech machine. Open source, decentralized, and entirely yours.'
+
+// The nsite gateway serves this site under `script-src 'self'`, so every inline
+// <script> is blocked. VitePress emits two of them into <head> (the FOUC dark
+// mode check and the macOS class toggle); hoist their bodies verbatim into a
+// real file, which the CSP does allow. `metaChunk: true` below deals with the
+// third one -- the __VP_SITE_DATA__ blob, whose absence crashes the app on boot.
+const CSP_INIT_FILE = 'csp-init.js'
+const inlineScripts = new Map<string, string>()
 
 const docsSidebar = [
   {
@@ -32,6 +42,7 @@ export default defineConfig({
   srcDir: 'docs',
   cleanUrls: true,
   appearance: 'dark',
+  metaChunk: true,
 
   sitemap: {
     hostname: SITE_URL,
@@ -75,6 +86,36 @@ export default defineConfig({
     head.push(['meta', { name: 'twitter:image', content: ogImage }])
 
     return head
+  },
+
+  // Strip VitePress's inline <script id="..."> tags and point at the external
+  // copy written by buildEnd, keeping their original position in <head> so the
+  // dark mode check still runs before first paint.
+  transformHtml(code) {
+    let injected = false
+
+    const html = code.replace(
+      /<script id="([\w-]+)">([\s\S]*?)<\/script>/g,
+      (_match, id: string, body: string) => {
+        inlineScripts.set(id, body)
+        if (injected) return ''
+        injected = true
+        return `<script src="/${CSP_INIT_FILE}"></script>`
+      },
+    )
+
+    if (!injected) {
+      throw new Error(
+        `No inline <script id="..."> found to externalize. VitePress probably changed how it emits them; ` +
+          `re-check the CSP workaround in .vitepress/config.mts.`,
+      )
+    }
+
+    return html
+  },
+
+  async buildEnd({ outDir }) {
+    await writeFile(join(outDir, CSP_INIT_FILE), [...inlineScripts.values()].join('\n'))
   },
 
   themeConfig: {

@@ -171,10 +171,10 @@ export const themes: Y2KTheme[] = [
     },
     font: {
       family: 'Cherry Bomb One',
-      url: 'https://cdn.jsdelivr.net/fontsource/fonts/cherry-bomb-one@latest/latin-400-normal.woff2',
+      url: '/fonts/cherry-bomb-one.woff2',
     },
     bodyFont: "'Quicksand', 'Trebuchet MS', sans-serif",
-    bodyFontUrl: 'https://cdn.jsdelivr.net/fontsource/fonts/quicksand@latest/latin-400-normal.woff2',
+    bodyFontUrl: '/fonts/quicksand.woff2',
     headingScale: 0.9,
     background: {
       bg: '/kawaii-bg.jpg',
@@ -192,10 +192,10 @@ export const themes: Y2KTheme[] = [
     },
     font: {
       family: 'Lacquer',
-      url: 'https://cdn.jsdelivr.net/fontsource/fonts/lacquer@latest/latin-400-normal.woff2',
+      url: '/fonts/lacquer.woff2',
     },
     bodyFont: "'Outfit', 'Verdana', sans-serif",
-    bodyFontUrl: 'https://cdn.jsdelivr.net/fontsource/fonts/outfit@latest/latin-400-normal.woff2',
+    bodyFontUrl: '/fonts/outfit.woff2',
     headingScale: 0.85,
     background: {
       bg: '/grunge-bg.jpg',
@@ -213,7 +213,7 @@ export const themes: Y2KTheme[] = [
     },
     font: {
       family: 'Silkscreen',
-      url: 'https://cdn.jsdelivr.net/fontsource/fonts/silkscreen@latest/latin-400-normal.woff2',
+      url: '/fonts/silkscreen.woff2',
     },
     bodyFont: "'Tahoma', sans-serif",
     headingScale: 0.9,
@@ -233,10 +233,10 @@ export const themes: Y2KTheme[] = [
     },
     font: {
       family: 'Bungee Shade',
-      url: 'https://cdn.jsdelivr.net/fontsource/fonts/bungee-shade@latest/latin-400-normal.woff2',
+      url: '/fonts/bungee-shade.woff2',
     },
     bodyFont: "'Space Grotesk', 'Gill Sans', sans-serif",
-    bodyFontUrl: 'https://cdn.jsdelivr.net/fontsource/fonts/space-grotesk@latest/latin-400-normal.woff2',
+    bodyFontUrl: '/fonts/space-grotesk.woff2',
     headingScale: 0.55,
     background: {
       bg: '/retropop-bg.jpg',
@@ -254,10 +254,10 @@ export const themes: Y2KTheme[] = [
     },
     font: {
       family: 'Barriecito',
-      url: 'https://cdn.jsdelivr.net/fontsource/fonts/barriecito@latest/latin-400-normal.woff2',
+      url: '/fonts/barriecito.woff2',
     },
     bodyFont: "'Nunito', 'Arial', sans-serif",
-    bodyFontUrl: 'https://cdn.jsdelivr.net/fontsource/fonts/nunito@latest/latin-400-normal.woff2',
+    bodyFontUrl: '/fonts/nunito.woff2',
     headingScale: 0.8,
     background: {
       bg: '/bubblegum-bg.jpg',
@@ -275,10 +275,10 @@ export const themes: Y2KTheme[] = [
     },
     font: {
       family: 'Press Start 2P',
-      url: 'https://cdn.jsdelivr.net/fontsource/fonts/press-start-2p@latest/latin-400-normal.woff2',
+      url: '/fonts/press-start-2p.woff2',
     },
     bodyFont: "'Share Tech Mono', 'Lucida Console', monospace",
-    bodyFontUrl: 'https://cdn.jsdelivr.net/fontsource/fonts/share-tech-mono@latest/latin-400-normal.woff2',
+    bodyFontUrl: '/fonts/share-tech-mono.woff2',
     headingScale: 0.45,
     background: {
       bg: '/gamer-bg.png',
@@ -296,10 +296,10 @@ export const themes: Y2KTheme[] = [
     },
     font: {
       family: 'Rubik Maps',
-      url: 'https://cdn.jsdelivr.net/fontsource/fonts/rubik-maps@latest/latin-400-normal.woff2',
+      url: '/fonts/rubik-maps.woff2',
     },
     bodyFont: "'Archivo Black', 'Arial Black', sans-serif",
-    bodyFontUrl: 'https://cdn.jsdelivr.net/fontsource/fonts/archivo-black@latest/latin-400-normal.woff2',
+    bodyFontUrl: '/fonts/archivo-black.woff2',
     headingScale: 0.9,
     background: {
       bg: '/skater-bg.jpg',
@@ -317,7 +317,7 @@ export const themes: Y2KTheme[] = [
     },
     font: {
       family: 'Inter',
-      url: 'https://cdn.jsdelivr.net/fontsource/fonts/inter@latest/latin-400-normal.woff2',
+      url: '/fonts/inter.woff2',
     },
     bodyFont: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
     headingScale: 1,
@@ -337,7 +337,7 @@ export const themes: Y2KTheme[] = [
     },
     font: {
       family: 'Inter',
-      url: 'https://cdn.jsdelivr.net/fontsource/fonts/inter@latest/latin-400-normal.woff2',
+      url: '/fonts/inter.woff2',
     },
     bodyFont: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
     headingScale: 1,

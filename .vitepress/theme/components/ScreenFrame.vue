@@ -209,7 +209,7 @@
     <div class="screen-viewport-wrap" :class="{ 'screen-viewport-wrap-skater': theme === 'skater', 'screen-viewport-wrap-kawaii': theme === 'kawaii' }" ref="viewportWrap">
       <div class="screen-viewport" ref="viewport" v-show="!retroActiveUrl && !bubbleIframeUrl">
         <!-- Theme logo (top-left, scrolls with content) -->
-        <img :src="themeLogo" :alt="`${theme} Ditto logo`" class="screen-theme-logo" />
+        <img v-if="themeLogo" :src="themeLogo" :alt="`${theme} Ditto logo`" class="screen-theme-logo" />
         <slot />
       </div>
 
@@ -309,7 +309,12 @@ const viewport = ref<HTMLElement | null>(null);
 const viewportWrap = ref<HTMLElement | null>(null);
 
 const svgLogoThemes = new Set(['light', 'dark']);
-const themeLogo = computed(() => svgLogoThemes.has(props.theme) ? `/${props.theme}-logo.svg` : `/${props.theme}-logo.png`);
+// Empty until a theme is picked on mount -- without the guard SSR asks for
+// `/-logo.png`, which 404s.
+const themeLogo = computed(() => {
+  if (!props.theme) return '';
+  return svgLogoThemes.has(props.theme) ? `/${props.theme}-logo.svg` : `/${props.theme}-logo.png`;
+});
 
 // ── Window minimize/close ──
 type WindowState = 'normal' | 'minimized' | 'closed';

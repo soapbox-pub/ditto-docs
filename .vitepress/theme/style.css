@@ -3,7 +3,9 @@
  * An explosion of fun.
  */
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+/* Inter is not imported from Google Fonts: the nsite gateway's CSP allows only
+   same-origin stylesheets and fonts. VitePress's default theme already
+   self-hosts Inter as a variable font covering the full 100-900 range. */
 
 /* --------------------------------------------------------------------------
  * Base VitePress overrides
